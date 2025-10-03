@@ -1,6 +1,6 @@
 
 
-
+//
 
 
 if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
