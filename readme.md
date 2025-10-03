@@ -1,1 +1,1 @@
-test
+This is the work in progress beginning of project Gloop
