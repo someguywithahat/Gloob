@@ -9,6 +9,7 @@ var start_y = 32;
 // Spacing between objects (assuming each object is 32x32 pixels)
 var spacing = 32;
 
+music_playing = false;
 
 // Loop through rows and columns
 for (var xx = 0; xx < cols; xx++) {

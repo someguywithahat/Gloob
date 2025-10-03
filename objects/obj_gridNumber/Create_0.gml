@@ -1,6 +1,7 @@
 // Generate a random number from 1 to 8
 my_number = 1
 my_number = irandom_range(1, 8);
+my_shade = c_white
 
 // Assign the sprite based on the number
 switch (my_number) {

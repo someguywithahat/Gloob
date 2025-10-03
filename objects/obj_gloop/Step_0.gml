@@ -1,40 +1,5 @@
 
 
-// Check for an instance of obj_gridValue at the same position
-//var grid_inst = instance_place(x, y, obj_gridNumber);
-
-//if (grid_inst != noone) {
-//    var c = grid_inst.my_number;  // read the variable
-//    //show_debug_message("Value from grid: " + string(c));
-//}
-
-
-
-//if (keyboard_check_pressed(ord("A")) and ismoving=0) {
-//    target_x = x- (32*c);	
-//	ismoving=1;
-//	pickup_target=c;
-//	pickup_counter=0;
-//}
-//if (keyboard_check_pressed(ord("S")) and ismoving=0) {
-//    target_y = y + (32*c);	
-//	ismoving=1;
-//	pickup_target=c;
-//	pickup_counter=0;
-//}
-//if (keyboard_check_pressed(ord("D")) and ismoving=0) {
-//    target_x = x + (32*c);	
-//	ismoving=1;
-//	pickup_target=c;
-//	pickup_counter=0;
-//}
-//if (keyboard_check_pressed(ord("W")) and ismoving=0) {
-//    target_y = y - (32*c);	
-//	ismoving=1;
-//	pickup_target=c;
-//	pickup_counter=0;
-//}
-
 
 
 
@@ -52,7 +17,7 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 	var checky = y
 
     // Calculate the angle from object to mouse in degrees
-    var angle_deg = point_direction(x, y, mx, my);
+    var angle_deg = point_direction(x+16, y+16, mx, my);
 
     // Determine the direction.  
 	//Remove checkx and checky
@@ -129,8 +94,9 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 }
 
 
+
+
 if ismoving=1{
-	
 	
 	var grid_inst = instance_position(x+16, y+16, obj_gridNumber);
 	
@@ -170,8 +136,7 @@ if ismoving=1{
 		        instance_destroy();
 		    }
 		}
-	}
-	
+	}	
 }
 
 
