@@ -46,6 +46,7 @@
     {"id":{"name":"Bluep_Death","path":"sprites/Bluep_Death/Bluep_Death.yy",},},
     {"id":{"name":"Bluep_Idol","path":"sprites/Bluep_Idol/Bluep_Idol.yy",},},
     {"id":{"name":"Bluep_jump","path":"sprites/Bluep_jump/Bluep_jump.yy",},},
+    {"id":{"name":"Bluep_Move","path":"sprites/Bluep_Move/Bluep_Move.yy",},},
     {"id":{"name":"Bluep_Sleep","path":"sprites/Bluep_Sleep/Bluep_Sleep.yy",},},
     {"id":{"name":"spr_Gloop","path":"sprites/spr_Gloop/spr_Gloop.yy",},},
     {"id":{"name":"spr_GloopDebug","path":"sprites/spr_GloopDebug/spr_GloopDebug.yy",},},
