@@ -14,3 +14,4 @@ switch (my_number) {
     case 7: sprite_index = spr_grid7; break;
     case 8: sprite_index = spr_grid8; break;
 }
+
