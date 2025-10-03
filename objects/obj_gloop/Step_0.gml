@@ -83,6 +83,10 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 		target_x = x + (32*derX*c);	
 		target_y = y + (32*derY*c);	
 		ismoving=1;
+		idletime=0
+		sprite_index = Bluep_Idol;	
+		image_speed=1		
+		
 		pickup_target=c;
 		pickup_counter=0;
 	}
@@ -94,7 +98,13 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 }
 
 
-
+if ismoving=0
+	idletime++
+	
+if idletime>sleeptime{
+	sprite_index = Bluep_Sleep;	
+	image_speed=1
+}
 
 if ismoving=1{
 	
@@ -129,6 +139,7 @@ if ismoving=1{
 	
 	if x==target_x and y==target_y{
 		ismoving=0	
+		idletime=0
 		grid_inst = instance_position(x+16, y+16, obj_gridNumber);
 	
 		if (grid_inst != noone) {
