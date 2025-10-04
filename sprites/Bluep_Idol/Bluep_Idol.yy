@@ -53,8 +53,8 @@
   },
   "origin":6,
   "parent":{
-    "name":"Bluep",
-    "path":"folders/Sprites/Bluep.yy",
+    "name":"Slime Sprites",
+    "path":"folders/Sprites/Slime Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
