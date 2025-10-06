@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Slm_Ylo_Idol",
-    "path":"sprites/Slm_Ylo_Idol/Slm_Ylo_Idol.yy",
+    "name":"Slm_Yel_Idol",
+    "path":"sprites/Slm_Yel_Idol/Slm_Yel_Idol.yy",
   },
   "spriteMaskId":null,
   "visible":true,

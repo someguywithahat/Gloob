@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Slime_Pur_Idol",
-    "path":"sprites/Slime_Pur_Idol/Slime_Pur_Idol.yy",
+    "name":"Slm_Pur_Idol",
+    "path":"sprites/Slm_Pur_Idol/Slm_Pur_Idol.yy",
   },
   "spriteMaskId":null,
   "visible":true,

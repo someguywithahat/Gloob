@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Slm_Blu_Idol",
-    "path":"sprites/Slm_Blu_Idol/Slm_Blu_Idol.yy",
+    "name":"Slm_Grn_Idol",
+    "path":"sprites/Slm_Grn_Idol/Slm_Grn_Idol.yy",
   },
   "spriteMaskId":null,
   "visible":true,
