@@ -2,6 +2,8 @@
 my_number = 1
 my_number = irandom_range(1, 8);
 my_shade = c_white
+activeNumber=1
+wall=0
 
 // Assign the sprite based on the number
 switch (my_number) {

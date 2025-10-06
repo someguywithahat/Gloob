@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_gridNumber",
+  "%Name":"obj_targeting",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_gridNumber",
+  "name":"obj_targeting",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_grid1",
-    "path":"sprites/spr_grid1/spr_grid1.yy",
+    "name":"spr_GloopDebug",
+    "path":"sprites/spr_GloopDebug/spr_GloopDebug.yy",
   },
   "spriteMaskId":null,
   "visible":true,

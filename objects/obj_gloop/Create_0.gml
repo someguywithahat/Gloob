@@ -1,12 +1,52 @@
 ismoving = 0;
-target_x = x;
-target_y = y;
+
+player_number=1
+grid_x=1
+grid_y=1
+alive=1
+
+next_target_x = 1;
+next_target_y = 1;
+target_x = 1;
+target_y = 1;
+
+derX = 0;
+derY = 0;
 move_speed = 4;
 
+gloop_score=0
+
 idletime=1
-sleeptime=120
+sleeptime=360
 
 pickup_counter = 0;
 pickup_target = 0;
-image_speed = 0.5
+image_speed = 1
 
+color = c_blue
+
+
+/// Create Event - obj_slime
+ps = part_system_create();
+part_system_depth(ps, depth + 1); // draw just above slime’s depth
+
+// create particle type for the trail
+trail_particle = part_type_create();
+
+// appearance
+//part_type_shape(trail_particle, pt_shape_disk);
+part_type_shape(trail_particle, pt_shape_smoke);
+//part_type_shape(trail_particle, pt_shape_ring);
+part_type_size(trail_particle, 0.3, 0.4, 0, 0); // random size range
+//part_type_color2(trail_particle, make_color_rgb(90,255,90), make_color_rgb(50,180,50));
+part_type_color2(trail_particle, color, color);
+part_type_alpha2(trail_particle, 0.8, 0); // fades out
+part_type_orientation(trail_particle, 0, 360, 0, 0,0); // random rotation
+
+// movement / lifetime
+//part_type_speed(trail_particle, 0.1, 0.3, 0, 0);
+part_type_speed(trail_particle, 0, 0.001, 0, 0);
+//part_type_direction(trail_particle, 0, 359, 0, 0);
+part_type_direction(trail_particle, 0, 1, 0, 0);
+part_type_gravity(trail_particle, 0, 270); // no gravity
+part_type_life(trail_particle, 3200, 6400);    // frames before fade/destruction
