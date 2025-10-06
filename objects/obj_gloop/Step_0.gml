@@ -93,6 +93,28 @@ if (ismoving=0)
 }
 
 
+if (keyboard_check_pressed(vk_space) and ismoving=0) {
+
+	//ismoving=1
+	idletime=0
+	sprite_index = Bluep_jump;	
+	image_speed=1
+	image_index=0
+	y=y-64
+	grid_y=grid_y-2
+	if image_index>8
+		image_speed=0
+	//{
+	//	sprite_index=Bluep_Idol
+	//	ismoving=0
+	//}
+}
+if sprite_index=Bluep_jump and image_index>12
+{
+	sprite_index=Bluep_Idol
+	var squishy = scr_get_grid_id(grid_x, grid_y)
+	squishy.activeNumber=0	
+}
 
 
 

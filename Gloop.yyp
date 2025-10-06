@@ -41,8 +41,13 @@
     {"id":{"name":"obj_gridField","path":"objects/obj_gridField/obj_gridField.yy",},},
     {"id":{"name":"obj_gridNumber","path":"objects/obj_gridNumber/obj_gridNumber.yy",},},
     {"id":{"name":"obj_gridOutline","path":"objects/obj_gridOutline/obj_gridOutline.yy",},},
+    {"id":{"name":"obj_menu_Bluep","path":"objects/obj_menu_Bluep/obj_menu_Bluep.yy",},},
+    {"id":{"name":"obj_menu_Pilp","path":"objects/obj_menu_Pilp/obj_menu_Pilp.yy",},},
+    {"id":{"name":"obj_menu_Pluep","path":"objects/obj_menu_Pluep/obj_menu_Pluep.yy",},},
+    {"id":{"name":"obj_menu_Yluep","path":"objects/obj_menu_Yluep/obj_menu_Yluep.yy",},},
     {"id":{"name":"obj_targeting","path":"objects/obj_targeting/obj_targeting.yy",},},
     {"id":{"name":"animations_tests","path":"rooms/animations_tests/animations_tests.yy",},},
+    {"id":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"scr_create_grid","path":"scripts/scr_create_grid/scr_create_grid.yy",},},
     {"id":{"name":"scr_end_turn","path":"scripts/scr_end_turn/scr_end_turn.yy",},},
@@ -78,6 +83,7 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"animations_tests","path":"rooms/animations_tests/animations_tests.yy",},},
+    {"roomId":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
