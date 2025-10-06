@@ -9,20 +9,15 @@ var controller_current_player = controller.current_player
 
 if ismoving==0
 	idletime++
-if ismoving==1
-{
-	sprite_index = Slm_Blu_Roll_R
-	image_speed=1
-}
 	
 if idletime>sleeptime and alive=1{
-	sprite_index = Slm_Blu_Sleep;	
+	sprite_index = Slm_Grn_Sleep;	
 	image_speed=1
 }
 
 if alive=0
 {
-	sprite_index = Slm_Blu_Death;	
+	sprite_index = Slm_Grn_Death;	
 	if (image_index >= image_number - 1) {
 	    image_speed = 0;        // Stop animation
 	    image_index = image_number - 1; // Lock on last frame
@@ -102,7 +97,7 @@ if (keyboard_check_pressed(vk_space) and ismoving=0) {
 
 	//ismoving=1
 	idletime=0
-	sprite_index = Slm_Blu_Jump;	
+	sprite_index = Slm_Grn_Jump;	
 	image_speed=1
 	image_index=0
 	y=y-64
@@ -114,9 +109,9 @@ if (keyboard_check_pressed(vk_space) and ismoving=0) {
 	//	ismoving=0
 	//}
 }
-if sprite_index=Slm_Blu_Jump and image_index>12
+if sprite_index=Slm_Grn_Jump and image_index>12
 {
-	sprite_index=Slm_Blu_Idol
+	sprite_index=Slm_Wht_Idol
 	var squishy = scr_get_grid_id(grid_x, grid_y)
 	squishy.activeNumber=0	
 }
@@ -342,12 +337,12 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 		ismoving=1;
 		idletime=0
 		
-		sprite_index = Slm_Blu_Idol;	
+		sprite_index = Slm_Wht_Idol;	
 		image_speed=1
 	}
 	else if selected_grid.activeNumber=0
 	{
-		sprite_index=Slm_Blu_Death 
+		sprite_index=Slm_Grn_Death 
 		alive=0
 		scr_end_turn()
 	}
@@ -400,7 +395,6 @@ if ismoving=1 {
 			idletime=0
 			derX=0
 			derY=0		
-			sprite_index=Slm_Blu_Idol
 			scr_end_turn()
 		}
 		else
@@ -411,7 +405,7 @@ if ismoving=1 {
 			next_inst = scr_get_grid_id(next_target_x, next_target_y)
 			if next_inst.activeNumber=0 or next_inst.wall=1
 			{
-				sprite_index=Slm_Blu_Death 
+				sprite_index=Slm_Grn_Death 
 				alive=0
 				ismoving=0
 				scr_end_turn()
