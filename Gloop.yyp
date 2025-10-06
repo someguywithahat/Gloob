@@ -37,6 +37,7 @@
   },
   "name":"Gloop",
   "resources":[
+    {"id":{"name":"obj_controller_title","path":"objects/obj_controller_title/obj_controller_title.yy",},},
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},},
     {"id":{"name":"obj_gloop","path":"objects/obj_gloop/obj_gloop.yy",},},
     {"id":{"name":"obj_gridField","path":"objects/obj_gridField/obj_gridField.yy",},},
@@ -48,9 +49,9 @@
     {"id":{"name":"obj_menu_Yluep","path":"objects/obj_menu_Yluep/obj_menu_Yluep.yy",},},
     {"id":{"name":"obj_targeting","path":"objects/obj_targeting/obj_targeting.yy",},},
     {"id":{"name":"animations_tests","path":"rooms/animations_tests/animations_tests.yy",},},
+    {"id":{"name":"rm_gameScreen","path":"rooms/rm_gameScreen/rm_gameScreen.yy",},},
     {"id":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
     {"id":{"name":"rm_titleScreen","path":"rooms/rm_titleScreen/rm_titleScreen.yy",},},
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"scr_create_grid","path":"scripts/scr_create_grid/scr_create_grid.yy",},},
     {"id":{"name":"scr_end_turn","path":"scripts/scr_end_turn/scr_end_turn.yy",},},
     {"id":{"name":"scr_get_grid_id","path":"scripts/scr_get_grid_id/scr_get_grid_id.yy",},},
@@ -85,8 +86,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"rm_titleScreen","path":"rooms/rm_titleScreen/rm_titleScreen.yy",},},
+    {"roomId":{"name":"rm_gameScreen","path":"rooms/rm_gameScreen/rm_gameScreen.yy",},},
     {"roomId":{"name":"animations_tests","path":"rooms/animations_tests/animations_tests.yy",},},
     {"roomId":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
   ],
