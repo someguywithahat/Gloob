@@ -9,6 +9,11 @@ var controller_current_player = controller.current_player
 
 if ismoving==0
 	idletime++
+if ismoving==1
+{
+	sprite_index = Slm_Blu_Roll_R
+	image_speed=1
+}
 	
 if idletime>sleeptime and alive=1{
 	sprite_index = Slm_Blu_Sleep;	
@@ -395,6 +400,7 @@ if ismoving=1 {
 			idletime=0
 			derX=0
 			derY=0		
+			sprite_index=Slm_Blu_Idol
 			scr_end_turn()
 		}
 		else

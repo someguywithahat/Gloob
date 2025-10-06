@@ -12,7 +12,7 @@ target_y = 1;
 
 derX = 0;
 derY = 0;
-move_speed = 4;
+move_speed = 2;
 
 gloop_score=0
 
