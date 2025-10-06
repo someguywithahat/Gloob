@@ -49,6 +49,7 @@
     {"id":{"name":"obj_targeting","path":"objects/obj_targeting/obj_targeting.yy",},},
     {"id":{"name":"animations_tests","path":"rooms/animations_tests/animations_tests.yy",},},
     {"id":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
+    {"id":{"name":"rm_titleScreen","path":"rooms/rm_titleScreen/rm_titleScreen.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"scr_create_grid","path":"scripts/scr_create_grid/scr_create_grid.yy",},},
     {"id":{"name":"scr_end_turn","path":"scripts/scr_end_turn/scr_end_turn.yy",},},
@@ -83,6 +84,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_titleScreen","path":"rooms/rm_titleScreen/rm_titleScreen.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"animations_tests","path":"rooms/animations_tests/animations_tests.yy",},},
     {"roomId":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
