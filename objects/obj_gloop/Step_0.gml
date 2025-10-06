@@ -111,7 +111,7 @@ if (keyboard_check_pressed(vk_space) and ismoving=0) {
 }
 if sprite_index=Slm_Grn_Jump and image_index>12
 {
-	sprite_index=Slm_Wht_Idol
+	sprite_index=Slm_Grn_Idol
 	var squishy = scr_get_grid_id(grid_x, grid_y)
 	squishy.activeNumber=0	
 }
@@ -337,7 +337,7 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 		ismoving=1;
 		idletime=0
 		
-		sprite_index = Slm_Wht_Idol;	
+		sprite_index = Slm_Grn_Idol;	
 		image_speed=1
 	}
 	else if selected_grid.activeNumber=0

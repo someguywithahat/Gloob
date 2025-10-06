@@ -1,4 +1,5 @@
-	global.controller = id;
+global.controller = id;
+randomize();
 
 // Size of grid
 cols = 26;
