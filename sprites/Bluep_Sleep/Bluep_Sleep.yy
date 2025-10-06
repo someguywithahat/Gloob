@@ -94,7 +94,7 @@
     ],
     "top":0,
   },
-  "origin":6,
+  "origin":0,
   "parent":{
     "name":"Slime Sprites",
     "path":"folders/Sprites/Slime Sprites.yy",
@@ -299,7 +299,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":0,
-    "yorigin":32,
+    "yorigin":0,
   },
   "swatchColours":[
     4278190335,4289973842,4288918834,4287535405,4285034529,4289986431,4288282582,4291806454,4283182095,4292335575,
