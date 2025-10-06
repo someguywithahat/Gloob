@@ -16,7 +16,13 @@ if idletime>sleeptime and alive=1{
 }
 
 if alive=0
-	sprite_index = Sprite1;	
+{
+	sprite_index = Bluep_Death;	
+	if (image_index >= image_number - 1) {
+	    image_speed = 0;        // Stop animation
+	    image_index = image_number - 1; // Lock on last frame
+	}	
+}
 
 
 
@@ -314,7 +320,7 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 	}
 	else if selected_grid.activeNumber=0
 	{
-		sprite_index=Sprite1 
+		sprite_index=Bluep_Death 
 		alive=0
 		scr_end_turn()
 	}
@@ -377,7 +383,7 @@ if ismoving=1 {
 			next_inst = scr_get_grid_id(next_target_x, next_target_y)
 			if next_inst.activeNumber=0 or next_inst.wall=1
 			{
-				sprite_index=Sprite1 
+				sprite_index=Bluep_Death 
 				alive=0
 				ismoving=0
 				scr_end_turn()
