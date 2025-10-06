@@ -122,8 +122,8 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		if i==0
 			gloopInst.color=c_blue		
 		else if i==1{
-			gloopInst.image_blend=c_red
-			gloopInst.color=c_red
+			gloopInst.image_blend=make_color_rgb(255, 127, 127)
+			gloopInst.color=make_color_rgb(255, 128, 64)
 		}else if i==2{
 			gloopInst.image_blend=c_lime
 			gloopInst.color=c_lime
