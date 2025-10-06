@@ -79,6 +79,7 @@
     {"id":{"name":"spr_gridOutline","path":"sprites/spr_gridOutline/spr_gridOutline.yy",},},
     {"id":{"name":"Sprite1","path":"sprites/Sprite1/Sprite1.yy",},},
     {"id":{"name":"Sprite14","path":"sprites/Sprite14/Sprite14.yy",},},
+    {"id":{"name":"Wuep_Idol","path":"sprites/Wuep_Idol/Wuep_Idol.yy",},},
     {"id":{"name":"Yluep_Idol","path":"sprites/Yluep_Idol/Yluep_Idol.yy",},},
   ],
   "resourceType":"GMProject",
