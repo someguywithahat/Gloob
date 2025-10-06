@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Slm_Wht_Idol",
-    "path":"sprites/Slm_Wht_Idol/Slm_Wht_Idol.yy",
+    "name":"Slm_Blu_Idol",
+    "path":"sprites/Slm_Blu_Idol/Slm_Blu_Idol.yy",
   },
   "spriteMaskId":null,
   "visible":true,

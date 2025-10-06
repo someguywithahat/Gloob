@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"obj_menu_Bluep",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_menu_Bluep",
   "overriddenProperties":[],
@@ -28,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Slm_Wht_Idol",
-    "path":"sprites/Slm_Wht_Idol/Slm_Wht_Idol.yy",
+    "name":"Slm_Blu_Idol",
+    "path":"sprites/Slm_Blu_Idol/Slm_Blu_Idol.yy",
   },
   "spriteMaskId":null,
   "visible":true,
