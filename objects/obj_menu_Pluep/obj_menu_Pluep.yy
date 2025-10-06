@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Pluep_idol",
-    "path":"sprites/Pluep_idol/Pluep_idol.yy",
+    "name":"Slime_Pur_Idol",
+    "path":"sprites/Slime_Pur_Idol/Slime_Pur_Idol.yy",
   },
   "spriteMaskId":null,
   "visible":true,

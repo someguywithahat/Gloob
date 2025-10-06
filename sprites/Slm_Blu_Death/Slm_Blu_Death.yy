@@ -1,6 +1,6 @@
 {
   "$GMSprite":"",
-  "%Name":"Bluep_Death",
+  "%Name":"Slm_Blu_Death",
   "bboxMode":0,
   "bbox_bottom":31,
   "bbox_left":0,
@@ -35,7 +35,7 @@
     {"$GMImageLayer":"","%Name":"43dfa1bf-1c02-4ec9-a865-64510f124f5c","blendMode":0,"displayName":"default","isLocked":false,"name":"43dfa1bf-1c02-4ec9-a865-64510f124f5c","opacity":80.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"b43a340c-e11f-4526-96e5-b00959b0b615","blendMode":3,"displayName":"Layer 1","isLocked":false,"name":"b43a340c-e11f-4526-96e5-b00959b0b615","opacity":20.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"Bluep_Death",
+  "name":"Slm_Blu_Death",
   "nineSlice":{
     "$GMNineSliceData":"",
     "bottom":0,
@@ -66,7 +66,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"Bluep_Death",
+    "%Name":"Slm_Blu_Death",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -90,7 +90,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"Bluep_Death",
+    "name":"Slm_Blu_Death",
     "playback":1,
     "playbackSpeed":8.0,
     "playbackSpeedType":0,
@@ -104,43 +104,43 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"586f7660-af93-42b7-bd57-dc70b8d14e93","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"586f7660-af93-42b7-bd57-dc70b8d14e93","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"d6a1d5ad-9949-41de-bf69-d987e1238efc","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9095bd89-c110-4fbc-b3f0-77531dba3282","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9095bd89-c110-4fbc-b3f0-77531dba3282","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"7c140782-446a-4061-adb3-9f0d02ee21ff","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fe1a2035-7d06-43b6-a68a-de8643b1ff2c","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fe1a2035-7d06-43b6-a68a-de8643b1ff2c","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"bbef7f3d-c8a6-42bc-ae87-fb766a5b1f2a","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"70be251d-f18e-43da-b951-85bf4fe89e7c","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"70be251d-f18e-43da-b951-85bf4fe89e7c","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"abf69917-b19c-40d8-9cd6-326e587efe06","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c71b2004-ff1d-470e-b019-22bbab940cf0","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c71b2004-ff1d-470e-b019-22bbab940cf0","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"362383d2-e519-4c15-933b-9160d6541ad4","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"66e9d00f-d6c6-41ce-a008-29e409d22dc9","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"66e9d00f-d6c6-41ce-a008-29e409d22dc9","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"8182c6f9-e576-4c16-8910-5b3acfb17747","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5bcc594d-6f8f-4d74-85ed-94d5d8fe88ee","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5bcc594d-6f8f-4d74-85ed-94d5d8fe88ee","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"8c840724-65e6-4c29-bcb5-26845d9a7927","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6867ba06-3e00-4f67-82c6-ef9cb3d74252","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6867ba06-3e00-4f67-82c6-ef9cb3d74252","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f389d965-9f3f-4e56-93ec-ff5f9e2715cb","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8df4048d-5294-4985-8085-7d322a66c0e0","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8df4048d-5294-4985-8085-7d322a66c0e0","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"0d0a1388-f418-4d2e-af02-cc045c3d269f","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9d304c4c-33c1-4d54-8e4c-daed10b32660","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9d304c4c-33c1-4d54-8e4c-daed10b32660","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"30547820-86f4-4ae6-9d7e-b6d0d063b07e","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9b2a52c9-1ae7-486d-81fc-71b16f55f838","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9b2a52c9-1ae7-486d-81fc-71b16f55f838","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"e7679d40-b41b-4335-bb97-1e51a1551d0a","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b98e7f3e-3b9c-45b8-9f5d-9461acaf2c99","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b98e7f3e-3b9c-45b8-9f5d-9461acaf2c99","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"9b5a7bcf-6b9b-4376-b725-4598b68e48ca","IsCreationKey":false,"Key":11.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1c36469c-48a6-425e-b37f-709e3070a728","path":"sprites/Bluep_Death/Bluep_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1c36469c-48a6-425e-b37f-709e3070a728","path":"sprites/Slm_Blu_Death/Slm_Blu_Death.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"1ff1a29f-8bfe-41ed-b1ed-6cce9728829c","IsCreationKey":false,"Key":12.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

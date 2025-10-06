@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Yluep_Idol",
-    "path":"sprites/Yluep_Idol/Yluep_Idol.yy",
+    "name":"Slm_Ylo_Idol",
+    "path":"sprites/Slm_Ylo_Idol/Slm_Ylo_Idol.yy",
   },
   "spriteMaskId":null,
   "visible":true,

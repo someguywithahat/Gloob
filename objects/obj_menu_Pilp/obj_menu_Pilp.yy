@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Pilp_Idol",
-    "path":"sprites/Pilp_Idol/Pilp_Idol.yy",
+    "name":"Slm_Red_Idol",
+    "path":"sprites/Slm_Red_Idol/Slm_Red_Idol.yy",
   },
   "spriteMaskId":null,
   "visible":true,
