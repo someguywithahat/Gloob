@@ -38,8 +38,10 @@
   "resources":[
     {"id":{"name":"obj_controller_title","path":"objects/obj_controller_title/obj_controller_title.yy",},},
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},},
+    {"id":{"name":"obj_flower","path":"objects/obj_flower/obj_flower.yy",},},
     {"id":{"name":"obj_gloop","path":"objects/obj_gloop/obj_gloop.yy",},},
     {"id":{"name":"obj_gridField","path":"objects/obj_gridField/obj_gridField.yy",},},
+    {"id":{"name":"obj_gridFlower","path":"objects/obj_gridFlower/obj_gridFlower.yy",},},
     {"id":{"name":"obj_gridNumber","path":"objects/obj_gridNumber/obj_gridNumber.yy",},},
     {"id":{"name":"obj_gridOutline","path":"objects/obj_gridOutline/obj_gridOutline.yy",},},
     {"id":{"name":"obj_menu_Bluep","path":"objects/obj_menu_Bluep/obj_menu_Bluep.yy",},},
@@ -112,6 +114,7 @@
     {"id":{"name":"spr_gridOutline","path":"sprites/spr_gridOutline/spr_gridOutline.yy",},},
     {"id":{"name":"Sprite1","path":"sprites/Sprite1/Sprite1.yy",},},
     {"id":{"name":"Sprite14","path":"sprites/Sprite14/Sprite14.yy",},},
+    {"id":{"name":"Sprite61","path":"sprites/Sprite61/Sprite61.yy",},},
     {"id":{"name":"Traill_Test_DoNotUse","path":"sprites/Traill_Test_DoNotUse/Traill_Test_DoNotUse.yy",},},
     {"id":{"name":"Trl_Grn_U_End","path":"sprites/Trl_Grn_U_End/Trl_Grn_U_End.yy",},},
     {"id":{"name":"Trl_Grn_U_Mid","path":"sprites/Trl_Grn_U_Mid/Trl_Grn_U_Mid.yy",},},
