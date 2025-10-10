@@ -379,12 +379,28 @@ if ismoving=1 {
 	    if (y < gridNumberY) y = gridNumberY;
 	}
 	
-	part_type_color2(trail_particle, color, color);
-	part_particles_create(ps, x+16 +(8*derX*-1), y+16+(8*derY*-1), trail_particle, 2);
+	//part_type_color2(trail_particle, color, color);
+	//part_particles_create(ps, x+16 +(8*derX*-1), y+16+(8*derY*-1), trail_particle, 2);
 	
 	if x==gridNumberX and y==gridNumberY
 	{
 		next_inst.activeNumber=0		
+		next_inst.sprite_index=trail
+		next_inst.depth=depth+10
+		if derX<>0 and derY=0
+		{
+			next_inst.image_angle=90
+			next_inst.y+=controller.spacing
+		}
+		else next_inst.image_angle=0
+		
+
+		var spawn_flower = irandom_range(1,3)
+		if spawn_flower<=2{
+			var flower = instance_create_layer(x + irandom_range(-4,24), y+irandom_range(-4,24), "Instances", obj_gridFlower);
+			flower.depth=depth+2
+		}
+		
 		grid_x=next_inst.grid_x
 		grid_y=next_inst.grid_y
 		gloop_score++;

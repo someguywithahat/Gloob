@@ -1,3 +1,3 @@
 
-if activeNumber == 0
-	visible = false;
+//if activeNumber == 0
+//	visible = false;

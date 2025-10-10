@@ -25,28 +25,31 @@ image_speed = 1
 
 color = c_blue
 
+trail = Trl_Grn_U_Mid
 
-/// Create Event - obj_slime
-ps = part_system_create();
-part_system_depth(ps, depth + 1); // draw just above slime’s depth
+///// Create Event - obj_slime
+//ps = part_system_create();
+//part_system_depth(ps, depth + 1); // draw just above slime’s depth
 
-// create particle type for the trail
-trail_particle = part_type_create();
+//// create particle type for the trail
+//trail_particle = part_type_create();
 
-// appearance
-//part_type_shape(trail_particle, pt_shape_disk);
-part_type_shape(trail_particle, pt_shape_smoke);
-//part_type_shape(trail_particle, pt_shape_ring);
-part_type_size(trail_particle, 0.3, 0.4, 0, 0); // random size range
-//part_type_color2(trail_particle, make_color_rgb(90,255,90), make_color_rgb(50,180,50));
-part_type_color2(trail_particle, color, color);
-part_type_alpha2(trail_particle, 0.8, 0); // fades out
-part_type_orientation(trail_particle, 0, 360, 0, 0,0); // random rotation
+//// appearance
+////part_type_shape(trail_particle, pt_shape_disk);
+//part_type_shape(trail_particle, pt_shape_smoke);
+////part_type_shape(trail_particle, pt_shape_ring);
+//part_type_size(trail_particle, 0.3, 0.4, 0, 0); // random size range
+////part_type_color2(trail_particle, make_color_rgb(90,255,90), make_color_rgb(50,180,50));
+//part_type_color2(trail_particle, color, color);
+//part_type_alpha2(trail_particle, 0.8, 0); // fades out
+//part_type_orientation(trail_particle, 0, 360, 0, 0,0); // random rotation
 
-// movement / lifetime
-//part_type_speed(trail_particle, 0.1, 0.3, 0, 0);
-part_type_speed(trail_particle, 0, 0.001, 0, 0);
-//part_type_direction(trail_particle, 0, 359, 0, 0);
-part_type_direction(trail_particle, 0, 1, 0, 0);
-part_type_gravity(trail_particle, 0, 270); // no gravity
-part_type_life(trail_particle, 3200, 6400);    // frames before fade/destruction
+//// movement / lifetime
+////part_type_speed(trail_particle, 0.1, 0.3, 0, 0);
+//part_type_speed(trail_particle, 0, 0.001, 0, 0);
+////part_type_direction(trail_particle, 0, 359, 0, 0);
+//part_type_direction(trail_particle, 0, 1, 0, 0);
+//part_type_gravity(trail_particle, 0, 270); // no gravity
+//part_type_life(trail_particle, 3200, 6400);    // frames before fade/destruction
+
+
