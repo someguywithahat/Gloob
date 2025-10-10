@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Slm_Grn_Idol",
-    "path":"sprites/Slm_Grn_Idol/Slm_Grn_Idol.yy",
+    "name":"Sprite14",
+    "path":"sprites/Sprite14/Sprite14.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -27,6 +27,11 @@ color = c_blue
 
 trail = Trl_Grn_U_Mid
 
+//s_idol = Slm_Grn_Idol
+//s_sleep = Slm_Grn_Sleep
+//s_death = Slm_Grn_Death
+
+
 ///// Create Event - obj_slime
 //ps = part_system_create();
 //part_system_depth(ps, depth + 1); // draw just above slime’s depth

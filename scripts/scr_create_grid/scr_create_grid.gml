@@ -114,43 +114,52 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		
 		var inst = grid_array[gloop_x,gloop_y]
 		inst.activeNumber=false
+		inst.sprite_index=Trl_Grn_Under //temporary fix
 		var gloopInst = instance_create_layer(xx + x_offset, yy + y_offset, "Instances", obj_gloop);
 		gloopInst.grid_x=gloop_x
 		gloopInst.grid_y=gloop_y
 		gloopInst.player_number=i
 		
-		if i==0
-			gloopInst.color=c_blue		
-		else if i==1{
-			//gloopInst.image_blend=make_color_rgb(255, 127, 127)
-			//gloopInst.color=make_color_rgb(255, 128, 64)
-			gloopInst.image_blend=c_red
-			gloopInst.color=c_red
-		}else if i==2{
-			gloopInst.image_blend=c_lime
-			gloopInst.color=c_lime
-		}else if i==3{
-			gloopInst.image_blend=c_maroon
-			gloopInst.color=c_maroon
-		}else if i==4{
-			gloopInst.image_blend=c_black
-			gloopInst.color=c_black
-		}else if i==5{
-			gloopInst.image_blend=c_olive
-			gloopInst.color=c_olive
-		}else if i==6{
-			gloopInst.image_blend=c_yellow
-			gloopInst.color=c_yellow
-		}else if i==7{
-			gloopInst.image_blend=c_silver
-			gloopInst.color=c_silver
-		}else if i==8{
-			gloopInst.image_blend=c_orange
-			gloopInst.color=c_orange
-		}else if i==9{
-			gloopInst.image_blend=c_blue	
-			gloopInst.color=c_blue		
-		}
+		
+		
+		
+		scr_set_slime_color(gloopInst,irandom_range(1,8))
+		
+
+		//scr_set_slime_color(gloopInst,1)
+		
+		//if i==0
+		//	gloopInst.color=c_blue		
+		//else if i==1{
+		//	//gloopInst.image_blend=make_color_rgb(255, 127, 127)
+		//	//gloopInst.color=make_color_rgb(255, 128, 64)
+		//	gloopInst.image_blend=c_red
+		//	gloopInst.color=c_red
+		//}else if i==2{
+		//	gloopInst.image_blend=c_lime
+		//	gloopInst.color=c_lime
+		//}else if i==3{
+		//	gloopInst.image_blend=c_maroon
+		//	gloopInst.color=c_maroon
+		//}else if i==4{
+		//	gloopInst.image_blend=c_black
+		//	gloopInst.color=c_black
+		//}else if i==5{
+		//	gloopInst.image_blend=c_olive
+		//	gloopInst.color=c_olive
+		//}else if i==6{
+		//	gloopInst.image_blend=c_yellow
+		//	gloopInst.color=c_yellow
+		//}else if i==7{
+		//	gloopInst.image_blend=c_silver
+		//	gloopInst.color=c_silver
+		//}else if i==8{
+		//	gloopInst.image_blend=c_orange
+		//	gloopInst.color=c_orange
+		//}else if i==9{
+		//	gloopInst.image_blend=c_blue	
+		//	gloopInst.color=c_blue		
+		//}
 		
 	}
 
