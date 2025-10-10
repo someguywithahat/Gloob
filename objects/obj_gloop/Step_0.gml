@@ -404,6 +404,7 @@ if ismoving=1 {
 		grid_x=next_inst.grid_x
 		grid_y=next_inst.grid_y
 		gloop_score++;
+		//scr_draw_score(260,20,100)
 		
 		if grid_x=target_x and grid_y=target_y
 		{
