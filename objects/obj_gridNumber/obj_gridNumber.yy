@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_grid1",
-    "path":"sprites/spr_grid1/spr_grid1.yy",
+    "name":"Numbers_Box",
+    "path":"sprites/Numbers_Box/Numbers_Box.yy",
   },
   "spriteMaskId":null,
   "visible":true,
