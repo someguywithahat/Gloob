@@ -11,13 +11,13 @@ if ismoving==0
 	idletime++
 	
 if idletime>sleeptime and alive=1{
-	sprite_index = Slm_Grn_Sleep;	
+	sprite_index = s_sleep;	
 	image_speed=1
 }
 
 if alive=0
 {
-	sprite_index = Slm_Grn_Death;	
+	sprite_index = s_death;	
 	if (image_index >= image_number - 1) {
 	    image_speed = 0;        // Stop animation
 	    image_index = image_number - 1; // Lock on last frame
@@ -111,7 +111,7 @@ if (keyboard_check_pressed(vk_space) and ismoving=0) {
 }
 if sprite_index=Slm_Grn_Jump and image_index>12
 {
-	sprite_index=Slm_Grn_Idol
+	sprite_index=s_idol
 	var squishy = scr_get_grid_id(grid_x, grid_y)
 	squishy.activeNumber=0	
 }
@@ -337,12 +337,12 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 		ismoving=1;
 		idletime=0
 		
-		sprite_index = Slm_Grn_Idol;	
+		sprite_index = s_idol;	
 		image_speed=1
 	}
 	else if selected_grid.activeNumber=0
 	{
-		sprite_index=Slm_Grn_Death 
+		sprite_index=s_death 
 		alive=0
 		scr_end_turn()
 	}
@@ -421,7 +421,7 @@ if ismoving=1 {
 			next_inst = scr_get_grid_id(next_target_x, next_target_y)
 			if next_inst.activeNumber=0 or next_inst.wall=1
 			{
-				sprite_index=Slm_Grn_Death 
+				sprite_index=s_death 
 				alive=0
 				ismoving=0
 				scr_end_turn()

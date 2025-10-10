@@ -1,60 +1,4 @@
-/// @function scr_create_grid(x_count, y_count)
-/// @description Creates a grid of objects using the given number of columns and rows.
-/// @param {real} x_count - number of columns
-/// @param {real} y_count - number of rows
 
-//function scr_create_grid(x_count, y_count, x_offset, y_offset, number_of_players)
-//{
-//    var obj_type = obj_gridNumber;    // change this to the object you want to create
-//    var spacing  = 32;           // how far apart each object should be (in pixels)
-    
-//    for (var i = 0; i < x_count; i++)
-//    {
-//        for (var j = 0; j < y_count; j++)
-//        {
-//            var xx = i * spacing;
-//            var yy = j * spacing;
-//            var inst = instance_create_layer(xx+x_offset, yy+y_offset, "Instances", obj_type);
-			
-//            inst.grid_x = i;
-//            inst.grid_y = j;
-//        }
-//    }
-	
-	//for (var i = 0; i < number_of_players; i++)
-	//{
-	//	var gloop_x = irandom_range(0,x_count);
-	//	var gloop_y = irandom_range(0,y_count);
-		
-		
-	//}
-	
-	
-//}
-
-
-/* 
-EXAMPLE USAGE:
-
-	// Create a 10x6 grid of obj_Block, 32 pixels apart
-	grid_refs = scr_create_grid(10, 6, obj_Block, 32);
-
-
-	// Example: change the color of the block at column 3, row 2
-	var inst = grid_refs[3][2];
-	if (instance_exists(inst)) {
-	    inst.image_blend = c_red;
-	}
-
-	//loop through grid
-	for (var i = 0; i < array_length(grid_refs); i++) {
-	    for (var j = 0; j < array_length(grid_refs[i]); j++) {
-	        var inst = grid_refs[i][j];
-	        inst.image_alpha = 0.5;
-	    }
-	}
-
-*/
 
 /// @function scr_setup_grid(x_count, y_count, obj_type, spacing, x_offset, y_offset, number_of_players)
 /// @description Creates a grid of objects and stores instance references in a 2D array.
@@ -114,43 +58,18 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		
 		var inst = grid_array[gloop_x,gloop_y]
 		inst.activeNumber=false
+		inst.sprite_index=Trl_Grn_Under //temporary fix
 		var gloopInst = instance_create_layer(xx + x_offset, yy + y_offset, "Instances", obj_gloop);
 		gloopInst.grid_x=gloop_x
 		gloopInst.grid_y=gloop_y
 		gloopInst.player_number=i
 		
-		if i==0
-			gloopInst.color=c_blue		
-		else if i==1{
-			//gloopInst.image_blend=make_color_rgb(255, 127, 127)
-			//gloopInst.color=make_color_rgb(255, 128, 64)
-			gloopInst.image_blend=c_red
-			gloopInst.color=c_red
-		}else if i==2{
-			gloopInst.image_blend=c_lime
-			gloopInst.color=c_lime
-		}else if i==3{
-			gloopInst.image_blend=c_maroon
-			gloopInst.color=c_maroon
-		}else if i==4{
-			gloopInst.image_blend=c_black
-			gloopInst.color=c_black
-		}else if i==5{
-			gloopInst.image_blend=c_olive
-			gloopInst.color=c_olive
-		}else if i==6{
-			gloopInst.image_blend=c_yellow
-			gloopInst.color=c_yellow
-		}else if i==7{
-			gloopInst.image_blend=c_silver
-			gloopInst.color=c_silver
-		}else if i==8{
-			gloopInst.image_blend=c_orange
-			gloopInst.color=c_orange
-		}else if i==9{
-			gloopInst.image_blend=c_blue	
-			gloopInst.color=c_blue		
-		}
+		
+		
+		
+		scr_set_slime_color(gloopInst,irandom_range(1,8))
+		
+
 		
 	}
 
