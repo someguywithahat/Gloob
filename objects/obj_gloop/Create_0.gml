@@ -25,7 +25,7 @@ image_speed = 1
 
 color = c_blue
 
-trail = Trl_Grn_U_Mid
+trail = Trl_Grn_Mid
 
 //s_idol = Slm_Grn_Idol
 //s_sleep = Slm_Grn_Sleep
