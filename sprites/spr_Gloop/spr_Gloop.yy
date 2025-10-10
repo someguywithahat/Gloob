@@ -47,8 +47,8 @@
   },
   "origin":9,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Prolly Not",
+    "path":"folders/Sprites/Prolly Not.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
