@@ -54,7 +54,7 @@ function scr_set_slime_color(target, color_num){
 	{
 		target.sprite_index=Slm_Blk_Idol
 		variable_instance_set(target, "s_idol", Slm_Blk_Idol);
-		variable_instance_set(target, "s_sleep", Slm_Black_Sleep);
+		variable_instance_set(target, "s_sleep", Slm_Blk_Sleep);
 		variable_instance_set(target, "s_death", Slm_Blk_Death);		
 	}
 
