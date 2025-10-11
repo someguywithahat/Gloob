@@ -384,8 +384,11 @@ if ismoving=1 {
 	
 	if x==gridNumberX and y==gridNumberY
 	{
+		prev_derX=derX
+		prev_derY=derY
 		next_inst.activeNumber=0		
 		next_inst.sprite_index=trail
+		
 		next_inst.depth=depth+10
 		if derX<>0 and derY=0
 		{
@@ -395,11 +398,8 @@ if ismoving=1 {
 		else next_inst.image_angle=0
 		
 
-		var spawn_flower = irandom_range(1,3)
-		if spawn_flower<=2{
-			var flower = instance_create_layer(x + irandom_range(-4,24), y+irandom_range(-4,24), "Instances", obj_gridFlower);
-			flower.depth=depth+2
-		}
+		//change to spawn a flower
+		scr_spawn_flower(x,y,gloop_color)
 		
 		grid_x=next_inst.grid_x
 		grid_y=next_inst.grid_y

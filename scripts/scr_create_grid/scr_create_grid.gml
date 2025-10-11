@@ -58,19 +58,18 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		
 		var inst = grid_array[gloop_x,gloop_y]
 		inst.activeNumber=false
-		inst.sprite_index=Trl_Grn_Under //temporary fix
+		//inst.sprite_index=Trl_Grn_Under //temporary fix
+		
 		var gloopInst = instance_create_layer(xx + x_offset, yy + y_offset, "Instances", obj_gloop);
 		gloopInst.grid_x=gloop_x
 		gloopInst.grid_y=gloop_y
 		gloopInst.player_number=i
 		
 		
-		
-		
 		scr_set_slime_color(gloopInst,irandom_range(1,8))
-		
-
-		
+		show_debug_message(gloopInst.gloop_color);
+		inst.sprite_index = scr_get_slime_trail(0, gloopInst.gloop_color)
+		inst.depth=gloopInst.depth+2
 	}
 
 

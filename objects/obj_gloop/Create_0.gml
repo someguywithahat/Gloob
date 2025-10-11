@@ -12,6 +12,8 @@ target_y = 1;
 
 derX = 0;
 derY = 0;
+prev_derX = 0; 
+prev_derY = 0;
 move_speed = 2;
 
 gloop_score=0
@@ -23,7 +25,7 @@ pickup_counter = 0;
 pickup_target = 0;
 image_speed = 1
 
-color = c_blue
+gloop_color = "green"
 
 trail = Trl_Grn_Mid
 

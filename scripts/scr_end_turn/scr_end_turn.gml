@@ -16,8 +16,7 @@ function scr_end_turn(){
     {		
 		var nextPlayerNum = ((controller_current_player+1+i) mod controller_number_of_players)
 
-		show_debug_message("Current player = " + string(controller_current_player) + " Next Player Number= "+string(nextPlayerNum) + " Total Players: "+string(controller_number_of_players))	
-		
+
 		with (obj_gloop)
 		{
 		    if (player_number == nextPlayerNum)
