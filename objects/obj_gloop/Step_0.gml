@@ -24,7 +24,7 @@ if alive=0
 	}	
 }
 
-
+gloop_score_obj.parent_sprite = s_idol
 
 
 
@@ -86,8 +86,7 @@ if (ismoving=0)
     } else if (angle_deg >= 292.5 && angle_deg < 337.5) {
 		//down right
 		targeting.grid_x=grid_x+1
-		targeting.grid_y=grid_y+1
-		
+		targeting.grid_y=grid_y+1		
     }	
 	
 }
@@ -109,6 +108,7 @@ if (keyboard_check_pressed(vk_space) and ismoving=0) {
 	//	ismoving=0
 	//}
 }
+
 if sprite_index=Slm_Grn_Jump and image_index>12
 {
 	sprite_index=s_idol
@@ -118,150 +118,10 @@ if sprite_index=Slm_Grn_Jump and image_index>12
 
 
 
-/*
-if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
-    var mx = mouse_x;  // mouse X position
-    var my = mouse_y;  // mouse Y position
-
-    var dx = mx - x;   // horizontal distance from object to mouse
-    var dy = my - y;   // vertical distance from object to mouse
-	
-	var derX=0
-	var derY=0
-	
-	var checkx = x
-	var checky = y
-
-    // Calculate the angle from object to mouse in degrees
-    var angle_deg = point_direction(x+16, y+16, mx, my);
-
-    // Determine the direction.  
-	//Remove checkx and checky
-    var direct;
-    if (angle_deg >= 337.5 || angle_deg < 22.5) {
-        direct = "Right";
-		derX=1;
-		derY=0;
-		checkx=x+32;
-		checky=y;
-    } else if (angle_deg >= 22.5 && angle_deg < 67.5) {
-        direct = "Up-Right";
-		derX=1;
-		derY=-1;
-		
-		checkx=x+32;
-		checky=y-32;
-    } else if (angle_deg >= 67.5 && angle_deg < 112.5) {
-        direct = "Up";
-		derX=0;
-		derY=-1;
-		checkx=x;
-		checky=y-32;
-    } else if (angle_deg >= 112.5 && angle_deg < 157.5) {
-        direct = "Up-Left";
-		derX=-1;
-		derY=-1;
-		checkx=x-32;
-		checky=y-32;
-    } else if (angle_deg >= 157.5 && angle_deg < 202.5) {
-        direct = "Left";
-		derX=-1;
-		derY=0;
-		checkx=x-32;
-		checky=y;		
-    } else if (angle_deg >= 202.5 && angle_deg < 247.5) {
-        direct = "Down-Left";		
-		derX=-1;
-		derY=+1;
-		checkx=x-32;
-		checky=y+32;
-    } else if (angle_deg >= 247.5 && angle_deg < 292.5) {
-        direct = "Down";
-		derX=0;
-		derY=1;
-		checkx=x;
-		checky=y+32;
-    } else if (angle_deg >= 292.5 && angle_deg < 337.5) {
-        direct = "Down-Right";
-		derX=1;
-		derY=1;
-		checkx=x+32;
-		checky=y+32;
-    }
-	
-	//var check_grid_inst = instance_place(checkx, checky, obj_gridNumber);
-	var check_grid_inst = instance_place(x+(32*derX), y+(32*derY), obj_gridNumber);
-	
-	
-	if (check_grid_inst != noone) {
-	    var c = check_grid_inst.my_number;  // read the variable
-		
-		//grid_x=check_grid_inst.grid_x
-		//grid_y=check_grid_inst.grid_y
-		grid_x+=derX*c
-		grid_y+=derY*c
-	    
-		target_x = x + (32*derX*c);	
-		target_y = y + (32*derY*c);	
-		
-
-		ismoving=1;
-		idletime=0
-		sprite_index = Bluep_Idol;	
-		image_speed=1		
-		
-		pickup_target=c;
-		pickup_counter=0;
-	}
-}
 
 
 
-if ismoving=1{
-	
-	var grid_inst = instance_position(x+16, y+16, obj_gridNumber);
-	
-	if (grid_inst != noone) and pickup_target>pickup_counter {
-	    with (grid_inst) {
-	        instance_destroy();
-	    }
-		pickup_counter+=1;
-	}
 
-	// Move X toward target
-	if (x < target_x) {
-	    x += move_speed;
-	    if (x > target_x) x = target_x; // prevent overshoot
-	}
-	if (x > target_x) {
-	    x -= move_speed;
-	    if (x < target_x) x = target_x;
-	}
-
-	// Move Y toward target
-	if (y < target_y) {
-	    y += move_speed;
-	    if (y > target_y) y = target_y;
-	}
-	if (y > target_y) {
-	    y -= move_speed;
-	    if (y < target_y) y = target_y;
-	}
-	
-	if x==target_x and y==target_y{
-		ismoving=0	
-		idletime=0
-		grid_inst = instance_position(x+16, y+16, obj_gridNumber);
-	
-		if (grid_inst != noone) {
-		    with (grid_inst) {
-		        instance_destroy();
-		    }
-		}
-		scr_end_turn()
-	}	
-}
-*/
 
 if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
     var mx = mouse_x;  // mouse X position
@@ -404,6 +264,9 @@ if ismoving=1 {
 		grid_x=next_inst.grid_x
 		grid_y=next_inst.grid_y
 		gloop_score++;
+		
+		gloop_score_obj.gloop_score++
+		
 		//scr_draw_score(260,20,100)
 		
 		if grid_x=target_x and grid_y=target_y

@@ -31,6 +31,11 @@ trail = Trl_Grn_Mid
 
 current_grid_number = noone
 
+
+gloop_score_obj = instance_create_layer(1, 1, "Instances", obj_gloop_score);
+gloop_score_obj.player = player_number
+gloop_score_obj.parent_sprite = spr_Gloop
+
 //s_idol = Slm_Grn_Idol
 //s_sleep = Slm_Grn_Sleep
 //s_death = Slm_Grn_Death

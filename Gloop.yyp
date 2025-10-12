@@ -42,6 +42,7 @@
     {"id":{"name":"obj_controller_title","path":"objects/obj_controller_title/obj_controller_title.yy",},},
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},},
     {"id":{"name":"obj_flower","path":"objects/obj_flower/obj_flower.yy",},},
+    {"id":{"name":"obj_gloop_score","path":"objects/obj_gloop_score/obj_gloop_score.yy",},},
     {"id":{"name":"obj_gloop","path":"objects/obj_gloop/obj_gloop.yy",},},
     {"id":{"name":"obj_gridField","path":"objects/obj_gridField/obj_gridField.yy",},},
     {"id":{"name":"obj_gridFlower","path":"objects/obj_gridFlower/obj_gridFlower.yy",},},

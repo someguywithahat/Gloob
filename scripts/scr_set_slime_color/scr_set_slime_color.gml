@@ -12,6 +12,7 @@ function scr_set_slime_color(target, color_num){
 		variable_instance_set(target, "s_trl_end", Trl_Grn_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Grn_Mid);
 		variable_instance_set(target, "s_trl_spot", Trl_Grn_Spot);
+		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Grn_Idol);
 	}
 	else if color_num=2
 	{
@@ -24,6 +25,7 @@ function scr_set_slime_color(target, color_num){
 		variable_instance_set(target, "s_trl_end", Trl_Blu_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Blu_Mid);
 		variable_instance_set(target, "s_trl_spot", Trl_Blu_Spot);
+		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Blu_Idol);
 	}
 	else if color_num=3
 	{
@@ -36,6 +38,7 @@ function scr_set_slime_color(target, color_num){
 		variable_instance_set(target, "s_trl_end", Trl_Pur_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Pur_Mid);
 		variable_instance_set(target, "s_trl_spot", Trl_Pur_Spot);
+		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Pur_Idol);
 	}
 	else if color_num=4
 	{
@@ -47,7 +50,8 @@ function scr_set_slime_color(target, color_num){
 		variable_instance_set(target, "s_trl_corner", Trl_Red_Corner);
 		variable_instance_set(target, "s_trl_end", Trl_Red_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Red_Mid);
-		variable_instance_set(target, "s_trl_spot", Trl_Red_Spot);		
+		variable_instance_set(target, "s_trl_spot", Trl_Red_Spot);	
+		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Red_Idol);	
 	}
 	else if color_num=5
 	{
@@ -60,6 +64,7 @@ function scr_set_slime_color(target, color_num){
 		variable_instance_set(target, "s_trl_end", Trl_Orn_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Orn_Mid);
 		variable_instance_set(target, "s_trl_spot", Trl_Orn_Spot);		
+		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Orn_Idol);
 	}
 	else if color_num=6
 	{
@@ -71,7 +76,8 @@ function scr_set_slime_color(target, color_num){
 		variable_instance_set(target, "s_trl_corner", Trl_Yel_Corner);
 		variable_instance_set(target, "s_trl_end", Trl_Yel_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Yel_Mid);
-		variable_instance_set(target, "s_trl_spot", Trl_Yel_Spot);			
+		variable_instance_set(target, "s_trl_spot", Trl_Yel_Spot);		
+		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Yel_Idol);	
 	}
 	else if color_num=7
 	{
@@ -83,7 +89,8 @@ function scr_set_slime_color(target, color_num){
 		variable_instance_set(target, "s_trl_corner", Trl_Wht_Corner);
 		variable_instance_set(target, "s_trl_end", Trl_Wht_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Wht_Mid);
-		variable_instance_set(target, "s_trl_spot", Trl_Wht_Spot);			
+		variable_instance_set(target, "s_trl_spot", Trl_Wht_Spot);	
+		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Wht_Idol);		
 	}
 	else if color_num=8
 	{
@@ -96,6 +103,7 @@ function scr_set_slime_color(target, color_num){
 		variable_instance_set(target, "s_trl_end", Trl_Blk_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Blk_Mid);
 		variable_instance_set(target, "s_trl_spot", Trl_Blk_Spot);
+		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Blk_Idol);
 	}
 
 }

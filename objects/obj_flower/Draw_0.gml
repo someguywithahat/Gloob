@@ -1,6 +1,5 @@
 
+draw_self();
 
-	//if (image_index >= image_number - 1) {
-	//    image_speed = 0;        // Stop animation
-	//    image_index = image_number - 1; // Lock on last frame
-	//}
+
+draw_sprite(Numbers,1,1,1)
