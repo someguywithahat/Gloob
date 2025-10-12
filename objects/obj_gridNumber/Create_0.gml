@@ -5,6 +5,8 @@ my_shade = c_white
 activeNumber=1
 wall=0
 
+trail_rotation = 0
+
 
 
 image_speed=0

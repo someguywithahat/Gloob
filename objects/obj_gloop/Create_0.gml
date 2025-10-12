@@ -29,6 +29,8 @@ gloop_color = "green"
 
 trail = Trl_Grn_Mid
 
+current_grid_number = noone
+
 //s_idol = Slm_Grn_Idol
 //s_sleep = Slm_Grn_Sleep
 //s_death = Slm_Grn_Death

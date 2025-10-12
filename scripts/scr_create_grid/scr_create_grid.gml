@@ -70,6 +70,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		show_debug_message(gloopInst.gloop_color);
 		inst.sprite_index = scr_get_slime_trail(0, gloopInst.gloop_color)
 		inst.depth=gloopInst.depth+2
+		gloopInst.current_grid_number=inst
 	}
 
 

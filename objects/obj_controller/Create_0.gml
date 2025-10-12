@@ -11,7 +11,7 @@ start_y = -32;
 spacing = 32;
 
 
-number_of_players = 2
+number_of_players = 1
 current_player=0
 
 music_playing = false;

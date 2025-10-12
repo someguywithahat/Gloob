@@ -339,6 +339,10 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 		
 		sprite_index = s_idol;	
 		image_speed=1
+		
+		//Update the previous slime trail
+		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color)
+		
 	}
 	else if selected_grid.activeNumber=0
 	{
@@ -387,15 +391,11 @@ if ismoving=1 {
 		prev_derX=derX
 		prev_derY=derY
 		next_inst.activeNumber=0		
-		next_inst.sprite_index=trail
+		//next_inst.sprite_index=trail
 		
-		next_inst.depth=depth+10
-		if derX<>0 and derY=0
-		{
-			next_inst.image_angle=90
-			next_inst.y+=controller.spacing
-		}
-		else next_inst.image_angle=0
+		current_grid_number = next_inst
+		
+
 		
 
 		//change to spawn a flower
@@ -412,10 +412,12 @@ if ismoving=1 {
 			idletime=0
 			derX=0
 			derY=0		
+			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color)
 			scr_end_turn()
 		}
 		else
 		{
+			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color)
 			next_target_x = grid_x + derX
 			next_target_y = grid_y + derY
 			
@@ -429,6 +431,8 @@ if ismoving=1 {
 				
 			}
 		}
+		
+		
 	}
 
 }
