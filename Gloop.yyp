@@ -39,6 +39,7 @@
   },
   "name":"Gloop",
   "resources":[
+    {"id":{"name":"obj_controller_JoText","path":"objects/obj_controller_JoText/obj_controller_JoText.yy",},},
     {"id":{"name":"obj_controller_title","path":"objects/obj_controller_title/obj_controller_title.yy",},},
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},},
     {"id":{"name":"obj_flower","path":"objects/obj_flower/obj_flower.yy",},},
