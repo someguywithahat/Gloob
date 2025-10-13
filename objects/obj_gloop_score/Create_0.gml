@@ -1,4 +1,4 @@
-digit_width_mod = -20
+digit_width_mod = -18 
 gloop_score=0
 parent_sprite =Slm_Grn_Idol
 
