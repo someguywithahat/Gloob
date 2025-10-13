@@ -14,7 +14,7 @@ derX = 0;
 derY = 0;
 prev_derX = 0; 
 prev_derY = 0;
-move_speed = 2;
+move_speed = 3;
 
 gloop_score=0
 
