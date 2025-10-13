@@ -75,6 +75,7 @@
     {"id":{"name":"snd_slime_move","path":"sounds/snd_slime_move/snd_slime_move.yy",},},
     {"id":{"name":"snd_squish","path":"sounds/snd_squish/snd_squish.yy",},},
     {"id":{"name":"snd_yawn","path":"sounds/snd_yawn/snd_yawn.yy",},},
+    {"id":{"name":"Arrow","path":"sprites/Arrow/Arrow.yy",},},
     {"id":{"name":"Blobtrail_1","path":"sprites/Blobtrail_1/Blobtrail_1.yy",},},
     {"id":{"name":"Blobtrail_2","path":"sprites/Blobtrail_2/Blobtrail_2.yy",},},
     {"id":{"name":"Flr_Blk_Med","path":"sprites/Flr_Blk_Med/Flr_Blk_Med.yy",},},
