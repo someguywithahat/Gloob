@@ -56,6 +56,8 @@
     {"id":{"name":"obj_menu_Pluep","path":"objects/obj_menu_Pluep/obj_menu_Pluep.yy",},},
     {"id":{"name":"obj_menu_Yluep","path":"objects/obj_menu_Yluep/obj_menu_Yluep.yy",},},
     {"id":{"name":"obj_targeting","path":"objects/obj_targeting/obj_targeting.yy",},},
+    {"id":{"name":"obj_test_movement_1","path":"objects/obj_test_movement_1/obj_test_movement_1.yy",},},
+    {"id":{"name":"obj_test_movement","path":"objects/obj_test_movement/obj_test_movement.yy",},},
     {"id":{"name":"animations_tests","path":"rooms/animations_tests/animations_tests.yy",},},
     {"id":{"name":"Character_Select","path":"rooms/Character_Select/Character_Select.yy",},},
     {"id":{"name":"rm_gameScreen","path":"rooms/rm_gameScreen/rm_gameScreen.yy",},},
