@@ -37,6 +37,11 @@ else if (mouse_x > x - sprite_xoffset && mouse_x < x - sprite_xoffset + sprite_w
 	&&  selected=0) 
 {
     sprite_index=s_idol
+	if sleep_counter>5{
+		var wake_snd = audio_play_sound(snd_slm_wakeup2, 1, false);
+		audio_sound_pitch(wake_snd, random_range(1, 1.3));
+		audio_sound_gain(wake_snd, random_range(0.8, 1.0), 0);	
+	}
 	yawn_counter=0
 	sleep_counter=0
 }
