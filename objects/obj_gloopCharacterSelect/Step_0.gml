@@ -7,7 +7,7 @@ if sleep_counter>sleep_timer and selected=0{
 		yawn_counter=1
 		var snd = audio_play_sound(snd_yawn, 1, false);
 		audio_sound_pitch(snd, random_range(0.9, 1.2));
-		//audio_sound_gain(snd, random_range(0.8, 1.0), 0);
+		audio_sound_gain(snd, random_range(0.8, 1.0), 0);
 	}
 }
 	
