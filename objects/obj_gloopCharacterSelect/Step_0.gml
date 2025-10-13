@@ -20,8 +20,15 @@ if (mouse_x > x - sprite_xoffset && mouse_x < x - sprite_xoffset + sprite_width 
     mouse_y > y - sprite_yoffset && mouse_y < y - sprite_yoffset + sprite_height
 	&& mouse_check_button_pressed(mb_left)) 
 {
-    sprite_index=s_jump
-	selected=1
+	if selected=0{
+	    sprite_index=s_jump
+		selected=1
+	}
+	else 
+	{
+	    sprite_index=s_idol
+		selected=0
+	}
 	sleep_counter=0
 	yawn_counter=0
 }
