@@ -108,10 +108,10 @@ function scr_spawn_flower(xx,yy,color){
 
 	var spawn_flower = irandom_range(1,3)
 	if spawn_flower<=2{
-		var flower = instance_create_layer(xx + irandom_range(-4,controller_spacing-8), yy+irandom_range(-4,controller_spacing-8), "Instances", obj_gridFlower);
+		var flower = instance_create_layer(xx + irandom_range(4,controller_spacing-8), yy+irandom_range(4,controller_spacing-8), "Instances", obj_gridFlower);
 		flower.depth=depth+2
 		flower.sprite_index=flower_sprite	
-		flower.image_angle+=random_range(0,3)*15
+		flower.image_angle+=random_range(-3,3)*30
 	}
 	
 

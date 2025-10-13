@@ -171,6 +171,8 @@
     {"id":{"name":"Spot_Grn_3","path":"sprites/Spot_Grn_3/Spot_Grn_3.yy",},},
     {"id":{"name":"Spot_Grn_4","path":"sprites/Spot_Grn_4/Spot_Grn_4.yy",},},
     {"id":{"name":"Spot_Grn_5","path":"sprites/Spot_Grn_5/Spot_Grn_5.yy",},},
+    {"id":{"name":"spr_Blu_body","path":"sprites/spr_Blu_body/spr_Blu_body.yy",},},
+    {"id":{"name":"spr_gloop_smile","path":"sprites/spr_gloop_smile/spr_gloop_smile.yy",},},
     {"id":{"name":"spr_Gloop","path":"sprites/spr_Gloop/spr_Gloop.yy",},},
     {"id":{"name":"spr_GloopDebug","path":"sprites/spr_GloopDebug/spr_GloopDebug.yy",},},
     {"id":{"name":"spr_grid1","path":"sprites/spr_grid1/spr_grid1.yy",},},
