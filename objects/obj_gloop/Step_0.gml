@@ -26,6 +26,13 @@ if alive=0
 
 gloop_score_obj.parent_sprite = s_idol
 
+if sprite_index=s_sleep and (image_index > 50) {
+    image_index = 20;
+}
+if sprite_index=s_sleep and (image_index =10) {
+	var snd = audio_play_sound(snd_yawn, 1, false);
+	audio_sound_pitch(snd, random_range(0.9, 1.2));
+}
 
 
 

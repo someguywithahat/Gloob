@@ -10,6 +10,9 @@ if sleep_counter>sleep_timer{
 	}
 }
 	
+if sprite_index=s_sleep and (image_index > 50) {
+    image_index = 20;
+}
 
 
 
