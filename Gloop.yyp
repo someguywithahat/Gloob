@@ -72,6 +72,7 @@
     {"id":{"name":"scr_set_slime_trail","path":"scripts/scr_set_slime_trail/scr_set_slime_trail.yy",},},
     {"id":{"name":"scr_spawn_flower","path":"scripts/scr_spawn_flower/scr_spawn_flower.yy",},},
     {"id":{"name":"snd_background1","path":"sounds/snd_background1/snd_background1.yy",},},
+    {"id":{"name":"snd_squish","path":"sounds/snd_squish/snd_squish.yy",},},
     {"id":{"name":"snd_yawn","path":"sounds/snd_yawn/snd_yawn.yy",},},
     {"id":{"name":"Arrow","path":"sprites/Arrow/Arrow.yy",},},
     {"id":{"name":"Blobtrail_1","path":"sprites/Blobtrail_1/Blobtrail_1.yy",},},

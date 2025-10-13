@@ -295,6 +295,7 @@ if ismoving=1 {
 			if next_inst.activeNumber=0 or next_inst.wall=1
 			{
 				sprite_index=s_death 
+				audio_play_sound(snd_squish, 1, false);
 				alive=0
 				ismoving=0
 				scr_end_turn()
