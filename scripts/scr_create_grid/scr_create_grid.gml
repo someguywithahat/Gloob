@@ -41,8 +41,6 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 			
             // Store reference in the array
             grid_array[i][j] = inst;
-			
-			
 
 			
         }
