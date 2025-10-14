@@ -24,7 +24,8 @@ if alive=0
 	}	
 }
 
-gloop_score_obj.parent_sprite = s_idol
+
+gloop_score_obj.gloop_color_index = gloop_color_index
 
 if sprite_index=s_sleep and (image_index > 50) {
     image_index = 20;

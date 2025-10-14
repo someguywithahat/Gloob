@@ -1,6 +1,8 @@
 digit_width_mod = -18 
 gloop_score=0
-parent_sprite =Slm_Grn_Idol
+parent_sprite =Slm_All_Base_Faceless
+//parent_sprite_frame =1
+gloop_color_index=0
 
 player = 1
 

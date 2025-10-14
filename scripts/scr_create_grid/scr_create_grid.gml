@@ -63,7 +63,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		gloopInst.grid_y=gloop_y
 		gloopInst.player_number=i
 		gloopInst.gloop_score_obj.player=i
-		
+		//gloop_color_index
 		
 		scr_set_slime_color(gloopInst,irandom_range(1,8))
 		show_debug_message(gloopInst.gloop_color);
