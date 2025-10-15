@@ -27,6 +27,7 @@ image_speed = 1
 depth=-2000
 
 gloop_color = "green"
+gloop_color_index = 0
 
 trail = Trl_Grn_Mid
 
@@ -35,7 +36,8 @@ current_grid_number = noone
 
 gloop_score_obj = instance_create_layer(1, 1, "Instances", obj_gloop_score);
 gloop_score_obj.player = player_number
-gloop_score_obj.parent_sprite = spr_Gloop
+gloop_score_obj.parent_sprite = Slm_All_Base_Faceless
+
 
 
 //s_idol = Slm_Grn_Idol
