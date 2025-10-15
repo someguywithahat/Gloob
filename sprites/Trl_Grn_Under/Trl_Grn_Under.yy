@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Trail",
-    "path":"folders/Sprites/Trail.yy",
+    "name":"Prolly Not",
+    "path":"folders/Sprites/Prolly Not.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
