@@ -72,7 +72,8 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 			gloop_color=gloop_color_index
 		else gloop_color=irandom_range(0,7)
 		
-		scr_set_slime_color(gloopInst,irandom_range(1,8))
+		//scr_set_slime_color(gloopInst,irandom_range(1,8))
+		scr_set_slime_color(gloopInst,gloop_color)
 		show_debug_message(gloopInst.gloop_color);
 		inst.sprite_index = scr_get_slime_trail(0, gloopInst.gloop_color)
 		inst.depth=gloopInst.depth+2

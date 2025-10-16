@@ -17,36 +17,44 @@ if (mouse_x > xx_menu1-4 && mouse_x < xx_menu1+w+4 && mouse_y > yy_menu1-4 && mo
 
 	
 	if slime1.selected=1{
-		controller.player_color[player_count]=slime1.gloop_color
-		player_count++
+		controller.player_color[active_player_count]=slime1.gloop_color
+		active_player_count++
+		show_debug_message("slime1")
 	}
 	if slime2.selected=1{
-		controller.player_color[player_count]=slime2.gloop_color
-		player_count++
+		controller.player_color[active_player_count]=slime2.gloop_color
+		active_player_count++
+		show_debug_message("slime2")
 	}
 	if slime3.selected=1{
-		controller.player_color[player_count]=slime3.gloop_color
-		player_count++
+		controller.player_color[active_player_count]=slime3.gloop_color
+		active_player_count++
+		show_debug_message("slime3")
 	}
 	if slime4.selected=1{
-		controller.player_color[player_count]=slime4.gloop_color
-		player_count++
+		controller.player_color[active_player_count]=slime4.gloop_color
+		active_player_count++
+		show_debug_message("slime4")
 	}
 	if slime5.selected=1{
-		controller.player_color[player_count]=slime5.gloop_color
-		player_count++
+		controller.player_color[active_player_count]=slime5.gloop_color
+		active_player_count++
+		show_debug_message("slime5")
 	}
 	if slime6.selected=1{
-		controller.player_color[player_count]=slime6.gloop_color
-		player_count++
+		controller.player_color[active_player_count]=slime6.gloop_color
+		active_player_count++
+		show_debug_message("slime6")
 	}
 	if slime7.selected=1{
-		controller.player_color[player_count]=slime7.gloop_color
-		player_count++
+		controller.player_color[active_player_count]=slime7.gloop_color
+		active_player_count++
+		show_debug_message("slime7")
 	}
 	if slime8.selected=1{
-		controller.player_color[player_count]=slime8.gloop_color
-		player_count++
+		controller.player_color[active_player_count]=slime8.gloop_color
+		active_player_count++
+		show_debug_message("slime8")
 	}
 	
 	//for (var i = 0; i < 8; i++){
