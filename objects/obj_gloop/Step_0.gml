@@ -284,6 +284,11 @@ if ismoving=1 {
 			derX=0
 			derY=0		
 			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color)
+			
+			with(obj_gridFlower){
+				image_index++	
+			}
+			
 			scr_end_turn()
 		}
 		else
