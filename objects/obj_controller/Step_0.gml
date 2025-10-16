@@ -16,3 +16,9 @@ if (keyboard_check_pressed(vk_f11)) {
     window_set_fullscreen(!window_get_fullscreen());
 }
 
+
+if grid_refs == noone and room == rm_gameScreen{
+	target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
+	grid_refs = scr_setup_grid(rows, cols, spacing, start_x, start_y, number_of_players)
+	
+}

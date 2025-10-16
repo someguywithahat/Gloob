@@ -1,7 +1,3 @@
-
-
-//
-
 var controller = global.controller;
 var controller_current_player = controller.current_player
 

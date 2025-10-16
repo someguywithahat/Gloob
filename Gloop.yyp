@@ -39,6 +39,7 @@
   },
   "name":"Gloop",
   "resources":[
+    {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},},
     {"id":{"name":"obj_controller_JoText","path":"objects/obj_controller_JoText/obj_controller_JoText.yy",},},
     {"id":{"name":"obj_controller_title","path":"objects/obj_controller_title/obj_controller_title.yy",},},
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},},
@@ -55,6 +56,7 @@
     {"id":{"name":"obj_menu_Pilp","path":"objects/obj_menu_Pilp/obj_menu_Pilp.yy",},},
     {"id":{"name":"obj_menu_Pluep","path":"objects/obj_menu_Pluep/obj_menu_Pluep.yy",},},
     {"id":{"name":"obj_menu_Yluep","path":"objects/obj_menu_Yluep/obj_menu_Yluep.yy",},},
+    {"id":{"name":"obj_start_button","path":"objects/obj_start_button/obj_start_button.yy",},},
     {"id":{"name":"obj_targeting","path":"objects/obj_targeting/obj_targeting.yy",},},
     {"id":{"name":"obj_test_movement_1","path":"objects/obj_test_movement_1/obj_test_movement_1.yy",},},
     {"id":{"name":"obj_test_movement","path":"objects/obj_test_movement/obj_test_movement.yy",},},

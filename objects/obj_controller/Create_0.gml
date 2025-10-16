@@ -13,14 +13,17 @@ spacing = 32;
 
 number_of_players = 2
 current_player=0
+persistent=true
 
 music_playing = false;
 
-target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
+target_obj=noone
+
+player_color = array_create(8,0)
 
 
 
 
+grid_refs = noone
 
-grid_refs = scr_setup_grid(rows, cols, spacing, start_x, start_y, number_of_players)
 

@@ -1,12 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_menu_Bluep",
+  "%Name":"obj_start_button",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_menu_Bluep",
+  "name":"obj_start_button",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -31,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Slm_Blk_Idol",
-    "path":"sprites/Slm_Blk_Idol/Slm_Blk_Idol.yy",
+    "name":"Arrow",
+    "path":"sprites/Arrow/Arrow.yy",
   },
   "spriteMaskId":null,
   "visible":true,

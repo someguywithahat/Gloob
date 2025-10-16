@@ -11,6 +11,7 @@
 
 function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of_players)
 {
+	var controller = global.controller;
     var grid_array = array_create(x_count, 0);
     
     for (var i = 0; i < x_count; i++)
@@ -53,6 +54,8 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		
         var xx = gloop_x * spacing;
         var yy = gloop_y * spacing;		
+		var gloop_color_index = controller.player_color[i]
+		var gloop_color = 1
 		
 		var inst = grid_array[gloop_x,gloop_y]
 		inst.activeNumber=false
@@ -64,6 +67,10 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		gloopInst.player_number=i
 		gloopInst.gloop_score_obj.player=i
 		//gloop_color_index
+		
+		if 0<=gloop_color_index and gloop_color_index<=7
+			gloop_color=gloop_color_index
+		else gloop_color=irandom_range(0,7)
 		
 		scr_set_slime_color(gloopInst,irandom_range(1,8))
 		show_debug_message(gloopInst.gloop_color);
