@@ -2,6 +2,8 @@ global.controller = id;
 randomize();
 
 slime_speed=1
+MINSPEED = .5
+MAXSPEED = 4
 
 // Size of grid
 cols = 26;

@@ -25,13 +25,19 @@ if grid_refs == noone and room == rm_gameScreen{
 
 if (keyboard_check_pressed(ord("F"))) {
     // code here runs once when F is pressed
-    if slime_speed<3
+    if slime_speed<MAXSPEED
 		slime_speed+=.5		
 }
 
 if (keyboard_check_pressed(ord("S"))) {
     // code here runs once when F is pressed
-    if slime_speed>.5
+    if slime_speed>MINSPEED
 		slime_speed-=.5		
+}
+
+if (keyboard_check_pressed(ord("R")) and room == rm_gameScreen) {
+    // code here runs once when F is pressed
+	grid_refs=noone
+    room_restart()	
 }
 
