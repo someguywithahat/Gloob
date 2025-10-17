@@ -51,7 +51,7 @@ gloop_score_obj.parent_sprite = Slm_All_Base_Faceless
 //s_idol = Slm_Grn_Idol
 //s_sleep = Slm_Grn_Sleep
 //s_death = Slm_Grn_Death
-s_jump = Slm_Grn_Move_Up_Jump
+s_jump = Slm_Grn_Move_Up_Jump_Old
 
 
 ///// Create Event - obj_slime
