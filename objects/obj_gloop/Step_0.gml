@@ -1,6 +1,6 @@
 var controller = global.controller;
 var controller_current_player = controller.current_player
-
+move_speed = controller.slime_speed
 
 
 if ismoving==0
@@ -18,6 +18,23 @@ if alive=0
 	    image_speed = 0;        // Stop animation
 	    image_index = image_number - 1; // Lock on last frame
 	}	
+	
+}
+
+if isjumping=1{
+	//if (image_index >= 11)
+	//	image_index=4
+	//else if (image_index < 4)
+	//	image_index=4
+	sprite_index=s_jump
+	image_speed = 0; 
+	//if debug_int<>scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)
+	//{
+	//	debug_int=scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)
+	//	show_debug_message("next_frame: "+string(debug_int) + " gridNumberX " +string(gridNumberX) + " X " +string(x) + " prevX " + string(gridNumberPrevX))
+	//}
+	image_index = 4 + scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)
+	
 }
 
 
@@ -200,9 +217,21 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 
 		ismoving=1;
 		idletime=0
+		gridNumberPrevX=x
+		gridNumberPrevY=y
 		
-		sprite_index = s_idol;	
-		image_speed=1
+		if(abs((derX+derY) mod 2) = 0){
+			//show_debug_message("x "+string(derX) + " y "+string(derY)+ "   math: ", +string((derX+derX) mod 2))
+			sprite_index=s_jump
+			//image_index=2
+			image_speed=0
+			isjumping=1
+		}
+		else
+		{
+			sprite_index = s_idol;	
+			image_speed=1
+		}
 		
 		//Update the previous slime trail
 		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color)
@@ -223,8 +252,14 @@ if ismoving=1 {
 	
 	var next_inst = scr_get_grid_id(grid_x+derX, grid_y+derY)
 	
-	var gridNumberX=next_inst.x
-	var gridNumberY=next_inst.y
+	
+	gridNumberX=next_inst.x
+	gridNumberY=next_inst.y
+	
+	
+	if isjumping=1{
+		sprite_index=s_jump
+	}
 	
 
 	// Move X toward target
@@ -254,6 +289,10 @@ if ismoving=1 {
 	{
 		prev_derX=derX
 		prev_derY=derY
+		
+		gridNumberPrevX=x
+		gridNumberPrevY=y
+		
 		next_inst.activeNumber=0		
 		//next_inst.sprite_index=trail
 		
@@ -279,7 +318,10 @@ if ismoving=1 {
 		
 		if grid_x=target_x and grid_y=target_y
 		{
+			sprite_index=s_idol
+			image_speed=1
 			ismoving=0	
+			isjumping=0
 			idletime=0
 			derX=0
 			derY=0		
@@ -301,9 +343,11 @@ if ismoving=1 {
 			if next_inst.activeNumber=0 or next_inst.wall=1
 			{
 				sprite_index=s_death 
+				image_speed=1
 				audio_play_sound(snd_bonk, 1, false);
 				alive=0
 				ismoving=0
+				isjumping=0
 				scr_end_turn()
 				
 			}

@@ -1,6 +1,8 @@
 global.controller = id;
 randomize();
 
+slime_speed=1
+
 // Size of grid
 cols = 26;
 rows = 26;

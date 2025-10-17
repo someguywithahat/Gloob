@@ -14,7 +14,7 @@ function scr_set_slime_trail(target, derX, derY, prev_derX, prev_derY, entering,
 	var prev_move_angle = abs(prev_derX + prev_derY) mod 2
 	
 	//show_debug_message(string(derX) + " " + string(derY)+ " move_angle " + string(move_angle)+ " prev_move_angle: " + string(prev_move_angle))
-	show_debug_message(" prev_derX " + string(prev_derX)+ " prev_derY: " + string(prev_derY)+ " derX " + string(derX)+ " derY: " + string(derY))
+	//show_debug_message(" prev_derX " + string(prev_derX)+ " prev_derY: " + string(prev_derY)+ " derX " + string(derX)+ " derY: " + string(derY))
 	
 	if move_angle=0 and prev_derX=0 and prev_derY=0
 	{
@@ -97,20 +97,20 @@ function scr_rotate_sprite(target, rotate_amount){
 	{
 		target.image_angle=0
 		target.y -= controller.spacing
-		show_debug_message("unrotate rotate90")
+		//show_debug_message("unrotate rotate90")
 	}
 	else if prev_trail_rotation=2
 	{
 		target.image_angle=0
 		target.y -= controller.spacing
 		target.x -= controller.spacing
-		show_debug_message("unrotate rotate180")
+		//show_debug_message("unrotate rotate180")
 	}
 	else if prev_trail_rotation=3
 	{
 		target.image_angle=0
 		target.x -= controller.spacing
-		show_debug_message("unrotate rotate270")
+		//show_debug_message("unrotate rotate270")
 	}
 
 	
@@ -119,25 +119,25 @@ function scr_rotate_sprite(target, rotate_amount){
 	{
 		target.image_angle=90
 		target.y += controller.spacing
-		show_debug_message("rotate90")
+		//show_debug_message("rotate90")
 	}
 	else if rotate_amount=2
 	{
 		target.image_angle=180
 		target.y += controller.spacing
 		target.x += controller.spacing
-		show_debug_message("rotate180")
+		//show_debug_message("rotate180")
 	}
 	else if rotate_amount=3
 	{
 		target.image_angle=270
 		target.x += controller.spacing
-		show_debug_message("rotate270")
+		//show_debug_message("rotate270")
 	}
 	else if rotate_amount=0
 	{
 		//target.image_angle=0
-		show_debug_message("no rotate")
+		//show_debug_message("no rotate")
 	}
 		
 }
