@@ -134,6 +134,7 @@
     {"id":{"name":"Slm_Grn_Move_Side_Slurp","path":"sprites/Slm_Grn_Move_Side_Slurp/Slm_Grn_Move_Side_Slurp.yy",},},
     {"id":{"name":"Slm_Grn_Move_Up_Jump_Old","path":"sprites/Slm_Grn_Move_Up_Jump_Old/Slm_Grn_Move_Up_Jump_Old.yy",},},
     {"id":{"name":"Slm_Grn_Move_Up_Jump","path":"sprites/Slm_Grn_Move_Up_Jump/Slm_Grn_Move_Up_Jump.yy",},},
+    {"id":{"name":"Slm_Grn_Move_Up_roll","path":"sprites/Slm_Grn_Move_Up_roll/Slm_Grn_Move_Up_roll.yy",},},
     {"id":{"name":"Slm_Grn_move","path":"sprites/Slm_Grn_move/Slm_Grn_move.yy",},},
     {"id":{"name":"Slm_Grn_Roll_R","path":"sprites/Slm_Grn_Roll_R/Slm_Grn_Roll_R.yy",},},
     {"id":{"name":"Slm_Grn_Sleep","path":"sprites/Slm_Grn_Sleep/Slm_Grn_Sleep.yy",},},
