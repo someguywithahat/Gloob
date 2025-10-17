@@ -1,4 +1,8 @@
 ismoving = 0;
+isjumping=0;
+issleep=0
+
+//debug_int = 0
 
 player_number=1
 grid_x=1
@@ -14,7 +18,12 @@ derX = 0;
 derY = 0;
 prev_derX = 0; 
 prev_derY = 0;
-move_speed = 3;
+move_speed =1;
+
+gridNumberX=x
+gridNumberY=y
+gridNumberPrevX=0
+gridNumberPrevY=0
 
 gloop_score=0
 
@@ -43,6 +52,7 @@ gloop_score_obj.parent_sprite = Slm_All_Base_Faceless
 //s_idol = Slm_Grn_Idol
 //s_sleep = Slm_Grn_Sleep
 //s_death = Slm_Grn_Death
+s_jump = Slm_Grn_Move_Up_Jump_Old
 
 
 ///// Create Event - obj_slime
