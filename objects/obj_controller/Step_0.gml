@@ -31,7 +31,7 @@ if (keyboard_check_pressed(ord("F"))) {
 
 if (keyboard_check_pressed(ord("S"))) {
     // code here runs once when F is pressed
-    if slime_speed>1
+    if slime_speed>.5
 		slime_speed-=.5		
 }
 

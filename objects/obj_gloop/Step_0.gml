@@ -38,7 +38,17 @@ if isjumping=1{
 	//}
 	image_index = 4 + scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)
 	
-}
+} 
+//else 
+//if ismoving=1 and abs(derX)=1{
+//	sprite_index=s_slurp
+//	image_speed = 0; 
+//	image_index = 3 + scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,2)
+//	if derX=-1
+//		image_xscale = -1;
+//	else image_xscale = 1;
+	
+//}
 
 
 gloop_score_obj.gloop_color_index = gloop_color_index
