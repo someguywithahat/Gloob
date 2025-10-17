@@ -7,9 +7,12 @@ if ismoving==0
 	idletime++
 	
 if idletime>sleeptime and alive=1{
+	issleep=1
 	sprite_index = s_sleep;	
 	image_speed=1
 }
+
+
 
 if alive=0
 {
@@ -40,9 +43,15 @@ if isjumping=1{
 
 gloop_score_obj.gloop_color_index = gloop_color_index
 
-if sprite_index=s_sleep and (image_index > 50) {
+if sprite_index=s_sleep and (image_index > 50) and issleep=1 {
     image_index = 20;
 }
+else if sprite_index=s_sleep and (image_index >=61) and issleep=2 {
+    sprite_index=s_idol
+	image_speed=1
+}
+else if sprite_index=s_sleep and issleep=2 and (image_index <=53) 
+	image_index=54
 if sprite_index=s_sleep and (image_index =10) {
 	var snd = audio_play_sound(snd_yawn, 1, false);
 	audio_sound_pitch(snd, random_range(0.9, 1.2));

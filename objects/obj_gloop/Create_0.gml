@@ -1,5 +1,6 @@
 ismoving = 0;
 isjumping=0;
+issleep=0
 
 //debug_int = 0
 

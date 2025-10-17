@@ -26,6 +26,8 @@ function scr_end_turn(){
 		if target.alive=1
 		{
 			controller.current_player=target.player_number
+			target.issleep=2
+			target.idletime=0
 			return
 		}
 	}	
