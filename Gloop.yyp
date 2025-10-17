@@ -129,6 +129,8 @@
     {"id":{"name":"Slm_Grn_Idol","path":"sprites/Slm_Grn_Idol/Slm_Grn_Idol.yy",},},
     {"id":{"name":"Slm_Grn_Jump","path":"sprites/Slm_Grn_Jump/Slm_Grn_Jump.yy",},},
     {"id":{"name":"Slm_Grn_Move_Side_hop","path":"sprites/Slm_Grn_Move_Side_hop/Slm_Grn_Move_Side_hop.yy",},},
+    {"id":{"name":"Slm_Grn_Move_Side_Slurp","path":"sprites/Slm_Grn_Move_Side_Slurp/Slm_Grn_Move_Side_Slurp.yy",},},
+    {"id":{"name":"Slm_Grn_Move_Up_Jump_Old","path":"sprites/Slm_Grn_Move_Up_Jump_Old/Slm_Grn_Move_Up_Jump_Old.yy",},},
     {"id":{"name":"Slm_Grn_Move_Up_Jump","path":"sprites/Slm_Grn_Move_Up_Jump/Slm_Grn_Move_Up_Jump.yy",},},
     {"id":{"name":"Slm_Grn_move","path":"sprites/Slm_Grn_move/Slm_Grn_move.yy",},},
     {"id":{"name":"Slm_Grn_Roll_R","path":"sprites/Slm_Grn_Roll_R/Slm_Grn_Roll_R.yy",},},
