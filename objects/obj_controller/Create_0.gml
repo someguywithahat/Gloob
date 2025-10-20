@@ -33,6 +33,7 @@ player_color = array_create(8,-1)
 grid_refs = noone
 
 
-
+clicked_quickstart = 0
+clicked_character_select = 0
 
 window_set_fullscreen(true);

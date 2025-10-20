@@ -41,3 +41,13 @@ if (keyboard_check_pressed(ord("R")) and room == rm_gameScreen) {
     room_restart()	
 }
 
+//Menu buttons
+if(clicked_quickstart=1){
+	clicked_quickstart=0
+	room_goto(rm_gameScreen)
+}
+else if(clicked_character_select=1){
+	clicked_character_select=0;
+	room_goto(Character_Select);
+}
+

@@ -70,6 +70,7 @@
     {"id":{"name":"Notes_Jo","path":"scripts/Notes_Jo/Notes_Jo.yy",},},
     {"id":{"name":"Notes_Tom","path":"scripts/Notes_Tom/Notes_Tom.yy",},},
     {"id":{"name":"scr_create_grid","path":"scripts/scr_create_grid/scr_create_grid.yy",},},
+    {"id":{"name":"scr_draw_menu_item","path":"scripts/scr_draw_menu_item/scr_draw_menu_item.yy",},},
     {"id":{"name":"scr_draw_score","path":"scripts/scr_draw_score/scr_draw_score.yy",},},
     {"id":{"name":"scr_end_turn","path":"scripts/scr_end_turn/scr_end_turn.yy",},},
     {"id":{"name":"scr_get_grid_id","path":"scripts/scr_get_grid_id/scr_get_grid_id.yy",},},
