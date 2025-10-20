@@ -1,10 +1,14 @@
 function scr_draw_menu_item(xx,yy,text,highlighted){
 	draw_set_font(fnt_menu);
-	draw_set_color(c_blue);
 	
 	var w = string_width(text)
 	var h = string_height(text)
 	var clicked = 0
+	
+	draw_set_color(c_white);
+	draw_rectangle(xx-6,yy-6,xx+w+6,yy+h+6,false)	
+	
+	draw_set_color(c_black);
 	draw_rectangle(xx-4,yy-4,xx+w+4,yy+h+4,false)	
 	
 	
