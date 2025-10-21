@@ -1,6 +1,7 @@
 // Generate a random number from 1 to 8
 my_number = 1
-my_number = irandom_range(1, 9);
+//my_number = irandom_range(1, 9);
+my_number = scr_get_weighted_grid_number()
 my_shade = c_white
 activeNumber=1
 wall=0

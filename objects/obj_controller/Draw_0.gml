@@ -51,8 +51,13 @@ if room == rm_gameScreen{
 
 	
 }
-else if room== rm_titleScreen
+
+
+if room== rm_titleScreen
 {
-	clicked_quickstart=scr_draw_menu_item(600,400,"Quickstart",0)
+
+	clicked_quickstart=scr_draw_menu_item(600,400,"Quickstart",0)	
 	clicked_character_select=scr_draw_menu_item(550,480,"Character Select",0)
+	
+
 }
