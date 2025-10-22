@@ -280,24 +280,30 @@ if ismoving=1 {
 		sprite_index=s_jump
 	}
 	
+	var gloop_speed =1
+	if ((derX+derY) mod 2) = 0
+		gloop_speed = scr_get_jump_speed2(scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8))*move_speed*0.75
+	else
+		gloop_speed=move_speed
+
 
 	// Move X toward target
 	if (x < gridNumberX) {
-	    x += move_speed;
+	    x += gloop_speed;
 	    if (x > gridNumberX) x = gridNumberX; // prevent overshoot
 	}
 	if (x > gridNumberX) {
-	    x -= move_speed;
+	    x -= gloop_speed;
 	    if (x < gridNumberX) x = gridNumberX;
 	}
 
 	// Move Y toward target
 	if (y < gridNumberY) {
-	    y += move_speed;
+	    y += gloop_speed;
 	    if (y > gridNumberY) y = gridNumberY;
 	}
 	if (y > gridNumberY) {
-	    y -= move_speed;
+	    y -= gloop_speed;
 	    if (y < gridNumberY) y = gridNumberY;
 	}
 	

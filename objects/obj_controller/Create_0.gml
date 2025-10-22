@@ -1,7 +1,7 @@
 global.controller = id;
 randomize();
 
-slime_speed=1
+slime_speed=2
 MINSPEED = .5
 MAXSPEED = 4
 

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_get_slm_frame",
+  "%Name":"scr_get_jump_sprite",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_get_slm_frame",
+  "name":"scr_get_jump_sprite",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

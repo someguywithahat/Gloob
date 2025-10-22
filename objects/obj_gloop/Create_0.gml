@@ -19,6 +19,7 @@ derY = 0;
 prev_derX = 0; 
 prev_derY = 0;
 move_speed =1;
+diagonal_speed=move_speed;
 
 gridNumberX=x
 gridNumberY=y
