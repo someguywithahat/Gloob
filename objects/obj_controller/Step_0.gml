@@ -23,6 +23,7 @@ if grid_refs == noone and room == rm_gameScreen{
 
 }
 
+
 if (keyboard_check_pressed(ord("F"))) {
     // code here runs once when F is pressed
     if slime_speed<MAXSPEED
@@ -39,6 +40,12 @@ if (keyboard_check_pressed(ord("R")) and room == rm_gameScreen) {
     // code here runs once when F is pressed
 	grid_refs=noone
     room_restart()	
+}
+
+if (keyboard_check_pressed(ord("T")) and room == rm_gameScreen) {
+    // code here runs once when F is pressed
+	grid_refs=noone
+    room_goto(rm_titleScreen)
 }
 
 //Menu buttons
