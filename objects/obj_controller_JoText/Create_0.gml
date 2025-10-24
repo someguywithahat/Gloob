@@ -2,11 +2,11 @@ xx = 320
 yy = 300
 spacer = 75
 
-label_menu1="Start COOP Game";
+label_menu1="START COOP GAME";
 xx_menu1=200
 yy_menu1=500
 
-label_menu2="Start VS Game";
+label_menu2="START VS GAME";
 xx_menu2=860
 yy_menu2=500
 

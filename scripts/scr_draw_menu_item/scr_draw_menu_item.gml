@@ -1,6 +1,7 @@
 function scr_draw_menu_item(xx,yy,text,highlighted){
-	draw_set_font(fnt_menu);
-	
+	//draw_set_font(fnt_menu);
+	draw_set_font(global.fnt_Gloop)
+	//var w = string_width(text)
 	var w = string_width(text)
 	var h = string_height(text)
 	var clicked = 0
@@ -23,5 +24,8 @@ function scr_draw_menu_item(xx,yy,text,highlighted){
 		
 	} 
 	draw_text(xx, yy, text);
+	
+	//draw_text(xx, yy, "testing");
 	return clicked
+	
 }

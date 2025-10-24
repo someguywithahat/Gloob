@@ -8,7 +8,7 @@
 //draw_text(20, 180, "Blue Font ");
 
 if player_count>0{
-	draw_set_font(fnt_menu);
+	draw_set_font(global.fnt_Gloop);
 	draw_set_color(c_blue);
 	
 	var w = string_width(label_menu1)

@@ -37,3 +37,7 @@ clicked_quickstart = 0
 clicked_character_select = 0
 
 window_set_fullscreen(true);
+
+
+global.fnt_Gloop = font_add_sprite(Letters, ord("A"), true, 5);
+
