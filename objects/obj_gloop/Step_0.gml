@@ -321,7 +321,11 @@ if ismoving=1 {
 		next_inst.activeNumber=0		
 		if next_inst.has_powerUP>0
 		{
-			powerUp1=next_inst.has_powerUP
+			if powerUp1=0
+				powerUp1=next_inst.has_powerUP
+			else if powerUp2=0
+				powerUp2=next_inst.has_powerUP
+			else powerUp3=next_inst.has_powerUP
 			next_inst.has_powerUP=0
 			audio_play_sound(snd_slm_chomp, 1, false);	
 		}

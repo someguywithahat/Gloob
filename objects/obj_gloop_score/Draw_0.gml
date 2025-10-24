@@ -20,7 +20,10 @@ scr_draw_score(xx+30, yy, gloop_score)
 
 if gloop.powerUp1>0
 	draw_sprite(spr_PowerUp, gloop.powerUp1-1, xx+110, yy)
-
+if gloop.powerUp2>0
+	draw_sprite(spr_PowerUp, gloop.powerUp2-1, xx+110+32, yy)
+if gloop.powerUp3>0
+	draw_sprite(spr_PowerUp, gloop.powerUp3-1, xx+110+64, yy)	
 
 
 
