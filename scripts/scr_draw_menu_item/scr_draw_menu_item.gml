@@ -1,4 +1,4 @@
-function scr_draw_menu_item(xx,yy,text,highlighted){
+function scr_draw_menu_item(xx,yy,text,hover_or_click){
 	//draw_set_font(fnt_menu);
 	draw_set_font(global.fnt_Gloop)
 	//var w = string_width(text)
@@ -18,14 +18,22 @@ function scr_draw_menu_item(xx,yy,text,highlighted){
     mouse_y > yy-4 && mouse_y < yy+h+4)
 	{
 		draw_set_color(c_lime);
+		if hover_or_click<0{
+			var snd = audio_play_sound(snd_slime_move, 1, false);
+			audio_sound_pitch(snd, random_range(0.9, 1.2));
+			audio_sound_gain(snd, random_range(0.8, 1.0), 0);
+			hover_or_click=0
+		}
 		
 		if mouse_check_button_pressed(mb_left)
-			clicked=1
+			hover_or_click=1
 		
 	} 
+	else 
+		hover_or_click=-1
 	draw_text(xx, yy, text);
 	
 	//draw_text(xx, yy, "testing");
-	return clicked
+	return hover_or_click
 	
 }

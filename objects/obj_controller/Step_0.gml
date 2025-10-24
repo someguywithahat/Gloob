@@ -50,11 +50,11 @@ if (keyboard_check_pressed(ord("T")) and room == rm_gameScreen) {
 
 //Menu buttons
 if(clicked_quickstart=1){
-	clicked_quickstart=0
+	clicked_quickstart=-1
 	room_goto(rm_gameScreen)
 }
 else if(clicked_character_select=1){
-	clicked_character_select=0;
+	clicked_character_select=-1;
 	room_goto(Character_Select);
 }
 

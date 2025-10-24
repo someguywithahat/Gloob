@@ -32,9 +32,9 @@ player_color = array_create(8,-1)
 
 grid_refs = noone
 
-
-clicked_quickstart = 0
-clicked_character_select = 0
+//clicked values are set to 0 when the option is hovered over, and 1 when clicked
+clicked_quickstart = -1
+clicked_character_select = -1
 
 window_set_fullscreen(true);
 
