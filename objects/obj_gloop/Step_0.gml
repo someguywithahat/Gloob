@@ -319,7 +319,12 @@ if ismoving=1 {
 		gridNumberPrevY=y
 		
 		next_inst.activeNumber=0		
-		//next_inst.sprite_index=trail
+		if next_inst.has_powerUP>0
+		{
+			powerUp1=next_inst.has_powerUP
+			next_inst.has_powerUP=0
+			audio_play_sound(snd_slm_chomp, 1, false);	
+		}
 		
 		current_grid_number = next_inst
 		

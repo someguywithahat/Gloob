@@ -3,6 +3,7 @@ gloop_score=0
 parent_sprite =Slm_All_Base_Faceless
 //parent_sprite_frame =1
 gloop_color_index=0
+gloop=noone
 
 player = 1
 

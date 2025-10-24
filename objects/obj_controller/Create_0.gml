@@ -38,6 +38,7 @@ clicked_character_select = -1
 
 window_set_fullscreen(true);
 
+settings_NumberOfPowerUps=4
 
 global.fnt_Gloop = font_add_sprite(Letters, ord("A"), true, 5);
 

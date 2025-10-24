@@ -47,6 +47,12 @@ current_grid_number = noone
 gloop_score_obj = instance_create_layer(1, 1, "Instances", obj_gloop_score);
 gloop_score_obj.player = player_number
 gloop_score_obj.parent_sprite = Slm_All_Base_Faceless
+gloop_score_obj.gloop=id
+
+powerUp1=0
+PowerUp2=0
+PowerUp3=0
+
 
 
 
