@@ -19,7 +19,7 @@ draw_sprite_ext(spr_gloop_smile, gloop_color_index, xx, yy, 1, 1, 0, c_white, 1)
 scr_draw_score(xx+30, yy, gloop_score)
 
 if gloop.powerUp1>0
-	draw_sprite(spr_PowerUp, gloop.powerUp1-1, xx+80, yy)
+	draw_sprite(spr_PowerUp, gloop.powerUp1-1, xx+110, yy)
 
 
 
