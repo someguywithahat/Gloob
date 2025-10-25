@@ -10,6 +10,8 @@ label_menu2="START VS GAME";
 xx_menu2=860
 yy_menu2=500
 
+
+
 player_count = 0
 
 

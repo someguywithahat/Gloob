@@ -42,4 +42,8 @@ if player_count>0{
 	} 
 	draw_text(xx_menu2, yy_menu2, label_menu2);	
 	
+	
+	
+
+	
 }

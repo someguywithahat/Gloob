@@ -14,6 +14,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 	var controller = global.controller;
     var grid_array = array_create(x_count, 0);
 	var number_of_powerups = controller.settings_NumberOfPowerUps
+	var number_of_obstacles = controller.settings_obstacles
     
     for (var i = 0; i < x_count; i++)
     {
@@ -88,6 +89,19 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		var powerup_y = irandom_range(1,y_count-2);
 		var gridInst = grid_array[powerup_x,powerup_y]
 		gridInst.has_powerUP=irandom_range(1,sprite_get_number(spr_PowerUp))
+		//show_debug_message(string(sprite_get_number(spr_PowerUp1)))
+		
+	}
+	
+		
+	//add powerups
+	for (var i = 0; i < number_of_obstacles; i++)
+	{
+		var powerup_x = irandom_range(1,x_count-2);
+		var powerup_y = irandom_range(1,y_count-2);
+		var gridInst = grid_array[powerup_x,powerup_y]
+		gridInst.activeNumber=0
+		gridInst.sprite_index=Obs_Stump
 		//show_debug_message(string(sprite_get_number(spr_PowerUp1)))
 		
 	}

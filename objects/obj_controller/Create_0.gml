@@ -40,6 +40,7 @@ window_set_fullscreen(true);
 
 settings_NumberOfPowerUps=4
 settings_MaxNumberOfPowerUps=3
+settings_obstacles=0
 
 global.fnt_Gloop = font_add_sprite(Letters, ord("A"), true, 5);
 
