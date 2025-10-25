@@ -1,5 +1,6 @@
 ismoving = 0;
 isjumping=0;
+isrolling=0;
 issleep=0
 
 //debug_int = 0
@@ -60,6 +61,8 @@ powerUp3=0
 //s_sleep = Slm_Grn_Sleep
 //s_death = Slm_Grn_Death
 s_jump = Slm_Grn_Move_Up_Jump_Old
+s_roll = Slm_Grn_Move_Up_roll
+s_roll_R = Slm_Grn_Roll_R
 s_slurp = Slm_Grn_Move_Side_Slurp
 
 

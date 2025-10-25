@@ -1,71 +1,13 @@
 var controller = global.controller;
 var controller_current_player = controller.current_player
 move_speed = controller.slime_speed
-
-
-if ismoving==0
-	idletime++
-	
-if idletime>sleeptime and alive=1{
-	issleep=1
-	sprite_index = s_sleep;	
-	image_speed=1
-}
-
-
-
-if alive=0
-{
-	sprite_index = s_death;	
-	if (image_index >= image_number - 1) {
-	    image_speed = 0;        // Stop animation
-	    image_index = image_number - 1; // Lock on last frame
-	}	
-	
-}
-
-if isjumping=1{
-	//if (image_index >= 11)
-	//	image_index=4
-	//else if (image_index < 4)
-	//	image_index=4
-	sprite_index=s_jump
-	image_speed = 0; 
-	//if debug_int<>scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)
-	//{
-	//	debug_int=scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)
-	//	show_debug_message("next_frame: "+string(debug_int) + " gridNumberX " +string(gridNumberX) + " X " +string(x) + " prevX " + string(gridNumberPrevX))
-	//}
-	image_index = 4 + scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)
-	
-} 
-//else 
-//if ismoving=1 and abs(derX)=1{
-//	sprite_index=s_slurp
-//	image_speed = 0; 
-//	image_index = 3 + scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,2)
-//	if derX=-1
-//		image_xscale = -1;
-//	else image_xscale = 1;
-	
-//}
-
-
 gloop_score_obj.gloop_color_index = gloop_color_index
 
-if sprite_index=s_sleep and (image_index > 50) and issleep=1 {
-    image_index = 20;
-}
-else if sprite_index=s_sleep and (image_index >=61) and issleep=2 {
-    sprite_index=s_idol
-	image_speed=1
-}
-else if sprite_index=s_sleep and issleep=2 and (image_index <=53) 
-	image_index=54
-if sprite_index=s_sleep and (image_index =10) {
-	var snd = audio_play_sound(snd_yawn, 1, false);
-	audio_sound_pitch(snd, random_range(0.9, 1.2));
-}
+
+
+
+
+
 
 
 
@@ -132,29 +74,23 @@ if (ismoving=0)
 }
 
 
-if (keyboard_check_pressed(vk_space) and ismoving=0) {
 
-	//ismoving=1
-	idletime=0
-	sprite_index = Slm_Grn_Jump;	
-	image_speed=1
-	image_index=0
-	y=y-64
-	grid_y=grid_y-2
-	if image_index>8
-		image_speed=0
-	//{
-	//	sprite_index=Bluep_Idol
-	//	ismoving=0
-	//}
-}
-
-if sprite_index=Slm_Grn_Jump and image_index>12
-{
-	sprite_index=s_idol
-	var squishy = scr_get_grid_id(grid_x, grid_y)
-	squishy.activeNumber=0	
-}
+//if (keyboard_check_pressed(vk_space) and ismoving=0) {
+//	idletime=0
+//	sprite_index = Slm_Grn_Jump;	
+//	image_speed=1
+//	image_index=0
+//	y=y-64
+//	grid_y=grid_y-2
+//	if image_index>8
+//		image_speed=0
+//}
+//if sprite_index=Slm_Grn_Jump and image_index>12
+//{
+//	sprite_index=s_idol
+//	var squishy = scr_get_grid_id(grid_x, grid_y)
+//	squishy.activeNumber=0	
+//}
 
 
 
@@ -174,9 +110,6 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 	
 	derX=0
 	derY=0
-
-
-
 
     // Determine the direction.  
 	//Remove checkx and checky
@@ -240,17 +173,11 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 		gridNumberPrevY=y
 		
 		if(abs((derX+derY) mod 2) = 0){
-			//show_debug_message("x "+string(derX) + " y "+string(derY)+ "   math: ", +string((derX+derX) mod 2))
-			sprite_index=s_jump
-			//image_index=2
-			image_speed=0
+			//sprite_index=s_jump
 			isjumping=1
 		}
-		else
-		{
-			sprite_index = s_idol;	
-			image_speed=1
-		}
+		else 
+			isrolling=1
 		
 		//Update the previous slime trail
 		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color)
@@ -258,7 +185,7 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 	}
 	else if selected_grid.activeNumber=0
 	{
-		sprite_index=s_death 
+		//sprite_index=s_death 
 		alive=0
 		scr_end_turn()
 	}
@@ -276,9 +203,9 @@ if ismoving=1 {
 	gridNumberY=next_inst.y
 	
 	
-	if isjumping=1{
-		sprite_index=s_jump
-	}
+	//if isjumping=1{
+	//	sprite_index=s_jump
+	//}
 	
 	var gloop_speed =1
 	if ((derX+derY) mod 2) = 0
@@ -356,6 +283,7 @@ if ismoving=1 {
 			image_speed=1
 			ismoving=0	
 			isjumping=0
+			isrolling=0
 			idletime=0
 			derX=0
 			derY=0		
@@ -382,6 +310,7 @@ if ismoving=1 {
 				alive=0
 				ismoving=0
 				isjumping=0
+				isrolling=0
 				scr_end_turn()
 				
 			}
