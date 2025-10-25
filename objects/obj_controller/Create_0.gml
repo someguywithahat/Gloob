@@ -38,7 +38,7 @@ clicked_character_select = -1
 
 window_set_fullscreen(true);
 
-settings_NumberOfPowerUps=4
+settings_NumberOfPowerUps=0
 settings_MaxNumberOfPowerUps=3
 settings_obstacles=0
 

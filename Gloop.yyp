@@ -58,6 +58,7 @@
     {"id":{"name":"obj_menu_test","path":"objects/obj_menu_test/obj_menu_test.yy",},},
     {"id":{"name":"obj_menu_Yluep","path":"objects/obj_menu_Yluep/obj_menu_Yluep.yy",},},
     {"id":{"name":"obj_MenuObstacle","path":"objects/obj_MenuObstacle/obj_MenuObstacle.yy",},},
+    {"id":{"name":"obj_MenuPowerUps","path":"objects/obj_MenuPowerUps/obj_MenuPowerUps.yy",},},
     {"id":{"name":"obj_start_button","path":"objects/obj_start_button/obj_start_button.yy",},},
     {"id":{"name":"obj_targeting","path":"objects/obj_targeting/obj_targeting.yy",},},
     {"id":{"name":"obj_test_movement_1","path":"objects/obj_test_movement_1/obj_test_movement_1.yy",},},
