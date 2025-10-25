@@ -6,8 +6,8 @@
   "name":"obj_gridOutline",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"obj_Prolly_Not",
+    "path":"folders/Objects/obj_Prolly_Not.yy",
   },
   "parentObjectId":null,
   "persistent":false,

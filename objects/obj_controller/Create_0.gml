@@ -35,6 +35,7 @@ grid_refs = noone
 //clicked values are set to 0 when the option is hovered over, and 1 when clicked
 clicked_quickstart = -1
 clicked_character_select = -1
+clicked_debugRoom = -1
 
 window_set_fullscreen(true);
 
@@ -42,5 +43,5 @@ settings_NumberOfPowerUps=0
 settings_MaxNumberOfPowerUps=3
 settings_obstacles=0
 
-global.fnt_Gloop = font_add_sprite(Letters, ord("A"), true, 5);
+global.fnt_Gloop = font_add_sprite(spr_gloopFont, ord("!"), true, 5);
 
