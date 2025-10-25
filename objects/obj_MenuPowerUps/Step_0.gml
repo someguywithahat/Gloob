@@ -8,7 +8,7 @@ if (mouse_check_button_pressed(mb_left)) {
 			clicked=1
 			controllerID.settings_NumberOfPowerUps+=2
 			
-			var yay_snd = audio_play_sound(snd_slm_yay, 1, false);
+			var yay_snd = audio_play_sound(snd_slm_woo, 1, false);
 			audio_sound_pitch(yay_snd, random_range(1, 1.3));
 			audio_sound_gain(yay_snd, random_range(0.8, 1.0), 0);	
 		}

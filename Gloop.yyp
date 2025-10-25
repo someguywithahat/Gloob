@@ -94,6 +94,7 @@
     {"id":{"name":"snd_slm_grrrrr","path":"sounds/snd_slm_grrrrr/snd_slm_grrrrr.yy",},},
     {"id":{"name":"snd_slm_wakeup","path":"sounds/snd_slm_wakeup/snd_slm_wakeup.yy",},},
     {"id":{"name":"snd_slm_wakeup2","path":"sounds/snd_slm_wakeup2/snd_slm_wakeup2.yy",},},
+    {"id":{"name":"snd_slm_woo","path":"sounds/snd_slm_woo/snd_slm_woo.yy",},},
     {"id":{"name":"snd_slm_yay","path":"sounds/snd_slm_yay/snd_slm_yay.yy",},},
     {"id":{"name":"snd_squish","path":"sounds/snd_squish/snd_squish.yy",},},
     {"id":{"name":"snd_yawn","path":"sounds/snd_yawn/snd_yawn.yy",},},
