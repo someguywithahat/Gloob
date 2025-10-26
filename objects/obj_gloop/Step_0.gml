@@ -288,6 +288,7 @@ if ismoving=1 {
 			isjumping=0
 			isrolling=0
 			idletime=0
+			has_targeting_cursor=0
 			derX=0
 			derY=0		
 			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
@@ -314,6 +315,7 @@ if ismoving=1 {
 				ismoving=0
 				isjumping=0
 				isrolling=0
+				has_targeting_cursor=0
 				scr_end_turn()
 				
 			}

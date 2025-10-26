@@ -10,7 +10,7 @@ function scr_spawn_flower(xx,yy,color){
 		flower_size = 2;
 		
 	var flower_color = color
-	if (color=noone or color="random")
+	if (color="random")
 		switch(irandom_range(1,8)){
 			case 1:
 				flower_color="black"

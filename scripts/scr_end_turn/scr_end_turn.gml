@@ -4,6 +4,7 @@ function scr_end_turn(){
 	var controller = global.controller;
 	var controller_current_player = controller.current_player
 	var controller_number_of_players = controller.number_of_players
+	var targeting_object = controller.target_obj
 	
 	var target = noone;
 		
@@ -26,6 +27,8 @@ function scr_end_turn(){
 		if target.alive=1
 		{
 			controller.current_player=target.player_number
+			targeting_object.next_gloop=target
+			targeting_object.traveling_to_next_gloop=1
 			target.issleep=2
 			target.idletime=0
 			return

@@ -50,6 +50,8 @@ gloop_score_obj.player = player_number
 gloop_score_obj.parent_sprite = Slm_All_Base_Faceless
 gloop_score_obj.gloop=id
 
+has_targeting_cursor = 0
+
 powerUp1=0
 powerUp2=0
 powerUp3=0

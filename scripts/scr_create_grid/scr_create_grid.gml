@@ -79,7 +79,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		
 		scr_set_slime_color(gloopInst,gloop_color)  //now this is only needed for slime pathway.  Hopefully this can be disabled soon
 		show_debug_message(gloopInst.gloop_color);
-		inst.sprite_index = scr_get_slime_trail(0, gloopInst.gloop_color)
+		inst.sprite_index = scr_get_slime_trail(0)
 		inst.depth=gloopInst.depth+2
 		gloopInst.current_grid_number=inst
 	}
