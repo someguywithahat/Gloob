@@ -10,9 +10,9 @@ Sprite Request ideas:
 
 
 Tom's upcoming TODO list:
-	Redo total score calculation.  The current method is incredibly slow.  Difficaulty: 1/5
+	DONE! ---Redo total score calculation.  The current method is incredibly slow.  Difficaulty: 1/5
 	
-	Research and implement Sprite shaders so that we can use a single Gloop for everything.  This will dramatically simplify spriting. Difficaulty: 4/5
+	DONE! ---Research and implement Sprite shaders so that we can use a single Gloop for everything.  This will dramatically simplify spriting. Difficaulty: 4/5
 	
 	Create a better menu system that can be called in game and dynamically controls all settings. Difficaulty: 5/5
 		The menu will need different object types like sliders, toggles, and drop-downs. 

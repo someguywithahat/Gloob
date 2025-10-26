@@ -267,13 +267,16 @@ if ismoving=1 {
 		
 		grid_x=next_inst.grid_x
 		grid_y=next_inst.grid_y
-		gloop_score++;
+		
+		//Add gloop score and remaining grid value
+		//gloop_score++;
+		controller.remaining_grid--
+		gloop_score_obj.gloop_score++
 		
 		var snd = audio_play_sound(snd_slime_move, 1, false);
 		audio_sound_pitch(snd, random_range(0.9, 1.2));
 		audio_sound_gain(snd, random_range(0.8, 1.0), 0);
 		
-		gloop_score_obj.gloop_score++
 		
 		//scr_draw_score(260,20,100)
 		

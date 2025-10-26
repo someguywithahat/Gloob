@@ -74,8 +74,8 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 			gloop_color=gloop_color_index
 		else gloop_color=irandom_range(0,7)
 		
-		//scr_set_slime_color(gloopInst,irandom_range(1,8))
-		scr_set_slime_color(gloopInst,gloop_color)
+		
+		scr_set_slime_color(gloopInst,gloop_color)  //now this is only needed for slime pathway.  Hopefully this can be disabled soon
 		show_debug_message(gloopInst.gloop_color);
 		inst.sprite_index = scr_get_slime_trail(0, gloopInst.gloop_color)
 		inst.depth=gloopInst.depth+2
@@ -115,5 +115,46 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 
 
 
+/* TODO - Loop through the code to prevent objects from spawning on eachother.
+2 examples of ways to do this:
 
+----------------------------------------
+
+var max_i = array_length(grid_array);
+var max_j = array_length(grid_array[0]);
+
+repeat (1000) { // safety loop to prevent infinite searching
+    var i = irandom(max_i - 1);
+    var j = irandom(max_j - 1);
+    if (grid_array[i][j] != 1) {
+        show_debug_message("Found free cell: " + string(i) + "," + string(j));
+        break; // stop when found
+    }
+}
+
+----------------------------------------
+
+var available = [];
+for (var i = 0; i < array_length(grid_array); i++) {
+    for (var j = 0; j < array_length(grid_array[i]); j++) {
+        if (grid_array[i][j] != 1) {
+            array_push(available, [i, j]);
+        }
+    }
+}
+
+if (array_length(available) > 0) {
+    var choice = choose(available);
+    var i = choice[0];
+    var j = choice[1];
+    show_debug_message("Found free cell: " + string(i) + "," + string(j));
+}
+
+----------------------------------------
+
+
+
+
+
+*/
 

@@ -82,6 +82,7 @@
     {"id":{"name":"scr_get_jump_speed","path":"scripts/scr_get_jump_speed/scr_get_jump_speed.yy",},},
     {"id":{"name":"scr_get_jump_sprite","path":"scripts/scr_get_jump_sprite/scr_get_jump_sprite.yy",},},
     {"id":{"name":"scr_get_weighted_grid_number","path":"scripts/scr_get_weighted_grid_number/scr_get_weighted_grid_number.yy",},},
+    {"id":{"name":"scr_save_settings","path":"scripts/scr_save_settings/scr_save_settings.yy",},},
     {"id":{"name":"scr_set_slime_color","path":"scripts/scr_set_slime_color/scr_set_slime_color.yy",},},
     {"id":{"name":"scr_set_slime_trail","path":"scripts/scr_set_slime_trail/scr_set_slime_trail.yy",},},
     {"id":{"name":"scr_spawn_flower","path":"scripts/scr_spawn_flower/scr_spawn_flower.yy",},},

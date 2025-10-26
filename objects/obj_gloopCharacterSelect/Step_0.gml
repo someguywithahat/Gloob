@@ -1,6 +1,26 @@
 
 sleep_counter++
 
+////rainbow slime logic
+//rainbow_timer++
+//if rainbow_timer>20{
+//	rainbow_timer=0
+//	if gloop_color=5
+//		gloop_color=2
+//	else if gloop_color=2
+//		gloop_color=7
+//	else if gloop_color=7
+//		gloop_color=2
+//	else if gloop_color=2
+//		gloop_color=1
+//	else if gloop_color=1
+//		gloop_color=4
+//	else if gloop_color=4
+//		gloop_color=5
+//	else gloop_color=0	
+//}
+
+
 if sleep_counter>sleep_timer and selected=0{
 	sprite_index=s_sleep
 	if yawn_counter=0{

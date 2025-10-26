@@ -28,7 +28,7 @@ music_playing = false;
 
 target_obj=noone
 
-player_color = array_create(8,-1)
+player_color = array_create(10,-1)
 
 grid_refs = noone
 

@@ -20,6 +20,14 @@ if (keyboard_check_pressed(vk_f11)) {
 if grid_refs == noone and room == rm_gameScreen{
 	target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
 	grid_refs = scr_setup_grid(rows, cols, spacing, start_x, start_y, number_of_players)
+	
+	//Set inital count of remaining numbers
+	remaining_grid=0
+	with(obj_gridNumber)
+	{
+		if wall=0
+			other.remaining_grid+=activeNumber
+	}
 }
 
 
@@ -50,6 +58,7 @@ if (keyboard_check_pressed(ord("T")) and room <> rm_titleScreen) {
 //Menu buttons
 if(clicked_quickstart=1){
 	clicked_quickstart=-1
+	scr_load_settings()
 	room_goto(rm_gameScreen)
 }
 else if(clicked_character_select=1){

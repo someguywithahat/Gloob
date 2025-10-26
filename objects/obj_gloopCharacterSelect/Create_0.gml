@@ -12,3 +12,5 @@ image_xscale=2
 image_yscale=2
 
 yawn_counter = 1
+
+rainbow_timer = 0

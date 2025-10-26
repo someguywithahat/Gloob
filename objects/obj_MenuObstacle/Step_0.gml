@@ -9,7 +9,9 @@ if (mouse_check_button_pressed(mb_left)) {
 			controllerID.settings_obstacles+=3
 			
 			var grrrr_snd = audio_play_sound(snd_slm_grrrrr, 1, false);
-			audio_sound_pitch(grrrr_snd, random_range(1, 1.3));
+			//Grumble gets lower the more challanging we make it.
+			var grrrr_pitch = 1-(controllerID.settings_obstacles/30)			
+			audio_sound_pitch(grrrr_snd, grrrr_pitch);
 			audio_sound_gain(grrrr_snd, random_range(0.8, 1.0), 0);	
 		}
 		else{

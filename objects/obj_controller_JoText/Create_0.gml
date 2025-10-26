@@ -2,15 +2,17 @@ xx = 320
 yy = 300
 spacer = 75
 
-label_menu1="START COOP GAME";
-xx_menu1=200
-yy_menu1=500
+//label_menu1="START COOP GAME";
+//xx_menu1=200
+//yy_menu1=500
 
-label_menu2="START VS GAME";
-xx_menu2=860
-yy_menu2=500
+//label_menu2="START VS GAME";
+//xx_menu2=860
+//yy_menu2=500
 
-
+clicked_coop = -1
+clicked_vs = -1
+clicked_save_defaults = -1
 
 player_count = 0
 
