@@ -1,6 +1,7 @@
+var controller = global.controller;
+var controller_current_player = controller.current_player
 
-
-if ismoving==0
+if ismoving==0 and player_number <> controller_current_player and alive=1
 	idletime++
 	
 	
@@ -67,8 +68,10 @@ if sprite_index=s_sleep and (image_index =10) {
 }
 
 
-//draw_self()
 
+
+
+/* Palette swap shader happens last*/
 
 
 // Start shader

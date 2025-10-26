@@ -30,7 +30,7 @@ gridNumberPrevY=0
 gloop_score=0
 
 idletime=1
-sleeptime=36000
+sleeptime=20
 
 pickup_counter = 0;
 pickup_target = 0;
