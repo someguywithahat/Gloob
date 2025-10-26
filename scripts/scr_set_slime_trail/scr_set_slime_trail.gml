@@ -18,7 +18,7 @@ function scr_set_slime_trail(target, derX, derY, prev_derX, prev_derY, entering,
 	
 	if move_angle=0 and prev_derX=0 and prev_derY=0
 	{
-		show_debug_message("Not updating trail.  Sprite is jumping")
+		//show_debug_message("Not updating trail.  Sprite is jumping")
 		return
 	}
 	//Sprite is jumping with no trail

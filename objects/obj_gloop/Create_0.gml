@@ -30,7 +30,7 @@ gridNumberPrevY=0
 gloop_score=0
 
 idletime=1
-sleeptime=360
+sleeptime=36000
 
 pickup_counter = 0;
 pickup_target = 0;
@@ -65,6 +65,9 @@ s_roll = Slm_Grn_Move_Up_roll
 s_roll_R = Slm_Grn_Roll_R
 s_slurp = Slm_Grn_Move_Side_Slurp
 
+
+sprite_prefetch(spr_palette_index);
+sprite_prefetch(spr_palette_index_red);
 
 ///// Create Event - obj_slime
 //ps = part_system_create();
