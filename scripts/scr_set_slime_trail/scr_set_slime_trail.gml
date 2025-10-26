@@ -155,11 +155,20 @@ function scr_get_slime_trail(trail_type){
 		
 	var trail_sprite = Trl_Grn_Spot_Lg
 	switch(trail_type){
-		case(0): trail_sprite=Trl_Grn_Spot_Lg; break;
+		//case(0): trail_sprite=Trl_Grn_Spot_Lg; break;
 		case(1): trail_sprite=Trl_Grn_End; break;
 		case(2): trail_sprite=Trl_Grn_Mid; break;
 		case(3): trail_sprite=Trl_Grn_Corner; break;
 		default: trail_sprite=Trl_Grn_Corner; break;
+	}
+	if trail_type=0{
+		var randomSpot = irandom_range(1,3)
+		if randomSpot=1
+			trail_sprite=Trl_Grn_Spot_Lg
+		else if randomSpot=2
+			trail_sprite=Trl_Grn_Spot_O
+		else trail_sprite=Trl_Grn_Spot_Sm
+		
 	}
 	
 	////This was a case statement but gamemaker refused to cooperate 
