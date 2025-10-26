@@ -180,7 +180,7 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 			isrolling=1
 		
 		//Update the previous slime trail
-		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color)
+		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)
 		
 	}
 	else if selected_grid.activeNumber=0
@@ -290,7 +290,7 @@ if ismoving=1 {
 			idletime=0
 			derX=0
 			derY=0		
-			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color)
+			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 			
 			with(obj_gridFlower){
 				image_index++	
@@ -300,7 +300,7 @@ if ismoving=1 {
 		}
 		else
 		{
-			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color)
+			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 			next_target_x = grid_x + derX
 			next_target_y = grid_y + derY
 			

@@ -74,6 +74,8 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 			gloop_color=gloop_color_index
 		else gloop_color=irandom_range(0,7)
 		
+		inst.gloop_color_index=gloop_color
+		
 		
 		scr_set_slime_color(gloopInst,gloop_color)  //now this is only needed for slime pathway.  Hopefully this can be disabled soon
 		show_debug_message(gloopInst.gloop_color);

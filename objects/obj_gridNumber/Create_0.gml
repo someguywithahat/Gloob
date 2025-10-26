@@ -7,7 +7,7 @@ activeNumber=1
 wall=0
 
 trail_rotation = 0
-
+gloop_color_index=2
 
 
 image_speed=0
