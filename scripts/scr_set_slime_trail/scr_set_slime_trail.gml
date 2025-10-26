@@ -152,7 +152,7 @@ function scr_rotate_sprite(target, rotate_amount){
 function scr_get_slime_trail(trail_type, color){
 	
 		
-	var trail_sprite = Trl_Grn_Spot
+	var trail_sprite = Trl_Grn_Spot_Lg
 	
 	//This was a case statement but gamemaker refused to cooperate 
 	if color=="black"{
@@ -175,7 +175,7 @@ function scr_get_slime_trail(trail_type, color){
 	}
 	else if color=="green"{
 			switch(trail_type){
-				case(0): trail_sprite=Trl_Grn_Spot; break;
+				case(0): trail_sprite=Trl_Grn_Spot_Lg; break;
 				case(1): trail_sprite=Trl_Grn_End; break;
 				case(2): trail_sprite=Trl_Grn_Mid; break;
 				case(3): trail_sprite=Trl_Grn_Corner; break;

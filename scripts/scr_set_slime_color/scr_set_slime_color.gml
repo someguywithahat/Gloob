@@ -47,7 +47,7 @@ function scr_set_slime_color(target, color_num){
 		variable_instance_set(target, "s_trl_corner", Trl_Grn_Corner);
 		variable_instance_set(target, "s_trl_end", Trl_Grn_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Grn_Mid);
-		variable_instance_set(target, "s_trl_spot", Trl_Grn_Spot);
+		variable_instance_set(target, "s_trl_spot", Trl_Grn_Spot_Lg);
 		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Grn_Idol);
 	}
 	else if color_num=3
