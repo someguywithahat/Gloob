@@ -72,10 +72,11 @@ function scr_set_slime_trail(target, derX, derY, prev_derX, prev_derY, entering,
 			rotate=3
 	}
 
-	trail_sprite = scr_get_slime_trail(trail_type,color)
+	trail_sprite = scr_get_slime_trail(trail_type)
 	target.sprite_index=trail_sprite
 	scr_rotate_sprite(target,rotate)
 	target.image_speed=1
+	target.gloop_color_index=color
 
 }
 
@@ -149,84 +150,91 @@ function scr_rotate_sprite(target, rotate_amount){
 	trail_type=2 -- Trail Mid
 	trail_type=3 -- Trail Corner
 */
-function scr_get_slime_trail(trail_type, color){
+function scr_get_slime_trail(trail_type){
 	
 		
 	var trail_sprite = Trl_Grn_Spot_Lg
+	switch(trail_type){
+		case(0): trail_sprite=Trl_Grn_Spot_Lg; break;
+		case(1): trail_sprite=Trl_Grn_End; break;
+		case(2): trail_sprite=Trl_Grn_Mid; break;
+		case(3): trail_sprite=Trl_Grn_Corner; break;
+		default: trail_sprite=Trl_Grn_Corner; break;
+	}
 	
-	//This was a case statement but gamemaker refused to cooperate 
-	if color=="black"{
-			switch(trail_type){
-				case(0): trail_sprite=Trl_Blk_Spot; break;
-				case(1): trail_sprite=Trl_Blk_End; break;
-				case(2): trail_sprite=Trl_Blk_Mid; break;
-				case(3): trail_sprite=Trl_Blk_Corner; break;
-				default: trail_sprite=Trl_Blk_Corner; break;
-			}
-	}
-	else if color=="blue"{
-			switch(trail_type){
-				case(0): trail_sprite=Trl_Blu_Spot; break;
-				case(1): trail_sprite=Trl_Blu_End; break;
-				case(2): trail_sprite=Trl_Blu_Mid; break;
-				case(3): trail_sprite=Trl_Blu_Corner; break;
-				default: trail_sprite=Trl_Blu_Corner; break;
-			}
-	}
-	else if color=="green"{
-			switch(trail_type){
-				case(0): trail_sprite=Trl_Grn_Spot_Lg; break;
-				case(1): trail_sprite=Trl_Grn_End; break;
-				case(2): trail_sprite=Trl_Grn_Mid; break;
-				case(3): trail_sprite=Trl_Grn_Corner; break;
-				default: trail_sprite=Trl_Grn_Corner; break;
-			}
-	}
-	else if color=="orange"{
-			switch(trail_type){
-				case(0): trail_sprite=Trl_Orn_Spot; break;
-				case(1): trail_sprite=Trl_Orn_End; break;
-				case(2): trail_sprite=Trl_Orn_Mid; break;
-				case(3): trail_sprite=Trl_Orn_Corner; break;
-				default: trail_sprite=Trl_Orn_Corner; break;
-			}
-	}
-	else if color=="purple"{
-			switch(trail_type){
-				case(0): trail_sprite=Trl_Pur_Spot; break;
-				case(1): trail_sprite=Trl_Pur_End; break;
-				case(2): trail_sprite=Trl_Pur_Mid; break;
-				case(3): trail_sprite=Trl_Pur_Corner; break;
-				default: trail_sprite=Trl_Pur_Corner; break;
-			}
-	}
-	else if color=="red"{
-			switch(trail_type){
-				case(0): trail_sprite=Trl_Red_Spot; break;
-				case(1): trail_sprite=Trl_Red_End; break;
-				case(2): trail_sprite=Trl_Red_Mid; break;
-				case(3): trail_sprite=Trl_Red_Corner; break;
-				default: trail_sprite=Trl_Red_Corner; break;
-			}
-	}
-	else if color=="white"{
-			switch(trail_type){
-				case(0): trail_sprite=Trl_Wht_Spot; break;
-				case(1): trail_sprite=Trl_Wht_End; break;
-				case(2): trail_sprite=Trl_Wht_Mid; break;
-				case(3): trail_sprite=Trl_Wht_Corner; break;
-				default: trail_sprite=Trl_Wht_Corner; break;
-			}
-	}
-	else if color=="yellow"{
-			switch(trail_type){
-				case(0): trail_sprite=Trl_Yel_Spot; break;
-				case(1): trail_sprite=Trl_Yel_End; break;
-				case(2): trail_sprite=Trl_Yel_Mid; break;
-				case(3): trail_sprite=Trl_Yel_Corner; break;
-				default: trail_sprite=Trl_Yel_Corner; break;
-			}
-	}
+	////This was a case statement but gamemaker refused to cooperate 
+	//if color=="black"{
+	//		switch(trail_type){
+	//			case(0): trail_sprite=Trl_Blk_Spot; break;
+	//			case(1): trail_sprite=Trl_Blk_End; break;
+	//			case(2): trail_sprite=Trl_Blk_Mid; break;
+	//			case(3): trail_sprite=Trl_Blk_Corner; break;
+	//			default: trail_sprite=Trl_Blk_Corner; break;
+	//		}
+	//}
+	//else if color=="blue"{
+	//		switch(trail_type){
+	//			case(0): trail_sprite=Trl_Blu_Spot; break;
+	//			case(1): trail_sprite=Trl_Blu_End; break;
+	//			case(2): trail_sprite=Trl_Blu_Mid; break;
+	//			case(3): trail_sprite=Trl_Blu_Corner; break;
+	//			default: trail_sprite=Trl_Blu_Corner; break;
+	//		}
+	//}
+	//else if color=="green"{
+	//		switch(trail_type){
+	//			case(0): trail_sprite=Trl_Grn_Spot_Lg; break;
+	//			case(1): trail_sprite=Trl_Grn_End; break;
+	//			case(2): trail_sprite=Trl_Grn_Mid; break;
+	//			case(3): trail_sprite=Trl_Grn_Corner; break;
+	//			default: trail_sprite=Trl_Grn_Corner; break;
+	//		}
+	//}
+	//else if color=="orange"{
+	//		switch(trail_type){
+	//			case(0): trail_sprite=Trl_Orn_Spot; break;
+	//			case(1): trail_sprite=Trl_Orn_End; break;
+	//			case(2): trail_sprite=Trl_Orn_Mid; break;
+	//			case(3): trail_sprite=Trl_Orn_Corner; break;
+	//			default: trail_sprite=Trl_Orn_Corner; break;
+	//		}
+	//}
+	//else if color=="purple"{
+	//		switch(trail_type){
+	//			case(0): trail_sprite=Trl_Pur_Spot; break;
+	//			case(1): trail_sprite=Trl_Pur_End; break;
+	//			case(2): trail_sprite=Trl_Pur_Mid; break;
+	//			case(3): trail_sprite=Trl_Pur_Corner; break;
+	//			default: trail_sprite=Trl_Pur_Corner; break;
+	//		}
+	//}
+	//else if color=="red"{
+	//		switch(trail_type){
+	//			case(0): trail_sprite=Trl_Red_Spot; break;
+	//			case(1): trail_sprite=Trl_Red_End; break;
+	//			case(2): trail_sprite=Trl_Red_Mid; break;
+	//			case(3): trail_sprite=Trl_Red_Corner; break;
+	//			default: trail_sprite=Trl_Red_Corner; break;
+	//		}
+	//}
+	//else if color=="white"{
+	//		switch(trail_type){
+	//			case(0): trail_sprite=Trl_Wht_Spot; break;
+	//			case(1): trail_sprite=Trl_Wht_End; break;
+	//			case(2): trail_sprite=Trl_Wht_Mid; break;
+	//			case(3): trail_sprite=Trl_Wht_Corner; break;
+	//			default: trail_sprite=Trl_Wht_Corner; break;
+	//		}
+	//}
+	//else if color=="yellow"{
+	//		switch(trail_type){
+	//			case(0): trail_sprite=Trl_Yel_Spot; break;
+	//			case(1): trail_sprite=Trl_Yel_End; break;
+	//			case(2): trail_sprite=Trl_Yel_Mid; break;
+	//			case(3): trail_sprite=Trl_Yel_Corner; break;
+	//			default: trail_sprite=Trl_Yel_Corner; break;
+	//		}
+	//}
 	return trail_sprite
 		
 }
