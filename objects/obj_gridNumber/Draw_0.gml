@@ -2,6 +2,7 @@ if has_powerUP>0
 	draw_sprite(spr_PowerUp,has_powerUP-1,x,y)
 	
 	
+else{
 	
 // Start shader
 shader_set(shd_palette_swap);
@@ -27,3 +28,4 @@ draw_self();
 
 // End shader
 shader_reset();
+}

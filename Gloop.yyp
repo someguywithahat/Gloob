@@ -134,6 +134,7 @@
     {"id":{"name":"Lg_Shrm_wht","path":"sprites/Lg_Shrm_wht/Lg_Shrm_wht.yy",},},
     {"id":{"name":"Lg_Shrm_yel","path":"sprites/Lg_Shrm_yel/Lg_Shrm_yel.yy",},},
     {"id":{"name":"Numbers_Box","path":"sprites/Numbers_Box/Numbers_Box.yy",},},
+    {"id":{"name":"Numbers_Powerup","path":"sprites/Numbers_Powerup/Numbers_Powerup.yy",},},
     {"id":{"name":"Numbers","path":"sprites/Numbers/Numbers.yy",},},
     {"id":{"name":"Obs_Stump","path":"sprites/Obs_Stump/Obs_Stump.yy",},},
     {"id":{"name":"ripple","path":"sprites/ripple/ripple.yy",},},
