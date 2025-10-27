@@ -73,7 +73,7 @@ s_slurp = Slm_Grn_Move_Side_Slurp
 
 
 sprite_prefetch(spr_palette_index);
-sprite_prefetch(spr_palette_index_red);
+//sprite_prefetch(spr_palette_index_red);
 
 ///// Create Event - obj_slime
 //ps = part_system_create();
