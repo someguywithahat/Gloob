@@ -2,10 +2,8 @@ varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
 uniform sampler2D palette_orig; // spr_palette_index
-uniform sampler2D palette_swap_old; // spr_palette_index_red
-uniform sampler2D palette_swap_new; // spr_palette_index_red
+uniform sampler2D palette_swap; // spr_palette_index_red
 uniform float color_count;      // how many colors in the palette
-uniform float color_merge;      // 0.0->1.0  Color merge pecent
 
 void main() {
     vec4 base_color = texture2D(gm_BaseTexture, v_vTexcoord);
@@ -22,15 +20,11 @@ void main() {
 		//float u = (i + 0.5) ;
 
         vec4 orig_col = texture2D(palette_orig, vec2(u, 0.5));
-        vec4 swap_col_old = texture2D(palette_swap_old, vec2(u, 0.5));
-        vec4 swap_col_new = texture2D(palette_swap_new, vec2(u, 0.5));
-		
-		//vec3 finalColor = mix(orig_col, swap_col, color_merge);
+        vec4 swap_col = texture2D(palette_swap, vec2(u, 0.5));
 
         // Compare base color to original palette color
         if (distance(base_color.rgb, orig_col.rgb) < 0.02) {
-            //gl_FragColor = vec4(swap_col.rgb, base_color.a);
-            gl_FragColor = mix(swap_col_old, swap_col_new, color_merge);
+            gl_FragColor = vec4(swap_col.rgb, base_color.a);
             //gl_FragColor = vec4(1,1,1, 1); //white
             return;
         }

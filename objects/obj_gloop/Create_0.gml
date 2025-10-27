@@ -57,9 +57,10 @@ powerUp1=0
 powerUp2=0
 powerUp3=0
 
-puBonk=3
-
-
+puBonk=0
+rainbow_power=0
+rainbow_delay=0.0
+gloop_color_index_old=0
 
 
 
