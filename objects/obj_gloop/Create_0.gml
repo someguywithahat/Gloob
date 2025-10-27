@@ -52,9 +52,13 @@ gloop_score_obj.gloop=id
 
 has_targeting_cursor = 0
 
+//Power Up Code
 powerUp1=0
 powerUp2=0
 powerUp3=0
+
+puBonk=3
+
 
 
 

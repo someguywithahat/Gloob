@@ -306,12 +306,19 @@ if ismoving=1 {
 			next_target_y = grid_y + derY
 			
 			next_inst = scr_get_grid_id(next_target_x, next_target_y)
-			if next_inst.activeNumber=0 or next_inst.wall=1
+			if next_inst.activeNumber=0 or next_inst.wall=1 
 			{
-				sprite_index=s_death 
-				image_speed=1
-				audio_play_sound(snd_bonk, 1, false);
-				alive=0
+				if puBonk>0
+				{
+					puBonk--
+					audio_play_sound(snd_bonk, 1, false);
+				}
+				else {
+					sprite_index=s_death 
+					image_speed=1
+					audio_play_sound(snd_bonk, 1, false);
+					alive=0
+				}
 				ismoving=0
 				isjumping=0
 				isrolling=0
