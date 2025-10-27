@@ -25,6 +25,8 @@ if isjumping=1{
 
 	sprite_index=s_jump
 	image_speed = 0; 
+	
+	//We are starting with the 4th sprite and looping through 8 images
 	image_index = 4 + scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)	
 } 
 else if isrolling=1{
@@ -37,11 +39,7 @@ else if isrolling=1{
 	if derY=-1
 		image_index = 2 + scr_get_jump_sprite(gridNumberY,y,gridNumberPrevY,6)	
 	else if derY=1
-		image_index = 2 + scr_get_jump_sprite(gridNumberPrevY,y,gridNumberY,6)	
-	//else if derX=-1
-	//	image_index = 1 + scr_get_jump_sprite(gridNumberPrevX,x,gridNumberX,5)
-	//else if derX=1	
-	//	image_index = 1 + scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,5)	
+		image_index = 2 + scr_get_jump_sprite(gridNumberPrevY,y,gridNumberY,6)		
 	else 
 	{		
 		image_speed=1*derX
@@ -68,7 +66,14 @@ if sprite_index=s_sleep and (image_index =10) {
 }
 
 
-if rainbow_power=1 or powerUp1>1{
+
+
+
+
+
+
+
+if rainbow_power=1 or powerUp1=2 or powerUp2=2 or powerUp3=2{
 	rainbow_delay+=.05
 	if rainbow_delay>1{
 		gloop_color_index_old=gloop_color_index

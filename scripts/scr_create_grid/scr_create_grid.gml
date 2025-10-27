@@ -39,7 +39,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 				//inst.activeNumber=0
 				inst.my_number=0
 				inst.wall=1
-				inst.sprite_index = spr_gridOutline
+				//inst.sprite_index = spr_gridOutline
 			}
 			
             // Store reference in the array

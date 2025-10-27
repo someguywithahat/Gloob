@@ -17,7 +17,7 @@ start_x = 256;
 start_y = -32;
 spacing = 32;
 
-score_xx=1120
+score_xx=1220
 score_yy=20
 
 number_of_players = 1
