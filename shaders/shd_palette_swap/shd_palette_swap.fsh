@@ -23,12 +23,12 @@ void main() {
         vec4 orig_col = texture2D(palette_orig, vec2(u, 0.5));
         vec4 swap_col = texture2D(palette_swap, vec2(u, 0.5));
 		
-		vec3 finalColor = mix(orig_col, swap_col, color_merge);
+		//vec3 finalColor = mix(orig_col, swap_col, color_merge);
 
         // Compare base color to original palette color
         if (distance(base_color.rgb, orig_col.rgb) < 0.02) {
-            //gl_FragColor = vec4(swap_col.rgb, base_color.a);
-            gl_FragColor = vec4(finalColor, base_color.a);
+            gl_FragColor = vec4(swap_col.rgb, base_color.a);
+            //gl_FragColor = vec4(finalColor, base_color.a);
             //gl_FragColor = vec4(1,1,1, 1); //white
             return;
         }
