@@ -255,6 +255,16 @@ if ismoving=1 {
 			else powerUp3=next_inst.has_powerUP
 			next_inst.has_powerUP=0
 			audio_play_sound(snd_slm_chomp, 1, false);	
+			
+			
+			puBonk=0
+			if powerUp1=1
+				puBonk+=1
+			if powerUp2=1
+				puBonk+=1
+			if powerUp3=1
+				puBonk+=1
+				
 		}
 		
 		current_grid_number = next_inst
@@ -277,7 +287,11 @@ if ismoving=1 {
 		audio_sound_pitch(snd, random_range(0.9, 1.2));
 		audio_sound_gain(snd, random_range(0.8, 1.0), 0);
 		
-		
+		if isjumping=1{
+			var splat = instance_create_layer(x, y, "Instances", obj_effect_splat);
+			splat.gloop_color_index = gloop_color_index
+
+		}
 		//scr_draw_score(260,20,100)
 		
 		if grid_x=target_x and grid_y=target_y
@@ -312,6 +326,13 @@ if ismoving=1 {
 				{
 					puBonk--
 					audio_play_sound(snd_bonk, 1, false);
+					if powerUp3 =1
+						powerUp3=0
+					else if powerUp2=1
+						powerUp2=0
+					else if powerUp1 = 1
+						powerUp1=0
+					scr_powerup_update(id)
 				}
 				else {
 					sprite_index=s_death 

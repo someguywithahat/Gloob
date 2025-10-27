@@ -7,8 +7,8 @@ if room == rm_gameScreen{
 	scr_draw_score(score_xx+80, score_yy, grid_size)
 	
 	for(var s=0; s<7; s++){
-		draw_sprite(spr_gridOutline_Lg,0,start_x-(spacing*2),128*s)
-		draw_sprite(spr_gridOutline_Lg,0,start_x +(cols*spacing),128*s)
+		draw_sprite(spr_gridOutline_Lg,0,start_x-(spacing),128*s)
+		draw_sprite(spr_gridOutline_Lg,0,start_x +((cols-1)*spacing),128*s)
 		
 	}
 
