@@ -87,6 +87,7 @@
     {"id":{"name":"scr_set_slime_trail","path":"scripts/scr_set_slime_trail/scr_set_slime_trail.yy",},},
     {"id":{"name":"scr_spawn_flower","path":"scripts/scr_spawn_flower/scr_spawn_flower.yy",},},
     {"id":{"name":"shd_palette_debug","path":"shaders/shd_palette_debug/shd_palette_debug.yy",},},
+    {"id":{"name":"shd_palette_shift","path":"shaders/shd_palette_shift/shd_palette_shift.yy",},},
     {"id":{"name":"shd_palette_swap","path":"shaders/shd_palette_swap/shd_palette_swap.yy",},},
     {"id":{"name":"snd_background1","path":"sounds/snd_background1/snd_background1.yy",},},
     {"id":{"name":"snd_bonk","path":"sounds/snd_bonk/snd_bonk.yy",},},
