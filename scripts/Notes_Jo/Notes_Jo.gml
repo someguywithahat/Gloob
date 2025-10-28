@@ -11,3 +11,6 @@ Should teleport take your turn?
 Modular sign parts?
 unlockable goal?
 unlockable powerups?
+delete animation frames
+letter outlines
+
