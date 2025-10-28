@@ -33,7 +33,7 @@
   ],
   "name":"Slm_Grn_Move_Up_Jump_Acs",
   "nineSlice":null,
-  "origin":0,
+  "origin":9,
   "parent":{
     "name":"Slime Sprites",
     "path":"folders/Sprites/Slime Sprites.yy",
@@ -109,7 +109,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":0,
-    "yorigin":0,
+    "yorigin":12,
   },
   "swatchColours":[
     4278190335,4278255615,4294967295,4283182095,4291806454,4289891452,4278190080,4284885054,4284891424,4285034529,
