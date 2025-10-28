@@ -7,6 +7,27 @@ gloop_score_obj.gloop_color_index = gloop_color_index
 
 
 
+//if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
+if puBonk>0
+{
+	s_idol = Slm_grn_idol_acs
+	s_sleep = Slm_Grn_Sleep_Acs
+	s_death = Slm_Grn_Death_Acs
+	s_jump = Slm_Grn_Move_Up_Jump_Acs
+	s_roll = Slm_Grn_Move_Up_roll_Acs
+	s_roll_R = Slm_Grn_Roll_R_Acs
+}
+else
+{
+	s_idol = Slm_Grn_Idol
+	s_sleep = Slm_Grn_Sleep
+	s_death = Slm_Grn_Death
+	s_jump = Slm_Grn_Move_Up_Jump_Old
+	s_roll = Slm_Grn_Move_Up_roll
+	s_roll_R = Slm_Grn_Roll_R
+}
+
+
 
 
 
@@ -16,7 +37,6 @@ if player_number <> controller_current_player
 if alive=0
 	return
 //Everything below only runs when it's your turn
-
 
 
 
@@ -258,11 +278,11 @@ if ismoving=1 {
 			
 			
 			puBonk=0
-			if powerUp1=1
+			if powerUp1=2
 				puBonk+=1
-			if powerUp2=1
+			if powerUp2=2
 				puBonk+=1
-			if powerUp3=1
+			if powerUp3=2
 				puBonk+=1
 				
 		}
@@ -326,11 +346,11 @@ if ismoving=1 {
 				{
 					puBonk--
 					audio_play_sound(snd_bonk, 1, false);
-					if powerUp3 =1
+					if powerUp3 =2
 						powerUp3=0
-					else if powerUp2=1
+					else if powerUp2=2
 						powerUp2=0
-					else if powerUp1 = 1
+					else if powerUp1 = 2
 						powerUp1=0
 					scr_powerup_update(id)
 				}

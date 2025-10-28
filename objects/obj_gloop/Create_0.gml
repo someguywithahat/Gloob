@@ -53,20 +53,27 @@ gloop_score_obj.gloop=id
 has_targeting_cursor = 0
 
 //Power Up Code
-powerUp1=0
+powerUp1=2
 powerUp2=0
 powerUp3=0
 
-puBonk=0
+puBonk=1
 rainbow_power=0
 rainbow_delay=0.0
 gloop_color_index_old=0
 
 
+s_idol = Slm_grn_idol_acs
+s_sleep = Slm_Grn_Sleep_Acs
+s_death = Slm_Grn_Death_Acs
+s_jump = Slm_Grn_Move_Up_Jump_Acs
+s_roll = Slm_Grn_Move_Up_roll_Acs
+s_roll_R = Slm_Grn_Roll_R_Acs
+//s_slurp = Slm_Grn_Move_Side_Slurp
 
-//s_idol = Slm_Grn_Idol
-//s_sleep = Slm_Grn_Sleep
-//s_death = Slm_Grn_Death
+s_idol = Slm_Grn_Idol
+s_sleep = Slm_Grn_Sleep
+s_death = Slm_Grn_Death
 s_jump = Slm_Grn_Move_Up_Jump_Old
 s_roll = Slm_Grn_Move_Up_roll
 s_roll_R = Slm_Grn_Roll_R

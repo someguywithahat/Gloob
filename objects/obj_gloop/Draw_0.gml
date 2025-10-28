@@ -73,7 +73,7 @@ if sprite_index=s_sleep and (image_index =10) {
 
 
 
-if rainbow_power=1 or powerUp1=2 or powerUp2=2 or powerUp3=2{
+if rainbow_power=1 or powerUp1=1 or powerUp2=1 or powerUp3=1{
 	rainbow_delay+=.05
 	if rainbow_delay>1{
 		gloop_color_index_old=gloop_color_index
