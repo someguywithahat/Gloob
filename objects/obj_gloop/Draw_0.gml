@@ -1,6 +1,32 @@
 var controller = global.controller;
 var controller_current_player = controller.current_player
 
+
+
+
+//if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
+if puBonk>0
+{
+	s_idol = Slm_grn_idol_acs
+	s_sleep = Slm_Grn_Sleep_Acs
+	s_death = Slm_Grn_Death_Acs
+	s_jump = Slm_Grn_Move_Up_Jump_Acs
+	s_roll = Slm_Grn_Move_Up_roll_Acs
+	s_roll_R = Slm_Grn_Roll_R_Acs
+show_debug_message(string(sprite_index) + " " + string(puBonk))
+}
+else
+{
+	s_idol = Slm_Grn_Idol
+	s_sleep = Slm_Grn_Sleep
+	s_death = Slm_Grn_Death
+	s_jump = Slm_Grn_Move_Up_Jump_Old
+	s_roll = Slm_Grn_Move_Up_roll
+	s_roll_R = Slm_Grn_Roll_R
+}
+
+
+
 if ismoving==0 and player_number <> controller_current_player and alive=1
 	idletime++
 	
@@ -11,7 +37,7 @@ if idletime>sleeptime and alive=1{
 	image_speed=1
 }
 
-if alive=0
+else if alive=0
 {
 	image_speed = 1;   
 	sprite_index = s_death;	
@@ -21,7 +47,7 @@ if alive=0
 	
 }
 
-if isjumping=1{
+else if isjumping=1{
 
 	sprite_index=s_jump
 	image_speed = 0; 
@@ -51,7 +77,7 @@ else if isrolling=1{
 }
 
 
-if sprite_index=s_sleep and (image_index > 50) and issleep=1 {
+else if sprite_index=s_sleep and (image_index > 50) and issleep=1 {
     image_index = 20;
 }
 else if sprite_index=s_sleep and (image_index >=61) and issleep=2 {
@@ -60,11 +86,14 @@ else if sprite_index=s_sleep and (image_index >=61) and issleep=2 {
 }
 else if sprite_index=s_sleep and issleep=2 and (image_index <=53) 
 	image_index=54
-if sprite_index=s_sleep and (image_index =10) {
+else if sprite_index=s_sleep and (image_index =10) {
 	var snd = audio_play_sound(snd_yawn, 1, false);
 	audio_sound_pitch(snd, random_range(0.9, 1.2));
 }
-
+else{
+    sprite_index=s_idol
+	image_speed=1
+}
 
 
 

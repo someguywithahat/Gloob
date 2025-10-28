@@ -7,26 +7,6 @@ gloop_score_obj.gloop_color_index = gloop_color_index
 
 
 
-//if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
-if puBonk>0
-{
-	s_idol = Slm_grn_idol_acs
-	s_sleep = Slm_Grn_Sleep_Acs
-	s_death = Slm_Grn_Death_Acs
-	s_jump = Slm_Grn_Move_Up_Jump_Acs
-	s_roll = Slm_Grn_Move_Up_roll_Acs
-	s_roll_R = Slm_Grn_Roll_R_Acs
-}
-else
-{
-	s_idol = Slm_Grn_Idol
-	s_sleep = Slm_Grn_Sleep
-	s_death = Slm_Grn_Death
-	s_jump = Slm_Grn_Move_Up_Jump_Old
-	s_roll = Slm_Grn_Move_Up_roll
-	s_roll_R = Slm_Grn_Roll_R
-}
-
 
 
 
@@ -353,6 +333,35 @@ if ismoving=1 {
 					else if powerUp1 = 2
 						powerUp1=0
 					scr_powerup_update(id)
+					
+					var oops = instance_create_layer(x, y, "Instances", obj_effect_dropped_hat);
+					if derX<>0
+						oops.xx*=derX
+					else 
+						oops.xx*=0.25
+						
+					
+					////if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
+					//if puBonk>0
+					//{
+					//	s_idol = Slm_grn_idol_acs
+					//	s_sleep = Slm_Grn_Sleep_Acs
+					//	s_death = Slm_Grn_Death_Acs
+					//	s_jump = Slm_Grn_Move_Up_Jump_Acs
+					//	s_roll = Slm_Grn_Move_Up_roll_Acs
+					//	s_roll_R = Slm_Grn_Roll_R_Acs
+					//}
+					//else
+					//{
+					//	s_idol = Slm_Grn_Idol
+					//	s_sleep = Slm_Grn_Sleep
+					//	s_death = Slm_Grn_Death
+					//	s_jump = Slm_Grn_Move_Up_Jump_Old
+					//	s_roll = Slm_Grn_Move_Up_roll
+					//	s_roll_R = Slm_Grn_Roll_R
+					//}
+
+						
 				}
 				else {
 					sprite_index=s_death 
