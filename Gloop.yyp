@@ -248,6 +248,7 @@
     {"id":{"name":"spr_grid7","path":"sprites/spr_grid7/spr_grid7.yy",},},
     {"id":{"name":"spr_grid8","path":"sprites/spr_grid8/spr_grid8.yy",},},
     {"id":{"name":"spr_gridField","path":"sprites/spr_gridField/spr_gridField.yy",},},
+    {"id":{"name":"spr_gridOutline_Lg_1","path":"sprites/spr_gridOutline_Lg_1/spr_gridOutline_Lg_1.yy",},},
     {"id":{"name":"spr_gridOutline_Lg","path":"sprites/spr_gridOutline_Lg/spr_gridOutline_Lg.yy",},},
     {"id":{"name":"spr_gridOutline","path":"sprites/spr_gridOutline/spr_gridOutline.yy",},},
     {"id":{"name":"spr_JoannesRoom","path":"sprites/spr_JoannesRoom/spr_JoannesRoom.yy",},},
