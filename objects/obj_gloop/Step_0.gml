@@ -75,16 +75,11 @@ if (ismoving=0)
 
 
 
-//if (keyboard_check_pressed(vk_space) and ismoving=0) {
-//	idletime=0
-//	sprite_index = Slm_Grn_Jump;	
-//	image_speed=1
-//	image_index=0
-//	y=y-64
-//	grid_y=grid_y-2
-//	if image_index>8
-//		image_speed=0
-//}
+//if (keyboard_check_pressed(vk_space) and (powerUp1=8 or powerUp2=8 or powerUp3=8 and ismoving=0)) {
+if (keyboard_check_pressed(vk_space)) {
+	isteleporting=1
+	//ismoving=1
+}
 //if sprite_index=Slm_Grn_Jump and image_index>12
 //{
 //	sprite_index=s_idol
@@ -185,9 +180,29 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 	}
 	else if selected_grid.activeNumber=0
 	{
-		//sprite_index=s_death 
-		alive=0
-		scr_end_turn()
+		if puBonk>0
+		{
+			puBonk--
+			audio_play_sound(snd_bonk, 1, false);
+			if powerUp3 =2
+				powerUp3=0
+			else if powerUp2=2
+				powerUp2=0
+			else if powerUp1 = 2
+				powerUp1=0
+			scr_powerup_update(id)
+			
+			var oops = instance_create_layer(x+16, y, "Instances", obj_effect_dropped_hat);
+			if derX<>0
+				oops.xx*=derX
+			else 
+				oops.xx*=0.25
+				
+		}
+		else {
+			audio_play_sound(snd_bonk, 1, false);
+			alive=0
+		}
 	}
 	
 }
@@ -334,38 +349,14 @@ if ismoving=1 {
 						powerUp1=0
 					scr_powerup_update(id)
 					
-					var oops = instance_create_layer(x, y, "Instances", obj_effect_dropped_hat);
+					var oops = instance_create_layer(x+16, y, "Instances", obj_effect_dropped_hat);
 					if derX<>0
 						oops.xx*=derX
 					else 
 						oops.xx*=0.25
 						
-					
-					////if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
-					//if puBonk>0
-					//{
-					//	s_idol = Slm_grn_idol_acs
-					//	s_sleep = Slm_Grn_Sleep_Acs
-					//	s_death = Slm_Grn_Death_Acs
-					//	s_jump = Slm_Grn_Move_Up_Jump_Acs
-					//	s_roll = Slm_Grn_Move_Up_roll_Acs
-					//	s_roll_R = Slm_Grn_Roll_R_Acs
-					//}
-					//else
-					//{
-					//	s_idol = Slm_Grn_Idol
-					//	s_sleep = Slm_Grn_Sleep
-					//	s_death = Slm_Grn_Death
-					//	s_jump = Slm_Grn_Move_Up_Jump_Old
-					//	s_roll = Slm_Grn_Move_Up_roll
-					//	s_roll_R = Slm_Grn_Roll_R
-					//}
-
-						
 				}
 				else {
-					sprite_index=s_death 
-					image_speed=1
 					audio_play_sound(snd_bonk, 1, false);
 					alive=0
 				}

@@ -63,6 +63,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		
 		var inst = grid_array[gloop_x,gloop_y]
 		inst.activeNumber=false
+		
 		//inst.sprite_index=Trl_Grn_Under //temporary fix
 		
 		var gloopInst = instance_create_layer(xx + x_offset, yy + y_offset, "Instances", obj_gloop);

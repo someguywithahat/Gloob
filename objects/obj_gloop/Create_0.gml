@@ -2,7 +2,7 @@ ismoving = 0;
 isjumping=0;
 isrolling=0;
 issleep=0
-
+isteleporting=0 //24-31
 //debug_int = 0
 
 player_number=1

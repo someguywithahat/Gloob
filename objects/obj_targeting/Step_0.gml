@@ -22,5 +22,5 @@ else
 	y = (grid_y*spacing) + offset_y	
 	//show_debug_message(string(grid_x) +" " +string(spacing)+" "+string(offset_x))
 	//show_debug_message(string(grid_y) +" " +string(spacing)+" "+string(offset_y))
-	show_debug_message(string(x)+" "+string(y))
+	//show_debug_message(string(x)+" "+string(y))
 }
