@@ -7,3 +7,7 @@ The roll animation one is weird, we may need to discus how to make it work or i 
 go ahead and delete the extra frames from teh movement files so we can clean up the code, it will also make accessories easier later to not have extra frames to work around, if your real nervous duplicate it first and add _org for original so we have it for later but i think its better to have the files clean. I can do this too but then you need to do the code and i dont know what you are using, maybe its easier to do side by side or on discord call.
 Now that we are doing the recolor thing we shoud probably discus our file names at some point, i think now that i get what is going to be needed we can get it more clear
 
+Should teleport take your turn?
+Modular sign parts?
+unlockable goal?
+unlockable powerups?

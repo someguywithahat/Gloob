@@ -27,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_gridOutline",
-    "path":"sprites/spr_gridOutline/spr_gridOutline.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
