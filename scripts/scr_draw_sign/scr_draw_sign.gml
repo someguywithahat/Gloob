@@ -1,4 +1,4 @@
-function scr_draw_sign(xx, yy, width, height, scale, hasChains)
+function scr_draw_sign(xx, yy, width, height, scale, hasChains, hasPost, hasFlowers)
 {
 	var tl=0
 	var t=1
@@ -53,16 +53,37 @@ function scr_draw_sign(xx, yy, width, height, scale, hasChains)
 	}
 	
 	if hasChains>0{
-		var chain2 = sWidth-1
-		
+		var chain2 = sWidth-1		
 		for( var c=1; c<=hasChains; c++)
 		{
 		
 			draw_sprite_ext(Signage, 6, xx+(1*spacer), yy-(c*spacer-8), scale, scale, 0, c_white, 1)
 			draw_sprite_ext(Signage, 6, xx+(chain2*spacer), yy-(c*spacer+-8), scale, scale, 0, c_white, 1)
-		}
-		
+		}		
 	}
+	
+	if hasPost>0{
+		var postLoc = (((sWidth+1)*spacer)/2)-(spacer/2)
+		for( var c=0; c<hasPost; c++)
+		{
+		
+			draw_sprite_ext(Signage, 10, xx+postLoc, yy+((sHeight+1+c)*spacer)-8, scale, scale, 0, c_white, 1)
+		}
+		draw_sprite_ext(Signage, 11, xx+postLoc, yy+((sHeight+1+hasPost)*spacer)-8, scale, scale, 0, c_white, 1)
+	}
+
+	
+	if hasFlowers>0{
+		if hasFlowers=1
+			hasFlowers=sHeight
+		var flowerLoc = ((sWidth)*spacer)
+		for( var h=0; h<=hasFlowers; h++)
+		{
+		
+			draw_sprite_ext(Signage, 8, xx+flowerLoc,  yy+h*spacer, scale, scale, 0, c_white, 1)
+		}
+	}
+
 
 
 }

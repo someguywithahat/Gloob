@@ -13,17 +13,17 @@ if room == rm_gameScreen{
 	}
 	
 	
-	for(var s=0; s<number_of_players; s++){
-		scr_draw_sign(5,20+((number_of_players-1-s)*95),200,60,1,2)
+	//for(var s=0; s<number_of_players; s++){
+	//	scr_draw_sign(5,20+((number_of_players-1-s)*95),200,60,1,2,0,0)
 		
-	}
+	//}
 	
 }
 
 
 if room== rm_titleScreen
 {
-	scr_draw_sign(500,410,340,140,2,2)
+	scr_draw_sign(500,410,340,140,2,0,2,4)
 	
 	clicked_quickstart=scr_draw_menu_item(600,440,"QUICKSTART",clicked_quickstart)	
 	clicked_character_select=scr_draw_menu_item(550,480,"CHARACTER SELECT",clicked_character_select)

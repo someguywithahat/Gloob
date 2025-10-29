@@ -10,3 +10,6 @@ player = 1
 xx=35
 yy=20
 depth=100
+
+
+hasVines = irandom_range(1,10)-7
