@@ -1,4 +1,4 @@
-function scr_draw_sign(xx, yy, width, height)
+function scr_draw_sign(xx, yy, width, height, scale)
 {
 	var tl=0
 	var t=1
@@ -12,7 +12,7 @@ function scr_draw_sign(xx, yy, width, height)
 	
 	
 	
-	var spacer = sprite_get_width(Signage)
+	var spacer = sprite_get_width(Signage)*scale
 	var sWidth = round(width/spacer)
 	var sHeight = round(height/spacer)
 	
@@ -25,29 +25,29 @@ function scr_draw_sign(xx, yy, width, height)
 			if h=0
 			{
 				if w=0
-					draw_sprite_ext(Signage, 0, xx+w*spacer, yy+h*spacer, 1, 1, 0, c_white, 1)
+					draw_sprite_ext(Signage, 0, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
 				else if w<sWidth
-					draw_sprite_ext(Signage, 1, xx+w*spacer, yy+h*spacer, 1, 1, 0, c_white, 1)
+					draw_sprite_ext(Signage, 1, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
 				else 
-					draw_sprite_ext(Signage, 0, xx+w*spacer+spacer, yy+h*spacer, -1, 1, 0, c_white, 1)
+					draw_sprite_ext(Signage, 0, xx+w*spacer+spacer, yy+h*spacer, -scale, scale, 0, c_white, 1)
 			}
 			else if h<sHeight
 			{
 				if w=0
-					draw_sprite_ext(Signage, 2, xx+w*spacer, yy+h*spacer, 1, 1, 0, c_white, 1)
+					draw_sprite_ext(Signage, 2, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
 				else if w<sWidth
-					draw_sprite_ext(Signage, 3, xx+w*spacer, yy+h*spacer, 1, 1, 0, c_white, 1)
+					draw_sprite_ext(Signage, 3, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
 				else 
-					draw_sprite_ext(Signage, 2, xx+w*spacer+spacer, yy+h*spacer, -1, 1, 0, c_white, 1)
+					draw_sprite_ext(Signage, 2, xx+w*spacer+spacer, yy+h*spacer, -scale, scale, 0, c_white, 1)
 			}
 			else 
 			{
 				if w=0
-					draw_sprite_ext(Signage, 4, xx+w*spacer, yy+h*spacer, 1, 1, 0, c_white, 1)
+					draw_sprite_ext(Signage, 4, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
 				else if w<sWidth
-					draw_sprite_ext(Signage, 5, xx+w*spacer, yy+h*spacer, 1, 1, 0, c_white, 1)
+					draw_sprite_ext(Signage, 5, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
 				else 
-					draw_sprite_ext(Signage, 4, xx+w*spacer+spacer, yy+h*spacer, -1, 1, 0, c_white, 1)
+					draw_sprite_ext(Signage, 4, xx+w*spacer+spacer, yy+h*spacer, -scale, scale, 0, c_white, 1)
 			}
 		}
 	}
