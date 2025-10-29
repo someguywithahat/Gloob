@@ -8,7 +8,7 @@ var controller_current_player = controller.current_player
 if puBonk>0
 {
 	s_idol = Slm_grn_idol_acs
-	s_sleep = Slm_Grn_Sleep_Acs
+	s_sleep = Spr_Slm_Sleep_Hat
 	s_death = Slm_Grn_Death_Acs
 	s_jump = Slm_Grn_Move_Up_Jump_Acs
 	s_roll = Slm_Grn_Move_Up_roll_Acs
