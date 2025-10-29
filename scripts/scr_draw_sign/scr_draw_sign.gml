@@ -1,11 +1,11 @@
 function scr_draw_sign(xx, yy, width, height, scale, hasChains, hasPost, hasFlowers)
 {
-	var tl=0
-	var t=1
-	var l=2
-	var m=3
-	var bl=4
-	var b=5
+	//var tl=0
+	//var t=1
+	//var l=2
+	//var m=3
+	//var bl=4
+	//var b=5
 	
 	//var width=500
 	//var height=200 
