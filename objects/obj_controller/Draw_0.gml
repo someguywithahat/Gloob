@@ -12,14 +12,13 @@ if room == rm_gameScreen{
 		
 	}
 
-
 	
 }
 
 
 if room== rm_titleScreen
 {
-
+	scr_draw_sign(520,420,340,140)
 	clicked_quickstart=scr_draw_menu_item(600,440,"QUICKSTART",clicked_quickstart)	
 	clicked_character_select=scr_draw_menu_item(550,480,"CHARACTER SELECT",clicked_character_select)
 	clicked_debugRoom=scr_draw_menu_item(1,1,"Debug Room",clicked_debugRoom)
