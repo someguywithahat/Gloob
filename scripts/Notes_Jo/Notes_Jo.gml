@@ -14,4 +14,7 @@ delete animation frames
 letter outlines
 TURNS
 MOVING OBSTICLES / ENEMIES
+chain twist
+vine grow
+trail form
 

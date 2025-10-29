@@ -1,0 +1,15 @@
+Numbers should color shift to match the power ups which can be overlayed on top (see top left of animation test for example)
+
+BONK RESIST 
+	icon: Hardhat
+	color: yellow
+	ability: +1 bonk resist 
+	ShortnameName: Hat
+	Needs: pick up animation
+	
+TELEPORT
+	Icon: N/A
+	Color: Blue and orange?
+	Ability: random teleport to a new position
+	Shortname: Tel
+	Needs: alot
