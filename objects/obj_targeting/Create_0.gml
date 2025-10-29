@@ -1,4 +1,4 @@
-var controller = global.controller;
+controller = global.controller;
 global.obj_targeting = id;
 
 offset_x = controller.start_x
