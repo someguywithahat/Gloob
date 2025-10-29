@@ -43,5 +43,5 @@ settings_NumberOfPowerUps=0
 settings_MaxNumberOfPowerUps=3
 settings_obstacles=0
 
-global.fnt_Gloop = font_add_sprite(spr_gloopFont, ord("!"), true, 5);
+global.fnt_Gloop = font_add_sprite(spr_gloopFontOutline, ord("!"), true, 5);
 
