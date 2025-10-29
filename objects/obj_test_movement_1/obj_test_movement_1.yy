@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Slm_Grn_Roll_R",
-    "path":"sprites/Slm_Grn_Roll_R/Slm_Grn_Roll_R.yy",
+    "name":"Spr_Slm_Roll_R",
+    "path":"sprites/Spr_Slm_Roll_R/Spr_Slm_Roll_R.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -1,11 +1,11 @@
 function scr_set_slime_color(target, color_num){
 	//gloop =  variable_instance_set(id, obj_gloop, value);
-	target.sprite_index=Slm_Grn_Idol
+	target.sprite_index=Spr_Slm_Idol
 	target.gloop_color="green"
 	target.gloop_color_index=2
-	variable_instance_set(target, "s_idol", Slm_Grn_Idol);
-	variable_instance_set(target, "s_sleep", Slm_Grn_Sleep);
-	variable_instance_set(target, "s_death", Slm_Grn_Death);
+	variable_instance_set(target, "s_idol", Spr_Slm_Idol);
+	variable_instance_set(target, "s_sleep", Spr_Slm_Sleep);
+	variable_instance_set(target, "s_death", Spr_Slm_Death);
 		
 	target.image_speed=1
 	if color_num=0
@@ -41,14 +41,14 @@ function scr_set_slime_color(target, color_num){
 		//target.sprite_index=Slm_Grn_Idol
 		target.gloop_color="green"
 		target.gloop_color_index=2
-		variable_instance_set(target, "s_idol", Slm_Grn_Idol);
-		variable_instance_set(target, "s_sleep", Slm_Grn_Sleep);
-		variable_instance_set(target, "s_death", Slm_Grn_Death);
+		variable_instance_set(target, "s_idol", Spr_Slm_Idol);
+		variable_instance_set(target, "s_sleep", Spr_Slm_Sleep);
+		variable_instance_set(target, "s_death", Spr_Slm_Death);
 		variable_instance_set(target, "s_trl_corner", Trl_Grn_Corner);
 		variable_instance_set(target, "s_trl_end", Trl_Grn_End);
 		variable_instance_set(target, "s_trl_mid", Trl_Grn_Mid);
 		variable_instance_set(target, "s_trl_spot", Trl_Grn_Spot_Lg);
-		variable_instance_set(target, "gloop_score_obj.parent_sprite", Slm_Grn_Idol);
+		variable_instance_set(target, "gloop_score_obj.parent_sprite", Spr_Slm_Idol);
 	}
 	else if color_num=3
 	{
