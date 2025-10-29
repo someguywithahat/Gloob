@@ -1,4 +1,4 @@
-function scr_draw_sign(xx, yy, width, height, scale)
+function scr_draw_sign(xx, yy, width, height, scale, hasChains)
 {
 	var tl=0
 	var t=1
@@ -52,6 +52,17 @@ function scr_draw_sign(xx, yy, width, height, scale)
 		}
 	}
 	
+	if hasChains>0{
+		var chain2 = sWidth-1
+		
+		for( var c=1; c<=hasChains; c++)
+		{
+		
+			draw_sprite_ext(Signage, 6, xx+(1*spacer), yy-(c*spacer-8), scale, scale, 0, c_white, 1)
+			draw_sprite_ext(Signage, 6, xx+(chain2*spacer), yy-(c*spacer+-8), scale, scale, 0, c_white, 1)
+		}
+		
+	}
 
 
 }

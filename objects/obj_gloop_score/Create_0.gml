@@ -7,5 +7,6 @@ gloop=noone
 
 player = 1
 
-xx=20
+xx=35
 yy=20
+depth=100
