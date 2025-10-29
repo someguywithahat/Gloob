@@ -45,12 +45,14 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 			}
 			
             // Store reference in the array
-            grid_array[i][j] = inst;
-
-			
+            grid_array[i][j] = inst;			
         }
     }
 
+	//clears out bad save data
+	for (var i = 0; i < array_length(controller.player_color); i++) 
+		if i>number_of_players
+			controller.player_color[i]=-1
 	for (var i = 0; i < number_of_players; i++)
 	{
 		var gloop_x = irandom_range(1,x_count-2);
@@ -110,7 +112,25 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		//show_debug_message(string(sprite_get_number(spr_PowerUp1)))
 		
 	}
-
+	
+	//for (var i = 0; i<7-number_of_players;i++)
+	//{
+	//	//instance_create_layer(70+irandom_range(1,10), 600+irandom_range(1,10), "Instances", obj_unusedGloop);
+		
+	//}
+	
+	var unused=noone
+	for (var i=0;i<8;i++)
+	{
+		if !(array_contains(controller.player_color,i))
+		{
+			unused=instance_create_layer(10+irandom_range(1,90), 500+irandom_range(1,230), "Instances", obj_unusedGloop);	
+			unused.gloop_color_index=i
+			show_debug_message("Color found: " + string(i))
+		}
+		//show_debug_message("Color found: " + string(i))
+	}
+		
 
     return grid_array; // return the 2D array of instances
 }

@@ -18,7 +18,7 @@ if (clicked_save_defaults=1)
 	controller.number_of_players=player_count
 	clicked_save_defaults=-1
 	
-		var active_player_count=0
+	var active_player_count=0
 
 	
 	if slime1.selected=1{
