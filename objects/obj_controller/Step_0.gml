@@ -70,3 +70,12 @@ else if(clicked_debugRoom=1){
 	room_goto(rm_testRoom1);
 }
 
+if (keyboard_check_pressed(ord("P")) and room = rm_gameScreen) {
+//if (keyboard_check_pressed(ord("P"))) {
+	if isPaused=0
+		isPaused=1
+	else
+	{
+		isPaused=-1
+	}
+}

@@ -11,6 +11,10 @@ rows = 26;
 grid_size=(cols-2)*(rows-2)
 remaining_grid=grid_size
 
+isPaused=0
+pauseMenuY=-750
+pauseMenuyMax=100
+pauseMenuyMin=-750
 
 // Starting position
 start_x = 256;
@@ -23,6 +27,7 @@ score_yy=20
 number_of_players = 1
 current_player=0
 persistent=true
+depth=-20000
 
 music_playing = false;
 

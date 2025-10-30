@@ -29,3 +29,32 @@ if room== rm_titleScreen
 	clicked_character_select=scr_draw_menu_item(550,480,"CHARACTER SELECT",clicked_character_select)
 	clicked_debugRoom=scr_draw_menu_item(1,1,"Debug Room",clicked_debugRoom)
 }
+
+if isPaused=1
+{
+	scr_draw_sign(200,pauseMenuY,1000,500,3,10,0,4)	
+	
+	if pauseMenuY<pauseMenuyMax
+		pauseMenuY=pauseMenuY+50
+	else 
+	{
+		scr_draw_menu_item(270,200,"Resume")
+		scr_draw_menu_item(270,250,"Return To Main Menu")
+		scr_draw_menu_item(270,300,"Quit Game")
+		
+		
+		scr_draw_menu_item(270,450,"BGM")
+		scr_draw_menu_item(270,500,"SFX")
+	}
+	
+}
+if isPaused=-1
+{
+	if pauseMenuY>pauseMenuyMin
+		pauseMenuY=pauseMenuY-50
+	else
+		isPaused=0
+	scr_draw_sign(200,pauseMenuY,1000,500,3,10,0,4)	
+	
+	
+}
