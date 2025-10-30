@@ -17,4 +17,14 @@ MOVING OBSTICLES / ENEMIES
 chain twist
 vine grow
 trail form
+vine sign (transparent in game hints)
+hover text shader
 
+Acheivables / unlockables (cosmetic / game modes / starting settings)
+
+Season chalange
+Fall Hidden Numbers (fog)
+Winter +1 move (ice)
+Disapearing Spaces (rain)
+
+Write "how to play" page
