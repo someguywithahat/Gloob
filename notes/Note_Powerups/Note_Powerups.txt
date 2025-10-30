@@ -12,7 +12,7 @@ BONK RESIST
 	
 TELEPORT
 	Icon: Fairy
-	Activation: Useable -
+	Activation: Useable - action key to use at will
 	Color: Blue
 	Ability: random teleport to a new position
 	Shortname: Tel
