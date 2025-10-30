@@ -48,6 +48,7 @@
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},},
     {"id":{"name":"obj_effect_dropped_hat","path":"objects/obj_effect_dropped_hat/obj_effect_dropped_hat.yy",},},
     {"id":{"name":"obj_effect_heart","path":"objects/obj_effect_heart/obj_effect_heart.yy",},},
+    {"id":{"name":"obj_effect_slime","path":"objects/obj_effect_slime/obj_effect_slime.yy",},},
     {"id":{"name":"obj_effect_splat","path":"objects/obj_effect_splat/obj_effect_splat.yy",},},
     {"id":{"name":"obj_flower","path":"objects/obj_flower/obj_flower.yy",},},
     {"id":{"name":"obj_gloop_score","path":"objects/obj_gloop_score/obj_gloop_score.yy",},},
