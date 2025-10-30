@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"Note_Powerups",
+  "name":"Note_Powerups",
+  "parent":{
+    "name":"Powerups",
+    "path":"folders/Sprites/Powerups.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

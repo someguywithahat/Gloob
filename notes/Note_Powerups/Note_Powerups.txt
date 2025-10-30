@@ -1,0 +1,37 @@
+Numbers should color shift to match the power ups which can be overlayed on top (see top left of animation test for example)
+use scroll wheel to select activatable power ups?
+multiple power ups at once?
+
+BONK RESIST 
+	icon: Hardhat
+	Activation: Passive - activates when needed
+	color: yellow
+	ability: +1 bonk resist 
+	ShortnameName: Hat
+	Needs: pick up animation
+	
+TELEPORT
+	Icon: Fairy
+	Activation: Useable -
+	Color: Blue
+	Ability: random teleport to a new position
+	Shortname: Tel
+	Needs: alot
+	
+PHASE
+	Icon: Ghost
+	Activation: Passive - active number of rounds after pick-up
+	Color: White
+	Ability: allows gloop to phase through obsticles and trail paths.
+	Shortname: Gst
+	Needs: Everything
+	
+Below: Copied from google docs, not edited
+randomize numbers
+deslime an area (bridge) (33%)
+Add (random) numbers back in (10%)
+Collect Section of grid (slime-bomb) with delay
+Bonus Score (next 3 moves x2 score)
+Super Star Invulnerability
+Slow (1/2 move for x rounds or -1 move)
+Bull dozer (x2 rows)
