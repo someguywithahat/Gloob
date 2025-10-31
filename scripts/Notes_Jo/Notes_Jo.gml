@@ -16,7 +16,6 @@ MOVING OBSTICLES / ENEMIES
 chain twist
 vine grow
 trail form
-vine sign (transparent in game hints)
 hover text shader
 
 Acheivables / unlockables (cosmetic / game modes / starting settings)

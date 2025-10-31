@@ -137,6 +137,7 @@
     {"id":{"name":"Flr_Wht_Sm","path":"sprites/Flr_Wht_Sm/Flr_Wht_Sm.yy",},},
     {"id":{"name":"Flr_Yel_Med","path":"sprites/Flr_Yel_Med/Flr_Yel_Med.yy",},},
     {"id":{"name":"Flr_Yel_Sm","path":"sprites/Flr_Yel_Sm/Flr_Yel_Sm.yy",},},
+    {"id":{"name":"Letters_Outline_emboss","path":"sprites/Letters_Outline_emboss/Letters_Outline_emboss.yy",},},
     {"id":{"name":"Letters_Outline","path":"sprites/Letters_Outline/Letters_Outline.yy",},},
     {"id":{"name":"Letters","path":"sprites/Letters/Letters.yy",},},
     {"id":{"name":"Lg_Shrm_blk","path":"sprites/Lg_Shrm_blk/Lg_Shrm_blk.yy",},},
