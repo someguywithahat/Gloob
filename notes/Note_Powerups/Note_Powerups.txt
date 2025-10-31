@@ -17,6 +17,14 @@ TELEPORT
 	Ability: random teleport to a new position
 	Shortname: Tel
 	Needs: tom to program it in
+
+SCORE MULTIPLIER
+	Icon: Rainbow
+	Activation: Passive - active number of rounds after pick-up
+	Color: Rainbow
+	Ability: x2 score for a number of rounds
+	Shortname: RGB
+	Needs: An icon
 	
 PHASE
 	Icon: Ghost
@@ -31,7 +39,6 @@ randomize numbers
 deslime an area (bridge) (33%)
 Add (random) numbers back in (10%)
 Collect Section of grid (slime-bomb) with delay
-Bonus Score (next 3 moves x2 score)
 Super Star Invulnerability
 Slow (1/2 move for x rounds or -1 move)
 Bull dozer (x2 rows)
