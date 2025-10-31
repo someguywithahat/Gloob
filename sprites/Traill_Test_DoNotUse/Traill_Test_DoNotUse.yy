@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"Traill_Test_DoNotUse",
   "bboxMode":0,
   "bbox_bottom":94,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"e5181486-83b7-4a36-8fe7-2ce3fb75fa93","name":"e5181486-83b7-4a36-8fe7-2ce3fb75fa93","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e5181486-83b7-4a36-8fe7-2ce3fb75fa93","name":"e5181486-83b7-4a36-8fe7-2ce3fb75fa93","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":16,
   "gridY":16,
@@ -74,9 +74,7 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e5181486-83b7-4a36-8fe7-2ce3fb75fa93","path":"sprites/Traill_Test_DoNotUse/Traill_Test_DoNotUse.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"6028bb45-e52b-4c6e-a344-ee2829d41a8f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"e5181486-83b7-4a36-8fe7-2ce3fb75fa93","path":"sprites/Traill_Test_DoNotUse/Traill_Test_DoNotUse.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"6028bb45-e52b-4c6e-a344-ee2829d41a8f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
