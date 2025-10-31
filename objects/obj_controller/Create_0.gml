@@ -44,9 +44,13 @@ clicked_debugRoom = -1
 
 window_set_fullscreen(true);
 
-settings_NumberOfPowerUps=0
+settings_NumberOfPowerUps=4
 settings_MaxNumberOfPowerUps=3
 settings_obstacles=0
 
 global.fnt_Gloop = font_add_sprite(spr_gloopFontOutline, ord("!"), true, 5);
+
+PU_SPRITES = array_create(10,noone)
+PU_SPRITES[0]=Spr_PU_Hat
+PU_SPRITES[1]=Spr_Pu_Tel
 

@@ -124,7 +124,7 @@ else{
 
 
 
-if rainbow_power=1 or powerUp1=1 or powerUp2=1 or powerUp3=1{
+if rainbow_power=1 or powerUp1=3 or powerUp2=3 or powerUp3=3{
 	rainbow_delay+=.05
 	if rainbow_delay>1{
 		gloop_color_index_old=gloop_color_index

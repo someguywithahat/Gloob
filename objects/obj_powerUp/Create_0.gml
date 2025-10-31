@@ -11,3 +11,5 @@ else if number=6 sprite_index=Spr_PU_N6
 else if number=7 sprite_index=Spr_PU_N7
 else if number=8 sprite_index=Spr_PU_N8
 else if number=9 sprite_index=Spr_PU_N9
+
+

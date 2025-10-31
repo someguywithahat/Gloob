@@ -104,7 +104,7 @@
   ],
   "name":"Spr_Pu_Tel",
   "nineSlice":null,
-  "origin":0,
+  "origin":9,
   "parent":{
     "name":"Powerups",
     "path":"folders/Sprites/Powerups.yy",
@@ -383,7 +383,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
+    "xorigin":14,
     "yorigin":0,
   },
   "swatchColours":[

@@ -53,11 +53,11 @@ gloop_score_obj.gloop=id
 has_targeting_cursor = 0
 
 //Power Up Code
-powerUp1=2
+powerUp1=0
 powerUp2=0
 powerUp3=0
 
-puBonk=1
+puBonk=0
 rainbow_power=0
 rainbow_delay=0.0
 gloop_color_index_old=0

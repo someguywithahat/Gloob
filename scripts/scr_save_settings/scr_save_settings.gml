@@ -3,7 +3,7 @@ function scr_save_settings(){
 var controller = global.controller;
 
 var controller_player_count = controller.number_of_players
-var controller_powers = controller.settings_NumberOfPowerUps
+//var controller_powers = controller.settings_NumberOfPowerUps
 var controller_obstacles = controller.settings_obstacles
 
 var cGloop0 = controller.player_color[0]
@@ -22,7 +22,7 @@ ini_open("save.ini");
 
 
 ini_write_real("DefaultSettings", "controller_player_count", controller_player_count);
-ini_write_real("DefaultSettings", "controller_powers", controller_powers);
+//ini_write_real("DefaultSettings", "controller_powers", controller_powers);
 ini_write_real("DefaultSettings", "controller_obstacles", controller_obstacles);
 
 ini_write_real("DefaultSettings", "cGloop0", cGloop0);
@@ -51,8 +51,8 @@ function scr_load_settings(){
 	// obj_controller: Load Game
 	if (file_exists("save.ini")) {
 	    ini_open("save.ini");
-		controller.settings_NumberOfPowerUps = ini_read_real("DefaultSettings", "controller_powers", 0);
-		controller.settings_NumberOfPowerUps = ini_read_real("DefaultSettings", "controller_obstacles", 0);    
+		//controller.settings_NumberOfPowerUps = ini_read_real("DefaultSettings", "controller_powers", 0);
+		controller.settings_NumberOfObstacles = ini_read_real("DefaultSettings", "controller_obstacles", 0);    
 		
 		controller.number_of_players = ini_read_real("DefaultSettings", "controller_player_count", 1);    
 		controller.player_color[0] = ini_read_real("DefaultSettings", "cGloop0", -1);    

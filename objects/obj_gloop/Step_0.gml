@@ -76,8 +76,17 @@ if (ismoving=0)
 
 
 //if (keyboard_check_pressed(vk_space) and (powerUp1=8 or powerUp2=8 or powerUp3=8 and ismoving=0)) {
-if (keyboard_check_pressed(vk_space)) {
+if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2)) {
+
+	if powerUp3=2
+		powerUp3=0
+	else if powerUp2=2
+		powerUp2=0
+	else if powerUp1=2
+		powerUp1=0
 	isteleporting=1
+	
+	
 	//ismoving=1
 }
 //if sprite_index=Slm_Grn_Jump and image_index>12
@@ -273,11 +282,11 @@ if ismoving=1 {
 			
 			
 			puBonk=0
-			if powerUp1=2
+			if powerUp1=1
 				puBonk+=1
-			if powerUp2=2
+			if powerUp2=1
 				puBonk+=1
-			if powerUp3=2
+			if powerUp3=1
 				puBonk+=1
 				
 		}

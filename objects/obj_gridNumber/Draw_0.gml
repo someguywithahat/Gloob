@@ -1,8 +1,5 @@
-if has_powerUP>0
-	draw_sprite(spr_PowerUp,has_powerUP-1,x,y)
-	
-	
-else{
+
+
 	
 // Start shader
 shader_set(shd_palette_swap);
@@ -28,4 +25,15 @@ draw_self();
 
 // End shader
 shader_reset();
+
+
+
+if has_powerUP=1{
+	draw_sprite(Spr_PU_Hat,powerUpImageIndex,x,y)
+	powerUpImageIndex=powerUpImageIndex+.2
 }
+else if has_powerUP=2{
+	draw_sprite(Spr_Pu_Tel,powerUpImageIndex,x,y)
+	powerUpImageIndex=powerUpImageIndex+.2
+}
+	
