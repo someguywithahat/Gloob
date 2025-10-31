@@ -7,7 +7,6 @@ go ahead and delete the extra frames from teh movement files so we can clean up 
 Now that we are doing the recolor thing we shoud probably discus our file names at some point, i think now that i get what is going to be needed we can get it more clear
 
 Should teleport take your turn?
-Modular sign parts?
 unlockable goal?
 unlockable powerups?
 delete animation frames

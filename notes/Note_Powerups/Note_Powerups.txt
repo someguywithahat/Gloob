@@ -7,8 +7,8 @@ BONK RESIST
 	Activation: Passive - activates when needed
 	color: yellow
 	ability: +1 bonk resist 
-	ShortnameName: Hat
-	Needs: pick up animation
+	Shortname: Hat
+	Needs: pick up animation, sync animations
 	
 TELEPORT
 	Icon: Fairy
@@ -16,7 +16,7 @@ TELEPORT
 	Color: Blue
 	Ability: random teleport to a new position
 	Shortname: Tel
-	Needs: alot
+	Needs: tom to program it in
 	
 PHASE
 	Icon: Ghost
