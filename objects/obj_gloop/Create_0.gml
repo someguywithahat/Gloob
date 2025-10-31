@@ -69,6 +69,7 @@ s_death = Spr_Slm_Death_Hat
 s_jump = Spr_Slm_Move_Up_Jump_Hat
 s_roll = Spr_Slm_Move_Up_roll_hat
 s_roll_R = Spr_Slm_Roll_Hat
+s_teleport = Spr_Slm_Tele_Hat
 //s_slurp = Slm_Grn_Move_Side_Slurp
 
 s_idol = Spr_Slm_Idol

@@ -13,6 +13,7 @@ if puBonk>0
 	s_jump = Spr_Slm_Move_Up_Jump_Hat
 	s_roll = Spr_Slm_Move_Up_roll_hat
 	s_roll_R = Spr_Slm_Roll_Hat
+	s_teleport = Spr_Slm_Tele_Hat
 }
 else
 {
@@ -22,6 +23,7 @@ else
 	s_jump = Spr_Slm_Move_Up_Jump
 	s_roll = Spr_Slm_Move_Up_roll
 	s_roll_R = Spr_Slm_Roll_R
+	s_teleport = Spr_Slm_Tele
 }
 
 
@@ -48,10 +50,8 @@ else if alive=0
 else if isteleporting=1
 {
 	image_speed=1
-	sprite_index=s_death
-	if image_index<20 and isteleporting=1
-		image_index=24
-	else if image_index>31{
+	sprite_index=s_teleport
+	if image_index>image_number-1{
 		isteleporting=2
 		scr_pu_teleport_random(id);
 	}	
@@ -59,14 +59,16 @@ else if isteleporting=1
 else if isteleporting=2
 {
 	image_speed=-1
-	sprite_index=s_death
-	if image_index<25
-	{
+	sprite_index=s_teleport
+	//if image_index<25
+	//{
+	//	isteleporting=0
+	//	image_speed=1
+	//}	
+	//else 
+	if image_index<=0{
 		isteleporting=0
-		image_speed=1
-	}	
-	else if image_index>33{
-		isteleporting=0
+		sprite_index=s_idol
 	}	
 }
 else if isjumping=1{
