@@ -193,11 +193,11 @@ if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
 		{
 			puBonk--
 			audio_play_sound(snd_bonk, 1, false);
-			if powerUp3 =2
+			if powerUp3 =1
 				powerUp3=0
-			else if powerUp2=2
+			else if powerUp2=1
 				powerUp2=0
-			else if powerUp1 = 2
+			else if powerUp1 = 1
 				powerUp1=0
 			scr_powerup_update(id)
 			
@@ -350,11 +350,11 @@ if ismoving=1 {
 				{
 					puBonk--
 					audio_play_sound(snd_bonk, 1, false);
-					if powerUp3 =2
+					if powerUp3 =1
 						powerUp3=0
-					else if powerUp2=2
+					else if powerUp2=1
 						powerUp2=0
-					else if powerUp1 = 2
+					else if powerUp1 = 1
 						powerUp1=0
 					scr_powerup_update(id)
 					

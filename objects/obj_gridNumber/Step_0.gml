@@ -16,7 +16,7 @@ if has_powerUP>0 and activeNumber>0 and wall=0
 		case 8: sprite_index=Spr_PU_N8 break
 		case 9: sprite_index=Spr_PU_N9 break
 	}
-	
+	image_speed=1
 	if(has_powerUP=1)
 		gloop_color_index=7
 	else if(has_powerUP=2)
