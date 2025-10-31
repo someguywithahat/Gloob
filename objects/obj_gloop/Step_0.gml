@@ -272,13 +272,33 @@ if ismoving=1 {
 		next_inst.activeNumber=0		
 		if next_inst.has_powerUP>0
 		{
+			var powerUpCheck=0
 			if powerUp1=0
+			{
 				powerUp1=next_inst.has_powerUP
+				powerUpCheck=1
+			}
 			else if powerUp2=0
+			{
 				powerUp2=next_inst.has_powerUP
-			else powerUp3=next_inst.has_powerUP
+				powerUpCheck=2
+			}
+			else
+			{
+				powerUp3=next_inst.has_powerUP
+				powerUpCheck=3
+			}	
+			
+			if next_inst.has_powerUP=2{
+				var fairy = instance_create_layer(x+16, y, "Instances", obj_effect_fairy);
+				fairy.parent_gloop=id		
+				fairy.gloop_powerUp_check = powerUpCheck
+				show_debug_message("Picked UP fairy")
+			}
 			next_inst.has_powerUP=0
 			audio_play_sound(snd_slm_chomp, 1, false);	
+				
+				
 			
 			
 			puBonk=0
