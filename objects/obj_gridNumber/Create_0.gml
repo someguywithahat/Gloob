@@ -9,6 +9,8 @@ wall=0
 trail_rotation = 0
 gloop_color_index=2
 
+tooltip_counter=0
+
 
 image_speed=0
 image_index = my_number - 1

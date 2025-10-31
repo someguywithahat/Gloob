@@ -27,7 +27,6 @@ draw_self();
 shader_reset();
 
 
-
 if has_powerUP=1{
 	draw_sprite(Spr_PU_Hat,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.2
@@ -37,3 +36,24 @@ else if has_powerUP=2{
 	powerUpImageIndex=powerUpImageIndex+.2
 }
 	
+
+
+if (mouse_x > x && mouse_x < x+sprite_width &&
+    mouse_y > y && mouse_y < y+sprite_width)
+{
+	tooltip_counter++
+	if tooltip_counter>40
+	{
+		var depthTemp = depth
+		depth=-2000000
+
+		if has_powerUP=1
+			scr_draw_grass_sign(x-300,y-60, "Ignores one hit",1)
+		else if has_powerUP=2
+			scr_draw_grass_sign(x-300,y-60, "Press SPACE to teleport",1)
+	
+	}
+	
+}
+else tooltip_counter=0
+

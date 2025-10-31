@@ -96,6 +96,8 @@ function scr_draw_grass_sign(xx, yy, text, scale)
 	var sHeight = round(height/spacer)
 	
 	
+	var textCenter=(((sWidth+1)*spacer)-string_width(text)) /2
+	
 	
 	
 	for( var w=0; w<=sWidth; w++)
@@ -114,11 +116,11 @@ function scr_draw_grass_sign(xx, yy, text, scale)
 			else if h<sHeight
 			{
 				if w=0
-					draw_sprite_ext(Signage, 16, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
+					draw_sprite_ext(Signage, 18, xx+w*spacer+spacer, yy+h*spacer, -scale, scale, 0, c_white, 1)
 				else if w<sWidth
 					draw_sprite_ext(Signage, 17, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
 				else 
-					draw_sprite_ext(Signage, 16, xx+w*spacer+spacer, yy+h*spacer, -scale, scale, 0, c_white, 1)
+					draw_sprite_ext(Signage, 18, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
 			}
 			else 
 			{
@@ -133,7 +135,7 @@ function scr_draw_grass_sign(xx, yy, text, scale)
 	}
 	
 	draw_set_colour(c_white)
-	draw_text(xx+alignment_mod, yy+alignment_mod, text);
+	draw_text(xx+textCenter, yy+alignment_mod, text);
 
 
 }

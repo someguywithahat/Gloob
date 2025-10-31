@@ -25,7 +25,7 @@ if room== rm_titleScreen
 {
 	scr_draw_sign(500,410,340,140,2,0,2,4)
 	
-	scr_draw_grass_sign(200,200,"test",1)
+	scr_draw_grass_sign(200,200,"testing",1)
 	
 	clicked_quickstart=scr_draw_menu_item(600,440,"QUICKSTART",clicked_quickstart)	
 	clicked_character_select=scr_draw_menu_item(550,480,"CHARACTER SELECT",clicked_character_select)
