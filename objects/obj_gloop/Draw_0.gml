@@ -49,23 +49,19 @@ else if alive=0
 }
 else if isteleporting=1
 {
-	image_speed=1
 	sprite_index=s_teleport
+	image_speed=1
 	if image_index>image_number-1{
 		isteleporting=2
 		scr_pu_teleport_random(id);
+		image_index=image_number-1
+		image_speed=-1
 	}	
 }
 else if isteleporting=2
 {
-	image_speed=-1
 	sprite_index=s_teleport
-	//if image_index<25
-	//{
-	//	isteleporting=0
-	//	image_speed=1
-	//}	
-	//else 
+	image_speed=-1
 	if image_index<=0{
 		isteleporting=0
 		sprite_index=s_idol

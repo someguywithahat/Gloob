@@ -85,8 +85,8 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2
 	else if powerUp1=2
 		powerUp1=0
 	isteleporting=1
-	
-	
+	sprite_index=s_teleport
+	image_index=0	
 	//ismoving=1
 }
 //if sprite_index=Slm_Grn_Jump and image_index>12
