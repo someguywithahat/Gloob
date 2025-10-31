@@ -1,16 +1,5 @@
 function scr_draw_sign(xx, yy, width, height, scale, hasChains, hasPost, hasFlowers)
 {
-	//var tl=0
-	//var t=1
-	//var l=2
-	//var m=3
-	//var bl=4
-	//var b=5
-	
-	//var width=500
-	//var height=200 
-	
-	
 	
 	var spacer = sprite_get_width(Signage)*scale
 	var sWidth = round(width/spacer)
@@ -84,6 +73,67 @@ function scr_draw_sign(xx, yy, width, height, scale, hasChains, hasPost, hasFlow
 		}
 	}
 
+
+
+}
+
+
+
+
+
+function scr_draw_grass_sign(xx, yy, text, scale)
+
+{
+	draw_set_font(global.fnt_Gloop)
+	//var w = string_width(text)
+	var alignment_mod=8
+	var width = string_width(text)+alignment_mod*2
+	var height = string_height(text)+alignment_mod*2
+	
+	
+	var spacer = sprite_get_width(Signage)*scale
+	var sWidth = round(width/spacer)
+	var sHeight = round(height/spacer)
+	
+	
+	
+	
+	for( var w=0; w<=sWidth; w++)
+	{
+		for( var h=0; h<=sHeight; h++)
+		{
+			if h=0
+			{
+				if w=0
+					draw_sprite_ext(Signage, 15, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
+				else if w<sWidth
+					draw_sprite_ext(Signage, 16, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
+				else 
+					draw_sprite_ext(Signage, 15, xx+w*spacer+spacer, yy+h*spacer, -scale, scale, 0, c_white, 1)
+			}
+			else if h<sHeight
+			{
+				if w=0
+					draw_sprite_ext(Signage, 16, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
+				else if w<sWidth
+					draw_sprite_ext(Signage, 17, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
+				else 
+					draw_sprite_ext(Signage, 16, xx+w*spacer+spacer, yy+h*spacer, -scale, scale, 0, c_white, 1)
+			}
+			else 
+			{
+				if w=0
+					draw_sprite_ext(Signage, 15, xx+w*spacer, yy+h*spacer, scale, -scale, 0, c_white, 1)
+				else if w<sWidth
+					draw_sprite_ext(Signage, 16, xx+w*spacer, yy+h*spacer, scale, -scale, 0, c_white, 1)
+				else 
+					draw_sprite_ext(Signage, 15, xx+w*spacer+spacer, yy+h*spacer, -scale, -scale, 0, c_white, 1)
+			}
+		}
+	}
+	
+	draw_set_colour(c_white)
+	draw_text(xx+alignment_mod, yy+alignment_mod, text);
 
 
 }
