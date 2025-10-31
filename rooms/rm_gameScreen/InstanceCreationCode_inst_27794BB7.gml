@@ -1,1 +1,0 @@
-gloop_color_index=1
