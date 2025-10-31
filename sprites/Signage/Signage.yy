@@ -27,6 +27,9 @@
     {"$GMSpriteFrame":"","%Name":"3ed84e73-e39e-4661-a6a6-e80527bea9b2","name":"3ed84e73-e39e-4661-a6a6-e80527bea9b2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"","%Name":"c718e57b-1d0b-498f-ac53-ca9f2510a8a4","name":"c718e57b-1d0b-498f-ac53-ca9f2510a8a4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"","%Name":"1f75f6ee-c58a-4869-b2e0-afb5a7683715","name":"1f75f6ee-c58a-4869-b2e0-afb5a7683715","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"99b8153b-fc0e-427f-b1cf-6a4af1908e14","name":"99b8153b-fc0e-427f-b1cf-6a4af1908e14","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"639bce9d-5101-4705-b381-85422c23b751","name":"639bce9d-5101-4705-b381-85422c23b751","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"28e4b81c-161e-40a4-ac3a-8459bc3339b7","name":"28e4b81c-161e-40a4-ac3a-8459bc3339b7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":4,
   "gridY":4,
@@ -65,7 +68,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":15.0,
+    "length":18.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -131,6 +134,15 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1f75f6ee-c58a-4869-b2e0-afb5a7683715","path":"sprites/Signage/Signage.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"6fb88579-03d5-4a79-a72c-1e55239d8da8","IsCreationKey":false,"Key":14.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"99b8153b-fc0e-427f-b1cf-6a4af1908e14","path":"sprites/Signage/Signage.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"fa3c7489-4b7c-40f9-8006-a3a0f7db878d","IsCreationKey":false,"Key":15.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"639bce9d-5101-4705-b381-85422c23b751","path":"sprites/Signage/Signage.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"17884a28-633b-4350-949b-e1cbd7f0c8cf","IsCreationKey":false,"Key":16.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"28e4b81c-161e-40a4-ac3a-8459bc3339b7","path":"sprites/Signage/Signage.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"84020636-6b90-4bca-b4e3-cf041dfbafd9","IsCreationKey":false,"Key":17.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -139,14 +151,14 @@
     "yorigin":0,
   },
   "swatchColours":[
-    4278190335,4282607155,4283521894,4283187509,4285845143,4289891452,4278190080,4284885054,4284891424,4285034529,
-    4278212254,4279255715,4282072012,4283182095,4283727679,4284838271,4284897095,4286498191,4293247136,4279832336,
-    4286529366,4288241969,4287535405,4280518347,4279525835,4284177381,4291806454,4284848460,4285825169,4286542694,
-    4288076446,4294370232,4281540126,4288240502,4291592769,4288918834,4281182688,4281171941,4286545919,4278212254,
-    4286755435,4287667631,4287727226,4286893206,4294967295,4283182381,4290938787,4292914000,4289973842,4284534769,
-    4283144959,4288256511,4285034529,4287089786,4288984004,4289897877,4287288221,4294377420,4286536025,4294947561,
-    4294957465,4289986431,4291623935,4283218431,4288068095,4290540032,4288734627,4290894053,4291607723,4286500761,
-    4294633210,4289887365,4294954233,4294960076,4288282582,4291624936,4286571263,4288077055,
+    4278190335,4282607155,4283521894,4283187509,4285845143,4289891452,4279832078,4284885054,4284891424,4285034529,
+    4278212254,4279320242,4282072012,4283182095,4283727679,4284838271,4284897095,4286498191,4293247136,4281539612,
+    4286529366,4288241969,4287535405,4280518347,4281164005,4284177381,4291806454,4284848460,4285825169,4286542694,
+    4288076446,4294370232,4283181611,4288240502,4291592769,4288918834,4281182688,4283203071,4286545919,4278212254,
+    4286755435,4287667631,4287727226,4286893206,4294967295,4285416509,4290938787,4292914000,4289973842,4284534769,
+    4284852735,4288256511,4285034529,4287089786,4288984004,4289897877,4287288221,4294377420,4288244587,4294947561,
+    4294957465,4289986431,4291623935,4288267775,4288068095,4290540032,4288734627,4290894053,4291607723,4286500761,
+    4294633210,4289887365,4294954233,4294960076,4288282582,4291624936,4291615231,4288077055,
   ],
   "swfPrecision":0.5,
   "textureGroupId":{
