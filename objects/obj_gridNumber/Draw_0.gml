@@ -39,18 +39,22 @@ else if has_powerUP=2{
 
 
 if (mouse_x > x && mouse_x < x+sprite_width &&
-    mouse_y > y && mouse_y < y+sprite_width)
+    mouse_y > y && mouse_y < y+sprite_width
+	&& 1=2 //temporarily disabled
+	)
 {
 	tooltip_counter++
 	if tooltip_counter>40
 	{
-		var depthTemp = depth
-		depth=-2000000
+		var yy=-60
+		if y<50
+			yy=32
 
 		if has_powerUP=1
-			scr_draw_grass_sign(x-300,y-60, "Ignores one hit",1)
+			scr_draw_grass_sign(x-300,y+yy, "Ignores one hit",1)
 		else if has_powerUP=2
-			scr_draw_grass_sign(x-300,y-60, "Press SPACE to teleport",1)
+			scr_draw_grass_sign(x-300,y+yy, "Press SPACE to teleport",1)
+		//depth=depthTemp
 	
 	}
 	

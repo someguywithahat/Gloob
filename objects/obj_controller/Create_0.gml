@@ -28,6 +28,7 @@ number_of_players = 1
 current_player=0
 persistent=true
 depth=-20000
+layer_create(-20001, "AboveEverything");
 
 music_playing = false;
 

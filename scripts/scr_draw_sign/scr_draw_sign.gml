@@ -97,8 +97,7 @@ function scr_draw_grass_sign(xx, yy, text, scale)
 	
 	
 	var textCenter=(((sWidth+1)*spacer)-string_width(text)) /2
-	
-	
+	//layer = layer_get_id("AboveEverything");
 	
 	for( var w=0; w<=sWidth; w++)
 	{

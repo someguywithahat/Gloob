@@ -40,13 +40,13 @@ if isPaused=1
 		pauseMenuY=pauseMenuY+50
 	else 
 	{
-		scr_draw_menu_item(270,200,"Resume")
-		scr_draw_menu_item(270,250,"Return To Main Menu")
-		scr_draw_menu_item(270,300,"Quit Game")
+		scr_draw_menu_item(270,200,"Resume",noone)
+		scr_draw_menu_item(270,250,"Return To Main Menu",noone)
+		scr_draw_menu_item(270,300,"Quit Game",noone)
 		
 		
-		scr_draw_menu_item(270,450,"BGM")
-		scr_draw_menu_item(270,500,"SFX")
+		scr_draw_menu_item(270,450,"BGM",noone)
+		scr_draw_menu_item(270,500,"SFX",noone)
 	}
 	
 }
