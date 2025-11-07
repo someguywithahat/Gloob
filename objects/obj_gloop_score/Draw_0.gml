@@ -30,7 +30,8 @@ if (mouse_check_button_pressed(mb_left)
 and mouse_x>xx+50
 and mouse_x<xx+50+60
 and mouse_y>yy+15
-and mouse_y<yy+15+25)
+and mouse_y<yy+15+25
+and gloop_score>0)
 {
 	var point = instance_create_layer(mouse_x, mouse_y, "Instances", obj_effect_point);
 	gloop_score--

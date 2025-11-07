@@ -17,3 +17,5 @@ if (place_meeting(x + 4, y, obj_unusedGloop)) {
     audio_play_sound(snd_slm_chomp, 1, false);	
 	instance_destroy()
 }
+
+image_index=0
