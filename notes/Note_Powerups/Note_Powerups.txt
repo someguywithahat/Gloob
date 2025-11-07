@@ -16,14 +16,14 @@ TELEPORT
 	Color: Blue
 	Ability: random teleport to a new position
 	Shortname: Tel
-	Needs: tom to program it in
+	Needs: use animation.
 
 SCORE MULTIPLIER
-	Icon: Rainbow
+	Icon: 
 	Activation: Passive - active number of rounds after pick-up
 	Color: Rainbow
 	Ability: x2 score for a number of rounds
-	Shortname: RGB
+	Shortname: 
 	Needs: An icon
 	
 PHASE
