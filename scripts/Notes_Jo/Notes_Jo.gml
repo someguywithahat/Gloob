@@ -17,7 +17,8 @@ chain twist
 vine grow
 trail form
 hover text shader
-
+entrance animation
+Green slime facial expressions - excited, angry, sad, sleepy
 Acheivables / unlockables (cosmetic / game modes / starting settings)
 
 Season chalange
