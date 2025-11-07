@@ -26,12 +26,25 @@ draw_sprite_ext(spr_gloop_smile, gloop_color_index, xx-5, yy+30, 1, 1, 0, c_whit
 
 scr_draw_score(xx+50, yy+15, gloop_score)
 
+if (mouse_check_button_pressed(mb_left) 
+and mouse_x>xx+50
+and mouse_x<xx+50+60
+and mouse_y>yy+15
+and mouse_y<yy+15+25)
+{
+	var point = instance_create_layer(mouse_x, mouse_y, "Instances", obj_effect_point);
+	gloop_score--
+}
+
+
+
 if gloop.powerUp1>0
 	draw_sprite(controller.PU_SPRITES[gloop.powerUp1-1], 0, xx+52, yy+48)
 if gloop.powerUp2>0
 	draw_sprite(controller.PU_SPRITES[gloop.powerUp2-1], 0, xx+52+32, yy+48)
 if gloop.powerUp3>0
 	draw_sprite(controller.PU_SPRITES[gloop.powerUp3-1], 0, xx+52+64, yy+48)	
+
 
 
 
