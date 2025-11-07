@@ -49,6 +49,7 @@
     {"id":{"name":"obj_effect_dropped_hat","path":"objects/obj_effect_dropped_hat/obj_effect_dropped_hat.yy",},},
     {"id":{"name":"obj_effect_fairy","path":"objects/obj_effect_fairy/obj_effect_fairy.yy",},},
     {"id":{"name":"obj_effect_heart","path":"objects/obj_effect_heart/obj_effect_heart.yy",},},
+    {"id":{"name":"obj_effect_point","path":"objects/obj_effect_point/obj_effect_point.yy",},},
     {"id":{"name":"obj_effect_slime","path":"objects/obj_effect_slime/obj_effect_slime.yy",},},
     {"id":{"name":"obj_effect_splat","path":"objects/obj_effect_splat/obj_effect_splat.yy",},},
     {"id":{"name":"obj_flower","path":"objects/obj_flower/obj_flower.yy",},},

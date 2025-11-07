@@ -103,7 +103,13 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2
 
 
 
-if (mouse_check_button_pressed(mb_left) and ismoving=0) { // left mouse click
+if (mouse_check_button_pressed(mb_left) and ismoving=0
+and mouse_x>controller.start_x+controller.spacing
+and mouse_x<controller.start_x+(controller.spacing*(controller.cols-1))
+and mouse_y>controller.start_y+controller.spacing
+and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
+
+) { // left mouse click
     var mx = mouse_x;  // mouse X position
     var my = mouse_y;  // mouse Y position
 
