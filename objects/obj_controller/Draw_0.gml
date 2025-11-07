@@ -60,3 +60,9 @@ if isPaused=-1
 	
 	
 }
+
+
+if room == rm_testRoom1{
+	scr_draw_sign(500,410,340,140,2,0,2,4)
+	
+}

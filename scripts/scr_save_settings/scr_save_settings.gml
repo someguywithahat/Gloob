@@ -70,3 +70,65 @@ function scr_load_settings(){
 	    show_debug_message("No save file found.");
 	}
 }
+
+
+
+
+
+
+function scr_save_high_score(){
+
+	var controller = global.controller;
+
+
+	var def_score_1=250
+	var def_score_2=226
+	var def_score_3=201
+	var def_score_4=200
+	var def_score_5=175
+	var def_score_6=150
+	var def_score_7=125
+	var def_score_8=100
+	var def_score_9=75
+	var def_score_10=1
+	
+	var def_name_1="JEX"
+	var def_name_2="VI "
+	var def_name_3="KAY"
+	var def_name_4="BAG"
+	var def_name_5="HAT"
+	var def_name_6="RNT"
+	var def_name_7="ARK"
+	var def_name_8="KRA"
+	var def_name_9="SHN"
+	var def_name_10="SLM"
+	
+	// obj_controller: Save Game
+	ini_open("save.ini");	
+	
+	ini_write_real("Highscore", "Highscore1", def_score_1);
+	ini_write_real("Highscore", "Highscore2", def_score_2);
+	ini_write_real("Highscore", "Highscore3", def_score_3);
+	ini_write_real("Highscore", "Highscore4", def_score_4);
+	ini_write_real("Highscore", "Highscore5", def_score_5);
+	ini_write_real("Highscore", "Highscore6", def_score_6);
+	ini_write_real("Highscore", "Highscore7", def_score_7);
+	ini_write_real("Highscore", "Highscore8", def_score_8);
+	ini_write_real("Highscore", "Highscore9", def_score_9);
+	ini_write_real("Highscore", "Highscore10", def_score_10);
+
+
+	ini_write_string("Highscore", "HighscoreInitals1", def_name_1);
+	ini_write_string("Highscore", "HighscoreInitals2", def_name_2);
+	ini_write_string("Highscore", "HighscoreInitals3", def_name_3);
+	ini_write_string("Highscore", "HighscoreInitals4", def_name_4);
+	ini_write_string("Highscore", "HighscoreInitals5", def_name_5);
+	ini_write_string("Highscore", "HighscoreInitals6", def_name_6);
+	ini_write_string("Highscore", "HighscoreInitals7", def_name_7);
+	ini_write_string("Highscore", "HighscoreInitals8", def_name_8);
+	ini_write_string("Highscore", "HighscoreInitals9", def_name_9);
+	ini_write_string("Highscore", "HighscoreInitals10", def_name_10);
+
+
+	ini_close();
+}

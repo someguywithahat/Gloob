@@ -55,3 +55,5 @@ PU_SPRITES = array_create(10,noone)
 PU_SPRITES[0]=Spr_PU_Hat
 PU_SPRITES[1]=Spr_Pu_Tel
 
+
+scr_save_high_score()
