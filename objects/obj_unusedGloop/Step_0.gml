@@ -8,7 +8,7 @@ if x>right_boundry
 	x=x-2	
 	
 	
-if irandom_range(1,100000)<6 and sleep_duration>1000{
+if irandom_range(1,100000)<5 and sleep_duration>1000{
 //if irandom_range(1,100000)<60 and sleep_duration>1{	//debugging 
 	issleep=0
 	sprite_index=Spr_Slm_Move_Up_Jump	
@@ -18,7 +18,7 @@ if irandom_range(1,100000)<6 and sleep_duration>1000{
 
 	
 	
-if issleep=0
+if issleep=0 and well_fed<=0
 {
 	move_towards_point(mouse_x,mouse_y,1)	
 	sleep_counter++
@@ -33,10 +33,33 @@ if issleep=0
 		audio_sound_gain(snd, random_range(0.8, 1.0), 0);		
 	}
 }
-if sleep_counter>sleep_timer
+if sleep_counter>sleep_counter_max
 {
 	issleep=1
 	sleep_duration=0
 	sprite_index=Spr_Slm_Sleep
 	speed=0
+	image_speed=1
 }
+
+if (mouse_check_button_pressed(mb_left) and issleep>=1) {
+    if (position_meeting(mouse_x, mouse_y, id)) {
+		clicked_while_sleeping++
+		if clicked_while_sleeping>10{
+			clicked_while_sleeping=0
+			is_angry=180
+		}
+    }
+}
+
+if is_angry>0
+{
+	is_angry--
+	if is_angry>60
+		{
+		var shake_amount=2
+	    x += random_range(-shake_amount, shake_amount);
+	    y += random_range(-shake_amount, shake_amount);
+	}
+}
+	

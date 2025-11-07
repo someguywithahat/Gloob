@@ -13,9 +13,12 @@ if (mouse_check_button_pressed(mb_left)) {
     }
 }
 
-if (place_meeting(x + 4, y, obj_unusedGloop)) {
+
+
+var gloop = instance_place(x, y, obj_unusedGloop);
+if gloop != noone{	
     audio_play_sound(snd_slm_chomp, 1, false);	
+	gloop.well_fed+=60
+	gloop.speed=0
 	instance_destroy()
 }
-
-image_index=0

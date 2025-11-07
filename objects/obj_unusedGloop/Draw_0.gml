@@ -1,8 +1,36 @@
 
-if (image_index > 50) and issleep=1 {
-    image_index = 20;
+if well_fed>0{
+	well_fed--
+	sprite_index=Slm_All_Base_Expressions
+	image_speed=0
+	image_index=1
+}
+else if is_angry>60 {
+	sprite_index=Slm_All_Base_Expressions
+	image_speed=0
+	image_index=4
+}
+else if is_angry>0 {
+	sprite_index=Slm_All_Base_Expressions
+	image_speed=0
+	image_index=2
+}
+else if is_angry>0 {
+	sprite_index=Slm_All_Base_Expressions
+	image_speed=0
+	image_index=0
+}
+else if issleep=1 {
+	if (image_index > 50)
+		image_index = 20;
+	sprite_index=Spr_Slm_Sleep
+	image_speed=1
 }
 else 
+{
+	sprite_index=Spr_Slm_Move_Up_Jump
+	image_speed=1	
+}
 
 
 draw_self()
