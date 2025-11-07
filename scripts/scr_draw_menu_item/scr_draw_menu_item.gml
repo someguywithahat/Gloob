@@ -15,7 +15,7 @@ function scr_draw_menu_item(xx,yy,text,hover_or_click){
 	
 	draw_set_color(c_white);	
 	if (mouse_x > xx-4 && mouse_x < xx+w+4 &&
-    mouse_y > yy-4 && mouse_y < yy+h+4)
+    mouse_y > yy-4 && mouse_y < yy+h+4) and hover_or_click<>noone
 	{
 		draw_set_color(c_lime);
 		if hover_or_click<0{

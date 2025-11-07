@@ -138,3 +138,18 @@ function scr_draw_grass_sign(xx, yy, text, scale)
 
 
 }
+
+
+function scr_draw_sign_Highscore()
+{
+	scr_draw_sign(200,pauseMenuY,1000,500,3,10,0,4)	
+}
+
+function scr_draw_sign_HighscorePrompt()
+{
+	scr_draw_sign(500,410,340,140,2,0,2,4)
+	draw_sprite_ext(Spr_Slm_Idol,1,660,560,4,4,0,c_white,1)
+	clicked_quickstart=scr_draw_menu_item(560,430,"New High Score!",noone)	
+	clicked_quickstart=scr_draw_menu_item(560,460,"Enter Initials:",noone)	
+	clicked_quickstart=scr_draw_menu_item(580,490,"_ _ _",noone)	
+}

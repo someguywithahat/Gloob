@@ -132,3 +132,30 @@ function scr_save_high_score(){
 
 	ini_close();
 }
+
+function scr_load_high_score(){
+	var controller = global.controller;
+	
+	// obj_controller: Load Game
+	if (file_exists("save.ini")) {
+	    ini_open("save.ini");
+		//controller.settings_NumberOfPowerUps = ini_read_real("DefaultSettings", "controller_powers", 0);
+		controller.settings_NumberOfObstacles = ini_read_real("DefaultSettings", "controller_obstacles", 0);    
+		
+		controller.number_of_players = ini_read_real("DefaultSettings", "controller_player_count", 1);    
+		controller.player_color[0] = ini_read_real("DefaultSettings", "cGloop0", -1);    
+		controller.player_color[1] = ini_read_real("DefaultSettings", "cGloop1", -1);    
+		controller.player_color[2] = ini_read_real("DefaultSettings", "cGloop2", -1);    
+		controller.player_color[3] = ini_read_real("DefaultSettings", "cGloop3", -1);    
+		controller.player_color[4] = ini_read_real("DefaultSettings", "cGloop4", -1);    
+		controller.player_color[5] = ini_read_real("DefaultSettings", "cGloop5", -1);    
+		controller.player_color[6] = ini_read_real("DefaultSettings", "cGloop6", -1);    
+		controller.player_color[7] = ini_read_real("DefaultSettings", "cGloop7", -1);    
+		controller.player_color[8] = ini_read_real("DefaultSettings", "cGloop8", -1);    
+		controller.player_color[9] = ini_read_real("DefaultSettings", "cGloop9", -1);   
+	    ini_close();
+	} else {
+	    show_debug_message("No save file found.");
+	}	
+	
+}

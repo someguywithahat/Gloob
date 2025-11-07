@@ -94,7 +94,7 @@
     {"id":{"name":"scr_get_weighted_grid_number","path":"scripts/scr_get_weighted_grid_number/scr_get_weighted_grid_number.yy",},},
     {"id":{"name":"scr_powerup_update","path":"scripts/scr_powerup_update/scr_powerup_update.yy",},},
     {"id":{"name":"scr_pu_teleport_random","path":"scripts/scr_pu_teleport_random/scr_pu_teleport_random.yy",},},
-    {"id":{"name":"scr_save_settings","path":"scripts/scr_save_settings/scr_save_settings.yy",},},
+    {"id":{"name":"scr_save_scripts","path":"scripts/scr_save_scripts/scr_save_scripts.yy",},},
     {"id":{"name":"scr_set_slime_color","path":"scripts/scr_set_slime_color/scr_set_slime_color.yy",},},
     {"id":{"name":"scr_set_slime_trail","path":"scripts/scr_set_slime_trail/scr_set_slime_trail.yy",},},
     {"id":{"name":"scr_spawn_flower","path":"scripts/scr_spawn_flower/scr_spawn_flower.yy",},},
