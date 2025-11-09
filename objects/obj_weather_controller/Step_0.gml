@@ -4,12 +4,20 @@ if global.weather<>2
 		weather_alpha-=0.01
 }
 
+if global.weather<>1
+{
+	if snow_alpha>0
+		snow_alpha-=0.01
+}
+
 if global.weather=1
 {
 	for(var s=0;s<snow_density;s++){
 		var snowid = instance_create_layer(irandom_range(1-(wind_max*50),room_width), irandom_range(1-200,room_height),"Instances",obj_weather_snowflake)
 		snowid.depth=depth-1
 	}
+	if snow_alpha<=0.25
+		snow_alpha+=0.005
 }
 else if global.weather=2
 {	
@@ -18,7 +26,7 @@ else if global.weather=2
 		rainid.depth=depth-1
 	}
 	if weather_alpha<0.2
-		weather_alpha+=0.01
+		weather_alpha+=0.005
 }
 else if global.weather=3
 {	

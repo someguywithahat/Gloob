@@ -74,6 +74,27 @@ if is_sad_gameOver=0
 		    y += random_range(-shake_amount, shake_amount);
 		}
 	}
+	
+	//if global.weather=1
+	//{
+	//	var chilly_check = irandom_range(0,1000)
+	//	{
+	//		if chilly_check=1
+	//			is_cold=300
+	//	}
+		
+	//	if is_cold>0
+	//	{
+	//		is_cold--	
+	//		var shake_amount=3
+	//		if is_cold mod 2 <> 1
+	//			shake_amount=shake_amount*-1
+	//		x += shake_amount
+	//	}
+		
+		
+	//}
+	//else is_cold=0
 
 }
 if is_sad_gameOver>0

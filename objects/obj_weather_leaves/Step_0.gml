@@ -36,5 +36,4 @@ if is_landed=2{
 	x=stuck_to_gloopID.x+stuck_xx
 	y=stuck_to_gloopID.y+stuck_yy
 	
-	show_debug_message(string(stuck_to_gloopID.x)+" " + string(stuck_to_gloopID.y))
 }

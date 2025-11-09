@@ -19,6 +19,7 @@ toggle_leaves=0
 global.weather=0
 
 weather_alpha=0
+snow_alpha=0
 
 	
 	
