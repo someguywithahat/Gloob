@@ -20,5 +20,6 @@ if gloop != noone{
     audio_play_sound(snd_slm_chomp, 1, false);	
 	gloop.well_fed+=60
 	gloop.speed=0
+	gloop.is_sad_gameOver=0
 	instance_destroy()
 }

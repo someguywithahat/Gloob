@@ -1,5 +1,27 @@
 global.controller = id;
 global.weather=0
+//var high_score ={
+//	gname: "GLP",
+//	gscore: 123,
+//	gindex: 1,
+//	gcolor: 2
+//}
+//global.high_scores = array_create(10,high_score)
+global.high_scores = [
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
+    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 }
+];
+scr_save_high_score()
+scr_load_high_score()
+
 randomize();
 
 slime_speed=2
@@ -38,11 +60,15 @@ target_obj=noone
 player_color = array_create(10,-1)
 
 grid_refs = noone
+game_over_status=0
+disable_game_inputs=0
+game_over_object=noone
 
 //clicked values are set to 0 when the option is hovered over, and 1 when clicked
 clicked_quickstart = -1
 clicked_character_select = -1
 clicked_debugRoom = -1
+clicked_scoreRoom = -1
 
 window_set_fullscreen(true);
 
@@ -57,4 +83,3 @@ PU_SPRITES[0]=Spr_PU_Hat
 PU_SPRITES[1]=Spr_Pu_Tel
 
 
-scr_save_high_score()

@@ -34,6 +34,12 @@ function scr_end_turn(){
 			return
 		}
 	}	
+	show_debug_message("GAME OVER!")
+	controller.game_over_status=1
+	with obj_unusedGloop
+	{
+		is_sad_gameOver=1	
+	}
 	
 	
 }

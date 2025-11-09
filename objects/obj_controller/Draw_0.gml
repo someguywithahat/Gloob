@@ -46,7 +46,8 @@ if room== rm_titleScreen
 	
 	
 	clicked_quickstart=scr_draw_menu_item(600,440,"QUICKSTART",clicked_quickstart)	
-	clicked_character_select=scr_draw_menu_item(550,480,"CHARACTER SELECT",clicked_character_select)
+	clicked_character_select=scr_draw_menu_item(550,472,"CHARACTER SELECT",clicked_character_select)
+	clicked_scoreRoom=scr_draw_menu_item(590,504,"High Scores",clicked_scoreRoom)
 	clicked_debugRoom=scr_draw_menu_item(1,1,"Debug Room",clicked_debugRoom)
 }
 
@@ -80,11 +81,12 @@ if isPaused=-1
 }
 
 
-if room == rm_testRoom1{
-	scr_draw_sign(500,410,340,140,2,0,2,4)
-	draw_sprite_ext(Spr_Slm_Idol,1,660,560,4,4,0,c_white,1)
-	clicked_quickstart=scr_draw_menu_item(560,430,"New High Score!",noone)	
-	clicked_quickstart=scr_draw_menu_item(560,460,"Enter Initials:",noone)	
-	clicked_quickstart=scr_draw_menu_item(580,490,"_ _ _",noone)	
+//if room == rm_testRoom1{
+//	scr_draw_sign(500,410,340,140,2,0,2,4)
+//	draw_sprite_ext(Spr_Slm_Idol,1,660,560,4,4,0,c_white,1)
+//	clicked_quickstart=scr_draw_menu_item(560,430,"New High Score!",noone)	
+//	clicked_quickstart=scr_draw_menu_item(560,460,"Enter Initials:",noone)	
+//	clicked_quickstart=scr_draw_menu_item(580,490,"_ _ _",noone)	
 	
-}
+//}
+

@@ -22,3 +22,4 @@ clicked_while_sleeping=0
 well_fed=0
 is_angry=0
 is_sad=0
+is_sad_gameOver=0

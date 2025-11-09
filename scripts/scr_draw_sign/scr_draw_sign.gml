@@ -168,7 +168,11 @@ function scr_draw_sign_HighscorePrompt()
 {
 	scr_draw_sign(500,410,340,140,2,0,2,4)
 	draw_sprite_ext(Spr_Slm_Idol,1,660,560,4,4,0,c_white,1)
-	clicked_quickstart=scr_draw_menu_item(560,430,"New High Score!",noone)	
-	clicked_quickstart=scr_draw_menu_item(560,460,"Enter Initials:",noone)	
-	clicked_quickstart=scr_draw_menu_item(580,490,"_ _ _",noone)	
+	scr_draw_menu_item(560,430,"New High Score!",noone)	
+	scr_draw_menu_item(560,460,"Enter Initials:",noone)	
+	scr_draw_menu_item(560,490,"___",noone)	
+	
+	draw_sprite(Arrow,1,680,490)
+	draw_sprite(Slm_All_Base_Expressions,0,710,490)
+	draw_sprite(Arrow,3,740,490)
 }

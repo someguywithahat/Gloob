@@ -1,12 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_controller_title",
+  "%Name":"obj_controller_high_score",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_controller_title",
+  "name":"obj_controller_high_score",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -31,9 +32,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_Gloop",
-    "path":"sprites/spr_Gloop/spr_Gloop.yy",
+    "name":"Symbols",
+    "path":"sprites/Symbols/Symbols.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }
