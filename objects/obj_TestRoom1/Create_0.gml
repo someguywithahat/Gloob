@@ -1,0 +1,1 @@
+select_reset_score=-1

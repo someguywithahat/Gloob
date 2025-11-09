@@ -8,18 +8,18 @@ global.weather=0
 //}
 //global.high_scores = array_create(10,high_score)
 global.high_scores = [
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 },
-    { gname: "???", gscore: 123, gindex: 1, gcolor: 2 }
+    { gname: "JEX", gscore: 250, gindex: 1, gcolor: 2 },
+    { gname: "VI ", gscore: 225, gindex: 2, gcolor: 4 },
+    { gname: "KAY", gscore: 201, gindex: 0, gcolor: 3 },
+    { gname: "BAG", gscore: 200, gindex: 4, gcolor: 5 },
+    { gname: "AZR", gscore: 175, gindex: 4, gcolor: 1 },
+    { gname: "RNT", gscore: 150, gindex: 0, gcolor: 6 },
+    { gname: "ARK", gscore: 125, gindex: 4, gcolor: 7 },
+    { gname: "KRA", gscore: 100, gindex: 2, gcolor: 0 },
+    { gname: "HAT", gscore: 75,  gindex: 0, gcolor: 1 },
+    { gname: "SLM", gscore: 1,   gindex: 3, gcolor: 2 }
 ];
-scr_save_high_score()
+//scr_save_high_score()
 scr_load_high_score()
 
 randomize();
@@ -49,6 +49,7 @@ score_yy=20
 
 number_of_players = 1
 current_player=0
+total_score=0
 persistent=true
 depth=-20000
 layer_create(-20001, "AboveEverything");
@@ -69,6 +70,8 @@ clicked_quickstart = -1
 clicked_character_select = -1
 clicked_debugRoom = -1
 clicked_scoreRoom = -1
+clicked_restart=-1
+clicked_main_menu=-1
 
 window_set_fullscreen(true);
 

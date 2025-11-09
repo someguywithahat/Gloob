@@ -76,7 +76,8 @@ if is_sad_gameOver=0
 	}
 
 }
-
+if is_sad_gameOver>0
+	speed=0
 
 
 	

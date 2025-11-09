@@ -1,3 +1,8 @@
+controller = global.controller
+
+gloop_score = 0
+score_rank=10
+
 
 gloop_color_index=2
 scroll_left=0

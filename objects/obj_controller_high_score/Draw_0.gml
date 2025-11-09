@@ -1,14 +1,15 @@
 
-scr_draw_sign(500,410,340,140,2,0,2,4)
-scr_draw_menu_item(560,430,"New High Score!",noone)	
-scr_draw_menu_item(560,460,"Enter Initials:",noone)	
+scr_draw_sign(500,210,340,140,2,0,2,4)
+scr_draw_menu_item(560,230,"New High Score!",noone)	
+scr_draw_menu_item(560,260,"You Ranked "+string(score_rank+1),noone)	
+scr_draw_menu_item(560,290,"Enter Initials:",noone)	
 
-scr_draw_menu_item(560,490,initial1,noone)
-scr_draw_menu_item(580,490,initial2,noone)
-scr_draw_menu_item(600,490,initial3,noone)
+scr_draw_menu_item(600,320,initial1,noone)
+scr_draw_menu_item(620,320,initial2,noone)
+scr_draw_menu_item(640,320,initial3,noone)
 
-scroll_left=scr_draw_menu_item(690,490,"<",scroll_left)
-scroll_right=scr_draw_menu_item(750,490,">",scroll_right)
+scroll_left=scr_draw_menu_item(690,320,"<",scroll_left)
+scroll_right=scr_draw_menu_item(750,320,">",scroll_right)
 //draw_sprite(Arrow,1,680,490)
 //draw_sprite(Arrow,3,740,490)
 
@@ -37,8 +38,8 @@ shader_set_uniform_f(u_color_count, 6.0);
 
 // Draw the sprite
 
-draw_sprite_ext(Spr_Slm_Idol,1,660,560,4,4,0,c_white,1)
-draw_sprite(Slm_All_Base_Expressions,gloop_image_index,710,490)
+draw_sprite_ext(Spr_Slm_Idol,1,660,360,4,4,0,c_white,1)
+draw_sprite(Slm_All_Base_Expressions,gloop_image_index,710,320)
 
 // End shader
 shader_reset();

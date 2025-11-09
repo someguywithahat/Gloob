@@ -67,6 +67,25 @@ if keyboard_lastchar !=""
 	if (c = chr(13) or c = chr(10)) 
 	{
 		show_debug_message("Save High Score HERE")	
+		for(var i=array_length(global.high_scores)-1;i>score_rank;i--)
+		{
+			global.high_scores[i].gname=global.high_scores[i-1].gname
+			global.high_scores[i].gscore=global.high_scores[i-1].gscore
+			global.high_scores[i].gindex=global.high_scores[i-1].gindex
+			global.high_scores[i].gcolor=global.high_scores[i-1].gcolor
+		}
+		global.high_scores[score_rank].gname = initial1+initial2+initial3
+		global.high_scores[score_rank].gscore = gloop_score
+		global.high_scores[score_rank].gindex = gloop_image_index
+		global.high_scores[score_rank].gcolor = gloop_color_index		
+		controller.game_over_status=10
+		
+		scr_save_high_score()
 	}
+	
+
+	
+	
+	
 	
 }

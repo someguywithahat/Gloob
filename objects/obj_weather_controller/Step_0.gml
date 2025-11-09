@@ -7,7 +7,8 @@ if global.weather<>2
 if global.weather=1
 {
 	for(var s=0;s<snow_density;s++){
-		instance_create_layer(irandom_range(1-(wind_max*50),room_width), irandom_range(1-200,room_height),"Instances",obj_weather_snowflake)
+		var snowid = instance_create_layer(irandom_range(1-(wind_max*50),room_width), irandom_range(1-200,room_height),"Instances",obj_weather_snowflake)
+		snowid.depth=depth-1
 	}
 }
 else if global.weather=2
@@ -37,6 +38,7 @@ if toggle_snow>0{
 	if global.weather<>1
 	{
 		global.weather=1
+		weather_sound=audio_play_sound(snd_weather_wind_during_snow, 0, true);
 	}
 	else
 	{
@@ -45,6 +47,7 @@ if toggle_snow>0{
 	}
 }
 else if toggle_rain>0{
+	audio_stop_sound(weather_sound)		
 	toggle_rain=0
 	if global.weather<> 2
 	{
@@ -63,6 +66,7 @@ else if toggle_leaves>0{
 	if global.weather<> 3
 	{
 		global.weather=3
+		weather_sound=audio_play_sound(snd_weather_wind, 0, true);
 	}
 	else
 	{

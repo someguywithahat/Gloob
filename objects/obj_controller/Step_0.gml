@@ -1,8 +1,79 @@
 //Disable most controls while waiting on user input
 if game_over_status>0
-	disable_game_inputs=1
+{
+	if game_over_status=1
+	{
+		//show_debug_message("game over total score = "+string(total_score))
+		game_over_status=2
+		if total_score>global.high_scores[9].gscore{
+			disable_game_inputs=1
+			show_debug_message("New high score")
+			
+			var score_placement=9
+			for(var a=0;a<array_length(global.high_scores);a++)
+			{
+				if global.high_scores[a].gscore<total_score{
+					score_placement=a
+					break;
+				}
+			}
+			show_debug_message("score placement: "+string(score_placement))
+	
+			//disable visuals and create high score object
+			for (var i = 0; i < array_length(grid_refs); i++) {
+			    for (var j = 0; j < array_length(grid_refs[i]); j++) {
+			        var inst = grid_refs[i][j];
+			        if (instance_exists(inst)) {
+			            inst.visible = false;
+			        }
+			    }
+			}
+			with obj_gridFlower{
+				visible=false	
+			}
+			if game_over_object=noone
+			{
+				game_over_object=instance_create_layer(1, 1, "Instances", obj_controller_high_score);	
+				game_over_object.gloop_color_index=player_color[0]
+				game_over_object.score_rank=score_placement
+				game_over_object.gloop_score=total_score
+			}
+			else
+				game_over_status=10
+		}
+		total_score=0
+	}
+	
+	
+	if game_over_status=10 or game_over_object=noone
+	{
+		//disable visuals and create high score object
+		for (var i = 0; i < array_length(grid_refs); i++) {
+		    for (var j = 0; j < array_length(grid_refs[i]); j++) {
+		        var inst = grid_refs[i][j];
+		        if (instance_exists(inst)) {
+		            inst.visible = true;
+		        }
+		    }
+		}
+		with obj_gridFlower{
+			visible=true	
+		}
+		game_over_status=20
+		if game_over_object <> noone
+		{
+			instance_destroy(game_over_object)
+			game_over_object=noone
+		}
+		total_score=0
+	}
+	
+}
 else 
 	disable_game_inputs=0
+	
+	
+//show_debug_message(string(game_over_status))
 	
 	
 if (keyboard_check_pressed(ord("M")))and disable_game_inputs=0 {
@@ -50,17 +121,31 @@ if (keyboard_check_pressed(ord("S")))and disable_game_inputs=0 {
 		slime_speed-=.5		
 }
 
-if (keyboard_check_pressed(ord("R"))and disable_game_inputs=0 and room == rm_gameScreen) {
+if (keyboard_check_pressed(ord("R"))and disable_game_inputs=0 and room == rm_gameScreen)or clicked_restart=1 {
     // code here runs once when F is pressed
+	clicked_restart=-1
 	grid_refs=noone
 	game_over_status=0
+	disable_game_inputs=0
+	if game_over_object <> noone
+	{
+		instance_destroy(game_over_object)
+		game_over_object=noone
+	}	
     room_restart()	
 }
 
-if (keyboard_check_pressed(ord("T")) and room <> rm_titleScreen)and disable_game_inputs=0 {
+if ((keyboard_check_pressed(ord("T")) and room <> rm_titleScreen)and disable_game_inputs=0) or clicked_main_menu=1 {
     // code here runs once when F is pressed
+	clicked_main_menu=-1
 	grid_refs=noone
 	game_over_status=0
+	disable_game_inputs=0
+	if game_over_object <> noone
+	{
+		instance_destroy(game_over_object)
+		game_over_object=noone
+	}	
     room_goto(rm_titleScreen)
 }
 
@@ -117,22 +202,22 @@ if (keyboard_check_pressed(ord("P")) and room = rm_gameScreen)and disable_game_i
 
 
 
-if game_over_status=1{
-	for (var i = 0; i < array_length(grid_refs); i++) {
-	    for (var j = 0; j < array_length(grid_refs[i]); j++) {
-	        var inst = grid_refs[i][j];
-	        if (instance_exists(inst)) {
-	            inst.visible = false;
-	        }
-	    }
-	}
-	with obj_gridFlower{
-		visible=false	
-	}
-	if game_over_object=noone
-	{
-		game_over_object=instance_create_layer(1, 1, "Instances", obj_controller_high_score);	
-		game_over_object.gloop_color_index=player_color[0]
-	}
+//if game_over_status=1{
+//	for (var i = 0; i < array_length(grid_refs); i++) {
+//	    for (var j = 0; j < array_length(grid_refs[i]); j++) {
+//	        var inst = grid_refs[i][j];
+//	        if (instance_exists(inst)) {
+//	            inst.visible = false;
+//	        }
+//	    }
+//	}
+//	with obj_gridFlower{
+//		visible=false	
+//	}
+//	if game_over_object=noone
+//	{
+//		game_over_object=instance_create_layer(1, 1, "Instances", obj_controller_high_score);	
+//		game_over_object.gloop_color_index=player_color[0]
+//	}
 	
-}
+//}

@@ -10,8 +10,8 @@ function scr_end_turn(){
 		
 	
 	//skip if single player game
-	if controller_number_of_players==1
-		return
+	//if controller_number_of_players==1
+	//	return
 		
     for (var i = 0; i < controller_number_of_players; i++)
     {		
@@ -34,8 +34,17 @@ function scr_end_turn(){
 			return
 		}
 	}	
+	//If no one is alive then game over
 	show_debug_message("GAME OVER!")
+	var total_score =0
+	with obj_gloop_score
+	{
+		total_score+=gloop_score
+	}
+	show_debug_message("score: "+string(total_score))
+	
 	controller.game_over_status=1
+	controller.total_score=total_score
 	with obj_unusedGloop
 	{
 		is_sad_gameOver=1	
