@@ -15,10 +15,10 @@ else if is_angry>0 {
 	image_speed=0
 	image_index=2
 }
-else if is_angry>0 {
+else if is_sad>0 {
 	sprite_index=Slm_All_Base_Expressions
 	image_speed=0
-	image_index=0
+	image_index=3
 }
 else if issleep=1 {
 	if (image_index > 50)

@@ -6,17 +6,35 @@ if room == rm_gameScreen{
 	scr_draw_score(score_xx, score_yy, remaining_grid)
 	scr_draw_score(score_xx+80, score_yy, grid_size)
 	
-	for(var s=0; s<7; s++){
-		draw_sprite(spr_gridOutline_Lg,0,start_x-(spacing),128*s)
-		draw_sprite(spr_gridOutline_Lg,0,start_x +((cols-1)*spacing),128*s)
+	if global.weather<>3{
+		for(var s=0; s<7; s++){
+			draw_sprite(spr_gridOutline_Lg,0,start_x-(spacing),128*s)
+			draw_sprite(spr_gridOutline_Lg,0,start_x +((cols-1)*spacing),128*s)
 		
+		}
 	}
-	
-	
-	//for(var s=0; s<number_of_players; s++){
-	//	scr_draw_sign(5,20+((number_of_players-1-s)*95),200,60,1,2,0,0)
-		
-	//}
+	else
+	{	
+		// Start shader
+		shader_set(shd_palette_swap);
+		// Set uniforms
+		var u_palette_orig = shader_get_sampler_index(shd_palette_swap, "palette_orig");
+		var u_palette_swap = shader_get_sampler_index(shd_palette_swap, "palette_swap");
+		var u_color_count  = shader_get_uniform(shd_palette_swap, "color_count");
+		// Bind your palette sprites as textures
+		texture_set_stage(u_palette_orig, sprite_get_texture(spr_palette_seasons_index, 0));
+		texture_set_stage(u_palette_swap, sprite_get_texture(spr_palette_seasons_all, 1));
+		// Send color count
+		shader_set_uniform_f(u_color_count, 6.0);
+		// Draw the sprite
+		for(var s=0; s<7; s++){
+			draw_sprite(spr_gridOutline_Lg,0,start_x-(spacing),128*s)
+			draw_sprite(spr_gridOutline_Lg,0,start_x +((cols-1)*spacing),128*s)		
+		}
+		// End shader
+		shader_reset();
+	}
+
 	
 }
 

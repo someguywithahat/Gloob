@@ -1,4 +1,5 @@
 global.controller = id;
+global.weather=0
 randomize();
 
 slime_speed=2
