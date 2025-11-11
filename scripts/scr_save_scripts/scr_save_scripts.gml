@@ -179,14 +179,20 @@ function scr_load_settings(){
 //	ini_close();
 //}
 
-
-
-function scr_save_high_score(){
-
-	
-	
-	// obj_controller: Save Game
+function scr_save_add_to_running_total()
+{
 	ini_open("save.ini");	
+	
+	ini_write_real("Highscore", "HighscoreRunningTotal", global.running_score_total);
+	ini_close();
+}
+
+
+
+function scr_save_high_score(){	
+	// obj_controller: Save Game
+	ini_open("save.ini");		
+		
 	
 	ini_write_real("Highscore", "Highscore1", global.high_scores[0].gscore);
 	ini_write_real("Highscore", "Highscore2", global.high_scores[1].gscore);
@@ -199,7 +205,6 @@ function scr_save_high_score(){
 	ini_write_real("Highscore", "Highscore9", global.high_scores[8].gscore);
 	ini_write_real("Highscore", "Highscore10", global.high_scores[9].gscore);
 
-
 	ini_write_string("Highscore", "HighscoreInitals1", global.high_scores[0].gname);
 	ini_write_string("Highscore", "HighscoreInitals2", global.high_scores[1].gname);
 	ini_write_string("Highscore", "HighscoreInitals3", global.high_scores[2].gname);
@@ -210,7 +215,6 @@ function scr_save_high_score(){
 	ini_write_string("Highscore", "HighscoreInitals8", global.high_scores[7].gname);
 	ini_write_string("Highscore", "HighscoreInitals9", global.high_scores[8].gname);
 	ini_write_string("Highscore", "HighscoreInitals10", global.high_scores[9].gname);
-
 
 	ini_write_real("Highscore", "HighscoreIndex1", global.high_scores[0].gindex);
 	ini_write_real("Highscore", "HighscoreIndex2", global.high_scores[1].gindex);
@@ -223,7 +227,6 @@ function scr_save_high_score(){
 	ini_write_real("Highscore", "HighscoreIndex9", global.high_scores[8].gindex);
 	ini_write_real("Highscore", "HighscoreIndex10", global.high_scores[9].gindex);
 
-
 	ini_write_real("Highscore", "HighscoreColor1", global.high_scores[0].gcolor);
 	ini_write_real("Highscore", "HighscoreColor2", global.high_scores[1].gcolor);
 	ini_write_real("Highscore", "HighscoreColor3", global.high_scores[2].gcolor);
@@ -234,7 +237,6 @@ function scr_save_high_score(){
 	ini_write_real("Highscore", "HighscoreColor8", global.high_scores[7].gcolor);
 	ini_write_real("Highscore", "HighscoreColor9", global.high_scores[8].gcolor);
 	ini_write_real("Highscore", "HighscoreColor10", global.high_scores[9].gcolor);
-
 
 	ini_close();
 }
@@ -250,6 +252,8 @@ function scr_load_high_score(){
 	// obj_controller: Load Game
 	if (file_exists("save.ini")) {
 	    ini_open("save.ini");
+		
+		global.running_score_total=ini_read_real("Highscore", "HighscoreRunningTotal", 0);
 		
 		global.high_scores[0].gname=ini_read_string("Highscore", "HighscoreInitals1", "???");
 		global.high_scores[0].gscore=ini_read_real("Highscore", "Highscore1", 0);

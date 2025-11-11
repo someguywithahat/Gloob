@@ -1,4 +1,33 @@
 
+scr_draw_menu_item(10,10,"Total Point Total: " + string(global.running_score_total),noone)
+
+
+var gloop_score = global.running_score_total+debugcounter
+var gloop_scale = 1.0 + (gloop_score/100)
+var gloop_scale2 = 1.0 + (gloop_score/1000)
+
+var parent_sprite = Slm_All_Base_Faceless
+var xx = 350
+var yy=400
+
+var x_shift = (sprite_get_width(parent_sprite))*(gloop_score/100.0)/2
+var y_shift = (sprite_get_height(parent_sprite))*(gloop_score/100.0)/2
+
+var x2_shift = (sprite_get_width(parent_sprite))*(gloop_score/1000.0)/2
+var y2_shift = (sprite_get_height(parent_sprite))*(gloop_score/1000.0)/2
+
+if gloop_score<1000{
+	gloop_scale2=1
+	x2_shift=0
+	y2_shift=0
+	
+}
+
+draw_sprite_ext(parent_sprite, 2, xx-5-x_shift, yy+30-y_shift, gloop_scale, gloop_scale, 0, c_white, 1);
+draw_sprite_ext(spr_gloop_smile, 0, xx-5-x2_shift, yy+30-y2_shift, gloop_scale2, gloop_scale2, 0, c_white, 1);
+//draw_sprite(spr_gloop_smile, 0, round(xx-5), round(yy+30))
+
+
 
 
 for(i=0;i<array_length(global.high_scores);i++)

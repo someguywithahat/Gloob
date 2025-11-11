@@ -43,6 +43,10 @@ function scr_end_turn(){
 	}
 	show_debug_message("score: "+string(total_score))
 	
+	//update running point total
+	global.running_score_total+=total_score
+	scr_save_add_to_running_total()
+	
 	controller.game_over_status=1
 	controller.total_score=total_score
 	with obj_unusedGloop

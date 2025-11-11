@@ -19,6 +19,7 @@ global.high_scores = [
     { gname: "HAT", gscore: 75,  gindex: 0, gcolor: 1 },
     { gname: "SLM", gscore: 1,   gindex: 3, gcolor: 2 }
 ];
+global.running_score_total=0
 //scr_save_high_score()
 scr_load_high_score()
 

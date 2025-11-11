@@ -15,3 +15,9 @@ if select_reset_score=1
 	];
 	scr_save_high_score()
 }
+
+
+if mix_percentage>1
+	mix_percentage=0
+else
+	mix_percentage+=0.001
