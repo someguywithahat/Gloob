@@ -108,7 +108,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		var powerup_y = irandom_range(1,y_count-2);
 		var gridInst = grid_array[powerup_x,powerup_y]
 		gridInst.activeNumber=0
-		gridInst.sprite_index=Obs_Stump
+		gridInst.sprite_index=Spr_Obs_1x1
 		//show_debug_message(string(sprite_get_number(spr_PowerUp1)))
 		
 	}

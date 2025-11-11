@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Obs_Stump",
-    "path":"sprites/Obs_Stump/Obs_Stump.yy",
+    "name":"Spr_Obs_1x1",
+    "path":"sprites/Spr_Obs_1x1/Spr_Obs_1x1.yy",
   },
   "spriteMaskId":null,
   "visible":true,
