@@ -16,23 +16,32 @@ TELEPORT
 	Color: Blue
 	Ability: random teleport to a new position
 	Shortname: Tel
-	Needs: use animation.
+	Needs: Sign Icon
 
 SCORE MULTIPLIER
-	Icon: 
+	Icon: Rainbow Gems?
 	Activation: Passive - active number of rounds after pick-up
 	Color: Rainbow
 	Ability: x2 score for a number of rounds
 	Shortname: 
 	Needs: An icon
 	
-PHASE
+PHASE 
 	Icon: Ghost
 	Activation: Passive - active number of rounds after pick-up
 	Color: White
-	Ability: allows gloop to phase through obsticles and trail paths.
+	Ability: allows gloop to phase through obsticles 
 	Shortname: Gst
 	Needs: Everything
+	
+Jump
+	Icon: Spring?caffine?
+	Activation: Passive - activates when needed
+	Color:
+	Ability: allows gloop to jump over one trail (counts as movement space for counting?)
+	Shortname:
+	Needs: Everything
+	
 	
 Below: Copied from google docs, not edited
 randomize numbers
