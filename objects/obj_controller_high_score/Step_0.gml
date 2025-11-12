@@ -83,9 +83,4 @@ if keyboard_lastchar !=""
 		scr_save_high_score()
 	}
 	
-
-	
-	
-	
-	
 }

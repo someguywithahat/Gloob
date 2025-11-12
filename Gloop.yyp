@@ -74,6 +74,8 @@
     {"id":{"name":"obj_targeting","path":"objects/obj_targeting/obj_targeting.yy",},},
     {"id":{"name":"obj_test_movement_1","path":"objects/obj_test_movement_1/obj_test_movement_1.yy",},},
     {"id":{"name":"obj_test_movement","path":"objects/obj_test_movement/obj_test_movement.yy",},},
+    {"id":{"name":"obj_test_slime","path":"objects/obj_test_slime/obj_test_slime.yy",},},
+    {"id":{"name":"obj_test_slime2","path":"objects/obj_test_slime2/obj_test_slime2.yy",},},
     {"id":{"name":"obj_TestRoom1","path":"objects/obj_TestRoom1/obj_TestRoom1.yy",},},
     {"id":{"name":"obj_unusedGloop","path":"objects/obj_unusedGloop/obj_unusedGloop.yy",},},
     {"id":{"name":"obj_weather_controller","path":"objects/obj_weather_controller/obj_weather_controller.yy",},},
