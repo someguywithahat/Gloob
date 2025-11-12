@@ -3,8 +3,8 @@
   "%Name":"Spr_Obs_2x2",
   "bboxMode":0,
   "bbox_bottom":79,
-  "bbox_left":2,
-  "bbox_right":78,
+  "bbox_left":0,
+  "bbox_right":79,
   "bbox_top":1,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,6 +16,7 @@
     {"$GMSpriteFrame":"v1","%Name":"9eca7bfe-eca2-4e1f-8119-2baec6bab8d3","name":"9eca7bfe-eca2-4e1f-8119-2baec6bab8d3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"268a7ada-2322-4982-806c-08167f6c6ba7","name":"268a7ada-2322-4982-806c-08167f6c6ba7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"1b1a91ea-cd91-4ed2-897a-373d32beaf1d","name":"1b1a91ea-cd91-4ed2-897a-373d32beaf1d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9949e119-1be7-46c2-8413-88a4a29761f4","name":"9949e119-1be7-46c2-8413-88a4a29761f4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":4,
   "gridY":4,
@@ -55,7 +56,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":4.0,
+    "length":5.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -88,6 +89,9 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1b1a91ea-cd91-4ed2-897a-373d32beaf1d","path":"sprites/Spr_Obs_2x2/Spr_Obs_2x2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"5877dbc3-5354-451b-a337-c569896db796","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9949e119-1be7-46c2-8413-88a4a29761f4","path":"sprites/Spr_Obs_2x2/Spr_Obs_2x2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"0b304aeb-8d2e-457e-aa54-b5bb8f054a43","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
