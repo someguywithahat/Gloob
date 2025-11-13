@@ -5,6 +5,7 @@ my_number = scr_get_weighted_grid_number()
 my_shade = c_white
 activeNumber=1
 wall=0
+obs=0
 
 trail_rotation = 0
 gloop_color_index=2

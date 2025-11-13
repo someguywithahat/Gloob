@@ -9,6 +9,7 @@ depth=-30000
 toggle_rain=0
 toggle_snow=0
 toggle_leaves=0
+toggle_add_obs=0
 
 /*
 0=none
@@ -17,6 +18,7 @@ toggle_leaves=0
 3=leaves
 */
 global.weather=0
+controller=global.controller
 
 weather_alpha=0
 snow_alpha=0
@@ -24,3 +26,4 @@ snow_alpha=0
 	
 	
 text_xx=room_width-240
+

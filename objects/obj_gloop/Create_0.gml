@@ -62,6 +62,7 @@ rainbow_power=0
 rainbow_delay=0.0
 gloop_color_index_old=0
 
+is_glowing=0
 
 s_idol = Spr_Slm_idol_Hat
 s_sleep = Spr_Slm_Sleep_Hat

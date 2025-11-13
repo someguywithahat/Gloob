@@ -1,6 +1,18 @@
 
+var palette_original = spr_palette_index
+var palette_all = spr_palette_all
 
-	
+if obs=1  
+{
+	palette_original=spr_palette_seasons_index
+	palette_all=spr_palette_seasons_all
+	if global.weather = global.FALL
+		gloop_color_index=1
+	else
+		gloop_color_index=0
+}
+
+
 // Start shader
 shader_set(shd_palette_swap);
 
@@ -10,12 +22,8 @@ var u_palette_swap = shader_get_sampler_index(shd_palette_swap, "palette_swap");
 var u_color_count  = shader_get_uniform(shd_palette_swap, "color_count");
 
 // Bind your palette sprites as textures
-texture_set_stage(u_palette_orig, sprite_get_texture(spr_palette_index, 0));
-texture_set_stage(u_palette_swap, sprite_get_texture(spr_palette_all, gloop_color_index));
-//texture_set_stage(u_palette_orig, sprite_get_texture(spr_palette_index_red, 0));
-//texture_set_stage(u_palette_swap, sprite_get_texture(spr_palette_index, 0));
-
-
+texture_set_stage(u_palette_orig, sprite_get_texture(palette_original, 0));
+texture_set_stage(u_palette_swap, sprite_get_texture(palette_all, gloop_color_index));
 
 // Send color count
 shader_set_uniform_f(u_color_count, 6.0);
@@ -25,6 +33,8 @@ draw_self();
 
 // End shader
 shader_reset();
+
+
 
 
 if has_powerUP=1{

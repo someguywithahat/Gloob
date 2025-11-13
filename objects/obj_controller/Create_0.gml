@@ -87,3 +87,7 @@ PU_SPRITES[0]=Spr_PU_Hat
 PU_SPRITES[1]=Spr_Pu_Tel
 
 
+global.FALL = 3
+global.WINTER = 1
+global.SPRING = 2
+global.SUMMER = 0

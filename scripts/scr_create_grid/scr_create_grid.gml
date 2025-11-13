@@ -101,13 +101,14 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 	}
 	
 		
-	//add powerups
+	//add obsticals
 	for (var i = 0; i < number_of_obstacles; i++)
 	{
 		var powerup_x = irandom_range(1,x_count-2);
 		var powerup_y = irandom_range(1,y_count-2);
 		var gridInst = grid_array[powerup_x,powerup_y]
 		gridInst.activeNumber=0
+		gridInst.obs=1
 		gridInst.sprite_index=Spr_Obs_1x1
 		//show_debug_message(string(sprite_get_number(spr_PowerUp1)))
 		
@@ -182,4 +183,75 @@ if (array_length(available) > 0) {
 
 
 */
+
+
+function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
+{
+	var obs_sprite = noone
+	if obstacle_x = 1 and obstacle_y=1 then obs_sprite=Spr_Obs_1x1
+	else if obstacle_x = 2 and obstacle_y=1 then obs_sprite=Spr_Obs_2x1
+	else if obstacle_x = 1 and obstacle_y=2 then obs_sprite=Spr_Obs_1x2
+	else if obstacle_x = 2 and obstacle_y=2 then obs_sprite=Spr_Obs_2x2
+	else if obstacle_x = 3 and obstacle_y=3 then obs_sprite=Spr_Obs_3x3
+	else return
+	
+	var max_i = array_length(grid_arrays);
+	var max_j = array_length(grid_arrays[0]);
+	var placement_fail=0
+	
+	var i = 0
+	var j = 0
+
+	repeat (10) 
+	{
+		placement_fail=0
+	    i = irandom_range(1,max_i - obstacle_x);
+	    j = irandom_range(1,max_j - obstacle_y);
+		for(var ii=0;ii<obstacle_x;ii++)
+		{
+			for(var jj=0;jj<obstacle_y;jj++) 
+			{
+				var gridNum = grid_arrays[i+ii][j+jj]
+			    if (gridNum.activeNumber=1 and gridNum.wall=0 and gridNum.has_powerUP=0) {
+			        show_debug_message("Found free cell: " + string(i+ii) + "," + string(j+jj));
+				}
+				else{
+					placement_fail++
+					show_debug_message("Cell full at: " + string(i+ii) + "," + string(j+jj));
+				}
+			}
+	    }
+		
+		if placement_fail=0
+			break
+	}	
+	
+	if placement_fail>0
+		return
+	
+	var gridNum = grid_arrays[i][j]
+	
+	for(var ii=0;ii<obstacle_x;ii++)
+	{
+		for(var jj=0;jj<obstacle_y;jj++) 
+		{	
+			gridNum = grid_arrays[i+ii][j+jj]
+			gridNum.activeNumber=0
+			gridNum.obs=1
+			gridNum.sprite_index=noone
+			show_debug_message("deactivating: " + string(i+ii) + "," + string(j+jj));
+		}
+	}
+	
+	gridNum = grid_arrays[i][j]
+	gridNum.sprite_index=obs_sprite
+	gridNum.image_index = irandom_range(0, image_number-1)
+	//gridNum.image_index = image_number-1
+	gridNum.depth--
+	
+}
+
+
+
+
 

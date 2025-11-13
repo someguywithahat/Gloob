@@ -149,6 +149,22 @@ if ((keyboard_check_pressed(ord("T")) and room <> rm_titleScreen)and disable_gam
     room_goto(rm_titleScreen)
 }
 
+if ((keyboard_check_pressed(ord("L")) and room <> rm_titleScreen)and disable_game_inputs=0) or clicked_main_menu=1 {
+    // code here runs once when F is pressed
+	var spawnObs = irandom_range(1,100)
+	if spawnObs>95
+		scr_setup_add_obstacle(grid_refs,3,3)
+	else if spawnObs>=75
+		scr_setup_add_obstacle(grid_refs,2,2)
+	else if spawnObs>=50
+		scr_setup_add_obstacle(grid_refs,1,2)
+	else if spawnObs>=25
+		scr_setup_add_obstacle(grid_refs,2,1)
+	else if spawnObs>=0
+		scr_setup_add_obstacle(grid_refs,1,1)
+}
+
+
 //Menu buttons
 if(clicked_quickstart=1){
 	clicked_quickstart=-1

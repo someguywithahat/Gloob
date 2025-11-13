@@ -119,7 +119,13 @@ else{
 
 
 
-
+if is_glowing=1
+{
+	var size = 0.8 + random_range(-0.01,0.01)
+	gpu_set_blendmode(bm_add); 
+	draw_sprite_ext(spr_effect_glow, 0, x+16,y+16,size,size,0,make_colour_rgb(240,204,100),0.2)
+	gpu_set_blendmode(bm_normal); 
+}
 
 
 if rainbow_power=1 or powerUp1=3 or powerUp2=3 or powerUp3=3{
