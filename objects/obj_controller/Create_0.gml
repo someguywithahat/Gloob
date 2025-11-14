@@ -94,4 +94,5 @@ global.WINTER = 1
 global.SPRING = 2
 global.SUMMER = 0
 
+global.achievement1=0
 
