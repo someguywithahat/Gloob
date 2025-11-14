@@ -18,12 +18,12 @@ TELEPORT
 	Shortname: Tel
 	Needs: Sign Icon
 
-SCORE MULTIPLIER
-	Icon: Rainbow Gems?
+Invincibility
+	Icon: 
 	Activation: Passive - active number of rounds after pick-up
 	Color: Rainbow
-	Ability: x2 score for a number of rounds
-	Shortname: 
+	Ability:Destroy obsticles and trail pieces in your path for a number of rounds (3)
+	Shortname: RB
 	Needs: An icon
 	
 PHASE 
