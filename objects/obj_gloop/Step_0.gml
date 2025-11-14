@@ -218,6 +218,11 @@ and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
 			audio_play_sound(snd_bonk, 1, false);
 			alive=0
 		}
+		ismoving=0
+		isjumping=0
+		isrolling=0
+		has_targeting_cursor=0
+		scr_end_turn()	
 	}
 	
 }
@@ -388,8 +393,7 @@ if ismoving=1 {
 					if derX<>0
 						oops.xx*=derX
 					else 
-						oops.xx*=0.25
-						
+						oops.xx*=0.25						
 				}
 				else {
 					audio_play_sound(snd_bonk, 1, false);
@@ -399,14 +403,10 @@ if ismoving=1 {
 				isjumping=0
 				isrolling=0
 				has_targeting_cursor=0
-				scr_end_turn()
-				
+				scr_end_turn()				
 			}
 		}
-		
-		
 	}
-
 }
 
 
