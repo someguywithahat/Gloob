@@ -31,7 +31,8 @@ if mixit<>0
 	mix_percent+=(0.005 * mixit)
 }
 
-if room= rm_titleScreen and global.achievement1=0and x<490
+if room= rm_titleScreen and global.achievement1=0and 
+(x<490 or y>540 or y<420 or x>810)
 {
 	global.achievement1=1
 	var achievement = instance_create_layer(x+8, y, "Instances", obj_achievement );
