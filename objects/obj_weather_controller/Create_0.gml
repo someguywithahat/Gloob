@@ -10,6 +10,10 @@ toggle_rain=0
 toggle_snow=0
 toggle_leaves=0
 toggle_add_obs=0
+toggle_night=0
+
+isNight=0
+isNightShader=0
 
 /*
 0=none

@@ -41,7 +41,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 				inst.wall=1
 				//inst.sprite_index = spr_gridOutline
 				//inst.activeNumber=0
-				inst.visible=false
+				inst.sprite_index=noone
 			}
 			
             // Store reference in the array
@@ -53,6 +53,8 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 	for (var i = 0; i < array_length(controller.player_color); i++) 
 		if i>number_of_players
 			controller.player_color[i]=-1
+			
+	//spawns players
 	for (var i = 0; i < number_of_players; i++)
 	{
 		var gloop_x = irandom_range(1,x_count-2);
@@ -239,7 +241,7 @@ function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
 			gridNum.activeNumber=0
 			gridNum.obs=1
 			gridNum.sprite_index=noone
-			show_debug_message("deactivating: " + string(i+ii) + "," + string(j+jj));
+			//show_debug_message("deactivating: " + string(i+ii) + "," + string(j+jj));
 		}
 	}
 	
@@ -251,6 +253,35 @@ function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
 	
 }
 
+
+function scr_refresh_grid(grid_arrays)
+{
+	
+	var max_i = array_length(grid_arrays);
+	var max_j = array_length(grid_arrays[0]);
+	var gridNum = grid_arrays[0][0]
+	
+    for (var i = 0; i < max_i; i++)
+    {
+        for (var j = 0; j < max_j; j++)
+        {
+            
+			gridNum = grid_arrays[i][j]
+			if (gridNum.wall=0 and gridNum.obs=0) {
+				gridNum.activeNumber=1
+				gridNum.my_number = scr_get_weighted_grid_number()
+				gridNum.sprite_index=Numbers
+				gridNum.image_index = gridNum.my_number - 1
+				gridNum.image_speed=0
+				gridNum.has_powerUp=0
+				//show_debug_message("Am I refreshing grid?");
+				
+			}		
+			//show_debug_message("Wall: " + string(gridNum.wall) + " obs: " + string(gridNum.obs))
+        }
+    }
+	
+}
 
 
 
