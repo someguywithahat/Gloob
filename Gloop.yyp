@@ -43,6 +43,7 @@
   "resources":[
     {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},},
     {"id":{"name":"Note_Powerups","path":"notes/Note_Powerups/Note_Powerups.yy",},},
+    {"id":{"name":"obj_achievement","path":"objects/obj_achievement/obj_achievement.yy",},},
     {"id":{"name":"obj_controller_high_score_room","path":"objects/obj_controller_high_score_room/obj_controller_high_score_room.yy",},},
     {"id":{"name":"obj_controller_high_score","path":"objects/obj_controller_high_score/obj_controller_high_score.yy",},},
     {"id":{"name":"obj_controller_JoText","path":"objects/obj_controller_JoText/obj_controller_JoText.yy",},},
@@ -113,6 +114,7 @@
     {"id":{"name":"shd_palette_shift_1","path":"shaders/shd_palette_shift_1/shd_palette_shift_1.yy",},},
     {"id":{"name":"shd_palette_shift","path":"shaders/shd_palette_shift/shd_palette_shift.yy",},},
     {"id":{"name":"shd_palette_swap","path":"shaders/shd_palette_swap/shd_palette_swap.yy",},},
+    {"id":{"name":"snd_achievement","path":"sounds/snd_achievement/snd_achievement.yy",},},
     {"id":{"name":"snd_background1","path":"sounds/snd_background1/snd_background1.yy",},},
     {"id":{"name":"snd_bonk","path":"sounds/snd_bonk/snd_bonk.yy",},},
     {"id":{"name":"snd_menu_chime","path":"sounds/snd_menu_chime/snd_menu_chime.yy",},},
