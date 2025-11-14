@@ -18,6 +18,10 @@ image_index = my_number - 1
 
 has_powerUP = 0
 powerUpImageIndex=0
+
+
+original_depth=depth
+
 //if (irandom_range(1,10)=1) then has_powerUP=1 else has_powerUP=0
 
 //// Assign the sprite based on the number

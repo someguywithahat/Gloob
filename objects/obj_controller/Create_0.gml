@@ -65,6 +65,8 @@ grid_refs = noone
 game_over_status=0
 disable_game_inputs=0
 game_over_object=noone
+isNight=0
+isNightShader=0
 
 //clicked values are set to 0 when the option is hovered over, and 1 when clicked
 clicked_quickstart = -1
@@ -91,3 +93,5 @@ global.FALL = 3
 global.WINTER = 1
 global.SPRING = 2
 global.SUMMER = 0
+
+
