@@ -66,8 +66,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Powerups",
-    "path":"folders/Sprites/Powerups.yy",
+    "name":"Prolly Not",
+    "path":"folders/Sprites/Prolly Not.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
