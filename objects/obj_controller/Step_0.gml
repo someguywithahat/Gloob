@@ -77,13 +77,15 @@ else
 	
 	
 if (keyboard_check_pressed(ord("M")))and disable_game_inputs=0 {
-    if (!music_playing) {
-        audio_play_sound(snd_background1, 1, true); // play sound, priority 1, loop true
-        music_playing = true;
-    } else {
-        audio_stop_sound(snd_background1); // stop it
-        music_playing = false;
-    }
+    music_playing++
+	audio_stop_sound(music_current)
+	if music_playing=1
+		music_current=audio_play_sound(snd_track1, 1, true);
+	else if music_playing=2
+		music_current=audio_play_sound(snd_track2, 1, true);	
+	else music_playing=0	
+
+
 }
 
 if (keyboard_check_pressed(vk_escape)) {

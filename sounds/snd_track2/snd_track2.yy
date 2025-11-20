@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_background1",
+  "%Name":"snd_track2",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":20.0,
+  "duration":36.963264,
   "exportDir":"",
-  "name":"snd_background1",
+  "name":"snd_track2",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_background1.wav",
-  "volume":0.5,
+  "soundFile":"snd_track2.mp3",
+  "volume":1.0,
 }
