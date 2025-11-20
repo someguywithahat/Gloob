@@ -13,6 +13,7 @@ if obs=1
 }
 
 
+
 // Start shader
 shader_set(shd_palette_swap);
 
@@ -29,7 +30,27 @@ texture_set_stage(u_palette_swap, sprite_get_texture(palette_all, gloop_color_in
 shader_set_uniform_f(u_color_count, 6.0);
 
 // Draw the sprite
-draw_self();
+//draw_self();
+
+if sprite_index <> noone
+{
+	rot_x=0
+	rot_y=0
+	if rotate = 90
+	{
+		rot_y=32
+	}
+	else if rotate = 180
+	{
+		rot_y=32
+		rot_x=32
+	}
+	else if rotate = 270
+	{
+		rot_x=32
+	}
+	draw_sprite_ext(sprite_index,image_index,x+rot_x,y+rot_y,1,1,rotate,c_white,1)
+}
 
 // End shader
 shader_reset();
@@ -45,7 +66,8 @@ else if has_powerUP=2{
 	draw_sprite(Spr_Pu_Tel,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.2
 }
-	
+
+
 
 
 if (mouse_x > x && mouse_x < x+sprite_width &&
@@ -70,4 +92,15 @@ if (mouse_x > x && mouse_x < x+sprite_width &&
 	
 }
 else tooltip_counter=0
+
+if (mouse_x > x && mouse_x < x+sprite_width &&
+    mouse_y > y && mouse_y < y+sprite_width 
+	&& activeNumber=0
+	)
+{
+
+	draw_sprite_ext(spr_effect_particle_test,0,x+16 + (8*enterX), y+16 + (8*enterY),1,1,0,c_green,1)	
+	draw_sprite_ext(spr_effect_particle_test,0,x+16 + (7*exitX), y+16 + (6*exitY),1,1,0,c_red,1)
+
+}
 

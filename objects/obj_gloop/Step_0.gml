@@ -89,12 +89,6 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2
 	image_index=0	
 	//ismoving=1
 }
-//if sprite_index=Slm_Grn_Jump and image_index>12
-//{
-//	sprite_index=s_idol
-//	var squishy = scr_get_grid_id(grid_x, grid_y)
-//	squishy.activeNumber=0	
-//}
 
 
 
@@ -190,7 +184,10 @@ and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
 			isrolling=1
 		
 		//Update the previous slime trail
+		current_grid_number.exitX=derX
+		current_grid_number.exitY=derY		
 		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)
+
 		
 	}
 	else if selected_grid.activeNumber=0
@@ -308,9 +305,6 @@ if ismoving=1 {
 			}
 			next_inst.has_powerUP=0
 			audio_play_sound(snd_slm_chomp, 1, false);	
-				
-				
-			
 			
 			puBonk=0
 			if powerUp1=1
@@ -322,7 +316,11 @@ if ismoving=1 {
 				
 		}
 		
+		current_grid_number.exitX=derX
+		current_grid_number.exitY=derY
 		current_grid_number = next_inst
+		current_grid_number.enterX=derX*-1
+		current_grid_number.enterY=derY*-1
 		
 
 		
@@ -349,6 +347,8 @@ if ismoving=1 {
 		}
 		//scr_draw_score(260,20,100)
 		
+
+		
 		if grid_x=target_x and grid_y=target_y
 		{
 			sprite_index=s_idol
@@ -360,6 +360,9 @@ if ismoving=1 {
 			has_targeting_cursor=0
 			derX=0
 			derY=0		
+			
+			current_grid_number.exitX=derX
+			current_grid_number.exitY=derY
 			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 			
 			with(obj_gridFlower){
@@ -370,6 +373,8 @@ if ismoving=1 {
 		}
 		else
 		{
+			current_grid_number.exitX=derX
+			current_grid_number.exitY=derY
 			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 			next_target_x = grid_x + derX
 			next_target_y = grid_y + derY

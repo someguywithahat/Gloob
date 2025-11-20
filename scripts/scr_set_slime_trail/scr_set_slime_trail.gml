@@ -74,7 +74,7 @@ function scr_set_slime_trail(target, derX, derY, prev_derX, prev_derY, entering,
 
 	trail_sprite = scr_get_slime_trail(trail_type)
 	target.sprite_index=trail_sprite
-	scr_rotate_sprite(target,rotate)
+	//scr_rotate_sprite(target,rotate)
 	target.image_speed=1
 	target.gloop_color_index=color
 

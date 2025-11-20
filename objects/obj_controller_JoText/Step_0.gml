@@ -55,7 +55,7 @@ if (clicked_save_defaults=1)
 	}
 	
 	
-	scr_save_scripts()
+	//scr_save_scripts()
 }
 
 

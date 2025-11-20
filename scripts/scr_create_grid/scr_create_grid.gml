@@ -237,7 +237,7 @@ function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
 	{
 		for(var jj=0;jj<obstacle_y;jj++) 
 		{	
-			gridNum = grid_arrays[i+ii][j+jj]
+			gridNum = grid_arrays[i+ii][j+jj] 
 			gridNum.activeNumber=0
 			gridNum.obs=1
 			gridNum.sprite_index=noone
@@ -274,12 +274,21 @@ function scr_refresh_grid(grid_arrays)
 				gridNum.image_index = gridNum.my_number - 1
 				gridNum.image_speed=0
 				gridNum.has_powerUp=0
+				gridNum.rotate=0
+				gridNum.rot_x=0
+				gridNum.rot_y=0
+				gridNum.enterX=0
+				gridNum.enterY=0
+				gridNum.exitX=0
+				gridNum.exitY=0
 				//show_debug_message("Am I refreshing grid?");
 				
 			}		
 			//show_debug_message("Wall: " + string(gridNum.wall) + " obs: " + string(gridNum.obs))
         }
+		
     }
+	instance_destroy(obj_gridFlower);
 	
 }
 
