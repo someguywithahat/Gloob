@@ -55,7 +55,8 @@ persistent=true
 depth=-20000
 layer_create(-20001, "AboveEverything");
 
-music_playing = false;
+music_playing = 0;
+music_current=noone
 
 target_obj=noone
 
@@ -87,6 +88,7 @@ global.fnt_Gloop = font_add_sprite(spr_gloopFontOutline, ord("!"), true, 5);
 PU_SPRITES = array_create(10,noone)
 PU_SPRITES[0]=Spr_PU_Hat
 PU_SPRITES[1]=Spr_Pu_Tel
+PU_SPRITES[2]=Spr_Pu_RB_SM_Full
 
 
 global.FALL = 3

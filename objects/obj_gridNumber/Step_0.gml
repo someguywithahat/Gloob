@@ -21,7 +21,57 @@ if has_powerUP>0 and activeNumber>0 and wall=0
 		gloop_color_index=7
 	else if(has_powerUP=2)
 		gloop_color_index=1
-	else 
+	else if(has_powerUP <> 3)
 		gloop_color_index=0
 		
+}
+
+
+
+
+if activeNumber=0 and obs=0 and wall=0
+{
+	rotate=0
+	//Straight
+	if exitY=0 and enterY=0 and exitX<>0 and enterX<>0
+		rotate=90
+		
+	//Corner
+	else if enterX=0 and enterY=-1 and exitX=1 and exitY=0
+		rotate=0
+	else if enterX=-1 and enterY=0 and exitX=0 and exitY=-1
+		rotate=90
+	else if enterX=0 and enterY=1 and exitX=-1 and exitY=0
+		rotate=180
+	else if enterX=1 and enterY=0 and exitX=0 and exitY=1
+		rotate=270
+	else if exitX=0 and exitY=-1 and enterX=1 and enterY=0
+		rotate=0
+	else if exitX=-1 and exitY=0 and enterX=0 and enterY=-1
+		rotate=90
+	else if exitX=0 and exitY=1 and enterX=-1 and enterY=0
+		rotate=180
+	else if exitX=1 and exitY=0 and enterX=0 and enterY=1
+		rotate=270
+		
+	else if abs(enterX+enterY) mod 2 = 0 and exitX=-1 and exitY=0
+		rotate=270
+	else if abs(enterX+enterY) mod 2 = 0 and exitX=0 and exitY=-1
+		rotate=180
+	else if abs(enterX+enterY) mod 2 = 0 and exitX=1 and exitY=0
+		rotate=90
+		
+		
+	else if abs(exitX+exitY) mod 2 = 0 and enterX=-1 and enterY=0
+		rotate=270
+	else if abs(exitX+exitY) mod 2 = 0 and enterX=0 and enterY=-1
+		rotate=180
+	else if abs(exitX+exitY) mod 2 = 0 and enterX=1 and enterY=0
+		rotate=90
+	
+		
+	//else if 
+		
+		
+
 }

@@ -39,7 +39,7 @@ function scr_pu_teleport_random(gloopInst){
 		gridinst.sprite_index = scr_get_slime_trail(0)
 		gridinst.depth=gloopInst.depth+2
 		
-		
+		current_grid_number=gridinst
 	}
 	else
 		show_debug_message("no tp location")

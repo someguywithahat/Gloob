@@ -9,6 +9,8 @@ obs=0
 
 trail_rotation = 0
 gloop_color_index=2
+gloop_color_index_old=1
+rainbow_delay=0
 
 tooltip_counter=0
 
@@ -18,7 +20,8 @@ image_index = my_number - 1
 
 has_powerUP = 0
 powerUpImageIndex=0
-
+powerUpxx=0
+powerUpyy=0
 
 original_depth=depth
 
@@ -26,7 +29,12 @@ enterX=0
 enterY=0
 exitX=0
 exitY=0
+rot_x=0
+rot_y=0
+rotate=0
 
+
+//sprite_index=Spr_PU_N1
 
 
 //if (irandom_range(1,10)=1) then has_powerUP=1 else has_powerUP=0
