@@ -21,7 +21,7 @@ if has_powerUP>0 and activeNumber>0 and wall=0
 		gloop_color_index=7
 	else if(has_powerUP=2)
 		gloop_color_index=1
-	else 
+	else if(has_powerUP <> 3)
 		gloop_color_index=0
 		
 }

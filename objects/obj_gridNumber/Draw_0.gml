@@ -13,48 +13,96 @@ if obs=1
 }
 
 
-
-// Start shader
-shader_set(shd_palette_swap);
-
-// Set uniforms
-var u_palette_orig = shader_get_sampler_index(shd_palette_swap, "palette_orig");
-var u_palette_swap = shader_get_sampler_index(shd_palette_swap, "palette_swap");
-var u_color_count  = shader_get_uniform(shd_palette_swap, "color_count");
-
-// Bind your palette sprites as textures
-texture_set_stage(u_palette_orig, sprite_get_texture(palette_original, 0));
-texture_set_stage(u_palette_swap, sprite_get_texture(palette_all, gloop_color_index));
-
-// Send color count
-shader_set_uniform_f(u_color_count, 6.0);
-
-// Draw the sprite
-//draw_self();
-
-if sprite_index <> noone
+if has_powerUP<>3
 {
-	rot_x=0
-	rot_y=0
-	if rotate = 90
+	// Start shader
+	shader_set(shd_palette_swap);
+
+	// Set uniforms
+	var u_palette_orig = shader_get_sampler_index(shd_palette_swap, "palette_orig");
+	var u_palette_swap = shader_get_sampler_index(shd_palette_swap, "palette_swap");
+	var u_color_count  = shader_get_uniform(shd_palette_swap, "color_count");
+
+	// Bind your palette sprites as textures
+	texture_set_stage(u_palette_orig, sprite_get_texture(palette_original, 0));
+	texture_set_stage(u_palette_swap, sprite_get_texture(palette_all, gloop_color_index));
+
+	// Send color count
+	shader_set_uniform_f(u_color_count, 6.0);
+
+	// Draw the sprite
+	//draw_self();
+
+	if sprite_index <> noone
 	{
-		rot_y=32
+		rot_x=0
+		rot_y=0
+		if rotate = 90
+		{
+			rot_y=32
+		}
+		else if rotate = 180
+		{
+			rot_y=32
+			rot_x=32
+		}
+		else if rotate = 270
+		{
+			rot_x=32
+		}
+		draw_sprite_ext(sprite_index,image_index,x+rot_x,y+rot_y,1,1,rotate,c_white,1)
 	}
-	else if rotate = 180
-	{
-		rot_y=32
-		rot_x=32
-	}
-	else if rotate = 270
-	{
-		rot_x=32
-	}
-	draw_sprite_ext(sprite_index,image_index,x+rot_x,y+rot_y,1,1,rotate,c_white,1)
+
+	// End shader
+	shader_reset();
 }
+else if has_powerUP=3
+{
+	rainbow_delay+=.05
+	if rainbow_delay>1
+	{
+		gloop_color_index_old=gloop_color_index
+		rainbow_delay=0
+		if gloop_color_index = 1
+			gloop_color_index=4
+		else if gloop_color_index=4
+			gloop_color_index=5
+		else if gloop_color_index=5
+			gloop_color_index=3
+		else if gloop_color_index=3
+			gloop_color_index=7
+		else if gloop_color_index=7
+			gloop_color_index=2
+		else if gloop_color_index=2
+			gloop_color_index=1
+		else gloop_color_index=1
+	}
 
-// End shader
-shader_reset();
+	// Start shader
+	shader_set(shd_palette_shift);
 
+	// Set uniforms
+	var u_palette_orig = shader_get_sampler_index(shd_palette_shift, "palette_orig");
+	var u_palette_swap_old = shader_get_sampler_index(shd_palette_shift, "palette_swap_old");
+	var u_palette_swap_new = shader_get_sampler_index(shd_palette_shift, "palette_swap_new");
+	var u_color_count  = shader_get_uniform(shd_palette_shift, "color_count");
+	var u_color_merge  = shader_get_uniform(shd_palette_shift, "color_merge");
+
+	// Bind your palette sprites as textures
+	texture_set_stage(u_palette_orig, sprite_get_texture(spr_palette_index, 0));
+	texture_set_stage(u_palette_swap_old, sprite_get_texture(spr_palette_all, gloop_color_index_old));
+	texture_set_stage(u_palette_swap_new, sprite_get_texture(spr_palette_all, gloop_color_index));
+
+	// Send color count
+	shader_set_uniform_f(u_color_count, 6.0);
+	shader_set_uniform_f(u_color_merge, rainbow_delay);
+
+	// Draw the sprite
+	draw_self();
+
+	// End shader
+	shader_reset();
+}
 
 
 
@@ -65,6 +113,10 @@ if has_powerUP=1{
 else if has_powerUP=2{
 	draw_sprite(Spr_Pu_Tel,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.2
+}
+else if has_powerUP=3{
+	draw_sprite(Spr_Pu_RB__sm,powerUpImageIndex,x,y)
+	powerUpImageIndex=powerUpImageIndex+.15
 }
 
 
