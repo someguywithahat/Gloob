@@ -82,6 +82,8 @@ if (keyboard_check_pressed(ord("M")))and disable_game_inputs=0 {
 	if music_playing=1
 		music_current=audio_play_sound(snd_track1, 1, true);
 	else if music_playing=2
+		music_playing=music_playing
+	else if music_playing=3
 		music_current=audio_play_sound(snd_track2, 1, true);	
 	else music_playing=0	
 
