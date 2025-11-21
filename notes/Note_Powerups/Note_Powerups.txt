@@ -2,30 +2,65 @@ Numbers should color shift to match the power ups which can be overlayed on top 
 use scroll wheel to select activatable power ups?
 multiple power ups at once?
 
+Slime Bomb
+	Icon: Bomb
+	Activation: Useable - action key at will
+	Color: Red
+	Ability: Hit an area with slime to gain big points
+	Super: larger grid
+	Shortname: Bomb
+	Needs: Everything
+
+ORANGE - Score Multiplier
+
 BONK RESIST 
 	icon: Hardhat
 	Activation: Passive - activates when needed
 	color: yellow
 	ability: +1 bonk resist 
 	Shortname: Hat
-	Needs: pick up animation, sync animations
+	Needs: Pick-up animation / sound
+
+Green - grassy patch (tree star) with number
 	
 TELEPORT
 	Icon: Fairy
 	Activation: Useable - action key to use at will
 	Color: Blue
 	Ability: random teleport to a new position
-	Shortname: Tel
+	Super:
+	Shortname: Tele
 	Needs: Sign Icon
+
+Split King Slime
+	Icon: Crown
+	Ativation Passive on pick up
+	Color: Purple
+	Ability: Duplicate slime into two copies (extra life)
+	Super:
+	Shortname: King
+	Needs: A-lot
+	
+WHITE - straw (double row)
+
+BLACK - Night time - lower sarting goal
 
 Invincibility
 	Icon: Star
 	Activation: Passive - active number of rounds after pick-up
 	Color: Rainbow
 	Ability:Destroy obsticles and trail pieces in your path for a number of rounds (6)
+	Super:
 	Shortname: RB
 	Needs: to be programed in (I made multiple files for the star, I can merge them all into the same one if thats easier, the intent is that each roung looses a color so you can see the star on your score sign fading to know you are running out of time.)
 	
+
+	
+
+
+
+
+Probably Not
 PHASE 
 	Icon: Ghost
 	Activation: Passive - active number of rounds after pick-up
@@ -35,19 +70,13 @@ PHASE
 	Needs: Everything
 	
 Jump
-	Icon: Spring?caffine?
+	Icon: orange pepper
 	Activation: Passive - activates when needed
 	Color:
-	Ability: allows gloop to jump over one trail (counts as movement space for counting?)
+	Ability: move to chosen square within certain distance
 	Shortname:
 	Needs: Everything
 	
-	
-Below: Copied from google docs, not edited
-randomize numbers
-deslime an area (bridge) (33%)
-Add (random) numbers back in (10%)
-Collect Section of grid (slime-bomb) with delay
-Super Star Invulnerability
 Slow (1/2 move for x rounds or -1 move)
-Bull dozer (x2 rows)
+
+Score multiplier (big numbers)
