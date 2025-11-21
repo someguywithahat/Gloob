@@ -7,7 +7,7 @@ var controller_current_player = controller.current_player
 //if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
 if puBonk>0
 {
-	sh_idol = Spr_Slm_Hat_idol
+	sh_idol = Spr_Slm_Hat_Idol
 	sh_sleep = Spr_Slm_Hat_Sleep
 	sh_death = Spr_Slm_Hat_Death
 	sh_jump = Spr_Slm_Hat_Move_Jump
