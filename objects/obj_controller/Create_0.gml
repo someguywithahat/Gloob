@@ -76,6 +76,7 @@ clicked_debugRoom = -1
 clicked_scoreRoom = -1
 clicked_restart=-1
 clicked_main_menu=-1
+clicked_exitGame=-1
 
 window_set_fullscreen(true);
 
