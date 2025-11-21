@@ -79,6 +79,7 @@ s_death = Spr_Slm_Death
 s_jump = Spr_Slm_Move_Up_Jump
 s_roll = Spr_Slm_Move_Up_roll
 s_roll_R = Spr_Slm_Roll_R
+s_roll_R = Slm_Grn_Move_Side_Slurp
 s_slurp = Slm_Grn_Move_Side_Slurp
 
 

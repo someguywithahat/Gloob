@@ -23,6 +23,7 @@ else
 	s_jump = Spr_Slm_Move_Up_Jump
 	s_roll = Spr_Slm_Move_Up_roll
 	s_roll_R = Spr_Slm_Roll_R
+	//s_roll_R = Slm_Grn_Move_Side_Slurp
 	s_teleport = Spr_Slm_Tele
 }
 
@@ -80,6 +81,7 @@ else if isrolling=1{
 		sprite_index=s_roll
 	else
 		sprite_index=s_roll_R
+		
 	
 	//reverse animation if derY is positive
 	if derY=-1
@@ -87,7 +89,7 @@ else if isrolling=1{
 	else if derY=1
 		image_index = 2 + scr_get_jump_sprite(gridNumberPrevY,y,gridNumberY,6)		
 	else 
-	{		
+	{
 		image_speed=1*derX
 		if image_index>5 and derX>0
 			image_index=1
