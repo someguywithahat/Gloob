@@ -71,15 +71,25 @@ s_jump = Spr_Slm_Hat_Move_Jump
 s_roll = Spr_Slm_Hat_Move_Roll
 s_roll_R = Spr_Slm_Hat_Move_Spin
 s_teleport = Spr_Slm_Hat_Tele
-//s_slurp = Slm_Grn_Move_Side_Slurp
-
-s_idol = Spr_Slm_Idol
-s_sleep = Spr_Slm_Sleep
-s_death = Spr_Slm_Death
-s_jump = Spr_Slm_Move_Jump
-s_roll = Spr_Slm_Move_Roll
-s_roll_R = Spr_Slm_Move_Spin
 s_slurp = Spr_Slm_Move_Slurp
+
+sh_idol = Spr_Slm_Hat_idol
+sh_sleep = Spr_Slm_Hat_Sleep
+sh_death = Spr_Slm_Hat_Death
+sh_jump = Spr_Slm_Hat_Move_Jump
+sh_roll = Spr_Slm_Hat_Move_Roll
+sh_roll_R = Spr_Slm_Hat_Move_Spin
+sh_teleport = Spr_Slm_Hat_Tele
+sh_slurp = Spr_Slm_Move_Slurp
+hat_index=Spr_Slm_Hat_idol
+
+//s_idol = Spr_Slm_Idol
+//s_sleep = Spr_Slm_Sleep
+//s_death = Spr_Slm_Death
+//s_jump = Spr_Slm_Move_Jump
+//s_roll = Spr_Slm_Move_Roll
+//s_roll_R = Spr_Slm_Move_Spin
+//s_slurp = Spr_Slm_Move_Slurp
 
 
 sprite_prefetch(spr_palette_index);
