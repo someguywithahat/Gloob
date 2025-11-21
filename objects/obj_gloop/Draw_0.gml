@@ -73,7 +73,7 @@ else if isjumping=1{
 	image_speed = 0; 
 	
 	//We are starting with the 4th sprite and looping through 8 images
-	image_index = 4 + scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)	
+	image_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)	
 } 
 else if isrolling=1{
 	if abs(derY)>0
@@ -83,16 +83,16 @@ else if isrolling=1{
 	
 	//reverse animation if derY is positive
 	if derY=-1
-		image_index = 2 + scr_get_jump_sprite(gridNumberY,y,gridNumberPrevY,6)	
+		image_index = scr_get_jump_sprite(gridNumberY,y,gridNumberPrevY,6)	
 	else if derY=1
-		image_index = 2 + scr_get_jump_sprite(gridNumberPrevY,y,gridNumberY,6)		
+		image_index = scr_get_jump_sprite(gridNumberPrevY,y,gridNumberY,6)		
 	else 
 	{		
 		image_speed=1*derX
-		if image_index>5 and derX>0
-			image_index=1
-		else if image_index<1 and derX<0
-			image_index=5
+		//if image_index>5 and derX>0
+		//	image_index=1
+		//else if image_index<1 and derX<0
+		//	image_index=5
 	}
 }
 
