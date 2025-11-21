@@ -77,8 +77,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"Slime Sprites",
-    "path":"folders/Sprites/Slime Sprites.yy",
+    "name":"Prolly Not",
+    "path":"folders/Sprites/Prolly Not.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

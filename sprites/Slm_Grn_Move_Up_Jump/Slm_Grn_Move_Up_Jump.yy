@@ -34,8 +34,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Prolly Not",
-    "path":"folders/Sprites/Prolly Not.yy",
+    "name":"Slime Sprites",
+    "path":"folders/Sprites/Slime Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
