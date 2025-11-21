@@ -118,6 +118,10 @@ else if has_powerUP=3{
 	draw_sprite(Spr_Pu_RB__sm,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.15
 }
+else if has_powerUP=4{
+	draw_sprite(Spr_PU_Crown,powerUpImageIndex,x,y)
+	powerUpImageIndex=powerUpImageIndex+.2
+}
 
 
 

@@ -5,7 +5,21 @@ gloop_score_obj.gloop_color_index = gloop_color_index
 
 
 
-
+if keyboard_check_pressed(ord("Z"))
+{
+	var friend_gloop = instance_create_layer(x, y, "Instances", obj_gloop);
+	instance_destroy(friend_gloop.gloop_score_obj)
+	friend_gloop.gloop_color_index=gloop_color_index
+	friend_gloop.current_grid_number=current_grid_number
+	friend_gloop.gloop_score_obj=gloop_score_obj
+	
+	controller.number_of_players++
+	controller.player_color[controller.number_of_players-1]=friend_gloop
+	friend_gloop.player_number=controller.number_of_players-1
+	friend_gloop.grid_x=grid_x
+	friend_gloop.grid_y=grid_y
+	
+}
 
 
 
@@ -281,21 +295,37 @@ if ismoving=1 {
 		if next_inst.has_powerUP>0
 		{
 			var powerUpCheck=0
-			if powerUp1=0
+			if powerUp1=0 and next_inst.has_powerUP<>4
 			{
 				powerUp1=next_inst.has_powerUP
 				powerUpCheck=1
 			}
-			else if powerUp2=0
+			else if powerUp2=0 and next_inst.has_powerUP<>4
 			{
 				powerUp2=next_inst.has_powerUP
 				powerUpCheck=2
 			}
-			else
+			else if next_inst.has_powerUP<>4
 			{
 				powerUp3=next_inst.has_powerUP
 				powerUpCheck=3
 			}	
+			
+			if next_inst.has_powerUP=4
+			{
+				has_crown=1
+				var friend_gloop = instance_create_layer(x, y, "Instances", obj_gloop);
+				instance_destroy(friend_gloop.gloop_score_obj)
+				friend_gloop.gloop_color_index=gloop_color_index
+				friend_gloop.current_grid_number=current_grid_number
+				friend_gloop.gloop_score_obj=gloop_score_obj
+	
+				controller.number_of_players++
+				controller.player_color[controller.number_of_players-1]=friend_gloop
+				friend_gloop.player_number=controller.number_of_players-1
+				friend_gloop.grid_x=grid_x
+				friend_gloop.grid_y=grid_y
+			}
 			
 			if next_inst.has_powerUP=2{
 				var fairy = instance_create_layer(x+16, y, "Instances", obj_effect_fairy);
@@ -313,6 +343,8 @@ if ismoving=1 {
 				puBonk+=1
 			if powerUp3=1
 				puBonk+=1
+				
+			
 				
 		}
 		

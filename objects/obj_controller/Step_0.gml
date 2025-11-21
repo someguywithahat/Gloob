@@ -86,8 +86,6 @@ if (keyboard_check_pressed(ord("M")))and disable_game_inputs=0 {
 	else if music_playing=3
 		music_current=audio_play_sound(snd_track2, 1, true);	
 	else music_playing=0	
-
-
 }
 
 if (keyboard_check_pressed(vk_escape)) {

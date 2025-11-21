@@ -60,7 +60,7 @@ music_current=noone
 
 target_obj=noone
 
-player_color = array_create(10,-1)
+player_color = array_create(100,-1)
 
 grid_refs = noone
 game_over_status=0
@@ -90,6 +90,7 @@ PU_SPRITES = array_create(10,noone)
 PU_SPRITES[0]=Spr_PU_Hat
 PU_SPRITES[1]=Spr_Pu_Tel
 PU_SPRITES[2]=Spr_Pu_RB_SM_Full
+PU_SPRITES[3]=Spr_PU_Crown
 
 
 global.FALL = 3

@@ -61,6 +61,8 @@ puBonk=0
 rainbow_power=0
 rainbow_delay=0.0
 gloop_color_index_old=0
+has_crown=0
+draw_hat=0
 
 is_glowing=0
 
