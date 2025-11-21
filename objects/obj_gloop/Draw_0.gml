@@ -83,9 +83,9 @@ else if isrolling=1{
 	
 	//reverse animation if derY is positive
 	if derY=-1
-		image_index = scr_get_jump_sprite(gridNumberY,y,gridNumberPrevY,6)	
+		image_index = scr_get_jump_sprite(gridNumberY,y,gridNumberPrevY,image_number-1)	
 	else if derY=1
-		image_index = scr_get_jump_sprite(gridNumberPrevY,y,gridNumberY,6)		
+		image_index = scr_get_jump_sprite(gridNumberPrevY,y,gridNumberY,image_number-1)		
 	else 
 	{		
 		image_speed=1*derX
