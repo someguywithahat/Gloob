@@ -7,16 +7,15 @@ var controller_current_player = controller.current_player
 //if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
 if puBonk>0
 {
-	s_idol = Spr_Slm_Hat_idol
-	s_sleep = Spr_Slm_Hat_Sleep
-	s_death = Spr_Slm_Hat_Death
-	s_jump = Spr_Slm_Hat_Move_Jump
-	s_roll = Spr_Slm_Hat_Move_Roll
-	s_roll_R = Spr_Slm_Hat_Move_Spin
-	s_teleport = Spr_Slm_Hat_Tele
+	sh_idol = Spr_Slm_Hat_idol
+	sh_sleep = Spr_Slm_Hat_Sleep
+	sh_death = Spr_Slm_Hat_Death
+	sh_jump = Spr_Slm_Hat_Move_Jump
+	sh_roll = Spr_Slm_Hat_Move_Roll
+	sh_roll_R = Spr_Slm_Hat_Move_Spin
+	sh_teleport = Spr_Slm_Hat_Tele
 }
-else
-{
+
 	s_idol = Spr_Slm_Idol
 	s_sleep = Spr_Slm_Sleep
 	s_death = Spr_Slm_Death
@@ -24,7 +23,7 @@ else
 	s_roll = Spr_Slm_Move_Roll
 	s_roll_R = Spr_Slm_Move_Spin
 	s_teleport = Spr_Slm_Tele
-}
+
 
 
 
@@ -35,6 +34,7 @@ if ismoving==0 and player_number <> controller_current_player and alive=1
 if idletime>sleeptime and alive=1{
 	issleep=1
 	sprite_index = s_sleep;	
+	//hat_index=sh_sleep
 	image_speed=1
 }
 
@@ -42,6 +42,7 @@ else if alive=0
 {
 	image_speed = 1;   
 	sprite_index = s_death;	
+	//hat_index=sh_death
 	if (image_index >= image_number - 1) {	    
 	    image_index = image_number - 12; 
 	}	
@@ -49,7 +50,8 @@ else if alive=0
 }
 else if isteleporting=1
 {
-	sprite_index=s_teleport
+	sprite_index=s_teleport	
+	//hat_index=sh_teleport
 	image_speed=1
 	if image_index>image_number-1{
 		isteleporting=2
@@ -61,15 +63,18 @@ else if isteleporting=1
 else if isteleporting=2
 {
 	sprite_index=s_teleport
+	//hat_index=sh_teleport
 	image_speed=-1
 	if image_index<=0{
 		isteleporting=0
 		sprite_index=s_idol
+		hat_index=sh_idol
 	}	
 }
 else if isjumping=1{
 
 	sprite_index=s_jump
+	//hat_index=sh_jump
 	image_speed = 0; 
 	
 	//We are starting with the 4th sprite and looping through 8 images
@@ -115,7 +120,21 @@ else{
 	image_speed=1
 }
 
-
+if sprite_index=s_idol 
+	hat_index=sh_idol
+else if sprite_index=s_sleep 
+	hat_index=sh_sleep
+else if sprite_index=s_death 
+	hat_index=sh_death
+else if sprite_index=s_jump 
+	hat_index=sh_jump
+else if sprite_index=s_roll 
+	hat_index=sh_roll
+else if sprite_index=s_roll_R 
+	hat_index=sh_roll_R
+else if sprite_index=s_teleport 
+	hat_index=sh_teleport
+	
 
 
 
@@ -169,6 +188,7 @@ if rainbow_power=1 or powerUp1=3 or powerUp2=3 or powerUp3=3{
 
 	// Draw the sprite
 	draw_self();
+	draw_sprite(hat_index, image_index,x,y)
 
 	// End shader
 	shader_reset();
@@ -195,6 +215,7 @@ else {
 
 	// Draw the sprite
 	draw_self();
+	draw_sprite(hat_index, image_index,x,y)
 
 	// End shader
 	shader_reset();
