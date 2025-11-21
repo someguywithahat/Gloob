@@ -47,7 +47,7 @@ slime2.image_index = 20;
 slime3.gloop_color=2
 slime3.s_idol=Spr_Slm_Idol
 slime3.s_sleep=Spr_Slm_Sleep
-slime3.s_jump=Spr_Slm_Roll_R
+slime3.s_jump=Spr_Slm_Move_Spin
 slime3.sprite_index=Spr_Slm_Sleep
 slime3.image_index = 20;
 

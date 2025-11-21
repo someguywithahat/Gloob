@@ -7,22 +7,22 @@ var controller_current_player = controller.current_player
 //if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
 if puBonk>0
 {
-	s_idol = Spr_Slm_idol_Hat
-	s_sleep = Spr_Slm_Sleep_Hat
-	s_death = Spr_Slm_Death_Hat
-	s_jump = Spr_Slm_Move_Up_Jump_Hat
-	s_roll = Spr_Slm_Move_Up_roll_hat
-	s_roll_R = Spr_Slm_Roll_Hat
-	s_teleport = Spr_Slm_Tele_Hat
+	s_idol = Spr_Slm_Hat_idol
+	s_sleep = Spr_Slm_Hat_Sleep
+	s_death = Spr_Slm_Hat_Death
+	s_jump = Spr_Slm_Hat_Move_Jump
+	s_roll = Spr_Slm_Hat_Move_Roll
+	s_roll_R = Spr_Slm_Hat_Move_Spin
+	s_teleport = Spr_Slm_Hat_Tele
 }
 else
 {
 	s_idol = Spr_Slm_Idol
 	s_sleep = Spr_Slm_Sleep
 	s_death = Spr_Slm_Death
-	s_jump = Spr_Slm_Move_Up_Jump
-	s_roll = Spr_Slm_Move_Up_roll
-	s_roll_R = Spr_Slm_Roll_R
+	s_jump = Spr_Slm_Move_Jump
+	s_roll = Spr_Slm_Move_Roll
+	s_roll_R = Spr_Slm_Move_Spin
 	s_teleport = Spr_Slm_Tele
 }
 

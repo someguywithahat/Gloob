@@ -39,7 +39,7 @@ else if issleep=1 {
 }
 else 
 {
-	sprite_index=Spr_Slm_Move_Up_Jump
+	sprite_index=Spr_Slm_Move_Jump
 	image_speed=1	
 }
 

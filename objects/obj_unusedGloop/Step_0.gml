@@ -13,7 +13,7 @@ if is_sad_gameOver=0
 	if irandom_range(1,100000)<5 and sleep_duration>1000 and issleep=1{
 	//if irandom_range(1,100000)<60 and sleep_duration>1{	//debugging 
 		issleep=0
-		sprite_index=Spr_Slm_Move_Up_Jump	
+		sprite_index=Spr_Slm_Move_Jump	
 		sleep_counter=0
 	}	
 	//awake and chasing cursor

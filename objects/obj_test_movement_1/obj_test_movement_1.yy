@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Spr_Slm_Roll_R",
-    "path":"sprites/Spr_Slm_Roll_R/Spr_Slm_Roll_R.yy",
+    "name":"Spr_Slm_Move_Spin",
+    "path":"sprites/Spr_Slm_Move_Spin/Spr_Slm_Move_Spin.yy",
   },
   "spriteMaskId":null,
   "visible":true,
