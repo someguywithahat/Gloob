@@ -259,6 +259,7 @@
     {"id":{"name":"spr_effect_rain","path":"sprites/spr_effect_rain/spr_effect_rain.yy",},},
     {"id":{"name":"spr_effect_snowflake","path":"sprites/spr_effect_snowflake/spr_effect_snowflake.yy",},},
     {"id":{"name":"Spr_Fence_Color","path":"sprites/Spr_Fence_Color/Spr_Fence_Color.yy",},},
+    {"id":{"name":"Spr_Fence_Corners","path":"sprites/Spr_Fence_Corners/Spr_Fence_Corners.yy",},},
     {"id":{"name":"Spr_Fence_Picket","path":"sprites/Spr_Fence_Picket/Spr_Fence_Picket.yy",},},
     {"id":{"name":"Spr_Fence_White","path":"sprites/Spr_Fence_White/Spr_Fence_White.yy",},},
     {"id":{"name":"Spr_Fence","path":"sprites/Spr_Fence/Spr_Fence.yy",},},
