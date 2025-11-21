@@ -7,6 +7,7 @@ var controller_current_player = controller.current_player
 //if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
 if puBonk>0
 {
+	draw_hat=1
 	sh_idol = Spr_Slm_Hat_idol
 	sh_sleep = Spr_Slm_Hat_Sleep
 	sh_death = Spr_Slm_Hat_Death
@@ -15,6 +16,8 @@ if puBonk>0
 	sh_roll_R = Spr_Slm_Hat_Move_Spin
 	sh_teleport = Spr_Slm_Hat_Tele
 }
+else 
+	draw_hat=0
 
 	s_idol = Spr_Slm_Idol
 	s_sleep = Spr_Slm_Sleep
@@ -188,7 +191,8 @@ if rainbow_power=1 or powerUp1=3 or powerUp2=3 or powerUp3=3{
 
 	// Draw the sprite
 	draw_self();
-	draw_sprite(hat_index, image_index,x,y)
+	if draw_hat=1
+		draw_sprite(hat_index, image_index,x,y)
 
 	// End shader
 	shader_reset();
@@ -215,7 +219,8 @@ else {
 
 	// Draw the sprite
 	draw_self();
-	draw_sprite(hat_index, image_index,x,y)
+	if draw_hat=1
+		draw_sprite(hat_index, image_index,x,y)
 
 	// End shader
 	shader_reset();

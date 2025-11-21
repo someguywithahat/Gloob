@@ -82,6 +82,7 @@ sh_roll_R = Spr_Slm_Hat_Move_Spin
 sh_teleport = Spr_Slm_Hat_Tele
 sh_slurp = Spr_Slm_Move_Slurp
 hat_index=Spr_Slm_Hat_idol
+draw_hat=0
 
 //s_idol = Spr_Slm_Idol
 //s_sleep = Spr_Slm_Sleep
