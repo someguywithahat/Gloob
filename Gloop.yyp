@@ -279,6 +279,7 @@
     {"id":{"name":"spr_grid8","path":"sprites/spr_grid8/spr_grid8.yy",},},
     {"id":{"name":"spr_gridField","path":"sprites/spr_gridField/spr_gridField.yy",},},
     {"id":{"name":"spr_gridOutline_Lg","path":"sprites/spr_gridOutline_Lg/spr_gridOutline_Lg.yy",},},
+    {"id":{"name":"Spr_House_Mushroom","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},},
     {"id":{"name":"spr_JoannesRoom","path":"sprites/spr_JoannesRoom/spr_JoannesRoom.yy",},},
     {"id":{"name":"Spr_Obs_1x1","path":"sprites/Spr_Obs_1x1/Spr_Obs_1x1.yy",},},
     {"id":{"name":"Spr_Obs_1x2","path":"sprites/Spr_Obs_1x2/Spr_Obs_1x2.yy",},},
