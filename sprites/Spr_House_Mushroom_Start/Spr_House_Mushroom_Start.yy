@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"Spr_House_Mushroom",
+  "%Name":"Spr_House_Mushroom_Start",
   "bboxMode":0,
   "bbox_bottom":81,
   "bbox_left":5,
@@ -19,18 +19,12 @@
   "height":96,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"81b18d64-c32b-46ce-9906-084d07ccea29","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"81b18d64-c32b-46ce-9906-084d07ccea29","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"ac0308fe-4613-45ee-aa0b-7606148730d9","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"ac0308fe-4613-45ee-aa0b-7606148730d9","opacity":20.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
-    {"$GMImageLayer":"","%Name":"a982353d-8e6f-47e2-8bc3-dbd72d5a6e6f","blendMode":0,"displayName":"Layer 7","isLocked":false,"name":"a982353d-8e6f-47e2-8bc3-dbd72d5a6e6f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
-    {"$GMImageLayer":"","%Name":"70068c94-4b35-4465-b108-d245e0545fee","blendMode":0,"displayName":"Layer 8","isLocked":false,"name":"70068c94-4b35-4465-b108-d245e0545fee","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"d68a4fd4-57ff-4e14-8fe8-5a93fa933893","blendMode":0,"displayName":"Layer 6","isLocked":false,"name":"d68a4fd4-57ff-4e14-8fe8-5a93fa933893","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"1788945e-aa36-472d-9f0a-60bb9d103b85","blendMode":0,"displayName":"default","isLocked":false,"name":"1788945e-aa36-472d-9f0a-60bb9d103b85","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"9072ab80-8e93-415a-a9e2-fb060cc84ab2","blendMode":0,"displayName":"Layer 4","isLocked":false,"name":"9072ab80-8e93-415a-a9e2-fb060cc84ab2","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"997efbc3-6915-4e19-8310-5abb88c49579","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"997efbc3-6915-4e19-8310-5abb88c49579","opacity":20.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"057c9370-abfd-45a7-942c-055b64749933","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"057c9370-abfd-45a7-942c-055b64749933","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"f17f8e56-87ad-4071-9df3-5d375777afd7","blendMode":0,"displayName":"Layer 9","isLocked":false,"name":"f17f8e56-87ad-4071-9df3-5d375777afd7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"b8a4edfd-7bf4-40f3-8d7d-bb0bf66272c0","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"b8a4edfd-7bf4-40f3-8d7d-bb0bf66272c0","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"cfacb162-3aef-42ea-a333-78583240b4aa","blendMode":0,"displayName":"Layer 5","isLocked":false,"name":"cfacb162-3aef-42ea-a333-78583240b4aa","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
-  "name":"Spr_House_Mushroom",
+  "name":"Spr_House_Mushroom_Start",
   "nineSlice":null,
   "origin":0,
   "parent":{
@@ -42,7 +36,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"Spr_House_Mushroom",
+    "%Name":"Spr_House_Mushroom_Start",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -66,7 +60,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"Spr_House_Mushroom",
+    "name":"Spr_House_Mushroom_Start",
     "playback":1,
     "playbackSpeed":4.0,
     "playbackSpeedType":0,
@@ -80,7 +74,7 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d90e4ca6-e32d-4914-94f9-ccdef8283a11","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d90e4ca6-e32d-4914-94f9-ccdef8283a11","path":"sprites/Spr_House_Mushroom_Start/Spr_House_Mushroom_Start.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"dad2f828-5c39-4f19-9cd9-6c9ddf496b5d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
