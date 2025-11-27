@@ -56,7 +56,7 @@ depth=-20000
 layer_create(-20001, "AboveEverything");
 
 music_playing = 0;
-music_current=noone
+global.music_current=noone
 
 target_obj=noone
 

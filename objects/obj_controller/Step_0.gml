@@ -78,13 +78,13 @@ else
 	
 if (keyboard_check_pressed(ord("M")))and disable_game_inputs=0 {
     music_playing++
-	audio_stop_sound(music_current)
+	audio_stop_sound(global.music_current)
 	if music_playing=1
-		music_current=audio_play_sound(snd_track1, 1, true);
+		global.music_current=audio_play_sound(snd_track1, 1, true);
 	else if music_playing=2
-		music_playing=music_playing
+		music_playing=music_playing //nothing happens
 	else if music_playing=3
-		music_current=audio_play_sound(snd_track2, 1, true);	
+		global.music_current=audio_play_sound(snd_track2, 1, true);	
 	else music_playing=0	
 }
 
@@ -238,23 +238,3 @@ if (keyboard_check_pressed(ord("P")) and room = rm_gameScreen)and disable_game_i
 }
 
 
-
-//if game_over_status=1{
-//	for (var i = 0; i < array_length(grid_refs); i++) {
-//	    for (var j = 0; j < array_length(grid_refs[i]); j++) {
-//	        var inst = grid_refs[i][j];
-//	        if (instance_exists(inst)) {
-//	            inst.visible = false;
-//	        }
-//	    }
-//	}
-//	with obj_gridFlower{
-//		visible=false	
-//	}
-//	if game_over_object=noone
-//	{
-//		game_over_object=instance_create_layer(1, 1, "Instances", obj_controller_high_score);	
-//		game_over_object.gloop_color_index=player_color[0]
-//	}
-	
-//}
