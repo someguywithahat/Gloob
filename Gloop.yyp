@@ -93,6 +93,7 @@
     {"id":{"name":"rm_testRoom1","path":"rooms/rm_testRoom1/rm_testRoom1.yy",},},
     {"id":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
     {"id":{"name":"rm_titleScreen","path":"rooms/rm_titleScreen/rm_titleScreen.yy",},},
+    {"id":{"name":"SMPL_Play","path":"rooms/SMPL_Play/SMPL_Play.yy",},},
     {"id":{"name":"SMPL_Title","path":"rooms/SMPL_Title/SMPL_Title.yy",},},
     {"id":{"name":"RoomUI","path":"roomui/RoomUI/RoomUI.yy",},},
     {"id":{"name":"Notes_Jo","path":"scripts/Notes_Jo/Notes_Jo.yy",},},
@@ -298,6 +299,7 @@
     {"id":{"name":"spr_PowerUp","path":"sprites/spr_PowerUp/spr_PowerUp.yy",},},
     {"id":{"name":"Spr_PU_Crown","path":"sprites/Spr_PU_Crown/Spr_PU_Crown.yy",},},
     {"id":{"name":"Spr_PU_Hat","path":"sprites/Spr_PU_Hat/Spr_PU_Hat.yy",},},
+    {"id":{"name":"Spr_PU_N","path":"sprites/Spr_PU_N/Spr_PU_N.yy",},},
     {"id":{"name":"Spr_PU_N0","path":"sprites/Spr_PU_N0/Spr_PU_N0.yy",},},
     {"id":{"name":"Spr_PU_N1","path":"sprites/Spr_PU_N1/Spr_PU_N1.yy",},},
     {"id":{"name":"Spr_PU_N2","path":"sprites/Spr_PU_N2/Spr_PU_N2.yy",},},
@@ -426,6 +428,7 @@
     {"roomId":{"name":"rm_testRoom1","path":"rooms/rm_testRoom1/rm_testRoom1.yy",},},
     {"roomId":{"name":"rm_scoreScreen","path":"rooms/rm_scoreScreen/rm_scoreScreen.yy",},},
     {"roomId":{"name":"SMPL_Title","path":"rooms/SMPL_Title/SMPL_Title.yy",},},
+    {"roomId":{"name":"SMPL_Play","path":"rooms/SMPL_Play/SMPL_Play.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
