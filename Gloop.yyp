@@ -93,6 +93,7 @@
     {"id":{"name":"rm_testRoom1","path":"rooms/rm_testRoom1/rm_testRoom1.yy",},},
     {"id":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
     {"id":{"name":"rm_titleScreen","path":"rooms/rm_titleScreen/rm_titleScreen.yy",},},
+    {"id":{"name":"SMPL_Title","path":"rooms/SMPL_Title/SMPL_Title.yy",},},
     {"id":{"name":"RoomUI","path":"roomui/RoomUI/RoomUI.yy",},},
     {"id":{"name":"Notes_Jo","path":"scripts/Notes_Jo/Notes_Jo.yy",},},
     {"id":{"name":"Notes_Tom","path":"scripts/Notes_Tom/Notes_Tom.yy",},},
@@ -370,6 +371,7 @@
     {"id":{"name":"Sprite257","path":"sprites/Sprite257/Sprite257.yy",},},
     {"id":{"name":"Sprite61","path":"sprites/Sprite61/Sprite61.yy",},},
     {"id":{"name":"Symbols","path":"sprites/Symbols/Symbols.yy",},},
+    {"id":{"name":"Title","path":"sprites/Title/Title.yy",},},
     {"id":{"name":"Traill_Test_DoNotUse","path":"sprites/Traill_Test_DoNotUse/Traill_Test_DoNotUse.yy",},},
     {"id":{"name":"Trl_Blk_Corner","path":"sprites/Trl_Blk_Corner/Trl_Blk_Corner.yy",},},
     {"id":{"name":"Trl_Blk_End","path":"sprites/Trl_Blk_End/Trl_Blk_End.yy",},},
@@ -423,6 +425,7 @@
     {"roomId":{"name":"Character_Select","path":"rooms/Character_Select/Character_Select.yy",},},
     {"roomId":{"name":"rm_testRoom1","path":"rooms/rm_testRoom1/rm_testRoom1.yy",},},
     {"roomId":{"name":"rm_scoreScreen","path":"rooms/rm_scoreScreen/rm_scoreScreen.yy",},},
+    {"roomId":{"name":"SMPL_Title","path":"rooms/SMPL_Title/SMPL_Title.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
