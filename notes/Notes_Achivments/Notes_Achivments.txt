@@ -1,0 +1,9 @@
+a special map for each slime color accessed on the title menu
+play as a rock
+get the high score
+save a total of 9999 points
+hit all 4 corners on a single path
+get numbers 1-9
+yatzee get the same number 5 times in a row
+collect all the power-ups in a single game
+have 10 obsticles on the field
