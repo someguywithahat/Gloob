@@ -93,7 +93,9 @@
     {"id":{"name":"rm_testRoom1","path":"rooms/rm_testRoom1/rm_testRoom1.yy",},},
     {"id":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
     {"id":{"name":"rm_titleScreen","path":"rooms/rm_titleScreen/rm_titleScreen.yy",},},
+    {"id":{"name":"SMPL_Options","path":"rooms/SMPL_Options/SMPL_Options.yy",},},
     {"id":{"name":"SMPL_Play","path":"rooms/SMPL_Play/SMPL_Play.yy",},},
+    {"id":{"name":"SMPL_Score","path":"rooms/SMPL_Score/SMPL_Score.yy",},},
     {"id":{"name":"SMPL_Title","path":"rooms/SMPL_Title/SMPL_Title.yy",},},
     {"id":{"name":"RoomUI","path":"roomui/RoomUI/RoomUI.yy",},},
     {"id":{"name":"Notes_Jo","path":"scripts/Notes_Jo/Notes_Jo.yy",},},
@@ -429,6 +431,8 @@
     {"roomId":{"name":"rm_scoreScreen","path":"rooms/rm_scoreScreen/rm_scoreScreen.yy",},},
     {"roomId":{"name":"SMPL_Title","path":"rooms/SMPL_Title/SMPL_Title.yy",},},
     {"roomId":{"name":"SMPL_Play","path":"rooms/SMPL_Play/SMPL_Play.yy",},},
+    {"roomId":{"name":"SMPL_Score","path":"rooms/SMPL_Score/SMPL_Score.yy",},},
+    {"roomId":{"name":"SMPL_Options","path":"rooms/SMPL_Options/SMPL_Options.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
