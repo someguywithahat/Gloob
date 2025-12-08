@@ -108,8 +108,8 @@
   },
   "origin":9,
   "parent":{
-    "name":"Slime Sprites",
-    "path":"folders/Sprites/Slime Sprites.yy",
+    "name":"Powerups",
+    "path":"folders/Sprites/Slime Sprites/Powerups.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
