@@ -65,6 +65,7 @@ rainbow_delay=0.0
 gloop_color_index_old=0
 has_crown=0
 draw_hat=0
+has_accessory=1
 
 is_glowing=0
 
@@ -85,7 +86,17 @@ sh_roll = Spr_Slm_Hat_Move_Roll
 sh_roll_R = Spr_Slm_Hat_Move_Spin
 sh_teleport = Spr_Slm_Hat_Tele
 sh_slurp = Spr_Slm_Move_Slurp
-hat_index=Spr_Slm_Hat_Idol
+hat_index=sh_idol
+
+sa_idol = Spr_Acc_Cat_Idol
+sa_sleep = Spr_Acc_Cat_Sleep
+sa_death = Spr_Acc_Cat_Death
+sa_jump = Spr_Acc_Cat_Move_Jump
+sa_roll = Spr_Acc_Cat_Move_Roll
+sa_roll_R = Spr_Acc_Cat_Move_Spin
+sa_teleport = Spr_Acc_Cat_Tele
+sa_slurp = Spr_Acc_Cat_Move_Slurp
+accessory_index=sa_idol
 
 //s_idol = Spr_Slm_Idol
 //s_sleep = Spr_Slm_Sleep
