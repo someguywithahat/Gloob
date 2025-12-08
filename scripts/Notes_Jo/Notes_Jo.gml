@@ -61,3 +61,9 @@ Options:
 Scores:
 	havent started much but will need to have high scores, the shop and village design, and a way to see achievments
 	it would be nice if high scores had the date
+
+
+DISCUSSED:
+	Gloop is named Gloop > green first
+	Game play signs <main> <tuts> <custom>
+	
