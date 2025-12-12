@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"Notes_Jo",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Notes",
+    "path":"folders/Notes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

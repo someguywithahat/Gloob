@@ -45,6 +45,7 @@
   "name":"Gloop",
   "resources":[
     {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},},
+    {"id":{"name":"Debug","path":"notes/Debug/Debug.yy",},},
     {"id":{"name":"Note_Powerups","path":"notes/Note_Powerups/Note_Powerups.yy",},},
     {"id":{"name":"Notes_Achivments","path":"notes/Notes_Achivments/Notes_Achivments.yy",},},
     {"id":{"name":"obj_achievement","path":"objects/obj_achievement/obj_achievement.yy",},},
