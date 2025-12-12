@@ -39,7 +39,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.1.210",
+    "IDEVersion":"2024.14.2.212",
   },
   "name":"Gloop",
   "resources":[
@@ -321,6 +321,8 @@
     {"id":{"name":"spr_palette_seasons_index_1","path":"sprites/spr_palette_seasons_index_1/spr_palette_seasons_index_1.yy",},},
     {"id":{"name":"spr_palette_seasons_index","path":"sprites/spr_palette_seasons_index/spr_palette_seasons_index.yy",},},
     {"id":{"name":"spr_PowerUp","path":"sprites/spr_PowerUp/spr_PowerUp.yy",},},
+    {"id":{"name":"Spr_Pu_Bee_sign","path":"sprites/Spr_Pu_Bee_sign/Spr_Pu_Bee_sign.yy",},},
+    {"id":{"name":"Spr_Pu_Bubble_Sign","path":"sprites/Spr_Pu_Bubble_Sign/Spr_Pu_Bubble_Sign.yy",},},
     {"id":{"name":"Spr_PU_Crown","path":"sprites/Spr_PU_Crown/Spr_PU_Crown.yy",},},
     {"id":{"name":"Spr_Pu_Grass","path":"sprites/Spr_Pu_Grass/Spr_Pu_Grass.yy",},},
     {"id":{"name":"Spr_PU_Hat","path":"sprites/Spr_PU_Hat/Spr_PU_Hat.yy",},},
@@ -335,6 +337,7 @@
     {"id":{"name":"Spr_PU_N7","path":"sprites/Spr_PU_N7/Spr_PU_N7.yy",},},
     {"id":{"name":"Spr_PU_N8","path":"sprites/Spr_PU_N8/Spr_PU_N8.yy",},},
     {"id":{"name":"Spr_PU_N9","path":"sprites/Spr_PU_N9/Spr_PU_N9.yy",},},
+    {"id":{"name":"Spr_Pu_Night_Sign","path":"sprites/Spr_Pu_Night_Sign/Spr_Pu_Night_Sign.yy",},},
     {"id":{"name":"Spr_Pu_RB__sm","path":"sprites/Spr_Pu_RB__sm/Spr_Pu_RB__sm.yy",},},
     {"id":{"name":"Spr_Pu_RB_0","path":"sprites/Spr_Pu_RB_0/Spr_Pu_RB_0.yy",},},
     {"id":{"name":"Spr_Pu_RB_1","path":"sprites/Spr_Pu_RB_1/Spr_Pu_RB_1.yy",},},

@@ -2,6 +2,16 @@ Numbers should color shift to match the power ups which can be overlayed on top 
 use scroll wheel to select activatable power ups?
 multiple power ups at once?
 
+RED- Mushrom (Bounce everyother square or start one square out)
+ORANGE- Hardhat (bonk resist)
+YELLOW- Bee (score multiplier)
+GREEN- Vines (add Spaces back)
+BLUE- Fairy (Teleport)
+PURPLE- Crown (Split)
+WHITE- Bubble (bomb)
+BLACK- Night (End day Score)
+RAINBOW- Superstar (Break)
+
 Slime Bomb
 	Icon: Bomb
 	Activation: Useable - action key at will
@@ -41,7 +51,7 @@ Split King Slime
 	Shortname: King
 	Needs: A-lot
 	
-WHITE - straw (double row)
+
 
 BLACK - Night time - lower sarting goal
 
@@ -55,7 +65,7 @@ Invincibility
 	Needs: to be programed in (I made multiple files for the star, I can merge them all into the same one if thats easier, the intent is that each roung looses a color so you can see the star on your score sign fading to know you are running out of time.)
 	
 
-	
+White - Bubble (slime Bomb)	
 
 
 
@@ -80,3 +90,5 @@ Jump
 Slow (1/2 move for x rounds or -1 move)
 
 Score multiplier (big numbers)
+
+WHITE - straw (double row)
