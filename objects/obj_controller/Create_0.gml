@@ -61,6 +61,7 @@ global.music_current=noone
 target_obj=noone
 
 player_color = array_create(100,-1)
+player_accessory = array_create(100,0)
 
 grid_refs = noone
 game_over_status=0
@@ -77,6 +78,7 @@ clicked_scoreRoom = -1
 clicked_restart=-1
 clicked_main_menu=-1
 clicked_exitGame=-1
+clicked_characterSelect = -1 //remake of character select
 
 window_set_fullscreen(true);
 

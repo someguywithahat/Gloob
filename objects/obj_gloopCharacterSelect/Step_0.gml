@@ -1,24 +1,7 @@
 
 sleep_counter++
 
-////rainbow slime logic
-//rainbow_timer++
-//if rainbow_timer>20{
-//	rainbow_timer=0
-//	if gloop_color=5
-//		gloop_color=2
-//	else if gloop_color=2
-//		gloop_color=7
-//	else if gloop_color=7
-//		gloop_color=2
-//	else if gloop_color=2
-//		gloop_color=1
-//	else if gloop_color=1
-//		gloop_color=4
-//	else if gloop_color=4
-//		gloop_color=5
-//	else gloop_color=0	
-//}
+
 
 
 if sleep_counter>sleep_timer and selected=0{
@@ -41,11 +24,9 @@ if (mouse_x > x - sprite_xoffset && mouse_x < x - sprite_xoffset + sprite_width 
 	&& mouse_check_button_pressed(mb_left)) 
 {
 	if selected=0{
-	    sprite_index=s_jump
+	    sprite_index=s_roll_R
 		selected=1
-		var yay_snd = audio_play_sound(snd_slm_yay, 1, false);
-		//audio_sound_pitch(wake_snd, random_range(1, 1.3));
-		//audio_sound_gain(wake_snd, random_range(0.8, 1.0), 0);		
+		var yay_snd = audio_play_sound(snd_slm_yay, 1, false);	
 	}
 	else 
 	{
@@ -70,4 +51,19 @@ else if (mouse_x > x - sprite_xoffset && mouse_x < x - sprite_xoffset + sprite_w
 	}
 	yawn_counter=0
 	sleep_counter=0
+}
+
+if clicked_left>0
+{
+	clicked_left=-1
+	if has_accessory=0
+		has_accessory=2
+	else has_accessory--
+}
+if clicked_right>0
+{
+	clicked_right=-1
+	if has_accessory=2
+		has_accessory=0
+	else has_accessory++
 }

@@ -1,6 +1,6 @@
-xx = 220
+xx = 320
 yy = 300
-spacer = 100
+spacer = 75
 
 //label_menu1="START COOP GAME";
 //xx_menu1=200
@@ -18,7 +18,7 @@ player_count = 0
 
 
 
-slime1 = instance_create_layer(xx+(spacer*1), yy,"Instances", obj_gloopCharacterSelect);
+slime1 = instance_create_layer(492, 185,"Instances", obj_gloopCharacterSelect);
 slime2 = instance_create_layer(xx+(spacer*2), yy,"Instances", obj_gloopCharacterSelect);
 slime3 = instance_create_layer(xx+(spacer*3), yy,"Instances", obj_gloopCharacterSelect);
 slime4 = instance_create_layer(xx+(spacer*4), yy,"Instances", obj_gloopCharacterSelect);
@@ -34,7 +34,7 @@ slime1.gloop_color=0
 //slime1.s_sleep=Slm_Blk_Sleep
 //slime1.s_jump=Slm_Blk_Roll_R
 //slime1.sprite_index=Slm_Blk_Sleep
-slime1.image_index = 20;
+//slime1.image_index = 20;
 
 slime2.gloop_color=1
 slime2.s_idol=Slm_Blu_Idol

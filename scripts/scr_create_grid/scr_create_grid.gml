@@ -63,6 +63,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
         var xx = gloop_x * spacing;
         var yy = gloop_y * spacing;		
 		var gloop_color_index = controller.player_color[i]
+		var gloop_accessory_index = controller.player_accessory[i]
 		var gloop_color = 1
 		
 		var inst = grid_array[gloop_x,gloop_y]
@@ -82,6 +83,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		else gloop_color=irandom_range(0,7)
 		
 		inst.gloop_color_index=gloop_color
+		gloopInst.has_accessory=gloop_accessory_index
 		
 		
 		scr_set_slime_color(gloopInst,gloop_color)  //now this is only needed for slime pathway.  Hopefully this can be disabled soon

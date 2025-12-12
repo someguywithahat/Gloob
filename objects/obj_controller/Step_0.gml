@@ -196,6 +196,10 @@ else if(clicked_character_select=1){
 	clicked_character_select=-1;
 	room_goto(Character_Select);
 }
+else if(clicked_characterSelect=1){
+	clicked_characterSelect=-1;
+	room_goto(rm_characterSelect);
+}
 else if(clicked_debugRoom=1){
 	clicked_debugRoom=-1;
 	room_goto(rm_testRoom1);
