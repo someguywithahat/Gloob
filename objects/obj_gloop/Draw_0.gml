@@ -10,7 +10,7 @@ if puBonk>0
 	draw_hat=1
 	sh_idol = Spr_Slm_Hat_Idol
 	sh_sleep = Spr_Slm_Hat_Sleep
-	sh_death = Spr_Slm_Hat_Death
+	sh_death = Spr_Slm_Hat_Stun
 	sh_jump = Spr_Slm_Hat_Move_Jump
 	sh_roll = Spr_Slm_Hat_Move_Roll
 	sh_roll_R = Spr_Slm_Hat_Move_Spin
@@ -20,7 +20,7 @@ if puBonk>0
 	draw_hat=1
 	sh_idol = Spr_Slm_Crown_Idol
 	sh_sleep = Spr_Slm_Crown_Sleep
-	sh_death = Spr_Slm_Crown_Death
+	sh_death = Spr_Slm_Crown_Stun
 	sh_jump = Spr_Slm_Crown_Move_Jump
 	sh_roll = Spr_Slm_Crown_Move_Roll
 	sh_roll_R = Spr_Slm_Crown_Move_Spin
@@ -32,7 +32,7 @@ else
 }
 	s_idol = Spr_Slm_Idol
 	s_sleep = Spr_Slm_Sleep
-	s_death = Spr_Slm_Death
+	s_death = Spr_Slm_Stun
 	s_jump = Spr_Slm_Move_Jump
 	s_roll = Spr_Slm_Move_Roll
 	s_roll_R = Spr_Slm_Move_Spin
@@ -45,12 +45,23 @@ if has_accessory>0
 	{
 		sa_idol = Spr_Acc_Cat_Idol
 		sa_sleep = Spr_Acc_Cat_Sleep
-		sa_death = Spr_Acc_Cat_Death
+		sa_death = Spr_Acc_Cat_Stun
 		sa_jump = Spr_Acc_Cat_Move_Jump
 		sa_roll = Spr_Acc_Cat_Move_Roll
 		sa_roll_R = Spr_Acc_Cat_Move_Spin
 		sa_teleport = Spr_Acc_Cat_Tele
 		sa_slurp = Spr_Acc_Cat_Move_Slurp
+	}
+	else if has_accessory=2
+	{
+		sa_idol = Spr_Acc_Glasses_Idol
+		sa_sleep = Spr_Acc_Glasses_Sleep
+		sa_death = Spr_Acc_Glasses_Stun
+		sa_jump = Spr_Acc_Glasses_Move_Jump
+		sa_roll = Spr_Acc_Glasses_Move_Roll
+		sa_roll_R = Spr_Acc_Glasses_Move_Spin
+		sa_teleport = Spr_Acc_Glasses_Tele
+		sa_slurp = Spr_Acc_Glasses_Move_Slurp
 	}
 }
 
@@ -71,7 +82,7 @@ else if alive=0
 	image_speed = 1;   
 	sprite_index = s_death;	
 	if (image_index >= image_number - 1) {	    
-	    image_index = image_number - 12; 
+	    image_index = image_number - 6; 
 	}	
 	
 }
@@ -176,6 +187,24 @@ else if sprite_index=s_teleport
 	
 
 
+//debug code
+
+test_trail_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,10)
+
+if round(test_trail_index)=0
+	test_trail_index = scr_get_jump_sprite(gridNumberY,y,gridNumberPrevY,10)
+//test_trail_index=test_trail_index/2 
+draw_sprite(Spr_Trl_Corner, test_trail_index,1200,500 )
+draw_sprite(Spr_Trl_End, test_trail_index,1200,540 )
+draw_sprite(Spr_Trl_Mid, test_trail_index,1200,580 )
+
+
+if test_trail_index>5
+	draw_sprite(Spr_Trl_End, test_trail_index,1200,400 )
+if test_trail_index<=5
+	draw_sprite(Spr_Trl_Mid, test_trail_index,1200,432 )
+else 
+	draw_sprite(Spr_Trl_Mid, 5,1200,432 )
 
 if is_glowing=1
 {
@@ -227,13 +256,11 @@ if rainbow_power=1 or powerUp1=3 or powerUp2=3 or powerUp3=3{
 
 	// Draw the sprite
 	draw_self();
-	draw_sprite(hat_index, image_index,x,y)
-
+	if has_accessory>0	
+		draw_sprite(accessory_index, image_index,x,y)
 	if draw_hat=1	
 		draw_sprite(hat_index, image_index,x,y)
 		
-	if has_accessory>0	
-		draw_sprite(accessory_index, image_index,x,y)
 	// End shader
 	shader_reset();
 }
@@ -259,11 +286,11 @@ else {
 
 	// Draw the sprite
 	draw_self();
+	if has_accessory>0	
+		draw_sprite(accessory_index, image_index,x,y)
 	if draw_hat=1	
 		draw_sprite(hat_index, image_index,x,y)
 		
-	if has_accessory>0	
-		draw_sprite(accessory_index, image_index,x,y)
 
 	// End shader
 	shader_reset();

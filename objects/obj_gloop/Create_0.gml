@@ -45,6 +45,7 @@ gloop_color_index = 0
 trail = Trl_Grn_Mid
 
 current_grid_number = noone
+prev_grid_number = noone //added to have slower trail movement
 
 
 gloop_score_obj = instance_create_layer(1, 1, "Instances", obj_gloop_score);
@@ -65,7 +66,7 @@ rainbow_delay=0.0
 gloop_color_index_old=0
 has_crown=0
 draw_hat=0
-has_accessory=1
+has_accessory=2
 
 is_glowing=0
 
@@ -98,41 +99,14 @@ sa_teleport = Spr_Acc_Cat_Tele
 sa_slurp = Spr_Acc_Cat_Move_Slurp
 accessory_index=sa_idol
 
-//s_idol = Spr_Slm_Idol
-//s_sleep = Spr_Slm_Sleep
-//s_death = Spr_Slm_Death
-//s_jump = Spr_Slm_Move_Jump
-//s_roll = Spr_Slm_Move_Roll
-//s_roll_R = Spr_Slm_Move_Spin
-//s_slurp = Spr_Slm_Move_Slurp
+
+
+
+test_trail_index=0
+
+
 
 
 sprite_prefetch(spr_palette_index);
-//sprite_prefetch(spr_palette_index_red);
-
-///// Create Event - obj_slime
-//ps = part_system_create();
-//part_system_depth(ps, depth + 1); // draw just above slime’s depth
-
-//// create particle type for the trail
-//trail_particle = part_type_create();
-
-//// appearance
-////part_type_shape(trail_particle, pt_shape_disk);
-//part_type_shape(trail_particle, pt_shape_smoke);
-////part_type_shape(trail_particle, pt_shape_ring);
-//part_type_size(trail_particle, 0.3, 0.4, 0, 0); // random size range
-////part_type_color2(trail_particle, make_color_rgb(90,255,90), make_color_rgb(50,180,50));
-//part_type_color2(trail_particle, color, color);
-//part_type_alpha2(trail_particle, 0.8, 0); // fades out
-//part_type_orientation(trail_particle, 0, 360, 0, 0,0); // random rotation
-
-//// movement / lifetime
-////part_type_speed(trail_particle, 0.1, 0.3, 0, 0);
-//part_type_speed(trail_particle, 0, 0.001, 0, 0);
-////part_type_direction(trail_particle, 0, 359, 0, 0);
-//part_type_direction(trail_particle, 0, 1, 0, 0);
-//part_type_gravity(trail_particle, 0, 270); // no gravity
-//part_type_life(trail_particle, 3200, 6400);    // frames before fade/destruction
 
 

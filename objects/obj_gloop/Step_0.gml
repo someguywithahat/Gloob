@@ -199,7 +199,7 @@ and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
 		
 		//Update the previous slime trail
 		current_grid_number.exitX=derX
-		current_grid_number.exitY=derY		
+		current_grid_number.exitY=derY
 		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)
 
 		
@@ -248,10 +248,30 @@ if ismoving=1 {
 	gridNumberX=next_inst.x
 	gridNumberY=next_inst.y
 	
+
+//test_trail_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,10)
+
+//if round(test_trail_index)=0
+//	test_trail_index = scr_get_jump_sprite(gridNumberY,y,gridNumberPrevY,10)
+////test_trail_index=test_trail_index/2 
+//draw_sprite(Spr_Trl_Corner, test_trail_index,1200,500 )
+//draw_sprite(Spr_Trl_End, test_trail_index,1200,540 )
+//draw_sprite(Spr_Trl_Mid, test_trail_index,1200,580 )
+
+
+//if test_trail_index>5
+//	draw_sprite(Spr_Trl_End, test_trail_index,1200,400 )
+//if test_trail_index<=5
+//	draw_sprite(Spr_Trl_Mid, test_trail_index,1200,432 )
+//else 
+//	draw_sprite(Spr_Trl_Mid, 5,1200,432 )
+
+
 	
-	//if isjumping=1{
-	//	sprite_index=s_jump
-	//}
+	//test 
+	var trail_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,10)
+	if trail_index>5
+		scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 	
 	var gloop_speed =1
 	if ((derX+derY) mod 2) = 0
@@ -280,8 +300,7 @@ if ismoving=1 {
 	    if (y < gridNumberY) y = gridNumberY;
 	}
 	
-	//part_type_color2(trail_particle, color, color);
-	//part_particles_create(ps, x+16 +(8*derX*-1), y+16+(8*derY*-1), trail_particle, 2);
+
 	
 	if x==gridNumberX and y==gridNumberY
 	{
@@ -345,6 +364,7 @@ if ismoving=1 {
 				puBonk+=1				
 		}
 		
+		
 		current_grid_number.exitX=derX
 		current_grid_number.exitY=derY
 		current_grid_number = next_inst
@@ -361,7 +381,6 @@ if ismoving=1 {
 		grid_y=next_inst.grid_y
 		
 		//Add gloop score and remaining grid value
-		//gloop_score++;
 		controller.remaining_grid--
 		gloop_score_obj.gloop_score++
 		
@@ -374,9 +393,8 @@ if ismoving=1 {
 			splat.gloop_color_index = gloop_color_index
 
 		}
-		//scr_draw_score(260,20,100)
 		
-
+		scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 		
 		if grid_x=target_x and grid_y=target_y
 		{
@@ -392,7 +410,7 @@ if ismoving=1 {
 			
 			current_grid_number.exitX=derX
 			current_grid_number.exitY=derY
-			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
+			///scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 			
 			with(obj_gridFlower){
 				image_index++	
@@ -404,7 +422,7 @@ if ismoving=1 {
 		{
 			current_grid_number.exitX=derX
 			current_grid_number.exitY=derY
-			scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
+			///scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 			next_target_x = grid_x + derX
 			next_target_y = grid_y + derY
 			
