@@ -32,7 +32,7 @@
   ],
   "name":"Spr_House_Mushroom",
   "nineSlice":null,
-  "origin":0,
+  "origin":9,
   "parent":{
     "name":"Sprites",
     "path":"folders/Sprites.yy",
@@ -86,8 +86,8 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
-    "yorigin":0,
+    "xorigin":48,
+    "yorigin":72,
   },
   "swatchColours":[
     4278190335,4282607155,4283521894,4283187509,4285845143,4289891452,4279832078,4284885054,4284891424,4285034529,
