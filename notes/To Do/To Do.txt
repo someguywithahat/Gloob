@@ -1,0 +1,46 @@
+TOM
+Rewrite fence draw
+number color or outline for highlihgt (do we want optional "aim assist" ie color safe indicator or highlight full row)
+turn off click anywhere
+impliment actually season change with score
+fairy powerup - change sign graphic to spr_PU_Tel_Fairy_Sign
+Fairy Powerup - make fairy not below slime trail on map
+Crown powerup - spawn in/out slime
+4 player cap
+Title graphic drawing letters
+
+JO
+make fire
+fix sings / wood
+accessories - mustash, sunglasses, dog ears, fairy, devil, glow
+Color specific accessories
+	red - fire
+	orange - 
+	yellow - 
+	green - 
+	blue - 
+	purple - 
+	black - 
+	white - 
+house animation
+powerups - write tooltips, add sound effects
+	red - bounce - need everything
+	orange - bee - need everythig
+	yellow - hardhat - fix map icon
+	green - vines - need everything
+	blue - fairy
+	purple - Crown - fix map icon 
+	black - night - everything
+	white - bubble - everything
+finish font outline / update
+figure out "selected font" look
+Seasonal obsticles
+"how to play" Page or Tutorial
+
+
+
+TOGETHER
+	Season effects?
+	Design /finalize menu options
+	figure out score store / village design
+	Play as rock

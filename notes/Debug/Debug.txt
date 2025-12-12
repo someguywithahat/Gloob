@@ -1,3 +1,4 @@
 Objects appears ontop of powerups
 fairy is behind gloop trail
 gloops spawn on same starting spot
+player one butterfly color issue
