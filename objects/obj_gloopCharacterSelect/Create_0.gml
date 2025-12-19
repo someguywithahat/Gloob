@@ -1,13 +1,14 @@
-color = "blue"
-
+sprite_index=Spr_Slm_Sleep
 s_idol =Spr_Slm_Idol
 s_sleep = Spr_Slm_Sleep
 s_roll_R =Spr_Slm_Move_Spin
 gloop_color=0
+gloop_name=""
 
 sleep_counter = 3
 sleep_timer = 90
 selected=0
+icon_frame=0
 image_xscale=2
 image_yscale=2
 

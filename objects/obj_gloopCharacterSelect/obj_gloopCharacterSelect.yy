@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Slm_Red_Sleep",
-    "path":"sprites/Slm_Red_Sleep/Slm_Red_Sleep.yy",
+    "name":"Slm_Orn_Idol",
+    "path":"sprites/Slm_Orn_Idol/Slm_Orn_Idol.yy",
   },
   "spriteMaskId":null,
   "visible":true,

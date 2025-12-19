@@ -1,6 +1,9 @@
 
 sleep_counter++
-
+if selected=1
+	icon_frame+=0.25
+else 
+	icon_frame=0
 
 
 
