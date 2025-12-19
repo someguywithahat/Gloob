@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_gloop_strings",
+  "%Name":"scr_get_accessory",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_gloop_strings",
+  "name":"scr_get_accessory",
   "parent":{
     "name":"Scripts Jo might like",
     "path":"folders/Scripts/Scripts Jo might like.yy",

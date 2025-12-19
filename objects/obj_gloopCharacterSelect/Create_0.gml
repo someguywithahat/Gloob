@@ -19,7 +19,7 @@ clicked_left=-1
 clicked_right=-1
 
 
-has_accessory=2
+has_accessory=0
 accessory_index=Spr_Acc_Cat
 sa = Spr_Acc_Cat
 sa_idol = Spr_Acc_Cat_Idol

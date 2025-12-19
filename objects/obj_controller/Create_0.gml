@@ -1,5 +1,7 @@
 global.controller = id;
 global.weather=0
+scr_set_GLOBAL_values()
+
 //var high_score ={
 //	gname: "GLP",
 //	gscore: 123,
@@ -95,10 +97,7 @@ PU_SPRITES[2]=Spr_Pu_RB_SM_Full
 PU_SPRITES[3]=Spr_PU_Crown
 
 
-global.FALL = 3
-global.WINTER = 1
-global.SPRING = 2
-global.SUMMER = 0
+
 
 global.achievement1=0
 

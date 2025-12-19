@@ -57,13 +57,13 @@ if clicked_left>0
 {
 	clicked_left=-1
 	if has_accessory=0
-		has_accessory=2
+		has_accessory=global.MAX_ACCESSORY
 	else has_accessory--
 }
 if clicked_right>0
 {
 	clicked_right=-1
-	if has_accessory=2
+	if has_accessory=global.MAX_ACCESSORY
 		has_accessory=0
 	else has_accessory++
 }

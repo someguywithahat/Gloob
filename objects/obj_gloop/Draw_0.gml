@@ -41,28 +41,29 @@ else
 
 if has_accessory>0
 {
-	if has_accessory=1
-	{
-		sa_idol = Spr_Acc_Cat_Idol
-		sa_sleep = Spr_Acc_Cat_Sleep
-		sa_death = Spr_Acc_Cat_Stun
-		sa_jump = Spr_Acc_Cat_Move_Jump
-		sa_roll = Spr_Acc_Cat_Move_Roll
-		sa_roll_R = Spr_Acc_Cat_Move_Spin
-		sa_teleport = Spr_Acc_Cat_Tele
-		sa_slurp = Spr_Acc_Cat_Move_Slurp
-	}
-	else if has_accessory=2
-	{
-		sa_idol = Spr_Acc_Glasses_Idol
-		sa_sleep = Spr_Acc_Glasses_Sleep
-		sa_death = Spr_Acc_Glasses_Stun
-		sa_jump = Spr_Acc_Glasses_Move_Jump
-		sa_roll = Spr_Acc_Glasses_Move_Roll
-		sa_roll_R = Spr_Acc_Glasses_Move_Spin
-		sa_teleport = Spr_Acc_Glasses_Tele
-		sa_slurp = Spr_Acc_Glasses_Move_Slurp
-	}
+	scr_get_accessory()
+	//if has_accessory=1
+	//{
+	//	sa_idol = Spr_Acc_Cat_Idol
+	//	sa_sleep = Spr_Acc_Cat_Sleep
+	//	sa_death = Spr_Acc_Cat_Stun
+	//	sa_jump = Spr_Acc_Cat_Move_Jump
+	//	sa_roll = Spr_Acc_Cat_Move_Roll
+	//	sa_roll_R = Spr_Acc_Cat_Move_Spin
+	//	sa_teleport = Spr_Acc_Cat_Tele
+	//	sa_slurp = Spr_Acc_Cat_Move_Slurp
+	//}
+	//else if has_accessory=2
+	//{
+	//	sa_idol = Spr_Acc_Glasses_Idol
+	//	sa_sleep = Spr_Acc_Glasses_Sleep
+	//	sa_death = Spr_Acc_Glasses_Stun
+	//	sa_jump = Spr_Acc_Glasses_Move_Jump
+	//	sa_roll = Spr_Acc_Glasses_Move_Roll
+	//	sa_roll_R = Spr_Acc_Glasses_Move_Spin
+	//	sa_teleport = Spr_Acc_Glasses_Tele
+	//	sa_slurp = Spr_Acc_Glasses_Move_Slurp
+	//}
 }
 
 
