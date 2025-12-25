@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Accessories",
-    "path":"folders/Sprites/Slime Sprites/Accessories.yy",
+    "name":"Cat",
+    "path":"folders/Sprites/Slime Sprites/Accessories/Cat.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -22,7 +22,7 @@
   "height":32,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"542ad01d-66f3-4745-bf89-2426019b5139","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"542ad01d-66f3-4745-bf89-2426019b5139","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"542ad01d-66f3-4745-bf89-2426019b5139","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"542ad01d-66f3-4745-bf89-2426019b5139","opacity":80.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"72f0b40b-cd60-492b-b984-63058407d3ae","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"72f0b40b-cd60-492b-b984-63058407d3ae","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"a66f1ae9-6bd6-4c06-a3c8-3a43ee6f879a","blendMode":0,"displayName":"default","isLocked":false,"name":"a66f1ae9-6bd6-4c06-a3c8-3a43ee6f879a","opacity":80.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"bae3057d-d8bf-45db-bb68-a82e8356276c","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"bae3057d-d8bf-45db-bb68-a82e8356276c","opacity":20.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
@@ -31,8 +31,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Accessories",
-    "path":"folders/Sprites/Slime Sprites/Accessories.yy",
+    "name":"Cat",
+    "path":"folders/Sprites/Slime Sprites/Accessories/Cat.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

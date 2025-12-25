@@ -35,8 +35,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Accessories",
-    "path":"folders/Sprites/Slime Sprites/Accessories.yy",
+    "name":"Glasses",
+    "path":"folders/Sprites/Slime Sprites/Accessories/Glasses.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
