@@ -6,7 +6,7 @@
 */
 function scr_set_global_values_accessory(){
 	//The total amount of accessories in the game.  
-	global.MAX_ACCESSORY=4
+	global.MAX_ACCESSORY=5
 }
 
 //sets accessory
@@ -58,6 +58,18 @@ else if has_accessory=4
 		sa_roll_R = Spr_Acc_Suns_Move_Spin
 		sa_teleport = Spr_Acc_Suns_Tele
 		sa_slurp = Spr_Acc_Suns_Move_Slurp
+	}
+else if has_accessory=5
+	{
+		sa = Spr_Acc_Horns
+		sa_idol = Spr_Acc_Horns_Idol
+		sa_sleep = Spr_Acc_Horns_Sleep
+		sa_death = Spr_Acc_Horns_Stun
+		sa_jump = Spr_Acc_Horns_Move_Jump
+		sa_roll = Spr_Acc_Horns_Move_Roll
+		sa_roll_R = Spr_Acc_Horns_Move_Spin
+		sa_teleport = Spr_Acc_Horns_Tele
+		sa_slurp = Spr_Acc_Horns_Move_Slurp
 	}
 	///////////////////INSERT NEW SPRITES HERE///////////////////
 	//else if has_accessory=3
