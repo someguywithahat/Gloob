@@ -31,8 +31,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Powerups",
-    "path":"folders/Sprites/Slime Sprites/Powerups.yy",
+    "name":"Hat",
+    "path":"folders/Sprites/Slime Sprites/Powerups/Hat.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
