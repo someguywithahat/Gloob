@@ -66,8 +66,8 @@
   },
   "origin":9,
   "parent":{
-    "name":"Cat",
-    "path":"folders/Sprites/Slime Sprites/Accessories/Cat.yy",
+    "name":"Prolly Not",
+    "path":"folders/Sprites/Prolly Not.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

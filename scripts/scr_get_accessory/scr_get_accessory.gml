@@ -6,7 +6,7 @@
 */
 function scr_set_global_values_accessory(){
 	//The total amount of accessories in the game.  
-	global.MAX_ACCESSORY=5
+	global.MAX_ACCESSORY=6
 }
 
 //sets accessory
@@ -23,7 +23,7 @@ function scr_get_accessory(){
 		sa_teleport = Spr_Acc_Cat_Tele
 		sa_slurp = Spr_Acc_Cat_Move_Slurp
 	}
-	else if has_accessory=2
+	else if has_accessory=4
 	{
 		sa = Spr_Acc_Glasses
 		sa_idol = Spr_Acc_Glasses_Idol
@@ -47,7 +47,7 @@ function scr_get_accessory(){
 		sa_teleport = Spr_Acc_Stash_Tele
 		sa_slurp = Spr_Acc_Stash_Move_Slurp
 	}
-else if has_accessory=4
+else if has_accessory=5
 	{
 		sa = Spr_Acc_Suns
 		sa_idol = Spr_Acc_Suns_Idol
@@ -59,7 +59,7 @@ else if has_accessory=4
 		sa_teleport = Spr_Acc_Suns_Tele
 		sa_slurp = Spr_Acc_Suns_Move_Slurp
 	}
-else if has_accessory=5
+else if has_accessory=6
 	{
 		sa = Spr_Acc_Horns
 		sa_idol = Spr_Acc_Horns_Idol
@@ -70,6 +70,18 @@ else if has_accessory=5
 		sa_roll_R = Spr_Acc_Horns_Move_Spin
 		sa_teleport = Spr_Acc_Horns_Tele
 		sa_slurp = Spr_Acc_Horns_Move_Slurp
+	}
+else if has_accessory=2
+	{
+		sa = Spr_Acc_Dog
+		sa_idol = Spr_Acc_Dog_Idol
+		sa_sleep = Spr_Acc_Dog_Sleep
+		sa_death = Spr_Acc_Dog_Stun
+		sa_jump = Spr_Acc_Dog_Move_Jump
+		sa_roll = Spr_Acc_Dog_Move_Roll
+		sa_roll_R = Spr_Acc_Dog_Move_Spin
+		sa_teleport = Spr_Acc_Dog_Tele
+		sa_slurp = Spr_Acc_Dog_Move_Slurp
 	}
 	///////////////////INSERT NEW SPRITES HERE///////////////////
 	//else if has_accessory=3
