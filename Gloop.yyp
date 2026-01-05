@@ -415,6 +415,8 @@
     {"id":{"name":"Spr_Pu_RB_SM_6","path":"sprites/Spr_Pu_RB_SM_6/Spr_Pu_RB_SM_6.yy",},},
     {"id":{"name":"Spr_Pu_RB_SM_Full","path":"sprites/Spr_Pu_RB_SM_Full/Spr_Pu_RB_SM_Full.yy",},},
     {"id":{"name":"Spr_Pu_RB","path":"sprites/Spr_Pu_RB/Spr_Pu_RB.yy",},},
+    {"id":{"name":"Spr_Pu_Shroom_Sign","path":"sprites/Spr_Pu_Shroom_Sign/Spr_Pu_Shroom_Sign.yy",},},
+    {"id":{"name":"Spr_Pu_Shroom","path":"sprites/Spr_Pu_Shroom/Spr_Pu_Shroom.yy",},},
     {"id":{"name":"Spr_Pu_Tel_Fairy_Sign","path":"sprites/Spr_Pu_Tel_Fairy_Sign/Spr_Pu_Tel_Fairy_Sign.yy",},},
     {"id":{"name":"Spr_Pu_Tel_Fairy","path":"sprites/Spr_Pu_Tel_Fairy/Spr_Pu_Tel_Fairy.yy",},},
     {"id":{"name":"Spr_Pu_Tel","path":"sprites/Spr_Pu_Tel/Spr_Pu_Tel.yy",},},

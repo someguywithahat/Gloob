@@ -3,22 +3,22 @@ use scroll wheel to select activatable power ups?
 multiple power ups at once?
 
 RED- Mushrom (Bounce everyother square or start one square out)
-ORANGE- Hardhat (bonk resist)
+x ORANGE- Hardhat (bonk resist)
 YELLOW- Bee (score multiplier)
 GREEN- Vines (add Spaces back)
-BLUE- Fairy (Teleport)
-PURPLE- Crown (Split)
+x BLUE- Fairy (Teleport)
+x PURPLE- Crown (Split)
 WHITE- Bubble (bomb)
 BLACK- Night (End day Score)
-RAINBOW- Superstar (Break)
+x RAINBOW- Superstar (Break)
 
-Slime Bomb
-	Icon: Bomb
-	Activation: Useable - action key at will
+Big Bounce
+	Icon: Mushromm
+	Activation: Useable at start
 	Color: Red
-	Ability: Hit an area with slime to gain big points
-	Super: larger grid
-	Shortname: Bomb
+	Ability: choose from 1 out for starting move
+	Super: 
+	Shortname: Shroom
 	Needs: Everything
 
 ORANGE - Score Multiplier
@@ -31,8 +31,8 @@ BONK RESIST
 	Shortname: Hat
 	Needs: Pick-up animation / sound
 
-Green - grassy patch (tree star) with number
-	
+Green - Vines
+		
 TELEPORT
 	Icon: Fairy
 	Activation: Useable - action key to use at will
@@ -51,8 +51,6 @@ Split King Slime
 	Shortname: King
 	Needs: A-lot
 	
-
-
 BLACK - Night time - lower sarting goal
 
 Invincibility
