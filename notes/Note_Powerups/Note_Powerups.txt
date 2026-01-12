@@ -2,15 +2,15 @@ Numbers should color shift to match the power ups which can be overlayed on top 
 use scroll wheel to select activatable power ups?
 multiple power ups at once?
 
-RED- Mushrom (Bounce everyother square or start one square out)
-x ORANGE- Hardhat (bonk resist)
-YELLOW- Bee (score multiplier)
-GREEN- Vines (add Spaces back)
-x BLUE- Fairy (Teleport)
-x PURPLE- Crown (Split)
+RED- Mushrom (start one square out) - number highlight mechanic
+? ORANGE- gold fish 
+YELLOW- Hardhat (bonk resist)
+? GREEN- Vines (add Spaces back)
+BLUE- Fairy (Teleport)
+PURPLE- Crown (Split)
 WHITE- Bubble (bomb)
-BLACK- Night (End day Score)
-x RAINBOW- Superstar (Break)
+? BLACK- Night (End day Score)
+RAINBOW- Superstar (Break)
 
 Big Bounce
 	Icon: Mushromm
@@ -29,7 +29,7 @@ BONK RESIST
 	color: yellow
 	ability: +1 bonk resist 
 	Shortname: Hat
-	Needs: Pick-up animation / sound
+	Needs: Pick-up sound
 
 Green - Vines
 		

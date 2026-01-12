@@ -7,3 +7,4 @@ get numbers 1-9
 yatzee get the same number 5 times in a row
 collect all the power-ups in a single game
 have 10 obsticles on the field
+move so many times on a single map
