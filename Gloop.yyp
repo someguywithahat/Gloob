@@ -352,6 +352,7 @@
     {"id":{"name":"Spr_Fence_Picket","path":"sprites/Spr_Fence_Picket/Spr_Fence_Picket.yy",},},
     {"id":{"name":"Spr_Fence_White","path":"sprites/Spr_Fence_White/Spr_Fence_White.yy",},},
     {"id":{"name":"Spr_Fence","path":"sprites/Spr_Fence/Spr_Fence.yy",},},
+    {"id":{"name":"Spr_Garden_path","path":"sprites/Spr_Garden_path/Spr_Garden_path.yy",},},
     {"id":{"name":"spr_gloop_smile","path":"sprites/spr_gloop_smile/spr_gloop_smile.yy",},},
     {"id":{"name":"spr_Gloop","path":"sprites/spr_Gloop/spr_Gloop.yy",},},
     {"id":{"name":"spr_GloopDebug","path":"sprites/spr_GloopDebug/spr_GloopDebug.yy",},},
