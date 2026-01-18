@@ -88,6 +88,8 @@ if (keyboard_check_pressed(ord("M")))and disable_game_inputs=0 {
 	else music_playing=0	
 }
 
+
+
 if (keyboard_check_pressed(vk_escape)) {
     game_end();
 }
@@ -149,6 +151,11 @@ if ((keyboard_check_pressed(ord("T")) and room <> rm_titleScreen)and disable_gam
 		game_over_object=noone
 	}	
     room_goto(rm_titleScreen)
+}
+
+if ((keyboard_check_pressed(ord("B")) and room = rm_titleScreen)and disable_game_inputs=0) {
+    // code here runs once when F is pressed
+    room_goto(rm_town)
 }
 
 if ((keyboard_check_pressed(ord("L")) and room <> rm_titleScreen) and isNight=0 and disable_game_inputs=0) or clicked_main_menu=1 {

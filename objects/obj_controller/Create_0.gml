@@ -2,6 +2,10 @@ global.controller = id;
 global.weather=0
 scr_set_GLOBAL_values()
 
+
+audio_group_set_gain(audiogroup_music, global.music_volume, 0);
+audio_group_set_gain(audiogroup_sfx, global.sfx_volume, 0);
+
 //var high_score ={
 //	gname: "GLP",
 //	gscore: 123,
