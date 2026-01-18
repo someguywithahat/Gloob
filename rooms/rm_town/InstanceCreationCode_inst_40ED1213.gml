@@ -1,0 +1,3 @@
+
+gloop_color_index=global.BLUE
+gloop_color_index_mix=global.BLUE
