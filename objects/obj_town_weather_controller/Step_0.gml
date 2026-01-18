@@ -43,10 +43,13 @@ else if global.weather=3
 if toggle_snow>0{
 	audio_stop_sound(weather_sound)	
 	toggle_snow=0
+	layer_set_visible(layer_id, false);
+	
 	if global.weather<>1
 	{
 		global.weather=1
 		weather_sound=audio_play_sound(snd_weather_wind_during_snow, 0, true);
+		layer_set_visible(layer_id, false);
 	}
 	else
 	{
@@ -57,6 +60,8 @@ if toggle_snow>0{
 else if toggle_rain>0{
 	audio_stop_sound(weather_sound)		
 	toggle_rain=0
+	layer_set_visible(layer_id, false);
+	
 	if global.weather<> 2
 	{
 		global.weather=2
@@ -75,10 +80,13 @@ else if toggle_leaves>0{
 	{
 		global.weather=3
 		weather_sound=audio_play_sound(snd_weather_wind, 0, true);
+		layer_set_visible(layer_id, true);  
+		
 	}
 	else
 	{
-		global.weather=0	
+		global.weather=0
+		layer_set_visible(layer_id, false);
 	}
 }
 

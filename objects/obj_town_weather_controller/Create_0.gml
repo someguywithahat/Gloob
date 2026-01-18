@@ -6,6 +6,9 @@ leaf_chance=10
 weather_sound=noone
 depth=-30000
 
+layer_id = layer_get_id("Effect_Fall");
+layer_set_visible(layer_id, false);
+
 toggle_rain=0
 toggle_snow=1
 toggle_leaves=0

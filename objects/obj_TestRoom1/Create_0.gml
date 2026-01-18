@@ -10,6 +10,12 @@ xx3=xx2+ (32)*10
 yy3=400
 mix_percentage=0.001
 
+var layer_id = layer_get_id("Effect_Fall");
+//layer_set_visible(layer_id, true);  // on
+var clouds_id = layer_get_id("Effect_Clouds");
+//var effect_id = layer_get_effect(clouds_id);
+//effect(effect_id, "alpha", 0.4);
+
 for(var i=-1;i<8;i++)
 {
 	for(var j=-1;j<8;j++)
