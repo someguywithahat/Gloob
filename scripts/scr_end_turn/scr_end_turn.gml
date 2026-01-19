@@ -7,6 +7,11 @@ function scr_end_turn(){
 	var targeting_object = controller.target_obj
 	
 	var target = noone;
+	
+	with (obj_gridNumber)
+	{
+	    highlighted=0
+	}
 		
 	
 	//skip if single player game

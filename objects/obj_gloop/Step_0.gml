@@ -37,8 +37,47 @@ if alive=0
 //if (mouse_check_button_pressed(mb_left)=fales and ismoving=0) 
 if (ismoving=0) 
 {
-	//var nearby_gridnum_id = scr_get_grid_id(grid_x,grid_y)
+	var movement_array=[]
+	movement_array[0] = scr_get_grid_id(grid_x-1,grid_y-1)
+	movement_array[1] = scr_get_grid_id(grid_x,grid_y-1)
+	movement_array[2] = scr_get_grid_id(grid_x+1,grid_y-1)
+	movement_array[3] = scr_get_grid_id(grid_x-1,grid_y)
+	movement_array[4] = scr_get_grid_id(grid_x+1,grid_y)
+	movement_array[5] = scr_get_grid_id(grid_x-1,grid_y+1)
+	movement_array[6] = scr_get_grid_id(grid_x,grid_y+1)
+	movement_array[7] = scr_get_grid_id(grid_x+1,grid_y+1)
 	
+	for(var a=0;a<array_length(movement_array);a++)
+	{
+		movement_array[a].highlighted=1
+		if movement_array[a].activeNumber>0 then movement_array[a].gloop_color_index=gloop_color_index
+	}
+	/*
+	var nearby_gridnum_id1 = scr_get_grid_id(grid_x-1,grid_y-1)
+	var nearby_gridnum_id2 = scr_get_grid_id(grid_x,grid_y-1)
+	var nearby_gridnum_id3 = scr_get_grid_id(grid_x+1,grid_y-1)
+	var nearby_gridnum_id4 = scr_get_grid_id(grid_x-1,grid_y)
+	var nearby_gridnum_id5 = scr_get_grid_id(grid_x+1,grid_y)
+	var nearby_gridnum_id6 = scr_get_grid_id(grid_x-1,grid_y+1)
+	var nearby_gridnum_id7 = scr_get_grid_id(grid_x,grid_y+1)
+	var nearby_gridnum_id8 = scr_get_grid_id(grid_x+1,grid_y+1)
+	nearby_gridnum_id1.highlighted=1
+	nearby_gridnum_id2.highlighted=1
+	nearby_gridnum_id3.highlighted=1
+	nearby_gridnum_id4.highlighted=1
+	nearby_gridnum_id5.highlighted=1
+	nearby_gridnum_id6.highlighted=1
+	nearby_gridnum_id7.highlighted=1
+	nearby_gridnum_id8.highlighted=1
+	if nearby_gridnum_id1.activeNumber>0 then nearby_gridnum_id1.gloop_color_index=gloop_color_index
+	if nearby_gridnum_id2.activeNumber>0 then nearby_gridnum_id2.gloop_color_index=gloop_color_index
+	if nearby_gridnum_id3.activeNumber>0 then nearby_gridnum_id3.gloop_color_index=gloop_color_index
+	if nearby_gridnum_id4.activeNumber>0 then nearby_gridnum_id4.gloop_color_index=gloop_color_index
+	if nearby_gridnum_id5.activeNumber>0 then nearby_gridnum_id5.gloop_color_index=gloop_color_index
+	if nearby_gridnum_id6.activeNumber>0 then nearby_gridnum_id6.gloop_color_index=gloop_color_index
+	if nearby_gridnum_id7.activeNumber>0 then nearby_gridnum_id7.gloop_color_index=gloop_color_index
+	if nearby_gridnum_id8.activeNumber>0 then nearby_gridnum_id8.gloop_color_index=gloop_color_index
+	*/
 	
 	var targeting = global.obj_targeting
     var mx = mouse_x;  // mouse X position
@@ -103,7 +142,6 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2
 	isteleporting=1
 	sprite_index=s_teleport
 	image_index=0	
-	//ismoving=1
 }
 
 
@@ -188,6 +226,10 @@ and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
 		if target_y>=controller.cols-1 target_y=controller.cols-1
 
 		ismoving=1;
+		with (obj_gridNumber)
+		{
+		    highlighted=0
+		}
 		idletime=0
 		gridNumberPrevX=x
 		gridNumberPrevY=y
