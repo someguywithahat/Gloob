@@ -1,7 +1,7 @@
 var controller = global.controller;
 var controller_current_player = controller.current_player
 
-
+image_xscale=1
 
 
 //if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
@@ -15,6 +15,7 @@ if puBonk>0
 	sh_roll = Spr_Slm_Hat_Move_Roll
 	sh_roll_R = Spr_Slm_Hat_Move_Spin
 	sh_teleport = Spr_Slm_Hat_Tele
+	sh_slurp = Spr_Slm_Hat_Move_Slurp
 } else if has_crown=1
 {
 	draw_hat=1
@@ -25,6 +26,7 @@ if puBonk>0
 	sh_roll = Spr_Slm_Crown_Move_Roll
 	sh_roll_R = Spr_Slm_Crown_Move_Spin
 	sh_teleport = Spr_Slm_Crown_Tele
+	sh_slurp =Spr_Slm_Crown_Move_Slurp
 }
 else 
 {
@@ -37,6 +39,7 @@ else
 	s_roll = Spr_Slm_Move_Roll
 	s_roll_R = Spr_Slm_Move_Spin
 	s_teleport = Spr_Slm_Tele
+	s_slurp =Spr_Slm_Move_Slurp
 
 
 if has_accessory>0
@@ -117,7 +120,8 @@ else if isjumping=1{
 	image_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)	
 } 
 else if isrolling=1{
-	if abs(derY)>0
+	//if abs(derY)>0
+	if derY<>0
 		sprite_index=s_roll
 	else
 		sprite_index=s_roll_R
@@ -130,11 +134,15 @@ else if isrolling=1{
 	else 
 	{		
 		image_speed=1*derX
-		//if image_index>5 and derX>0
-		//	image_index=1
-		//else if image_index<1 and derX<0
-		//	image_index=5
 	}
+}
+else if isslurp=1{
+	
+	sprite_index=s_slurp
+	if derX<0
+		image_xscale=-1
+	
+	
 }
 
 
@@ -170,6 +178,8 @@ else if sprite_index=s_roll_R
 	hat_index=sh_roll_R
 else if sprite_index=s_teleport 
 	hat_index=sh_teleport
+else if sprite_index=s_slurp 
+	hat_index=sh_slurp
 	
 if sprite_index=s_idol 
 	accessory_index=sa_idol
@@ -185,6 +195,8 @@ else if sprite_index=s_roll_R
 	accessory_index=sa_roll_R
 else if sprite_index=s_teleport 
 	accessory_index=sa_teleport
+else if sprite_index=s_slurp
+	accessory_index=sa_slurp
 	
 
 
@@ -256,11 +268,25 @@ if rainbow_power=1 or powerUp1=3 or powerUp2=3 or powerUp3=3{
 	shader_set_uniform_f(u_color_merge, rainbow_delay);
 
 	// Draw the sprite
-	draw_self();
-	if has_accessory>0	
-		draw_sprite(accessory_index, image_index,x,y)
-	if draw_hat=1	
-		draw_sprite(hat_index, image_index,x,y)
+	if image_xscale=-1
+	{
+		x=x+32
+		draw_self();
+		if has_accessory>0	
+			draw_sprite_ext(accessory_index, image_index,x,y,-1,1,0,c_white,1)
+		if draw_hat=1	
+			draw_sprite_ext(hat_index, image_index,x,y,-1,1,0,c_white,1)
+		x=x-32
+
+	}
+	else
+	{
+	draw_self();	
+		if has_accessory>0	
+			draw_sprite(accessory_index, image_index,x,y)
+		if draw_hat=1	
+			draw_sprite(hat_index, image_index,x,y)
+	}
 		
 	// End shader
 	shader_reset();
@@ -286,12 +312,25 @@ else {
 	shader_set_uniform_f(u_color_count, 6.0);
 
 	// Draw the sprite
-	draw_self();
-	if has_accessory>0	
-		draw_sprite(accessory_index, image_index,x,y)
-	if draw_hat=1	
-		draw_sprite(hat_index, image_index,x,y)
-		
+	if image_xscale=-1
+	{
+		x=x+32
+		draw_self();
+		if has_accessory>0	
+			draw_sprite_ext(accessory_index, image_index,x,y,-1,1,0,c_white,1)
+		if draw_hat=1	
+			draw_sprite_ext(hat_index, image_index,x,y,-1,1,0,c_white,1)
+		x=x-32
+
+	}
+	else
+	{
+	draw_self();	
+		if has_accessory>0	
+			draw_sprite(accessory_index, image_index,x,y)
+		if draw_hat=1	
+			draw_sprite(hat_index, image_index,x,y)
+	}		
 
 	// End shader
 	shader_reset();

@@ -32,11 +32,14 @@ if alive=0
 	return
 //Everything below only runs when it's your turn
 
-
+//selected_grid=noone
+//if selected_grid<>noone show_debug_message("Why here5?" + string(selected_grid.activeNumber))
 
 //if (mouse_check_button_pressed(mb_left)=fales and ismoving=0) 
 if (ismoving=0) 
 {
+	var targeting = global.obj_targeting
+	
 	var movement_array=[]
 	movement_array[0] = scr_get_grid_id(grid_x-1,grid_y-1)
 	movement_array[1] = scr_get_grid_id(grid_x,grid_y-1)
@@ -53,7 +56,7 @@ if (ismoving=0)
 	//	show_debug_message(string(grid_x-3))
 	
 	/*jump power*/
-	
+	/*
 	movement_array[8] = scr_get_grid_id(grid_x-2,grid_y-2)
 	movement_array[9] = scr_get_grid_id(grid_x,grid_y-2)
 	movement_array[10] = scr_get_grid_id(grid_x+2,grid_y-2)
@@ -62,19 +65,142 @@ if (ismoving=0)
 	movement_array[13] = scr_get_grid_id(grid_x-2,grid_y+2)
 	movement_array[14] = scr_get_grid_id(grid_x,grid_y+2)
 	movement_array[15] = scr_get_grid_id(grid_x+2,grid_y+2)
-	
-	
+	*/
 	for(var a=0;a<array_length(movement_array);a++)
 	{
 		if movement_array[a]<>noone
 		{
 			movement_array[a].highlighted=1
+			
+			
+			///*
 			if movement_array[a].activeNumber>0 then movement_array[a].gloop_color_index=gloop_color_index
+			{
+				if (mouse_x > movement_array[a].x && mouse_x < movement_array[a].x+movement_array[a].sprite_width &&
+				    mouse_y > movement_array[a].y && mouse_y < movement_array[a].y+movement_array[a].sprite_width 
+				)	
+				{
+					targeting.grid_x=movement_array[a].grid_x
+					targeting.grid_y=movement_array[a].grid_y
+					if (mouse_check_button_pressed(mb_left) and ismoving=0)
+					{
+						if movement_array[a].grid_x<grid_x
+							derX=-1
+						else if movement_array[a].grid_x>grid_x
+							derX=1
+						else
+							derX=0
+					
+						if movement_array[a].grid_y<grid_y
+							derY=-1
+						else if movement_array[a].grid_y>grid_y
+							derY=1
+						else
+							derY=0
+							
+						selected_grid = scr_get_grid_id(grid_x+derX, grid_y+derY)
+						if selected_grid.wall = 0 and selected_grid.activeNumber=1 
+							ismoving=1
+					}
+					//else {
+					//	selected_grid=noone
+					//}
+				}
+			}
+			//*/
 		}
 	}
-
 	
-	var targeting = global.obj_targeting
+	
+	/*
+		If the slime is moving, we record how far.  Set it's animation
+	*/
+	if ismoving=1
+	{
+		//if selected_grid.wall = 0 and selected_grid.activeNumber=1 
+		//{
+
+				
+			//var to_move = selected_grid.my_number; 
+	
+			//set the target
+			next_target_x = grid_x + derX
+			next_target_y = grid_y + derY
+	
+			target_x = grid_x +(derX*selected_grid.my_number)
+			target_y = grid_y +(derY*selected_grid.my_number)		
+	
+			///*
+			//keep the target in bounds
+			if target_x<0 target_x=0
+			if target_x>=controller.cols-1 target_x=controller.cols-1
+			if target_y<0 target_y=0
+			if target_y>=controller.cols-1 target_y=controller.cols-1
+
+			//ismoving=1;
+			//*/	
+		
+			idletime=0
+
+			if(abs((derX+derY) mod 2) = 0){
+				isjumping=1
+			}
+			else if selected_grid.my_number<=3 and derY=0
+				isslurp=1
+			else 
+				isrolling=1
+				
+			with (obj_gridNumber)
+			{
+			    highlighted=0
+			}
+			
+			//trail variables
+			gridNumberPrevX=x
+			gridNumberPrevY=y
+			//Update the previous slime trail
+			current_grid_number.exitX=derX
+			current_grid_number.exitY=derY
+			scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)		
+		//}
+		/*
+		else if selected_grid.activeNumber=0
+		{
+			if puBonk>0
+			{
+				puBonk--
+				audio_play_sound(snd_bonk, 1, false);
+				if powerUp3 =1
+					powerUp3=0
+				else if powerUp2=1
+					powerUp2=0
+				else if powerUp1 = 1
+					powerUp1=0
+				scr_powerup_update(id)
+			
+				var oops = instance_create_layer(x+16, y, "Instances", obj_effect_dropped_hat);
+				if derX<>0
+					oops.xx*=derX
+				else 
+					oops.xx*=0.25
+			}
+			else {
+				audio_play_sound(snd_bonk, 1, false);
+				alive=0
+			}
+			ismoving=0
+			isjumping=0
+			isrolling=0
+			has_targeting_cursor=0
+			selected_grid=noone
+			scr_end_turn()	
+		}//*/
+	}
+}
+	//*/
+	
+	
+	/*
     var mx = mouse_x;  // mouse X position
     var my = mouse_y;  // mouse Y position
 
@@ -84,10 +210,9 @@ if (ismoving=0)
 	var checkx = x
 	var checky = y
 	var angle_deg = point_direction(x+16, y+16, mx, my);
-	
+
     // Determine the direction.  
 	//Remove checkx and checky
-    var direct;
     if (angle_deg >= 337.5 || angle_deg < 22.5) {
 		//right
 		targeting.grid_x=grid_x+1
@@ -123,6 +248,7 @@ if (ismoving=0)
     }	
 	
 }
+	//*/
 
 
 
@@ -144,7 +270,7 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2
 
 
 
-
+/*
 
 if (mouse_check_button_pressed(mb_left) and ismoving=0
 and mouse_x>controller.start_x+controller.spacing
@@ -166,43 +292,34 @@ and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
 
     // Determine the direction.  
 	//Remove checkx and checky
-    var direct;
     if (angle_deg >= 337.5 || angle_deg < 22.5) {
-        //direct = "Right";
 		derX=1;
 		derY=0;		
     } else if (angle_deg >= 22.5 && angle_deg < 67.5) {
-        //direct = "Up-Right";
 		derX=1;
 		derY=-1;		
     } else if (angle_deg >= 67.5 && angle_deg < 112.5) {
-        //direct = "Up";
 		derX=0;
 		derY=-1;		
     } else if (angle_deg >= 112.5 && angle_deg < 157.5) {
-        //direct = "Up-Left";
 		derX=-1;
 		derY=-1;
     } else if (angle_deg >= 157.5 && angle_deg < 202.5) {
-        //direct = "Left";
 		derX=-1;
 		derY=0;	
     } else if (angle_deg >= 202.5 && angle_deg < 247.5) {
-        //direct = "Down-Left";		
 		derX=-1;
 		derY=+1;
     } else if (angle_deg >= 247.5 && angle_deg < 292.5) {
-        //direct = "Down";
 		derX=0;
 		derY=1;
     } else if (angle_deg >= 292.5 && angle_deg < 337.5) {
-        //direct = "Down-Right";
 		derX=1;
 		derY=1;
     }
 	
 	//var check_grid_inst = instance_place(checkx, checky, obj_gridNumber);
-	var selected_grid = scr_get_grid_id(grid_x+derX, grid_y+derY)
+	selected_grid = scr_get_grid_id(grid_x+derX, grid_y+derY)
 	if selected_grid.wall = 0 and selected_grid.activeNumber=1 
 	{
 		var to_move = selected_grid.my_number;  // read the variable
@@ -239,9 +356,7 @@ and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
 		//Update the previous slime trail
 		current_grid_number.exitX=derX
 		current_grid_number.exitY=derY
-		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)
-
-		
+		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)		
 	}
 	else if selected_grid.activeNumber=0
 	{
@@ -262,7 +377,6 @@ and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
 				oops.xx*=derX
 			else 
 				oops.xx*=0.25
-				
 		}
 		else {
 			audio_play_sound(snd_bonk, 1, false);
@@ -274,9 +388,9 @@ and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
 		has_targeting_cursor=0
 		scr_end_turn()	
 	}
-	
 }
 
+//*/
 
 
 if ismoving=1 {
@@ -307,7 +421,7 @@ if ismoving=1 {
 
 
 	
-	//test 
+
 	var trail_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,10)
 	if trail_index>5
 		scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
@@ -377,6 +491,7 @@ if ismoving=1 {
 				friend_gloop.gloop_color_index=gloop_color_index
 				friend_gloop.current_grid_number=next_inst
 				friend_gloop.gloop_score_obj=gloop_score_obj
+				friend_gloop.has_accessory=has_accessory
 	
 				controller.number_of_players++
 				controller.player_color[controller.number_of_players-1]=friend_gloop
@@ -442,6 +557,7 @@ if ismoving=1 {
 			ismoving=0	
 			isjumping=0
 			isrolling=0
+			isslurp=0
 			idletime=0
 			has_targeting_cursor=0
 			derX=0
@@ -493,6 +609,7 @@ if ismoving=1 {
 				ismoving=0
 				isjumping=0
 				isrolling=0
+				isslurp=0
 				has_targeting_cursor=0
 				scr_end_turn()				
 			}

@@ -7,6 +7,9 @@ activeNumber=1
 wall=0
 obs=0
 
+grid_x=0
+grid_y=0
+
 highlighted=0 //Grid number is highlighted when it's an option for gloop to move
 
 

@@ -1,6 +1,7 @@
 ismoving = 0;
 isjumping=0;
 isrolling=0;
+isslurp=0;
 issleep=0
 isteleporting=0 
 isDayEnd=0
@@ -55,6 +56,8 @@ gloop_score_obj.gloop=id
 
 has_targeting_cursor = 0
 
+selected_grid=noone
+
 //Power Up Code
 powerUp1=0
 powerUp2=0
@@ -66,7 +69,7 @@ rainbow_delay=0.0
 gloop_color_index_old=0
 has_crown=0
 draw_hat=0
-has_accessory=2
+has_accessory=0
 
 is_glowing=0
 
