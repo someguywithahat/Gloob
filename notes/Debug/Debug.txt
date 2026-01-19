@@ -3,3 +3,4 @@ fairy is behind gloop trail
 gloops spawn on same starting spot
 player one butterfly color issue
 split slime dog / flower color
+No powerups next to eachother - looks ugly
