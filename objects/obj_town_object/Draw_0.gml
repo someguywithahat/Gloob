@@ -10,7 +10,7 @@ var spr_yy = sprite_get_yoffset(sprite)
 
 if shader=0
 {
-	draw_sprite_ext(sprite, image_index,x-spr_xx,y-spr_yy,flip,1,0,c_white,1)	
+	draw_sprite_ext(sprite, image_index,x-spr_xx,y-spr_yy,flip*image_xscale,image_yscale,0,c_white,1)	
 
 }
 else
@@ -35,7 +35,7 @@ else
 	shader_set_uniform_f(u_color_count, 6.0);
 
 	// Draw the sprite
-	draw_sprite_ext(sprite, image_index,x+spr_xx,y+spr_yy,flip,1,0,c_white,1)
+	draw_sprite_ext(sprite, image_index,x+spr_xx,y+spr_yy,flip*image_xscale,image_yscale,0,c_white,1)
 		
 
 	// End shader

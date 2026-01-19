@@ -5,6 +5,9 @@ sprite=Spr_Obs_1x1
 image_index=0
 image_speed=0
 
+image_xscale=1
+image_yscale=1
+
 shader=0
 flip=1 //-1 is flipped
 gloop_color_index=0

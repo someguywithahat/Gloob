@@ -2,7 +2,7 @@ if locked=1{
 	x=mouse_x
 	y=mouse_y
 }
-	
+
 if !mouse_check_button(mb_left)
 {
 	locked=0
@@ -29,5 +29,21 @@ if (mouse_check_button_pressed(mb_middle)) and locked=1 {
     depth=depth-1
 	if depth<-10
 		depth=2
+
+}
+
+
+
+if (keyboard_check_pressed(vk_up)) and locked=1   
+{
+    image_xscale=image_xscale*2
+    image_yscale=image_yscale*2
+
+}
+
+if (keyboard_check_pressed(vk_down)) and locked=1   
+{
+    image_xscale=image_xscale/2
+    image_yscale=image_yscale/2
 
 }
