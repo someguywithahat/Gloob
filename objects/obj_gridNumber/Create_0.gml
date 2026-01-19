@@ -7,8 +7,11 @@ activeNumber=1
 wall=0
 obs=0
 
+highlighted=0 //Grid number is highlighted when it's an option for gloop to move
+
+
 trail_rotation = 0
-gloop_color_index=2
+gloop_color_index=5
 gloop_color_index_old=1
 rainbow_delay=0
 

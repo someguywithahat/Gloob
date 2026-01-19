@@ -37,6 +37,9 @@ if alive=0
 //if (mouse_check_button_pressed(mb_left)=fales and ismoving=0) 
 if (ismoving=0) 
 {
+	//var nearby_gridnum_id = scr_get_grid_id(grid_x,grid_y)
+	
+	
 	var targeting = global.obj_targeting
     var mx = mouse_x;  // mouse X position
     var my = mouse_y;  // mouse Y position
@@ -89,7 +92,6 @@ if (ismoving=0)
 
 
 
-//if (keyboard_check_pressed(vk_space) and (powerUp1=8 or powerUp2=8 or powerUp3=8 and ismoving=0)) {
 if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2)) {
 
 	if powerUp3=2

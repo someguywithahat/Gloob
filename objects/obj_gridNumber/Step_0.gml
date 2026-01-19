@@ -27,6 +27,14 @@ if has_powerUP>0 and activeNumber>0 and wall=0
 		gloop_color_index=0
 		
 }
+else if has_powerUP=0 and activeNumber>0 and wall=0 and highlighted=1
+{
+	sprite_index=Numbers_Color
+}
+else if has_powerUP=0 and activeNumber>0 and wall=0 and highlighted=0
+{
+	sprite_index=Numbers
+}
 
 
 
