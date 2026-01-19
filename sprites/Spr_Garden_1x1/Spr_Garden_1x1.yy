@@ -35,8 +35,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Village Art",
-    "path":"folders/Sprites/Village Art.yy",
+    "name":"Shop_Items",
+    "path":"folders/Sprites/Shop_Items.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
