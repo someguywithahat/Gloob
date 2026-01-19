@@ -29,7 +29,11 @@ if has_powerUP>0 and activeNumber>0 and wall=0
 }
 else if has_powerUP=0 and activeNumber>0 and wall=0 and highlighted=1
 {
-	sprite_index=Numbers_Color
+	if (mouse_x > x && mouse_x < x+sprite_width &&
+		mouse_y > y && mouse_y < y+sprite_width)
+		sprite_index=Numbers_Color
+	else
+		sprite_index=Numbers_Outline
 }
 else if has_powerUP=0 and activeNumber>0 and wall=0 and highlighted=0
 {
