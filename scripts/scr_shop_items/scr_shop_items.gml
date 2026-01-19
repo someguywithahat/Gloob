@@ -33,6 +33,9 @@ global.SHOPITEMS = [
     { sprite: Spr_Obs_2x2, shader_palette: spr_palette_seasons_all, frames_sold_seperately: true, shader_sold_seperately: false, cost: 30, animation_speed: 0, type: 0},
     { sprite: Spr_Obs_3x3, shader_palette: spr_palette_seasons_all, frames_sold_seperately: true, shader_sold_seperately: false, cost: 50, animation_speed: 0, type: 0},
 	
+	{ sprite: Spr_Garden_1x1, shader_palette: spr_palette_seasons_all, frames_sold_seperately: true, shader_sold_seperately: true, cost: 10, animation_speed: 0, type: 0},
+	{ sprite: Spr_Garden_1x2, shader_palette: spr_palette_seasons_all, frames_sold_seperately: true, shader_sold_seperately: false, cost: 50, animation_speed: 0, type: 0},
+	
     { sprite: Spr_Fence, shader_palette: spr_palette_seasons_all, frames_sold_seperately: true, shader_sold_seperately: false, cost: 25, animation_speed: 0, type: 0},
     { sprite: Spr_House_Mushroom, shader_palette: spr_palette_all, frames_sold_seperately: false, shader_sold_seperately: true, cost: 100, animation_speed: 0, type: 0},
 	
