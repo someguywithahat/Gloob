@@ -3,7 +3,7 @@
   "%Name":"Spr_Fish_Cold",
   "bboxMode":0,
   "bbox_bottom":20,
-  "bbox_left":1,
+  "bbox_left":0,
   "bbox_right":22,
   "bbox_top":2,
   "collisionKind":1,
