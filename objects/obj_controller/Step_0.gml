@@ -158,6 +158,12 @@ if ((keyboard_check_pressed(ord("B")) and room = rm_titleScreen)and disable_game
     room_goto(rm_town)
 }
 
+if ((keyboard_check_pressed(ord("V")) and room = rm_titleScreen)and disable_game_inputs=0) {
+    // code here runs once when F is pressed
+    room_goto(rm_fishingTest)
+}
+
+
 if ((keyboard_check_pressed(ord("L")) and room <> rm_titleScreen) and isNight=0 and disable_game_inputs=0) or clicked_main_menu=1 {
 
 	//scr_refresh_grid(grid_refs)
@@ -247,5 +253,4 @@ if (keyboard_check_pressed(ord("P")) and room = rm_gameScreen)and disable_game_i
 		}
 	}
 }
-
 
