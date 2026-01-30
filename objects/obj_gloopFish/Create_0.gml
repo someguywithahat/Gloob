@@ -18,7 +18,7 @@ if randomSprite=1 sprite_index=Spr_Fish_Bold
 else if randomSprite=2 sprite_index=Spr_Fish_Cold
 else if randomSprite=3 sprite_index=Spr_Fish_Fold
 else if randomSprite=4 sprite_index=Spr_Fish_Ghoul
-else if randomSprite=5 sprite_index=Spr_Fish_Glad
+else if randomSprite=5 sprite_index=Spr_Fish_LoLed
 else if randomSprite=6 sprite_index=Spr_Fish_Globe
 else if randomSprite=7 sprite_index=Spr_Fish_Glow
 else if randomSprite=8 sprite_index=Spr_Fish_Go
