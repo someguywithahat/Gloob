@@ -113,6 +113,7 @@
     {"id":{"name":"obj_gloop","path":"objects/obj_gloop/obj_gloop.yy",},},
     {"id":{"name":"obj_gloopCharacterSelect","path":"objects/obj_gloopCharacterSelect/obj_gloopCharacterSelect.yy",},},
     {"id":{"name":"obj_gloopFish","path":"objects/obj_gloopFish/obj_gloopFish.yy",},},
+    {"id":{"name":"obj_gloopFishGlowEffect","path":"objects/obj_gloopFishGlowEffect/obj_gloopFishGlowEffect.yy",},},
     {"id":{"name":"obj_gloopFishing","path":"objects/obj_gloopFishing/obj_gloopFishing.yy",},},
     {"id":{"name":"obj_gloopFishingTeleport","path":"objects/obj_gloopFishingTeleport/obj_gloopFishingTeleport.yy",},},
     {"id":{"name":"obj_gridField","path":"objects/obj_gridField/obj_gridField.yy",},},
