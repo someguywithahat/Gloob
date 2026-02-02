@@ -105,6 +105,7 @@
     {"id":{"name":"obj_effect_glow","path":"objects/obj_effect_glow/obj_effect_glow.yy",},},
     {"id":{"name":"obj_effect_heart","path":"objects/obj_effect_heart/obj_effect_heart.yy",},},
     {"id":{"name":"obj_effect_house","path":"objects/obj_effect_house/obj_effect_house.yy",},},
+    {"id":{"name":"obj_effect_NightGlow","path":"objects/obj_effect_NightGlow/obj_effect_NightGlow.yy",},},
     {"id":{"name":"obj_effect_point","path":"objects/obj_effect_point/obj_effect_point.yy",},},
     {"id":{"name":"obj_effect_slime","path":"objects/obj_effect_slime/obj_effect_slime.yy",},},
     {"id":{"name":"obj_effect_splat","path":"objects/obj_effect_splat/obj_effect_splat.yy",},},

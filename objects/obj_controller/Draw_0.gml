@@ -55,11 +55,10 @@ if room == rm_gameScreen{
 }
 
 
-//if room==rm_gameScreen
-//{
-//	layer="Instances_Gloop"
-//	layer
-//}
+if room==rm_gameScreen
+{
+	layer = layer_get_id("Instances");
+}
 
 
 if room== rm_titleScreen
