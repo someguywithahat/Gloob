@@ -6,6 +6,10 @@ leaf_chance=10
 weather_sound=noone
 depth=-30000
 
+
+toggle_debug_options=-1
+debug_on=-1
+
 toggle_rain=0
 toggle_snow=0
 toggle_leaves=0

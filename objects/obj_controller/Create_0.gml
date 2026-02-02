@@ -39,7 +39,9 @@ MAXSPEED = 4
 cols = 26;
 rows = 26;
 grid_size=(cols-2)*(rows-2)
-remaining_grid=grid_size
+//remaining_grid=grid_size
+season_goal_percentage=0.05
+season_goal = round(grid_size*season_goal_percentage)
 
 isPaused=0
 pauseMenuY=-750
@@ -51,8 +53,8 @@ start_x = 256;
 start_y = -32;
 spacing = 32;
 
-score_xx=1220
-score_yy=20
+//score_xx=1220
+//score_yy=20
 
 number_of_players = 1
 current_player=0
@@ -85,6 +87,7 @@ clicked_restart=-1
 clicked_main_menu=-1
 clicked_exitGame=-1
 clicked_characterSelect = -1 //remake of character select
+clicked_end_day=-1
 
 window_set_fullscreen(true);
 

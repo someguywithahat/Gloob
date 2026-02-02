@@ -103,13 +103,17 @@ if grid_refs == noone and room == rm_gameScreen{
 	target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
 	grid_refs = scr_setup_grid(rows, cols, spacing, start_x, start_y, number_of_players)
 	
+	season_goal = round(grid_size*season_goal_percentage)
+	
 	//Set inital count of remaining numbers
+	/*
 	remaining_grid=0
 	with(obj_gridNumber)
 	{
 		if wall=0
 			other.remaining_grid+=activeNumber
 	}
+	*/
 }
 
 
@@ -220,6 +224,18 @@ else if(clicked_debugRoom=1){
 else if(clicked_scoreRoom=1){
 	clicked_scoreRoom=-1;
 	room_goto(rm_scoreScreen);
+}
+
+if clicked_end_day=1
+{
+	clicked_end_day=-1	
+	audio_play_sound(snd_sleep_jingle, 0, false);
+	show_debug_message("Refreshing Grid")
+	//end day logic all handled by weather controller.  Oops
+	with obj_weather_controller
+	{
+		isNight=1
+	}
 }
 
 

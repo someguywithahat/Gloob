@@ -112,6 +112,8 @@ if isNight=1{
 	if isNightShader>=1{
 		isNight=-1
 		scr_refresh_grid(controller.grid_refs)
+		controller.season_goal_percentage+=0.05
+		controller.season_goal = round(controller.grid_size*controller.season_goal_percentage)
 		
 		
 		repeat (3)
