@@ -109,7 +109,8 @@ if toggle_night=1 {
 
 if controller.season_goal<1 and isNight=0
 {
-	if isNightShader<0.1
+	
+	if isNightShader<0.1+(abs(controller.season_goal)/controller.grid_size)*10
 		isNightShader+=0.001
 }
 
