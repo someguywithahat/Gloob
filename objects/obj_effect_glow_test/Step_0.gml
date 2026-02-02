@@ -1,0 +1,6 @@
+
+with obj_gloopFishing
+{
+	other.x=x+sprite_width/2
+	other.y=y+sprite_height/2
+}
