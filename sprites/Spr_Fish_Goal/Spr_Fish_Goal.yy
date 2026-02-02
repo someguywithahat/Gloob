@@ -25,7 +25,7 @@
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"b4f41ade-0e05-4423-9da5-1553435ac484","blendMode":0,"displayName":"Layer 4","isLocked":false,"name":"b4f41ade-0e05-4423-9da5-1553435ac484","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"4899308b-1cb9-47d5-9128-2f55472d373c","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"4899308b-1cb9-47d5-9128-2f55472d373c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"4899308b-1cb9-47d5-9128-2f55472d373c","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"4899308b-1cb9-47d5-9128-2f55472d373c","opacity":69.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"a3bd0009-4172-441d-809c-e8264e756b39","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"a3bd0009-4172-441d-809c-e8264e756b39","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"Spr_Fish_Goal",

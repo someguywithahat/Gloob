@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Spr_Fish_Glad",
-    "path":"sprites/Spr_Fish_Glad/Spr_Fish_Glad.yy",
+    "name":"Spr_Fish_LoLed",
+    "path":"sprites/Spr_Fish_LoLed/Spr_Fish_LoLed.yy",
   },
   "spriteMaskId":null,
   "visible":true,
