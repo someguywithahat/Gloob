@@ -535,7 +535,8 @@ if ismoving=1 {
 		grid_y=next_inst.grid_y
 		
 		//Add gloop score and remaining grid value
-		controller.remaining_grid--
+		//controller.remaining_grid--
+		controller.season_goal--
 		gloop_score_obj.gloop_score++
 		
 		var snd = audio_play_sound(snd_slime_move, 1, false);
