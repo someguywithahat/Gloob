@@ -55,6 +55,13 @@ if room == rm_gameScreen{
 }
 
 
+//if room==rm_gameScreen
+//{
+//	layer="Instances_Gloop"
+//	layer
+//}
+
+
 if room== rm_titleScreen
 {
 	scr_draw_sign(500,410,340,140,2,0,2,4)
