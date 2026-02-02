@@ -18,3 +18,8 @@ draw_rectangle(xx1,yy1-32,xx1+1,yy1+(32*8), false)
 
 draw_rectangle(xx2-32,yy2,xx2+(32*8),yy2+1, false)
 draw_rectangle(xx2,yy2-32,xx2+1,yy2+(32*8), false)
+
+    draw_set_color(c_black);
+    draw_set_alpha(0.2); // 0 = transparent, 1 = solid
+    draw_rectangle(0, 0, display_get_width(), display_get_height(), false);
+    draw_set_alpha(1); // reset alpha

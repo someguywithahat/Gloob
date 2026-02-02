@@ -13,7 +13,8 @@ if(snow_alpha>0)
 	draw_set_alpha(1);
 	draw_set_color(c_white);
 }
-if isNight<>0
+//if isNight<>0
+if isNightShader<>0
 {
     draw_set_color(c_black);
     draw_set_alpha(isNightShader); // 0 = transparent, 1 = solid
