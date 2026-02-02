@@ -21,11 +21,17 @@ if isNight<>0
     draw_set_alpha(1); // reset alpha
 }
 
-
-toggle_night=scr_draw_menu_item(text_xx,610,"End Day",toggle_night)
-toggle_add_obs=scr_draw_menu_item(text_xx,640,"Add Obstacle",toggle_add_obs)	
-toggle_rain=scr_draw_menu_item(text_xx,670,"Toggle Rain",toggle_rain)	
-toggle_snow=scr_draw_menu_item(text_xx,700,"Toggle Snow",toggle_snow)	
-toggle_leaves=scr_draw_menu_item(text_xx,730,"Toggle Fall",toggle_leaves)	
+if toggle_debug_options<1
+{
+	toggle_debug_options=scr_draw_menu_item(text_xx,730,"Toggle Debug",toggle_debug_options)
+}
+else 
+{
+	toggle_night=scr_draw_menu_item(text_xx,610,"End Day",toggle_night)
+	toggle_add_obs=scr_draw_menu_item(text_xx,640,"Add Obstacle",toggle_add_obs)	
+	toggle_rain=scr_draw_menu_item(text_xx,670,"Toggle Rain",toggle_rain)	
+	toggle_snow=scr_draw_menu_item(text_xx,700,"Toggle Snow",toggle_snow)	
+	toggle_leaves=scr_draw_menu_item(text_xx,730,"Toggle Fall",toggle_leaves)	
+}
 
 
