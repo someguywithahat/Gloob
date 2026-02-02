@@ -396,7 +396,6 @@
     {"id":{"name":"spr_effect_leaf","path":"sprites/spr_effect_leaf/spr_effect_leaf.yy",},},
     {"id":{"name":"spr_effect_particle_test","path":"sprites/spr_effect_particle_test/spr_effect_particle_test.yy",},},
     {"id":{"name":"spr_effect_rain","path":"sprites/spr_effect_rain/spr_effect_rain.yy",},},
-    {"id":{"name":"spr_effect_shadow","path":"sprites/spr_effect_shadow/spr_effect_shadow.yy",},},
     {"id":{"name":"spr_effect_snowflake","path":"sprites/spr_effect_snowflake/spr_effect_snowflake.yy",},},
     {"id":{"name":"Spr_Fence_Color","path":"sprites/Spr_Fence_Color/Spr_Fence_Color.yy",},},
     {"id":{"name":"Spr_Fence_Corners","path":"sprites/Spr_Fence_Corners/Spr_Fence_Corners.yy",},},
