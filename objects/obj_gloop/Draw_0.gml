@@ -201,7 +201,7 @@ else if sprite_index=s_slurp
 
 
 //debug code
-
+/*
 test_trail_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,10)
 
 if round(test_trail_index)=0
@@ -218,7 +218,7 @@ if test_trail_index<=5
 	draw_sprite(Spr_Trl_Mid, test_trail_index,1200,432 )
 else 
 	draw_sprite(Spr_Trl_Mid, 5,1200,432 )
-
+*/
 if is_glowing=1
 {
 	var size = 0.8 + random_range(-0.01,0.01)
