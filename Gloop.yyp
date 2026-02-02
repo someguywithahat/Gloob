@@ -509,6 +509,7 @@
     {"id":{"name":"Spr_Pu_Tel_Fairy","path":"sprites/Spr_Pu_Tel_Fairy/Spr_Pu_Tel_Fairy.yy",},},
     {"id":{"name":"Spr_Pu_Tel","path":"sprites/Spr_Pu_Tel/Spr_Pu_Tel.yy",},},
     {"id":{"name":"Spr_PU_Yellow_test_DNU","path":"sprites/Spr_PU_Yellow_test_DNU/Spr_PU_Yellow_test_DNU.yy",},},
+    {"id":{"name":"spr_Seasons","path":"sprites/spr_Seasons/spr_Seasons.yy",},},
     {"id":{"name":"Spr_Slm_Crown_Death","path":"sprites/Spr_Slm_Crown_Death/Spr_Slm_Crown_Death.yy",},},
     {"id":{"name":"Spr_Slm_Crown_Idol","path":"sprites/Spr_Slm_Crown_Idol/Spr_Slm_Crown_Idol.yy",},},
     {"id":{"name":"Spr_Slm_Crown_Move_Jump","path":"sprites/Spr_Slm_Crown_Move_Jump/Spr_Slm_Crown_Move_Jump.yy",},},
