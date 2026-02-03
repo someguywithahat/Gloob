@@ -100,9 +100,9 @@ if (keyboard_check_pressed(vk_f11)) {
 
 ///*
 if grid_refs == noone and room == rm_gameScreen{
-	target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
 	grid_refs = scr_setup_grid(rows, cols, spacing, start_x, start_y, number_of_players)
-	
+	//target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
+
 	season_goal = round(grid_size*season_goal_percentage)
 
 

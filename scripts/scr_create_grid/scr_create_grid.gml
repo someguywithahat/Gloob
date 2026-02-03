@@ -15,10 +15,14 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
     var grid_array = array_create(x_count, 0);
 	var number_of_powerups = controller.settings_NumberOfPowerUps
 	var number_of_obstacles = controller.settings_obstacles
+	
+	//create targeting object
+	target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
     
     for (var i = 0; i < x_count; i++)
     {
         grid_array[i] = array_create(y_count, noone);
+		
 
         for (var j = 0; j < y_count; j++)
         {
@@ -91,7 +95,11 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		inst.sprite_index = scr_get_slime_trail(0)
 		inst.depth=gloopInst.depth+2
 		gloopInst.current_grid_number=inst
+		
+		if i = 0
+			target_obj.next_gloop=gloopInst
 	}
+	
 	
 	//add powerups
 	for (var i = 0; i < number_of_powerups; i++)

@@ -39,3 +39,12 @@ else
 		
 //	}
 //}
+//if next_gloop = noone
+//{
+//	with (obj_gloop)
+//	{
+//	    if (player_number == global.controller.current_player)
+//	        next_gloop = id;				
+//	}
+//	show_debug_message("gloop")
+//}
