@@ -98,24 +98,16 @@ if (keyboard_check_pressed(vk_f11)) {
     window_set_fullscreen(!window_get_fullscreen());
 }
 
-
+///*
 if grid_refs == noone and room == rm_gameScreen{
 	target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
 	grid_refs = scr_setup_grid(rows, cols, spacing, start_x, start_y, number_of_players)
 	
 	season_goal = round(grid_size*season_goal_percentage)
-	
-	//Set inital count of remaining numbers
-	/*
-	remaining_grid=0
-	with(obj_gridNumber)
-	{
-		if wall=0
-			other.remaining_grid+=activeNumber
-	}
-	*/
-}
 
+
+}
+//*/
 
 if (keyboard_check_pressed(ord("F")))and disable_game_inputs=0 {
     // code here runs once when F is pressed
@@ -140,6 +132,7 @@ if (keyboard_check_pressed(ord("R"))and disable_game_inputs=0 and room == rm_gam
 		instance_destroy(game_over_object)
 		game_over_object=noone
 	}	
+	scr_resetGame()
     room_restart()	
 }
 
@@ -154,6 +147,7 @@ if ((keyboard_check_pressed(ord("T")) and room <> rm_titleScreen)and disable_gam
 		instance_destroy(game_over_object)
 		game_over_object=noone
 	}	
+	scr_resetGame()
     room_goto(rm_titleScreen)
 }
 

@@ -21,4 +21,6 @@ function scr_set_GLOBAL_values(){
 	global.YELLOW=7
 	
 	global.mouseDrag=0
+	
+	global.controller_default_season_goal_percentage=0.05
 }

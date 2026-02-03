@@ -187,6 +187,7 @@
     {"id":{"name":"scr_gloop_strings","path":"scripts/scr_gloop_strings/scr_gloop_strings.yy",},},
     {"id":{"name":"scr_powerup_update","path":"scripts/scr_powerup_update/scr_powerup_update.yy",},},
     {"id":{"name":"scr_pu_teleport_random","path":"scripts/scr_pu_teleport_random/scr_pu_teleport_random.yy",},},
+    {"id":{"name":"scr_resetGame","path":"scripts/scr_resetGame/scr_resetGame.yy",},},
     {"id":{"name":"scr_save_scripts","path":"scripts/scr_save_scripts/scr_save_scripts.yy",},},
     {"id":{"name":"scr_set_GLOBAL_values","path":"scripts/scr_set_GLOBAL_values/scr_set_GLOBAL_values.yy",},},
     {"id":{"name":"scr_set_slime_color","path":"scripts/scr_set_slime_color/scr_set_slime_color.yy",},},

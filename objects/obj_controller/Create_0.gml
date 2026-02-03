@@ -39,8 +39,9 @@ MAXSPEED = 4
 cols = 26;
 rows = 26;
 grid_size=(cols-2)*(rows-2)
-//remaining_grid=grid_size
-season_goal_percentage=0.05
+
+
+season_goal_percentage=global.controller_default_season_goal_percentage
 season_goal = round(grid_size*season_goal_percentage)
 
 isPaused=0
