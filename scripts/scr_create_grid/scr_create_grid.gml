@@ -137,7 +137,8 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 	{
 		if !(array_contains(controller.player_color,i))
 		{
-			unused=instance_create_layer(10+irandom_range(1,90), 500+irandom_range(1,230), "Instances", obj_unusedGloop);	
+			//1120, 100, 14, 30, 1
+			unused=instance_create_layer(1120+irandom_range(1,214), 180+irandom_range(1,400), "Instances", obj_unusedGloop);	
 			unused.gloop_color_index=i
 			show_debug_message("Color found: " + string(i))
 		}
