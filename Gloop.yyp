@@ -99,6 +99,7 @@
     {"id":{"name":"obj_controller_JoText","path":"objects/obj_controller_JoText/obj_controller_JoText.yy",},},
     {"id":{"name":"obj_controller_town","path":"objects/obj_controller_town/obj_controller_town.yy",},},
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},},
+    {"id":{"name":"obj_controllerGameScreenHouse","path":"objects/obj_controllerGameScreenHouse/obj_controllerGameScreenHouse.yy",},},
     {"id":{"name":"obj_effect_dropped_hat","path":"objects/obj_effect_dropped_hat/obj_effect_dropped_hat.yy",},},
     {"id":{"name":"obj_effect_fairy","path":"objects/obj_effect_fairy/obj_effect_fairy.yy",},},
     {"id":{"name":"obj_effect_glow_test","path":"objects/obj_effect_glow_test/obj_effect_glow_test.yy",},},

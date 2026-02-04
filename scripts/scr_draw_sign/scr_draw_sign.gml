@@ -158,6 +158,48 @@ function scr_draw_grass_sign(xx, yy, text, scale)
 
 }
 
+function scr_draw_grass_leaves_area(xx, yy, x_tiles, y_tiles, scale)
+{
+	
+	var leaf_sprite=Spr_Garden_path
+	//var sWidth = width
+	var spacer = sprite_get_width(leaf_sprite)
+	
+	for( var w=0; w<=x_tiles; w++)
+	{
+		for( var h=0; h<=y_tiles; h++)
+		{
+			if h=0
+			{
+				if w=0
+					draw_sprite_ext(leaf_sprite, 0, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
+				else if w<x_tiles
+					draw_sprite_ext(leaf_sprite, 2, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
+				else 
+					draw_sprite_ext(leaf_sprite, 0, xx+w*spacer+spacer, yy+h*spacer, -scale, scale, 0, c_white, 1)
+			}
+			else if h<y_tiles
+			{
+				if w=0
+					draw_sprite_ext(leaf_sprite, 3, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
+				else if w<x_tiles
+					draw_sprite_ext(leaf_sprite, 4, xx+w*spacer, yy+h*spacer, scale, scale, 0, c_white, 1)
+				else if w=x_tiles
+					draw_sprite_ext(leaf_sprite, 3, xx+w*spacer+spacer, yy+h*spacer, -scale, scale, 0, c_white, 1)
+			}
+			else 
+			{
+				if w=0
+					draw_sprite_ext(leaf_sprite, 0, xx+w*spacer,        yy+h*spacer+spacer, scale, -scale, 0, c_white, 1)
+				else if w<x_tiles
+					draw_sprite_ext(leaf_sprite, 2, xx+w*spacer,        yy+h*spacer+spacer, scale, -scale, 0, c_white, 1)
+				else if w=x_tiles
+					draw_sprite_ext(leaf_sprite, 0, xx+w*spacer+spacer, yy+h*spacer+spacer, -scale, -scale, 0, c_white, 1)
+			}
+		}
+	}
+}
+
 
 function scr_draw_sign_Highscore()
 {
