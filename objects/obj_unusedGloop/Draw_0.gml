@@ -16,6 +16,12 @@ else if is_bedtime=2
 	image_speed=0
 	image_index=1
 }
+else if leaf_target=2
+{
+	sprite_index=Slm_All_Base_Expressions
+	image_speed=0
+	image_index=1
+}
 else if well_fed>0{
 	well_fed--
 	sprite_index=Slm_All_Base_Expressions

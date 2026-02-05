@@ -22,7 +22,7 @@ if day_over=1 and global.controller.season_goal>0
 	else if global.weather=global.FALL
 	{
 		sprite_index=Spr_House_Mushroom_Fall
-		var inst = instance_create_layer(x-100, y+340, "Instances", obj_effectLeafPile);
+		var inst = instance_create_layer(x-110, y+340, "Instances", obj_effectLeafPile);
 		inst.depth=depth-200
 	}
 	else if global.weather=global.WINTER
@@ -39,7 +39,7 @@ if day_over=1 and global.controller.season_goal>0
 	with obj_unusedGloop
 	{
 		is_bedtime=0
-		x=1120+irandom_range(1,214)
+		x=1130+irandom_range(1,204)
 		y=180+irandom_range(1,300)
 		image_alpha=1
 		rotation=0
