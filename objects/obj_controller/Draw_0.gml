@@ -2,13 +2,13 @@
 
 if room == rm_gameScreen{
 		
-	scr_draw_menu_item(1170,20,"Goal "+string(season_goal_percentage*100)+"%",noone)
+	scr_draw_menu_item(1170,5,"Goal "+string(season_goal_percentage*100)+"%",noone)
 	if season_goal>0
-		scr_draw_menu_item(1170,56,string(season_goal)+ " left",noone)
+		scr_draw_menu_item(1170,40,string(season_goal)+ " left",noone)
 	else {
-		scr_draw_menu_item(1130,56,"Goal Reached",noone)
+		scr_draw_menu_item(1130,40,"Goal Reached",noone)
 		if game_over_status<1
-			clicked_end_day = scr_draw_menu_item(1170,92,"End Day?",clicked_end_day)
+			clicked_end_day = scr_draw_menu_item(1170,74,"End Day?",clicked_end_day)
 	}
 	
 	//scr_draw_score(score_xx, score_yy, remaining_grid)

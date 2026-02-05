@@ -5,6 +5,17 @@ if 	is_sad_gameOver=1
 	image_speed=0
 	image_index=3
 }
+else if is_bedtime=1
+{
+	sprite_index=Spr_Slm_Move_Jump
+	image_speed=1
+}
+else if is_bedtime=2
+{
+	sprite_index=Slm_All_Base_Expressions
+	image_speed=0
+	image_index=1
+}
 else if well_fed>0{
 	well_fed--
 	sprite_index=Slm_All_Base_Expressions
@@ -64,7 +75,9 @@ texture_set_stage(u_palette_swap, sprite_get_texture(spr_palette_all, gloop_colo
 shader_set_uniform_f(u_color_count, 6.0);
 
 // Draw the sprite
-draw_self();
+//draw_self();
+if image_alpha>0
+	draw_sprite_ext(sprite_index,image_index,x,y,1,1,rotation,c_white,image_alpha)
 
 // End shader
 shader_reset();

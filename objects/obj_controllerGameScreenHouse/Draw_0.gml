@@ -1,11 +1,18 @@
 
+if image_index>image_number-1
+{
+	image_index=image_number-1
+	image_speed=0
+}
+
 var season_shader=0
+
+if global.weather<>global.FALL
+	scr_draw_grass_leaves_area(1120, 100, 14, 30, 1)
+
+/*
 if global.weather=global.FALL
 	season_shader=1
-
-
-
-
 
 // Start shader
 shader_set(shd_palette_swap);
@@ -22,6 +29,6 @@ shader_set_uniform_f(u_color_count, 6.0);
 scr_draw_grass_leaves_area(1120, 100, 14, 30, 1)
 // End shader
 shader_reset();
-
+*/
 
 draw_self()

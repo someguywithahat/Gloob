@@ -62,7 +62,7 @@ current_player=0
 total_score=0
 persistent=true
 depth=-20000
-layer_create(-20001, "AboveEverything");
+//layer_create(-20001, "AboveEverything");
 
 music_playing = 0;
 global.music_current=noone

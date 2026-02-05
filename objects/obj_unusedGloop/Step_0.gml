@@ -1,3 +1,24 @@
+if is_bedtime=1
+{
+	move_towards_point(bedtimeX,bedtimeY,1)	
+	if abs(distance_to_point(bedtimeX,bedtimeY))<4
+	{
+		speed=0	
+		x=bedtimeX
+		y=bedtimeY
+		is_bedtime=2	
+		//show_debug_message("test home?")
+	}		
+}
+if is_bedtime=2
+{
+	
+	image_alpha=image_alpha-0.05
+	//if image_alpha<0
+	//	image_alpha=0
+}
+
+
 if issleep=1
 	sleep_duration++
 
@@ -15,15 +36,72 @@ if x<left_boundry
 	
 if is_sad_gameOver=0
 {
-	//wake up chance	
-	if irandom_range(1,100000)<5 and sleep_duration>1000 and issleep=1{
-	//if irandom_range(1,100000)<60 and sleep_duration>1{	//debugging 
+	
+	//fall leaves
+	if global.weather=global.FALL and is_movingToLeaves>0
+	{
+		if leaf_target=0
+		{
+			leaf_id = instance_nearest(x, y, obj_effectLeafPile);
+
+			if (instance_exists(leaf_id)) {
+			    jump_targetx = leaf_id.x+(leaf_id.sprite_width/2)+70;
+			    jump_targety = leaf_id.y+(leaf_id.sprite_height/2)+10;
+		
+				leaf_targetx = leaf_id.x+(leaf_id.sprite_width/2)+16
+				leaf_targety = leaf_id.y+(leaf_id.sprite_height/2)+16;
+		
+				leaf_target=1
+				move_towards_point(jump_targetx,jump_targety,1.5)
+			}
+			else 
+				is_movingToLeaves=0
+		}
+		if leaf_target=1
+		{	
+			move_towards_point(jump_targetx,jump_targety,1.5)
+			if abs(distance_to_point(jump_targetx,jump_targety))<3
+			///if distance_to_object(obj_effectLeafPile)<3
+			{
+				leaf_target=2
+				image_index=0
+				image_speed=0
+				speed=0
+			}
+		}
+		if leaf_target=2
+		{
+			move_towards_point(leaf_targetx,leaf_targety,2)
+			rotation=abs(((jump_targetx-leaf_targetx)-(x-leaf_targetx))/(jump_targetx-leaf_targetx))*180
+			if abs(distance_to_point(leaf_targetx,leaf_targety))<3
+			{
+				leaf_id.explode=1
+				leaf_target=3
+				speed=0
+				rotation=0
+				x=leaf_id.x +15
+				y=leaf_id.y+13
+				audio_play_sound(snd_effect_leaf_crunch, 1, false);
+				
+			}
+		}
+	}
+	
+	//wake up chance
+	else if irandom_range(1,100000)<5 and sleep_duration>1000 and issleep=1{
 		issleep=0
+		is_chasing=1
 		sprite_index=Spr_Slm_Move_Jump	
 		sleep_counter=0
 	}	
+	else if global.weather=global.FALL and irandom_range(1,10000)<5 and sleep_duration>300 and issleep=1{
+		issleep=0
+		is_movingToLeaves=1
+		sprite_index=Spr_Slm_Move_Jump	
+		sleep_counter=0
+	}
 	//awake and chasing cursor
-	else if issleep=0 and well_fed<=0
+	else if issleep=0 and is_chasing=1 and well_fed<=0
 	{
 		move_towards_point(mouse_x,mouse_y,1)	
 		sleep_counter++
@@ -32,10 +110,6 @@ if is_sad_gameOver=0
 			image_index = 0
 			var inst = instance_create_layer(x, y, "Instances", obj_effect_slime);
 			inst.gloop_color_index=gloop_color_index
-		
-			//var snd = audio_play_sound(snd_slime_move, 1, false);
-			//audio_sound_pitch(snd, random_range(0.9, 1.2));
-			//audio_sound_gain(snd, random_range(0.8, 1.0), 0);		
 		}
 	}
 
@@ -43,6 +117,7 @@ if is_sad_gameOver=0
 	if sleep_counter>sleep_counter_max
 	{
 		issleep=1
+		is_chasing=0
 		is_sad=0
 		sleep_duration=0
 		sprite_index=Spr_Slm_Sleep
@@ -50,9 +125,10 @@ if is_sad_gameOver=0
 		image_speed=1
 	}
 	//Failed to get attention and is now sad
-	else if(sleep_counter>sleep_counter_max-sad_range and issleep=0)
+	else if(sleep_counter>sleep_counter_max-sad_range and is_chasing=1)
 	{
 		is_sad=1
+		is_chasing=0
 		speed=0	
 	}
 
@@ -80,28 +156,6 @@ if is_sad_gameOver=0
 		    y += random_range(-shake_amount, shake_amount);
 		}
 	}
-	
-	//if global.weather=1
-	//{
-	//	var chilly_check = irandom_range(0,1000)
-	//	{
-	//		if chilly_check=1
-	//			is_cold=300
-	//	}
-		
-	//	if is_cold>0
-	//	{
-	//		is_cold--	
-	//		var shake_amount=3
-	//		if is_cold mod 2 <> 1
-	//			shake_amount=shake_amount*-1
-	//		x += shake_amount
-	//	}
-		
-		
-	//}
-	//else is_cold=0
-
 }
 if is_sad_gameOver>0
 	speed=0

@@ -6,12 +6,8 @@ controller = global.controller
 
 depth=0
 
-//top_boundry = 20+((controller.number_of_players)*95)
-//bottom_boundry = room_height
-//left_boundry=0
-//right_boundry=210
-//1120, 100, 14, 30, 1
-top_boundry = 200
+
+top_boundry = 100
 bottom_boundry = 580
 left_boundry=1120
 right_boundry=room_width
@@ -30,3 +26,19 @@ is_angry=0
 is_sad=0
 is_sad_gameOver=0
 is_cold=0
+is_bedtime=0
+is_chasing=0
+is_movingToLeaves=0 
+is_flipping=0 //diving into leaves
+
+bedtimeX=1180
+bedtimeY=50
+
+//variables for leaf pile
+jump_targetx=0
+jump_targety=0
+leaf_targetx=0
+leaf_targety=0
+leaf_id=noone
+leaf_target=0
+rotation=0

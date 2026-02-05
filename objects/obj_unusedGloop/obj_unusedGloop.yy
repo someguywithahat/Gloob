@@ -12,8 +12,8 @@
   "name":"obj_unusedGloop",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"sideline",
+    "path":"folders/Objects/sideline.yy",
   },
   "parentObjectId":null,
   "persistent":false,
