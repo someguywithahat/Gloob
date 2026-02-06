@@ -34,9 +34,20 @@ else if global.weather=3
 	if leaf_roll<leaf_chance{
 		var leafid = instance_create_layer(irandom_range(-10,0), irandom_range(-400,room_height),"Instances",obj_weather_leaves)
 		leafid.depth=depth-1
+	}	
+}
+
+if global.controller.season_goal<=0
+{
+	var firefly_chance = irandom_range(1,100)
+	if firefly_chance<4
+	{
+		var xx = irandom_range(0,room_width)
+		var yy = irandom_range(0,room_height)
+		var fireflyid = instance_create_layer(xx,yy,"Instances",obj_effect_firefly)
+		fireflyid.depth=depth-1
+		
 	}
-	
-	
 }
 
 

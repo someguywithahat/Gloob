@@ -22,6 +22,18 @@ if isNightShader<>0
     draw_set_alpha(1); // reset alpha
 }
 
+if global.controller.season_goal<=0
+{
+	if isDuskShader<0.25
+		isDuskShader+=0.005
+    draw_set_color(c_black);
+    draw_set_alpha(isDuskShader); // 0 = transparent, 1 = solid
+    draw_rectangle(0, 0, display_get_width(), display_get_height(), false);
+    draw_set_alpha(1); // reset alpha	
+}
+else 
+	isDuskShader=0
+
 if toggle_debug_options<1
 {
 	toggle_debug_options=scr_draw_menu_item(text_xx,730,"Toggle Debug",toggle_debug_options)

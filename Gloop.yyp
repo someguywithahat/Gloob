@@ -104,6 +104,7 @@
     {"id":{"name":"obj_controllerGameScreenHouse","path":"objects/obj_controllerGameScreenHouse/obj_controllerGameScreenHouse.yy",},},
     {"id":{"name":"obj_effect_dropped_hat","path":"objects/obj_effect_dropped_hat/obj_effect_dropped_hat.yy",},},
     {"id":{"name":"obj_effect_fairy","path":"objects/obj_effect_fairy/obj_effect_fairy.yy",},},
+    {"id":{"name":"obj_effect_firefly","path":"objects/obj_effect_firefly/obj_effect_firefly.yy",},},
     {"id":{"name":"obj_effect_glow_test","path":"objects/obj_effect_glow_test/obj_effect_glow_test.yy",},},
     {"id":{"name":"obj_effect_glow","path":"objects/obj_effect_glow/obj_effect_glow.yy",},},
     {"id":{"name":"obj_effect_heart","path":"objects/obj_effect_heart/obj_effect_heart.yy",},},

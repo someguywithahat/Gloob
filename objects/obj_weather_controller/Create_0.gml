@@ -18,6 +18,9 @@ toggle_night=0
 
 isNight=0
 isNightShader=0
+isDuskShader=0
+
+
 
 /*
 0=none
