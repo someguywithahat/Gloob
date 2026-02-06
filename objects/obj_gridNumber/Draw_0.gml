@@ -1,3 +1,6 @@
+if sprite_index = Numbers then image_speed=0
+if sprite_index = Numbers_Box then image_speed=0
+
 
 var palette_original = spr_palette_index
 var palette_all = spr_palette_all

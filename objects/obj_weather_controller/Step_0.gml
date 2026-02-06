@@ -157,7 +157,6 @@ if isNight=1{
 		else if global.weather=global.SPRING
 		{
 			global.weather=global.SUMMER
-			weather_sound=audio_play_sound(snd_rain, 0, true);
 		}
 	}
 }
