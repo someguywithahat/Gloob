@@ -39,8 +39,8 @@ else if global.weather=3
 
 if global.controller.season_goal<=0
 {
-	var firefly_chance = irandom_range(1,100)
-	if firefly_chance<4
+	var firefly_chance = irandom_range(1,500)
+	if firefly_chance<abs(global.controller.season_goal)
 	{
 		var xx = irandom_range(0,room_width)
 		var yy = irandom_range(0,room_height)
