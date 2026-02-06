@@ -24,7 +24,7 @@ if day_over=1 and global.controller.season_goal>0
 
 
 	if global.weather=global.SUMMER
-		sprite_index=Spr_House_Mushroom
+		sprite_index=Spr_House_Mushroom_summer
 	else if global.weather=global.FALL
 	{
 		sprite_index=Spr_House_Mushroom_Fall

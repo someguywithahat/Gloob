@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"Spr_House_Mushroom",
+  "%Name":"Spr_House_Mushroom_summer",
   "bboxMode":0,
   "bbox_bottom":81,
   "bbox_left":5,
@@ -36,7 +36,7 @@
     {"$GMImageLayer":"","%Name":"f17f8e56-87ad-4071-9df3-5d375777afd7","blendMode":0,"displayName":"Layer 9","isLocked":false,"name":"f17f8e56-87ad-4071-9df3-5d375777afd7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"cfacb162-3aef-42ea-a333-78583240b4aa","blendMode":0,"displayName":"Layer 5","isLocked":false,"name":"cfacb162-3aef-42ea-a333-78583240b4aa","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
-  "name":"Spr_House_Mushroom",
+  "name":"Spr_House_Mushroom_summer",
   "nineSlice":null,
   "origin":9,
   "parent":{
@@ -48,7 +48,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"Spr_House_Mushroom",
+    "%Name":"Spr_House_Mushroom_summer",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -72,7 +72,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"Spr_House_Mushroom",
+    "name":"Spr_House_Mushroom_summer",
     "playback":1,
     "playbackSpeed":4.0,
     "playbackSpeedType":0,
@@ -86,28 +86,28 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d90e4ca6-e32d-4914-94f9-ccdef8283a11","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d90e4ca6-e32d-4914-94f9-ccdef8283a11","path":"sprites/Spr_House_Mushroom_summer/Spr_House_Mushroom_summer.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"dad2f828-5c39-4f19-9cd9-6c9ddf496b5d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ea6b1506-ffed-4d20-9249-e4e4763098a8","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ea6b1506-ffed-4d20-9249-e4e4763098a8","path":"sprites/Spr_House_Mushroom_summer/Spr_House_Mushroom_summer.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"1552548a-e187-492a-b80e-5401c6931cf4","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"816d6a21-8aa8-45da-b70c-05e3178a745e","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"816d6a21-8aa8-45da-b70c-05e3178a745e","path":"sprites/Spr_House_Mushroom_summer/Spr_House_Mushroom_summer.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"d331e547-24e5-46c4-9f4b-112f5f303919","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fca69a17-7f57-4982-88e8-cb1de913ef89","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fca69a17-7f57-4982-88e8-cb1de913ef89","path":"sprites/Spr_House_Mushroom_summer/Spr_House_Mushroom_summer.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"87ee2a87-1a03-4b73-88b1-70322179abfc","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ac22119d-d790-45cc-aa09-0cfeb30e184b","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ac22119d-d790-45cc-aa09-0cfeb30e184b","path":"sprites/Spr_House_Mushroom_summer/Spr_House_Mushroom_summer.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"21b9b69e-6084-4125-9d3a-a5f32efd2a0e","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"90459b1e-f5e9-4b05-8274-0255453efcaa","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"90459b1e-f5e9-4b05-8274-0255453efcaa","path":"sprites/Spr_House_Mushroom_summer/Spr_House_Mushroom_summer.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"bda406c6-6e75-4787-98de-7985c989d1f6","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e0ca5ee3-1600-49bf-8a23-d20ab5027edb","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e0ca5ee3-1600-49bf-8a23-d20ab5027edb","path":"sprites/Spr_House_Mushroom_summer/Spr_House_Mushroom_summer.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"52794506-c13e-4c53-8133-26ece14bfac8","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"03da98a7-d60f-48f3-8f89-ec6f27e98722","path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"03da98a7-d60f-48f3-8f89-ec6f27e98722","path":"sprites/Spr_House_Mushroom_summer/Spr_House_Mushroom_summer.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"ea5eb38b-703e-4236-803a-5c4877584bf3","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

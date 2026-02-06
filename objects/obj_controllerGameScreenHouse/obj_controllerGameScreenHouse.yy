@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Spr_House_Mushroom",
-    "path":"sprites/Spr_House_Mushroom/Spr_House_Mushroom.yy",
+    "name":"Spr_House_Mushroom_summer",
+    "path":"sprites/Spr_House_Mushroom_summer/Spr_House_Mushroom_summer.yy",
   },
   "spriteMaskId":null,
   "visible":true,

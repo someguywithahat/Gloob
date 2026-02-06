@@ -123,6 +123,9 @@ if isNight=1{
 		controller.season_goal = round(controller.grid_size*controller.season_goal_percentage)
 		
 		
+		var lay_id = layer_get_id("Background");
+		var back_id = layer_background_get_id(lay_id);
+		
 		repeat (3)
 		{
 			var spawnObs = irandom_range(1,100)
@@ -139,8 +142,6 @@ if isNight=1{
 		}
 		
 		audio_stop_sound(weather_sound)	
-		var lay_id = layer_get_id("Background");
-		var back_id = layer_background_get_id(lay_id);
 		//layer_background_sprite(back_id, -1);
 
 		//var lay_id = layer_get_id("Instances");
@@ -151,22 +152,25 @@ if isNight=1{
 		{
 			global.weather=global.FALL
 			weather_sound=audio_play_sound(snd_weather_wind, 0, true);
+			layer_background_sprite(back_id, spr_gridField_Fall);
+			
 		}
 		else if global.weather=global.FALL
 		{
 			global.weather=global.WINTER
 			weather_sound=audio_play_sound(snd_weather_wind_during_snow, 0, true);
+			layer_background_sprite(back_id, spr_gridField_Winter);
 		}
 		else if global.weather=global.WINTER
 		{
 			global.weather=global.SPRING
 			weather_sound=audio_play_sound(snd_rain, 0, true);
-			//winterLayerID = layer_get_id("Background_Winter");		
-			layer_background_visible(winterLayerBackID,true)
+			layer_background_sprite(back_id, spr_gridField_Spring);
 		}
 		else if global.weather=global.SPRING
 		{
 			global.weather=global.SUMMER
+			layer_background_sprite(back_id, spr_gridField_summer);
 		}
 	}
 }

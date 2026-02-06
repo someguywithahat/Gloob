@@ -29,7 +29,7 @@ storage = [
     { sprite_to_place: Spr_Obs_1x1, sprite_to_place_index: 2},
     { sprite_to_place: Spr_Obs_1x1, sprite_to_place_index: 3},
     { sprite_to_place: Spr_Obs_1x1, sprite_to_place_index: 1},
-    { sprite_to_place: Spr_House_Mushroom, sprite_to_place_index: 4},
+    { sprite_to_place: Spr_House_Mushroom_summer, sprite_to_place_index: 4},
     { sprite_to_place: Spr_Obs_2x1, sprite_to_place_index: 1},
     { sprite_to_place: Spr_Obs_2x1, sprite_to_place_index: 2},
     { sprite_to_place: Spr_Obs_2x1, sprite_to_place_index: 3},

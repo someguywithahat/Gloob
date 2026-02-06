@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_gridField",
-    "path":"sprites/spr_gridField/spr_gridField.yy",
+    "name":"spr_gridField_summer",
+    "path":"sprites/spr_gridField_summer/spr_gridField_summer.yy",
   },
   "spriteMaskId":null,
   "visible":true,
