@@ -448,6 +448,7 @@
     {"id":{"name":"spr_GloopDebug","path":"sprites/spr_GloopDebug/spr_GloopDebug.yy",},},
     {"id":{"name":"spr_gloopFont","path":"sprites/spr_gloopFont/spr_gloopFont.yy",},},
     {"id":{"name":"spr_gloopFontOutline","path":"sprites/spr_gloopFontOutline/spr_gloopFontOutline.yy",},},
+    {"id":{"name":"Spr_Grass_path","path":"sprites/Spr_Grass_path/Spr_Grass_path.yy",},},
     {"id":{"name":"spr_grid1","path":"sprites/spr_grid1/spr_grid1.yy",},},
     {"id":{"name":"spr_grid2","path":"sprites/spr_grid2/spr_grid2.yy",},},
     {"id":{"name":"spr_grid3","path":"sprites/spr_grid3/spr_grid3.yy",},},
