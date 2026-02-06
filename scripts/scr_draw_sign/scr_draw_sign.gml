@@ -162,6 +162,15 @@ function scr_draw_grass_leaves_area(xx, yy, x_tiles, y_tiles, scale)
 {
 	
 	var leaf_sprite=Spr_Garden_path
+	
+	if global.weather=global.FALL
+		leaf_sprite=Spr_Leaf_path
+	else if global.weather=global.WINTER
+		leaf_sprite=Spr_Snow_path
+	else if global.weather=global.SPRING
+		leaf_sprite=Spr_Grass_path
+	
+	
 	//var sWidth = width
 	var spacer = sprite_get_width(leaf_sprite)
 	
