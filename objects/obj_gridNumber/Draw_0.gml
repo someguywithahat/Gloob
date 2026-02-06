@@ -1,5 +1,9 @@
-if sprite_index = Numbers then image_speed=0
-if sprite_index = Numbers_Box then image_speed=0
+if (sprite_index = Numbers or sprite_index = Numbers_Box) and image_speed<>0
+{
+	image_speed=0
+	image_index = my_number-1
+}
+
 
 
 var palette_original = spr_palette_index
