@@ -7,7 +7,7 @@ if image_index>image_number-1
 
 var season_shader=0
 
-if global.weather<>global.FALL
+if global.weather<>global.FALL and global.weather<>global.WINTER
 	scr_draw_grass_leaves_area(1120, 100, 14, 30, 1)
 
 /*

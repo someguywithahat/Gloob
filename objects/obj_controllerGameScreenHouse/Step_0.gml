@@ -1,4 +1,8 @@
 //day end
+
+		
+
+		
 if day_over=0 and global.controller.season_goal<=0 and global.controller.game_over_status<1
 {
 	audio_play_sound(snd_slm_woo, 1, false);
@@ -17,6 +21,8 @@ if day_over=0 and global.controller.season_goal<=0 and global.controller.game_ov
 if day_over=1 and global.controller.season_goal>0
 {
 	day_over=0
+
+
 	if global.weather=global.SUMMER
 		sprite_index=Spr_House_Mushroom
 	else if global.weather=global.FALL

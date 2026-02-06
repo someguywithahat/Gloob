@@ -104,7 +104,8 @@ if grid_refs == noone and room == rm_gameScreen{
 	//target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
 
 	season_goal = round(grid_size*season_goal_percentage)
-
+	
+	
 
 }
 //*/
@@ -122,7 +123,8 @@ if (keyboard_check_pressed(ord("S")))and disable_game_inputs=0 {
 }
 
 if (keyboard_check_pressed(ord("R"))and disable_game_inputs=0 and room == rm_gameScreen)or clicked_restart=1 {
-    // code here runs once when F is pressed
+
+
 	clicked_restart=-1
 	grid_refs=noone
 	game_over_status=0
@@ -134,6 +136,14 @@ if (keyboard_check_pressed(ord("R"))and disable_game_inputs=0 and room == rm_gam
 	}	
 	scr_resetGame()
     room_restart()	
+	
+	/*
+	var lay_id = layer_get_id("Background_Winter");
+	show_debug_message(string(lay_id) + "layid")
+	var back_id = layer_background_get_id(lay_id);
+	layer_background_visible(back_id, false);
+	*/
+
 }
 
 if ((keyboard_check_pressed(ord("T")) and room <> rm_titleScreen)and disable_game_inputs=0) or clicked_main_menu=1 {

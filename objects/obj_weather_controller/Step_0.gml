@@ -139,6 +139,14 @@ if isNight=1{
 		}
 		
 		audio_stop_sound(weather_sound)	
+		var lay_id = layer_get_id("Background");
+		var back_id = layer_background_get_id(lay_id);
+		//layer_background_sprite(back_id, -1);
+
+		//var lay_id = layer_get_id("Instances");
+		
+		//layer_background_visible(layerid,false)
+		
 		if global.weather=global.SUMMER
 		{
 			global.weather=global.FALL
@@ -153,6 +161,8 @@ if isNight=1{
 		{
 			global.weather=global.SPRING
 			weather_sound=audio_play_sound(snd_rain, 0, true);
+			//winterLayerID = layer_get_id("Background_Winter");		
+			layer_background_visible(winterLayerBackID,true)
 		}
 		else if global.weather=global.SPRING
 		{
