@@ -225,6 +225,10 @@ else if(clicked_debugRoom=1){
 	clicked_debugRoom=-1;
 	room_goto(rm_testRoom1);
 }
+else if(clicked_debugRoom2=1){
+	clicked_debugRoom2=-1;
+	room_goto(rm_testRoomAnimations);
+}
 else if(clicked_scoreRoom=1){
 	clicked_scoreRoom=-1;
 	room_goto(rm_scoreScreen);

@@ -40,5 +40,8 @@ if leaf_target=2
 		rotation=0
 		x=leaf_id.x +16
 		y=leaf_id.y+16
+		depth=depth+4
+		audio_play_sound(snd_effect_leaf_crunch, 1, false);
+		
 	}
 }

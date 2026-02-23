@@ -29,8 +29,5 @@ shader_set_uniform_f(u_color_count, 6.0);
 // Draw the sprite
 draw_self();
 
-draw_sprite(Sm_Shrm_Blk,1,5,400)
-draw_sprite(Sm_Shrm_Grn,1,5,420)
-
 // End shader
 shader_reset();

@@ -83,6 +83,7 @@ isNightShader=0
 clicked_quickstart = -1
 clicked_character_select = -1
 clicked_debugRoom = -1
+clicked_debugRoom2 = -1
 clicked_scoreRoom = -1
 clicked_restart=-1
 clicked_main_menu=-1

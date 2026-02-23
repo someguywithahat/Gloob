@@ -71,6 +71,7 @@ if room== rm_titleScreen
 	clicked_character_select=scr_draw_menu_item(550,472,"CHARACTER SELECT",clicked_character_select)
 	clicked_scoreRoom=scr_draw_menu_item(590,504,"High Scores",clicked_scoreRoom)
 	clicked_debugRoom=scr_draw_menu_item(1,1,"Debug Room",clicked_debugRoom)
+	clicked_debugRoom2=scr_draw_menu_item(300,1,"Debug Room2",clicked_debugRoom2)
 	clicked_characterSelect=scr_draw_menu_item(1100,740,"Character Select",clicked_characterSelect)
 }
 
