@@ -19,7 +19,7 @@
   "height":832,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"9880338e-4cfa-41f7-a679-674e2874da5d","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"9880338e-4cfa-41f7-a679-674e2874da5d","opacity":84.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"9880338e-4cfa-41f7-a679-674e2874da5d","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"9880338e-4cfa-41f7-a679-674e2874da5d","opacity":85.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"8900728c-1aac-40d0-b3d7-10e7b36f9117","blendMode":0,"displayName":"default","isLocked":false,"name":"8900728c-1aac-40d0-b3d7-10e7b36f9117","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_gridField_Spring",
