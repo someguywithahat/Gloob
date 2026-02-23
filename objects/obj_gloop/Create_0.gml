@@ -40,7 +40,7 @@ pickup_target = 0;
 image_speed = 1
 depth=-2000
 
-gloop_color = "green"
+//gloop_color = "green"
 gloop_color_index = 0
 
 trail = Trl_Grn_Mid
@@ -71,8 +71,9 @@ has_crown=0
 draw_hat=0
 has_accessory=0
 
-is_glowing=0
 
+is_glowing=0
+//sprite set code
 s_idol = Spr_Slm_Hat_Idol
 s_sleep = Spr_Slm_Hat_Sleep
 s_death = Spr_Slm_Hat_Death

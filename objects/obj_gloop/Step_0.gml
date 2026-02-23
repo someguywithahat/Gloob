@@ -252,7 +252,7 @@ if (ismoving=0)
 
 
 
-if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2)) {
+if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2) and ismoving=0) {
 
 	if powerUp3=2
 		powerUp3=0
@@ -261,6 +261,7 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2
 	else if powerUp1=2
 		powerUp1=0
 	isteleporting=1
+	ismoving=1
 	sprite_index=s_teleport
 	image_index=0	
 }
@@ -529,7 +530,7 @@ if ismoving=1 {
 		
 
 		//change to spawn a flower
-		scr_spawn_flower(x,y,gloop_color)
+		scr_spawn_flower(x,y,gloop_color_index)
 		
 		grid_x=next_inst.grid_x
 		grid_y=next_inst.grid_y

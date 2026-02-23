@@ -107,6 +107,7 @@ else if isteleporting=2
 	image_speed=-1
 	if image_index<=0{
 		isteleporting=0
+		ismoving=0
 		sprite_index=s_idol
 		hat_index=sh_idol
 	}	

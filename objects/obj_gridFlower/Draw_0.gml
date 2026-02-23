@@ -1,3 +1,11 @@
+image_speed=0;
+if (image_index >= image_number - 1) {
+    //image_speed = 0;        // Stop animation
+    image_index = image_number - 1; // Lock on last frame
+}
+
+
+
 
 // Start shader
 shader_set(shd_palette_swap);
@@ -21,6 +29,8 @@ shader_set_uniform_f(u_color_count, 6.0);
 // Draw the sprite
 draw_self();
 
+draw_sprite(Sm_Shrm_Blk,1,5,400)
+draw_sprite(Sm_Shrm_Grn,1,5,420)
 
 // End shader
 shader_reset();
