@@ -34,13 +34,15 @@ and gloop_score>0)
 
 
 if gloop.powerUp1>0
-	draw_sprite(controller.PU_SPRITES[gloop.powerUp1-1], 0, xx+52, yy+48)
+	draw_sprite(controller.PU_SPRITES[gloop.powerUp1-1], sign_sprite_frame1, xx+52, yy+48)
 if gloop.powerUp2>0
-	draw_sprite(controller.PU_SPRITES[gloop.powerUp2-1], 0, xx+52+32, yy+48)
+	draw_sprite(controller.PU_SPRITES[gloop.powerUp2-1], sign_sprite_frame2, xx+52+32, yy+48)
 if gloop.powerUp3>0
-	draw_sprite(controller.PU_SPRITES[gloop.powerUp3-1], 0, xx+52+64, yy+48)	
+	draw_sprite(controller.PU_SPRITES[gloop.powerUp3-1], sign_sprite_frame3, xx+52+64, yy+48)	
 
-
+sign_sprite_frame1+=0.2
+sign_sprite_frame2+=0.2
+sign_sprite_frame3+=0.2
 
 
 

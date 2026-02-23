@@ -104,6 +104,7 @@ PU_SPRITES[0]=Spr_PU_Hat
 PU_SPRITES[1]=Spr_Pu_Tel
 PU_SPRITES[2]=Spr_Pu_RB_SM_Full
 PU_SPRITES[3]=Spr_PU_Crown
+PU_SPRITES[4]=Spr_Pu_Shroom_Sign
 
 
 

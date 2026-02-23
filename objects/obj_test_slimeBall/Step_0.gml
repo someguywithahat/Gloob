@@ -1,8 +1,8 @@
 
 
-if makeSnowman=0
+if is_makeSnowman=0
 {
-	makeSnowman=1
+	is_makeSnowman=1
 	
 }
 

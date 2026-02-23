@@ -129,6 +129,11 @@ else if has_powerUP=4{
 	draw_sprite(Spr_PU_Crown,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.2
 }
+else if has_powerUP=5{
+	draw_sprite(Spr_Pu_Shroom,powerUpImageIndex,x,y)
+	powerUpImageIndex=powerUpImageIndex+.2
+}
+
 
 
 

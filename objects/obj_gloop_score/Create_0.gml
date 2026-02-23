@@ -13,3 +13,7 @@ depth=100
 
 
 hasVines = irandom_range(1,10)-7
+
+sign_sprite_frame1=0
+sign_sprite_frame2=0
+sign_sprite_frame3=0

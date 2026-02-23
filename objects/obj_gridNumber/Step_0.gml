@@ -23,6 +23,8 @@ if has_powerUP>0 and activeNumber>0 and wall=0
 		gloop_color_index=1
 	else if(has_powerUP=4)
 		gloop_color_index=4
+	else if(has_powerUP=5)
+		gloop_color_index=global.RED
 	else if(has_powerUP <> 3)
 		gloop_color_index=0
 		

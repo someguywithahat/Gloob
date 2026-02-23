@@ -56,21 +56,28 @@ if (ismoving=0)
 	//	show_debug_message(string(grid_x-3))
 	
 	/*jump power*/
-	/*
-	movement_array[8] = scr_get_grid_id(grid_x-2,grid_y-2)
-	movement_array[9] = scr_get_grid_id(grid_x,grid_y-2)
-	movement_array[10] = scr_get_grid_id(grid_x+2,grid_y-2)
-	movement_array[11] = scr_get_grid_id(grid_x-2,grid_y)
-	movement_array[12] = scr_get_grid_id(grid_x+2,grid_y)
-	movement_array[13] = scr_get_grid_id(grid_x-2,grid_y+2)
-	movement_array[14] = scr_get_grid_id(grid_x,grid_y+2)
-	movement_array[15] = scr_get_grid_id(grid_x+2,grid_y+2)
-	*/
+	///*
+	if powerUp1=5 or powerUp2=5 or powerUp3=5  
+	{
+		movement_array[8] = scr_get_grid_id(grid_x-2,grid_y-2)
+		movement_array[9] = scr_get_grid_id(grid_x,grid_y-2)
+		movement_array[10] = scr_get_grid_id(grid_x+2,grid_y-2)
+		movement_array[11] = scr_get_grid_id(grid_x-2,grid_y)
+		movement_array[12] = scr_get_grid_id(grid_x+2,grid_y)
+		movement_array[13] = scr_get_grid_id(grid_x-2,grid_y+2)
+		movement_array[14] = scr_get_grid_id(grid_x,grid_y+2)
+		movement_array[15] = scr_get_grid_id(grid_x+2,grid_y+2)
+	}
+	//*/
 	for(var a=0;a<array_length(movement_array);a++)
 	{
 		if movement_array[a]<>noone
 		{
 			movement_array[a].highlighted=1
+			//if a>=8
+			//{
+			//	movement_array[a].drawMushroom=1
+			//}
 			
 			
 			///*
@@ -98,7 +105,10 @@ if (ismoving=0)
 						else
 							derY=0
 							
-						selected_grid = scr_get_grid_id(grid_x+derX, grid_y+derY)
+						//selected_grid = scr_get_grid_id(grid_x+derX, grid_y+derY)
+						selected_grid = scr_get_grid_id(movement_array[a].grid_x, movement_array[a].grid_y)
+						//if a>=8
+							
 						if selected_grid.wall = 0 and selected_grid.activeNumber=1 
 							ismoving=1
 					}
