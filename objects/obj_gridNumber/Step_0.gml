@@ -21,8 +21,8 @@ if has_powerUP>-1 and activeNumber>0 and wall=0
 		gloop_color_index=global.YELLOW
 	else if(has_powerUP=global.BLUE)
 		gloop_color_index=global.BLUE
-	else if(has_powerUP=global.RAINBOW)
-		gloop_color_index=global.RAINBOW //rainbow
+	//else if(has_powerUP=global.RAINBOW)
+	//	gloop_color_index=global.BLUE //rainbow
 	else if(has_powerUP=global.PURPLE)
 		gloop_color_index=global.PURPLE
 	else if(has_powerUP=global.RED)
@@ -35,6 +35,8 @@ if has_powerUP>-1 and activeNumber>0 and wall=0
 		gloop_color_index=global.BLACK
 	else if(has_powerUP=global.GREEN)
 		gloop_color_index=global.GREEN
+	//else if gloop_color_index=global.RAINBOW
+	//	gloop_color_index=global.BLUE
 	//else if(has_powerUP <> 3)
 	//	gloop_color_index=global.BLACK
 		
