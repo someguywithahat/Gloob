@@ -108,6 +108,10 @@ if toggle_add_obs>0{
 		scr_setup_add_obstacle(controller.grid_refs,1,1)
 }
 
+if toggle_add_pu>0{
+	toggle_add_pu=0
+	scr_setup_add_pu()
+}
 
 
 

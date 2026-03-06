@@ -196,6 +196,10 @@ if isNight=1{
 			scr_setup_add_obstacle(grid_refs,2,1)
 		else if spawnObs>=0
 			scr_setup_add_obstacle(grid_refs,1,1)
+			
+		scr_setup_add_pu()
+		scr_setup_add_pu()
+		scr_setup_add_pu()
 	}
 }
 if isNight=-1{
