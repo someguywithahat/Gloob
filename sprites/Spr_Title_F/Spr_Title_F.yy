@@ -50,7 +50,7 @@
   "height":192,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"eb199399-e247-4b54-9429-39f602cb5bd1","blendMode":0,"displayName":"default","isLocked":false,"name":"eb199399-e247-4b54-9429-39f602cb5bd1","opacity":65.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"eb199399-e247-4b54-9429-39f602cb5bd1","blendMode":0,"displayName":"default","isLocked":false,"name":"eb199399-e247-4b54-9429-39f602cb5bd1","opacity":80.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"Spr_Title_F",
   "nineSlice":null,
