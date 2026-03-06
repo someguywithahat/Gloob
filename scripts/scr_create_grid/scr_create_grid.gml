@@ -107,7 +107,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		var powerup_x = irandom_range(1,x_count-2);
 		var powerup_y = irandom_range(1,y_count-2);
 		var gridInst = grid_array[powerup_x,powerup_y]
-		gridInst.has_powerUP=irandom_range(1,5)
+		gridInst.has_powerUP=irandom_range(0,8)
 		//show_debug_message(string(sprite_get_number(spr_PowerUp1)))
 		
 	}
@@ -225,7 +225,7 @@ function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
 			for(var jj=0;jj<obstacle_y;jj++) 
 			{
 				var gridNum = grid_arrays[i+ii][j+jj]
-			    if (gridNum.activeNumber=1 and gridNum.wall=0 and gridNum.has_powerUP=0) {
+			    if (gridNum.activeNumber=1 and gridNum.wall=0 and gridNum.has_powerUP=-1) {
 			        show_debug_message("Found free cell: " + string(i+ii) + "," + string(j+jj));
 				}
 				else{
@@ -284,7 +284,7 @@ function scr_refresh_grid(grid_arrays)
 				gridNum.sprite_index=Numbers
 				gridNum.image_index = gridNum.my_number - 1
 				gridNum.image_speed=0
-				gridNum.has_powerUp=0
+				gridNum.has_powerUp=-1
 				gridNum.rotate=0
 				gridNum.rot_x=0
 				gridNum.rot_y=0

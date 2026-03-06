@@ -20,7 +20,7 @@ if obs=1
 }
 
 
-if has_powerUP<>3
+if has_powerUP<>global.RAINBOW
 {
 	// Start shader
 	shader_set(shd_palette_swap);
@@ -63,26 +63,26 @@ if has_powerUP<>3
 	// End shader
 	shader_reset();
 }
-else if has_powerUP=3
+else if has_powerUP=global.RAINBOW
 {
 	rainbow_delay+=.05
 	if rainbow_delay>1
 	{
 		gloop_color_index_old=gloop_color_index
 		rainbow_delay=0
-		if gloop_color_index = 1
-			gloop_color_index=4
-		else if gloop_color_index=4
-			gloop_color_index=5
-		else if gloop_color_index=5
-			gloop_color_index=3
-		else if gloop_color_index=3
-			gloop_color_index=7
-		else if gloop_color_index=7
-			gloop_color_index=2
-		else if gloop_color_index=2
-			gloop_color_index=1
-		else gloop_color_index=1
+		if gloop_color_index = global.BLUE
+			gloop_color_index=global.PURPLE
+		else if gloop_color_index=global.PURPLE
+			gloop_color_index=global.RED
+		else if gloop_color_index=global.RED
+			gloop_color_index=global.ORANGE
+		else if gloop_color_index=global.ORANGE
+			gloop_color_index=global.YELLOW
+		else if gloop_color_index=global.YELLOW
+			gloop_color_index=global.GREEN
+		else if gloop_color_index=global.GREEN
+			gloop_color_index=global.BLUE
+		else gloop_color_index=global.BLUE
 	}
 
 	// Start shader
@@ -113,24 +113,36 @@ else if has_powerUP=3
 
 
 
-if has_powerUP=1{
+if has_powerUP=global.YELLOW{
 	draw_sprite(Spr_PU_Hat,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.2
 }
-else if has_powerUP=2{
+else if has_powerUP=global.BLUE{
 	draw_sprite(Spr_Pu_Tel,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.2
 }
-else if has_powerUP=3{
+else if has_powerUP=global.RAINBOW{
 	draw_sprite(Spr_Pu_RB__sm,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.15
 }
-else if has_powerUP=4{
+else if has_powerUP=global.PURPLE{
 	draw_sprite(Spr_PU_Crown,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.2
 }
-else if has_powerUP=5{
+else if has_powerUP=global.RED{
 	draw_sprite(Spr_Pu_Shroom,powerUpImageIndex,x,y)
+	powerUpImageIndex=powerUpImageIndex+.2
+}
+else if has_powerUP=global.ORANGE{
+	draw_sprite(Spr_Pu_Fish,powerUpImageIndex,x,y)
+	powerUpImageIndex=powerUpImageIndex+.2
+}
+else if has_powerUP=global.WHITE{
+	draw_sprite(Spr_Pu_Bubble,powerUpImageIndex,x,y)
+	powerUpImageIndex=powerUpImageIndex+.2
+}
+else if has_powerUP=global.BLACK{
+	draw_sprite(Spr_Pu_Night,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.2
 }
 
@@ -150,9 +162,9 @@ if (mouse_x > x && mouse_x < x+sprite_width &&
 		if y<50
 			yy=32
 
-		if has_powerUP=1
+		if has_powerUP=0
 			scr_draw_grass_sign(x-300,y+yy, "Ignores one hit",1)
-		else if has_powerUP=2
+		else if has_powerUP=1
 			scr_draw_grass_sign(x-300,y+yy, "Press SPACE to teleport",1)
 		//depth=depthTemp
 	

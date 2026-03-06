@@ -24,7 +24,7 @@ tooltip_counter=0
 image_speed=0
 image_index = my_number - 1
 
-has_powerUP = 0
+has_powerUP = -1
 powerUpImageIndex=0
 powerUpxx=0
 powerUpyy=0
