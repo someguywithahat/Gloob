@@ -59,9 +59,9 @@ has_targeting_cursor = 0
 selected_grid=noone
 
 //Power Up Code
-powerUp1=0
-powerUp2=0
-powerUp3=0
+powerUp1=-1
+powerUp2=-1
+powerUp3=-1
 
 puBonk=0
 rainbow_power=0

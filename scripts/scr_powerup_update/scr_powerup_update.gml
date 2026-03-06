@@ -6,20 +6,20 @@ function scr_powerup_update(gloop_id){
 	var powerUp2 = gloop_id.powerUp2
 	var powerUp3 = gloop_id.powerUp3
 	
-	if powerUp1=0 and powerUp2>0{
+	if powerUp1=-1 and powerUp2>-1{
 		powerUp1=powerUp2
 		powerUp2=powerUp3
-		powerUp3=0
+		powerUp3=-1
 	}
 	
-	if powerUp1=0 and powerUp3>0{
+	if powerUp1=-1 and powerUp3>-1{
 		powerUp1=powerUp3
-		powerUp3=0
+		powerUp3=-1
 	}
 	
-	if powerUp2=0 and powerUp3>0{
+	if powerUp2=-1 and powerUp3>-1{
 		powerUp2=powerUp3
-		powerUp3=0
+		powerUp3=-1
 	}
 
 

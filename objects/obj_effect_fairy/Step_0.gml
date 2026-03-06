@@ -11,9 +11,9 @@ if parent_gloop <> noone{
 	else
 		speed=0
 		
-	if (gloop_powerUp_check =1 and parent_gloop.powerUp1 <>2)
-	or (gloop_powerUp_check =2 and parent_gloop.powerUp2 <>2)
-	or (gloop_powerUp_check =3 and parent_gloop.powerUp3 <>2)
+	if (gloop_powerUp_check =1 and parent_gloop.powerUp1 <>global.BLUE)
+	or (gloop_powerUp_check =2 and parent_gloop.powerUp2 <>global.BLUE)
+	or (gloop_powerUp_check =3 and parent_gloop.powerUp3 <>global.BLUE)
 	{
 		show_debug_message("using powerup")
 		instance_destroy()

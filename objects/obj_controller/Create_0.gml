@@ -100,15 +100,15 @@ settings_obstacles=0
 global.fnt_Gloop = font_add_sprite(spr_gloopFontOutline, ord("!"), true, 5);
 
 PU_SPRITES = array_create(10,noone)
-PU_SPRITES[0]=Spr_Pu_Hat_Sign
-PU_SPRITES[1]=Spr_Pu_Tel_Fairy_Sign
-PU_SPRITES[2]=Spr_Pu_RB_SM_Full
-PU_SPRITES[3]=Spr_Pu_Crown_Sign
-PU_SPRITES[4]=Spr_Pu_Shroom_Sign
-PU_SPRITES[5]=Spr_Pu_Bubble_Sign
-PU_SPRITES[6]=Spr_Pu_Bee_sign
-PU_SPRITES[7]=Spr_Pu_Fish_Sign
-PU_SPRITES[8]=Spr_Pu_Grass_Sign
+PU_SPRITES[global.YELLOW]=Spr_Pu_Hat_Sign
+PU_SPRITES[global.BLUE]=Spr_Pu_Tel_Fairy_Sign
+PU_SPRITES[global.RAINBOW]=Spr_Pu_RB_SM_Full
+PU_SPRITES[global.PURPLE]=Spr_Pu_Crown_Sign
+PU_SPRITES[global.RED]=Spr_Pu_Shroom_Sign
+PU_SPRITES[global.WHITE]=Spr_Pu_Bubble_Sign
+PU_SPRITES[global.ORANGE]=Spr_Pu_Fish_Sign
+PU_SPRITES[global.BLACK]=Spr_Pu_Night_Sign
+PU_SPRITES[global.GREEN]=Spr_Pu_Grass_Sign
 
 
 
