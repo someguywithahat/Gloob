@@ -4,7 +4,6 @@ var controller_current_player = controller.current_player
 image_xscale=1
 
 
-//if powerUp1=2 or powerUp2=2 or powerUp3=2 or 
 if puBonk>0
 {
 	draw_hat=1
@@ -229,24 +228,24 @@ if is_glowing=1
 }
 
 
-if rainbow_power=1 or powerUp1=3 or powerUp2=3 or powerUp3=3{
+if rainbow_power=1 or powerUp1=global.RAINBOW or powerUp2=global.RAINBOW or powerUp3=global.RAINBOW{
 	rainbow_delay+=.05
 	if rainbow_delay>1{
 		gloop_color_index_old=gloop_color_index
 		rainbow_delay=0
-		if gloop_color_index = 1
-			gloop_color_index=4
-		else if gloop_color_index=4
-			gloop_color_index=5
-		else if gloop_color_index=5
-			gloop_color_index=3
-		else if gloop_color_index=3
-			gloop_color_index=7
-		else if gloop_color_index=7
-			gloop_color_index=2
-		else if gloop_color_index=2
-			gloop_color_index=1
-		else gloop_color_index=1
+		if gloop_color_index = global.BLUE
+			gloop_color_index=global.PURPLE
+		else if gloop_color_index=global.PURPLE
+			gloop_color_index=global.RED
+		else if gloop_color_index=global.RED
+			gloop_color_index=global.ORANGE
+		else if gloop_color_index=global.ORANGE
+			gloop_color_index=global.YELLOW
+		else if gloop_color_index=global.YELLOW
+			gloop_color_index=global.GREEN
+		else if gloop_color_index=global.GREEN
+			gloop_color_index=global.BLUE
+		else gloop_color_index=global.BLUE
 	}
 
 	// Start shader

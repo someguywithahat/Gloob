@@ -57,7 +57,7 @@ if (ismoving=0)
 	
 	/*jump power*/
 	///*
-	if powerUp1=5 or powerUp2=5 or powerUp3=5  
+	if powerUp1=global.RED or powerUp2=global.RED or powerUp3=global.RED 
 	{
 		movement_array[8] = scr_get_grid_id(grid_x-2,grid_y-2)
 		movement_array[9] = scr_get_grid_id(grid_x,grid_y-2)
@@ -172,104 +172,20 @@ if (ismoving=0)
 			current_grid_number.exitX=derX
 			current_grid_number.exitY=derY
 			scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)		
-		//}
-		/*
-		else if selected_grid.activeNumber=0
-		{
-			if puBonk>0
-			{
-				puBonk--
-				audio_play_sound(snd_bonk, 1, false);
-				if powerUp3 =1
-					powerUp3=0
-				else if powerUp2=1
-					powerUp2=0
-				else if powerUp1 = 1
-					powerUp1=0
-				scr_powerup_update(id)
-			
-				var oops = instance_create_layer(x+16, y, "Instances", obj_effect_dropped_hat);
-				if derX<>0
-					oops.xx*=derX
-				else 
-					oops.xx*=0.25
-			}
-			else {
-				audio_play_sound(snd_bonk, 1, false);
-				alive=0
-			}
-			ismoving=0
-			isjumping=0
-			isrolling=0
-			has_targeting_cursor=0
-			selected_grid=noone
-			scr_end_turn()	
-		}//*/
+
 	}
 }
 	//*/
 	
-	
-	/*
-    var mx = mouse_x;  // mouse X position
-    var my = mouse_y;  // mouse Y position
 
-    var dx = mx - x;   // horizontal distance from object to mouse
-    var dy = my - y;   // vertical distance from object to mouse
+if (keyboard_check_pressed(vk_space) and (powerUp1=global.BLUE or powerUp2=global.BLUE or powerUp3=global.BLUE) and ismoving=0) {
 
-	var checkx = x
-	var checky = y
-	var angle_deg = point_direction(x+16, y+16, mx, my);
-
-    // Determine the direction.  
-	//Remove checkx and checky
-    if (angle_deg >= 337.5 || angle_deg < 22.5) {
-		//right
-		targeting.grid_x=grid_x+1
-		targeting.grid_y=grid_y		
-    } else if (angle_deg >= 22.5 && angle_deg < 67.5) {
-		//up right
-		targeting.grid_x=grid_x+1
-		targeting.grid_y=grid_y-1
-    } else if (angle_deg >= 67.5 && angle_deg < 112.5) {
-		//up
-		targeting.grid_x=grid_x
-		targeting.grid_y=grid_y-1
-    } else if (angle_deg >= 112.5 && angle_deg < 157.5) {
-		//up left
-		targeting.grid_x=grid_x-1
-		targeting.grid_y=grid_y-1
-    } else if (angle_deg >= 157.5 && angle_deg < 202.5) {
-		//left
-		targeting.grid_x=grid_x-1
-		targeting.grid_y=grid_y
-    } else if (angle_deg >= 202.5 && angle_deg < 247.5) {
-		//down left
-		targeting.grid_x=grid_x-1
-		targeting.grid_y=grid_y+1
-    } else if (angle_deg >= 247.5 && angle_deg < 292.5) {
-		//down 
-		targeting.grid_x=grid_x
-		targeting.grid_y=grid_y+1
-    } else if (angle_deg >= 292.5 && angle_deg < 337.5) {
-		//down right
-		targeting.grid_x=grid_x+1
-		targeting.grid_y=grid_y+1		
-    }	
-	
-}
-	//*/
-
-
-
-if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2) and ismoving=0) {
-
-	if powerUp3=2
-		powerUp3=0
-	else if powerUp2=2
-		powerUp2=0
-	else if powerUp1=2
-		powerUp1=0
+	if powerUp3=global.BLUE
+		powerUp3=-1
+	else if powerUp2=global.BLUE
+		powerUp2=-1
+	else if powerUp1=global.BLUE
+		powerUp1=-1
 	isteleporting=1
 	ismoving=1
 	sprite_index=s_teleport
@@ -281,127 +197,6 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=2 or powerUp2=2 or powerUp3=2
 
 
 
-/*
-
-if (mouse_check_button_pressed(mb_left) and ismoving=0
-and mouse_x>controller.start_x+controller.spacing
-and mouse_x<controller.start_x+(controller.spacing*(controller.cols-1))
-and mouse_y>controller.start_y+controller.spacing
-and mouse_y<controller.start_y+(controller.spacing*(controller.rows-1))
-
-) { // left mouse click
-    var mx = mouse_x;  // mouse X position
-    var my = mouse_y;  // mouse Y position
-
-    var dx = mx - x;   // horizontal distance from object to mouse
-    var dy = my - y;   // vertical distance from object to mouse
-    // Calculate the angle from object to mouse in degrees
-    var angle_deg = point_direction(x+16, y+16, mx, my);
-	
-	derX=0
-	derY=0
-
-    // Determine the direction.  
-	//Remove checkx and checky
-    if (angle_deg >= 337.5 || angle_deg < 22.5) {
-		derX=1;
-		derY=0;		
-    } else if (angle_deg >= 22.5 && angle_deg < 67.5) {
-		derX=1;
-		derY=-1;		
-    } else if (angle_deg >= 67.5 && angle_deg < 112.5) {
-		derX=0;
-		derY=-1;		
-    } else if (angle_deg >= 112.5 && angle_deg < 157.5) {
-		derX=-1;
-		derY=-1;
-    } else if (angle_deg >= 157.5 && angle_deg < 202.5) {
-		derX=-1;
-		derY=0;	
-    } else if (angle_deg >= 202.5 && angle_deg < 247.5) {
-		derX=-1;
-		derY=+1;
-    } else if (angle_deg >= 247.5 && angle_deg < 292.5) {
-		derX=0;
-		derY=1;
-    } else if (angle_deg >= 292.5 && angle_deg < 337.5) {
-		derX=1;
-		derY=1;
-    }
-	
-	//var check_grid_inst = instance_place(checkx, checky, obj_gridNumber);
-	selected_grid = scr_get_grid_id(grid_x+derX, grid_y+derY)
-	if selected_grid.wall = 0 and selected_grid.activeNumber=1 
-	{
-		var to_move = selected_grid.my_number;  // read the variable
-	
-		//set the target
-		next_target_x = grid_x + derX
-		next_target_y = grid_y + derY
-	
-		target_x = grid_x +(derX*to_move)
-		target_y = grid_y +(derY*to_move)		
-	
-		//keep the target in bounds
-		if target_x<0 target_x=0
-		if target_x>=controller.cols-1 target_x=controller.cols-1
-		if target_y<0 target_y=0
-		if target_y>=controller.cols-1 target_y=controller.cols-1
-
-		ismoving=1;
-		with (obj_gridNumber)
-		{
-		    highlighted=0
-		}
-		idletime=0
-		gridNumberPrevX=x
-		gridNumberPrevY=y
-		
-		if(abs((derX+derY) mod 2) = 0){
-			//sprite_index=s_jump
-			isjumping=1
-		}
-		else 
-			isrolling=1
-		
-		//Update the previous slime trail
-		current_grid_number.exitX=derX
-		current_grid_number.exitY=derY
-		scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)		
-	}
-	else if selected_grid.activeNumber=0
-	{
-		if puBonk>0
-		{
-			puBonk--
-			audio_play_sound(snd_bonk, 1, false);
-			if powerUp3 =1
-				powerUp3=0
-			else if powerUp2=1
-				powerUp2=0
-			else if powerUp1 = 1
-				powerUp1=0
-			scr_powerup_update(id)
-			
-			var oops = instance_create_layer(x+16, y, "Instances", obj_effect_dropped_hat);
-			if derX<>0
-				oops.xx*=derX
-			else 
-				oops.xx*=0.25
-		}
-		else {
-			audio_play_sound(snd_bonk, 1, false);
-			alive=0
-		}
-		ismoving=0
-		isjumping=0
-		isrolling=0
-		has_targeting_cursor=0
-		scr_end_turn()	
-	}
-}
-
-//*/
 
 
 if ismoving=1 {
@@ -412,24 +207,6 @@ if ismoving=1 {
 	gridNumberX=next_inst.x
 	gridNumberY=next_inst.y
 	
-
-//test_trail_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,10)
-
-//if round(test_trail_index)=0
-//	test_trail_index = scr_get_jump_sprite(gridNumberY,y,gridNumberPrevY,10)
-////test_trail_index=test_trail_index/2 
-//draw_sprite(Spr_Trl_Corner, test_trail_index,1200,500 )
-//draw_sprite(Spr_Trl_End, test_trail_index,1200,540 )
-//draw_sprite(Spr_Trl_Mid, test_trail_index,1200,580 )
-
-
-//if test_trail_index>5
-//	draw_sprite(Spr_Trl_End, test_trail_index,1200,400 )
-//if test_trail_index<=5
-//	draw_sprite(Spr_Trl_Mid, test_trail_index,1200,432 )
-//else 
-//	draw_sprite(Spr_Trl_Mid, 5,1200,432 )
-
 
 	
 
@@ -478,12 +255,12 @@ if ismoving=1 {
 		if next_inst.has_powerUP>=0
 		{
 			var powerUpCheck=0
-			if powerUp1=0 and next_inst.has_powerUP<>global.PURPLE
+			if powerUp1=-1 and next_inst.has_powerUP<>global.PURPLE
 			{
 				powerUp1=next_inst.has_powerUP
 				powerUpCheck=1
 			}
-			else if powerUp2=0 and next_inst.has_powerUP<>global.PURPLE
+			else if powerUp2=-1 and next_inst.has_powerUP<>global.PURPLE
 			{
 				powerUp2=next_inst.has_powerUP
 				powerUpCheck=2
@@ -521,11 +298,11 @@ if ismoving=1 {
 			audio_play_sound(snd_slm_chomp, 1, false);	
 			
 			puBonk=0
-			if powerUp1=1
+			if powerUp1=global.YELLOW
 				puBonk+=1
-			if powerUp2=1
+			if powerUp2=global.YELLOW
 				puBonk+=1
-			if powerUp3=1
+			if powerUp3=global.YELLOW
 				puBonk+=1				
 		}
 		
@@ -600,12 +377,12 @@ if ismoving=1 {
 				{
 					puBonk--
 					audio_play_sound(snd_bonk, 1, false);
-					if powerUp3 =1
-						powerUp3=0
-					else if powerUp2=1
-						powerUp2=0
-					else if powerUp1 = 1
-						powerUp1=0
+					if powerUp3 =global.YELLOW
+						powerUp3=-1
+					else if powerUp2=global.YELLOW
+						powerUp2=-1
+					else if powerUp1 = global.YELLOW
+						powerUp1=-1
 					scr_powerup_update(id)
 					
 					var oops = instance_create_layer(x+16, y, "Instances", obj_effect_dropped_hat);
