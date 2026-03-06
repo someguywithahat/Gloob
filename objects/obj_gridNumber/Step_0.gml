@@ -2,7 +2,7 @@
 //if activeNumber == 0
 //	visible = false;
 
-if has_powerUP>0 and activeNumber>0 and wall=0
+if has_powerUP>-1 and activeNumber>0 and wall=0
 {
 	switch(my_number)
 	{
@@ -17,19 +17,40 @@ if has_powerUP>0 and activeNumber>0 and wall=0
 		case 9: sprite_index=Spr_PU_N9 break
 	}
 	image_speed=1
-	if(has_powerUP=1)
-		gloop_color_index=7
-	else if(has_powerUP=2)
-		gloop_color_index=1
-	else if(has_powerUP=4)
-		gloop_color_index=4
-	else if(has_powerUP=5)
+	if(has_powerUP=global.YELLOW)
+		gloop_color_index=global.YELLOW
+	else if(has_powerUP=global.BLUE)
+		gloop_color_index=global.BLUE
+	else if(has_powerUP=global.RAINBOW)
+		gloop_color_index=global.RAINBOW //rainbow
+	else if(has_powerUP=global.PURPLE)
+		gloop_color_index=global.PURPLE
+	else if(has_powerUP=global.RED)
 		gloop_color_index=global.RED
-	else if(has_powerUP <> 3)
-		gloop_color_index=0
+	else if(has_powerUP=global.WHITE)
+		gloop_color_index=global.WHITE //bubble
+	else if(has_powerUP=global.YELLOW)
+		gloop_color_index=global.YELLOW
+	else if(has_powerUP=global.BLACK)
+		gloop_color_index=global.BLACK
+	else if(has_powerUP=global.GREEN)
+		gloop_color_index=global.GREEN
+	//else if(has_powerUP <> 3)
+	//	gloop_color_index=global.BLACK
 		
 }
-else if has_powerUP=0 and activeNumber>0 and wall=0 and highlighted=1
+/*
+	global.BLACK=0
+	global.BLUE=1
+	global.GREEN=2
+	global.ORANGE=3
+	global.PURPLE=4
+	global.RED=5
+	global.WHITE=6
+	global.YELLOW=7
+*/
+
+else if has_powerUP=-1 and activeNumber>0 and wall=0 and highlighted=1
 {
 	if (mouse_x > x && mouse_x < x+sprite_width &&
 		mouse_y > y && mouse_y < y+sprite_width)
@@ -37,7 +58,7 @@ else if has_powerUP=0 and activeNumber>0 and wall=0 and highlighted=1
 	else
 		sprite_index=Numbers_Outline
 }
-else if has_powerUP=0 and activeNumber>0 and wall=0 and highlighted=0
+else if has_powerUP=-1 and activeNumber>0 and wall=0 and highlighted=0
 {
 	sprite_index=Numbers
 }

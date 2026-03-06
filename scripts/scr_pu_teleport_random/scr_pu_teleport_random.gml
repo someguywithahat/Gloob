@@ -10,7 +10,7 @@ function scr_pu_teleport_random(gloopInst){
 	for (var i = 0; i < array_length(grid_array); i++) {
 	    for (var j = 0; j < array_length(grid_array[i]); j++) {
 			var inst = grid_array[i][j]
-	        if (inst.activeNumber=1 and inst.wall=0 and inst.has_powerUP=0) {
+	        if (inst.activeNumber=1 and inst.wall=0 and inst.has_powerUP=-1) {
 	            array_push(available, [i, j]);
 	        }
 	    }
