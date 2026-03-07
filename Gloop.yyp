@@ -407,6 +407,7 @@
     {"id":{"name":"Spr_Acc_Suns","path":"sprites/Spr_Acc_Suns/Spr_Acc_Suns.yy",},},
     {"id":{"name":"spr_Blu_body","path":"sprites/spr_Blu_body/spr_Blu_body.yy",},},
     {"id":{"name":"spr_boat_test","path":"sprites/spr_boat_test/spr_boat_test.yy",},},
+    {"id":{"name":"Spr_Bowl_empty","path":"sprites/Spr_Bowl_empty/Spr_Bowl_empty.yy",},},
     {"id":{"name":"Spr_break_rock","path":"sprites/Spr_break_rock/Spr_break_rock.yy",},},
     {"id":{"name":"spr_effect_dropped_hat","path":"sprites/spr_effect_dropped_hat/spr_effect_dropped_hat.yy",},},
     {"id":{"name":"spr_effect_glow","path":"sprites/spr_effect_glow/spr_effect_glow.yy",},},
