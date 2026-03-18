@@ -25,11 +25,13 @@
     {"name":"inst_CA11359","path":"rooms/rm_fishingTest/rm_fishingTest.yy",},
     {"name":"inst_1066DFEE","path":"rooms/rm_fishingTest/rm_fishingTest.yy",},
     {"name":"inst_308639EA","path":"rooms/rm_fishingTest/rm_fishingTest.yy",},
+    {"name":"inst_684D833F","path":"rooms/rm_fishingTest/rm_fishingTest.yy",},
   ],
   "isDnd":false,
   "layers":[
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_699E21B0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_699E21B0","objectId":{"name":"obj_gloopFishing","path":"objects/obj_gloopFishing/obj_gloopFishing.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":576.0,"y":288.0,},
+        {"$GMRInstance":"v4","%Name":"inst_684D833F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_684D833F","objectId":{"name":"obj_fishroom_controller","path":"objects/obj_fishroom_controller/obj_fishroom_controller.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":960.0,"y":192.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets_2","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_66B16167","animationSpeed":0.0,"colour":4278190080,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_66B16167","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":7.0,"scaleY":7.0,"spriteId":{"name":"Spr_House_Mushroom_Purple","path":"sprites/Spr_House_Mushroom_Purple/Spr_House_Mushroom_Purple.yy",},"x":312.0,"y":474.0,},

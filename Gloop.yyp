@@ -119,6 +119,7 @@
     {"id":{"name":"obj_effectPileLeaf","path":"objects/obj_effectPileLeaf/obj_effectPileLeaf.yy",},},
     {"id":{"name":"obj_effectSnowball","path":"objects/obj_effectSnowball/obj_effectSnowball.yy",},},
     {"id":{"name":"obj_fire_test","path":"objects/obj_fire_test/obj_fire_test.yy",},},
+    {"id":{"name":"obj_fishroom_controller","path":"objects/obj_fishroom_controller/obj_fishroom_controller.yy",},},
     {"id":{"name":"obj_flower","path":"objects/obj_flower/obj_flower.yy",},},
     {"id":{"name":"obj_gloop_score","path":"objects/obj_gloop_score/obj_gloop_score.yy",},},
     {"id":{"name":"obj_gloop","path":"objects/obj_gloop/obj_gloop.yy",},},

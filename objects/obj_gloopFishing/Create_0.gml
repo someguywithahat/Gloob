@@ -9,3 +9,9 @@ yy=0
 acceleration=0.01
 
 gloop_distance=1000
+
+
+
+
+
+

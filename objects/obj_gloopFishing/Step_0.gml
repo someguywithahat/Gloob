@@ -1,4 +1,4 @@
-
+/*
 if (keyboard_check(ord("D")))
 {
 	xx+=acceleration
@@ -36,7 +36,7 @@ if y+sprite_height>room_height
 x+=xx
 y+=yy
 
-
+//*/
 
 with obj_gloopFish
 {
