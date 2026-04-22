@@ -87,7 +87,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.3.217",
+    "IDEVersion":"2024.14.4.222",
   },
   "name":"Gloop",
   "resources":[
@@ -489,6 +489,7 @@
     {"id":{"name":"spr_gridWater","path":"sprites/spr_gridWater/spr_gridWater.yy",},},
     {"id":{"name":"Spr_House_Mushroom_End","path":"sprites/Spr_House_Mushroom_End/Spr_House_Mushroom_End.yy",},},
     {"id":{"name":"Spr_House_Mushroom_Fall","path":"sprites/Spr_House_Mushroom_Fall/Spr_House_Mushroom_Fall.yy",},},
+    {"id":{"name":"Spr_House_Mushroom_Fish","path":"sprites/Spr_House_Mushroom_Fish/Spr_House_Mushroom_Fish.yy",},},
     {"id":{"name":"Spr_House_Mushroom_Purple","path":"sprites/Spr_House_Mushroom_Purple/Spr_House_Mushroom_Purple.yy",},},
     {"id":{"name":"Spr_House_Mushroom_Red","path":"sprites/Spr_House_Mushroom_Red/Spr_House_Mushroom_Red.yy",},},
     {"id":{"name":"Spr_House_Mushroom_Spring","path":"sprites/Spr_House_Mushroom_Spring/Spr_House_Mushroom_Spring.yy",},},
