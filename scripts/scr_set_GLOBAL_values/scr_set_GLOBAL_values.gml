@@ -22,27 +22,28 @@ function scr_set_GLOBAL_values(){
 	global.RAINBOW=8
 	
 /*
-PU_SPRITES[0]=Spr_Pu_Hat_Sign
-PU_SPRITES[1]=Spr_Pu_Tel_Fairy_Sign
-PU_SPRITES[2]=Spr_Pu_RB_SM_Full
-PU_SPRITES[3]=Spr_Pu_Crown_Sign
-PU_SPRITES[4]=Spr_Pu_Shroom_Sign
-PU_SPRITES[5]=Spr_Pu_Bubble_Sign
-PU_SPRITES[6]=Spr_Pu_Bee_sign
-PU_SPRITES[7]=Spr_Pu_Fish_Sign
-PU_SPRITES[8]=Spr_Pu_Grass_Sign
+PU_SPRITES[global.BLACK]=Spr_Pu_Night_Sign
+PU_SPRITES[global.BLUE]=Spr_Pu_Tel_Fairy_Sign
+PU_SPRITES[global.GREEN]=Spr_Pu_Grass_Sign
+PU_SPRITES[global.ORANGE]=Spr_Pu_Fish_Sign
+PU_SPRITES[global.PURPLE]=Spr_Pu_Crown_Sign
+PU_SPRITES[global.RED]=Spr_Pu_Shroom_Sign
+PU_SPRITES[global.WHITE]=Spr_Pu_Bubble_Sign
+PU_SPRITES[global.YELLOW]=Spr_Pu_Hat_Sign
+PU_SPRITES[global.RAINBOW]=Spr_Pu_RB_SM_Full
 */
-	global.PU_SIGN=0
-	global.PU_FAIRY=1
-	global.PU_RAINBOW=2
-	global.PU_CROWN=3
-	global.PU_SHROOM=4
-	global.PU_BUBBLE=5
-	global.PU_BEE=6
-	global.PU_FISH=7
-	global.PU_GRASS=8
+	//global.PU_HARDHAT=0 
+	//global.PU_FAIRY=1
+	//global.PU_RAINBOW=2
+	//global.PU_CROWN=3
+	//global.PU_SHROOM=4
+	//global.PU_BUBBLE=5
+	//global.PU_BEE=6
+	//global.PU_FISH=7
+	//global.PU_GRASS=8
+
 	
 	global.mouseDrag=0
 	
-	global.controller_default_season_goal_percentage=0.05
+	global.controller_default_season_goal_percentage=0.35
 }

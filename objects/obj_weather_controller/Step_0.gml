@@ -122,6 +122,12 @@ if toggle_night=1 {
 	isNight=1
 }
 
+
+if toggle_addPoints>0{
+	toggle_addPoints=0
+	var nightTimePoints = round(global.controller.grid_size*0.05)
+	global.controller.season_goal-=nightTimePoints
+}
 //if controller.season_goal<1 and isNight=0
 //{
 	

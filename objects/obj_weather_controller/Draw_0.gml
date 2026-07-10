@@ -40,12 +40,14 @@ if toggle_debug_options<1
 }
 else 
 {
+	toggle_addPoints=scr_draw_menu_item(text_xx,550,"Add Points",toggle_addPoints)
 	toggle_night=scr_draw_menu_item(text_xx,580,"End Day",toggle_night)
 	toggle_add_pu=scr_draw_menu_item(text_xx,610,"Add PowerUP",toggle_add_pu)	
 	toggle_add_obs=scr_draw_menu_item(text_xx,640,"Add Obstacle",toggle_add_obs)	
 	toggle_rain=scr_draw_menu_item(text_xx,670,"Toggle Rain",toggle_rain)	
 	toggle_snow=scr_draw_menu_item(text_xx,700,"Toggle Snow",toggle_snow)	
 	toggle_leaves=scr_draw_menu_item(text_xx,730,"Toggle Fall",toggle_leaves)	
+	//controller.season_goal-=nightTimePoints
 }
 
 

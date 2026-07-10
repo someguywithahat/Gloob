@@ -286,16 +286,28 @@ if ismoving=1 {
 				friend_gloop.player_number=controller.number_of_players-1
 				friend_gloop.grid_x=next_inst.grid_x
 				friend_gloop.grid_y=next_inst.grid_y
+				audio_play_sound(snd_slm_chomp, 1, false);	
 			}
 			
-			if next_inst.has_powerUP=global.BLUE{
+			else if next_inst.has_powerUP=global.BLUE{
 				var fairy = instance_create_layer(x+16, y, "Instances", obj_effect_fairy);
 				fairy.parent_gloop=id		
 				fairy.gloop_powerUp_check = powerUpCheck
 				show_debug_message("Picked UP fairy")
+				audio_play_sound(snd_slm_chomp, 1, false);	
+			}
+			else if next_inst.has_powerUP=global.BLACK{
+				var nightTimePoints = round(controller.grid_size*0.05)
+				controller.season_goal-=nightTimePoints
+				gloop_score_obj.gloop_score+=nightTimePoints
+				audio_play_sound(snd_yawn, 1, false);
+			}
+			else 
+			{
+				audio_play_sound(snd_slm_chomp, 1, false);	
 			}
 			next_inst.has_powerUP=-1
-			audio_play_sound(snd_slm_chomp, 1, false);	
+			
 			
 			puBonk=0
 			if powerUp1=global.YELLOW
