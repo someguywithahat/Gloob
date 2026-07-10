@@ -3,7 +3,13 @@ if global.weather<>2
 	if weather_alpha>0
 		weather_alpha-=0.01
 }
+/*
+The following code was added by Peep 7-9-2026
+'
+                 ./
 
+End Peep code			 
+*/
 if global.weather<>1
 {
 	if snow_alpha>0
