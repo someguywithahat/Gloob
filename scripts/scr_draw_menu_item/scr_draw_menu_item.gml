@@ -10,10 +10,12 @@ function scr_draw_menu_item(xx,yy,text,hover_or_click){
 	
 	
 	draw_set_color(c_white);	
+	draw_set_alpha(1)
 	if (mouse_x > xx-4 && mouse_x < xx+w+4 &&
     mouse_y > yy-4 && mouse_y < yy+h+4) and hover_or_click<>noone
 	{
-		draw_set_color(c_lime);
+		draw_set_color(c_white);
+		draw_set_alpha(0.6)
 		if hover_or_click<0{
 			hover_or_click=0
 		}
@@ -29,6 +31,7 @@ function scr_draw_menu_item(xx,yy,text,hover_or_click){
 	else 
 		hover_or_click=-1
 	draw_text(xx, yy, text);
+	draw_set_alpha(1)
 	
 	return hover_or_click	
 }
@@ -41,13 +44,14 @@ function scr_draw_menu_spr(xx, yy, spr, spr_index, hover_or_click){
 	var h = sprite_get_height(spr)
 	var clicked = 0
 	var draw_color = c_white
-	
+	draw_set_alpha(1)
 	
 
 	if (mouse_x > xx+1 && mouse_x < xx+w-1 &&
     mouse_y > yy+1 && mouse_y < yy+h-1) and hover_or_click<>noone
 	{
-		draw_color = c_lime
+		//draw_color = c_lime
+		draw_set_alpha(0.7)
 		if hover_or_click<0{
 			hover_or_click=0
 		}
@@ -64,6 +68,8 @@ function scr_draw_menu_spr(xx, yy, spr, spr_index, hover_or_click){
 		hover_or_click=-1
 	
 	draw_sprite_ext(spr, spr_index, xx, yy,1,1,0,draw_color,1)
+	
+	draw_set_alpha(1)
 	
 	return hover_or_click	
 }
