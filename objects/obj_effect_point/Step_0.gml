@@ -16,10 +16,7 @@ if (mouse_check_button_pressed(mb_left)) {
 
 
 var gloop = instance_place(x, y, obj_unusedGloop);
-if gloop != noone{	
-    audio_play_sound(snd_slm_chomp, 1, false);	
-	gloop.well_fed+=60
-	gloop.speed=0
-	gloop.is_sad_gameOver=0
+if gloop != noone and gloop.feed(){
+    audio_play_sound(snd_slm_chomp, 1, false);
 	instance_destroy()
 }

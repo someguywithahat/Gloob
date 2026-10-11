@@ -10,10 +10,7 @@ if day_over=0 and global.controller.season_goal<=0 and global.controller.game_ov
 	image_speed=1
 	with obj_unusedGloop
 	{
-		is_bedtime=1	
-		image_index = irandom(sprite_get_number(sprite_index) - 1);
-		bedtimeX=other.x-16
-		bedtimeY=other.y-22
+		go_home(other.x-16, other.y-22)
 	}
 }
 
@@ -44,22 +41,6 @@ if day_over=1 and global.controller.season_goal>0
 	
 	with obj_unusedGloop
 	{
-		is_angry=0
-		is_sad=0
-		is_sad_gameOver=0
-		is_cold=0
-		is_bedtime=0
-		is_chasing=0
-		is_movingToLeaves=0 
-		is_flipping=0
-		
-		is_bedtime=0
-		x=1130+irandom_range(1,204)
-		y=180+irandom_range(1,300)
-		image_alpha=1
-		rotation=0
-		speed=0
-		issleep=1
-		sleep_duration=0
+		new_day(1130+irandom_range(1,204), 180+irandom_range(1,300))
 	}
 }

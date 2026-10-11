@@ -56,7 +56,7 @@ function scr_end_turn(){
 	controller.total_score=total_score
 	with obj_unusedGloop
 	{
-		is_sad_gameOver=1	
+		game_over()
 	}
 	
 	

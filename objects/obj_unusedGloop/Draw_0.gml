@@ -1,68 +1,25 @@
-
-if 	is_sad_gameOver=1
+//Pick the sprite for what the slime is doing
+var look = get_look()
+if look[1]>=0
 {
-	sprite_index=Slm_All_Base_Expressions
+	//Single expression frame
+	sprite_index=look[0]
 	image_speed=0
-	image_index=3
+	image_index=look[1]
 }
-else if is_bedtime=1
+else
 {
-	sprite_index=Spr_Slm_Move_Jump
+	if sprite_index<>look[0]
+	{
+		sprite_index=look[0]
+		image_index=0
+	}
 	image_speed=1
-}
-else if is_bedtime=2
-{
-	sprite_index=Slm_All_Base_Expressions
-	image_speed=0
-	image_index=1
-}
-else if leaf_target=2
-{
-	sprite_index=Slm_All_Base_Expressions
-	image_speed=0
-	image_index=1
-}
-else if well_fed>0{
-	well_fed--
-	sprite_index=Slm_All_Base_Expressions
-	image_speed=0
-	image_index=1
-}
-else if is_angry>60 {
-	sprite_index=Slm_All_Base_Expressions
-	image_speed=0
-	image_index=4
-}
-else if is_angry>0 {
-	sprite_index=Slm_All_Base_Expressions
-	image_speed=0
-	image_index=2
-}
-else if is_sad>0 {
-	sprite_index=Slm_All_Base_Expressions
-	image_speed=0
-	image_index=3
-}
-else if is_cold>0 {
-	sprite_index=Slm_All_Base_Expressions
-	image_speed=0
-	image_index=3
-}
-else if issleep=1 {
-	if (image_index > 50)
-		image_index = 20;
-	sprite_index=Spr_Slm_Sleep
-	image_speed=1
-}
-else 
-{
-	sprite_index=Spr_Slm_Move_Jump
-	image_speed=1	
-}
 
-
-//draw_self()
-
+	//Loop the snoring part of the sleep animation
+	if sprite_index=Spr_Slm_Sleep and image_index>50
+		image_index=20
+}
 
 
 // Start shader
@@ -81,12 +38,23 @@ texture_set_stage(u_palette_swap, sprite_get_texture(spr_palette_all, gloop_colo
 shader_set_uniform_f(u_color_count, 6.0);
 
 // Draw the sprite
-//draw_self();
+//Spr_Slm_Snowball is 48x48 with the slime 8 pixels in, so shift it to line up with the 32x32 slime sprites
+var draw_x = x
+var draw_y = y
+if sprite_index=Spr_Slm_Snowball
+{
+	draw_x-=8
+	draw_y-=8
+}
+//Spin around the slime's center while launched (sprite origin is the top left corner)
+if state=UG_STATE.LAUNCHED and rotation<>0
+{
+	var half = sprite_get_width(sprite_index)/2
+	draw_x += half - (half*dcos(rotation) + half*dsin(rotation))
+	draw_y += half - (-half*dsin(rotation) + half*dcos(rotation))
+}
 if image_alpha>0
-	draw_sprite_ext(sprite_index,image_index,x,y,1,1,rotation,c_white,image_alpha)
+	draw_sprite_ext(sprite_index,image_index,draw_x,draw_y,1,1,rotation,c_white,image_alpha)
 
 // End shader
 shader_reset();
-
-
-
