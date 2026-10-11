@@ -3,7 +3,8 @@ isjumping=0;
 isrolling=0;
 isslurp=0;
 issleep=0
-isteleporting=0 
+isteleporting=0
+is_hopping=0 //Mushroom power: first step of the move hops 2 spaces
 isDayEnd=0
 
 //debug_int = 0

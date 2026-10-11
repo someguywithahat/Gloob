@@ -109,8 +109,12 @@ if (ismoving=0)
 						selected_grid = scr_get_grid_id(movement_array[a].grid_x, movement_array[a].grid_y)
 						//if a>=8
 							
-						if selected_grid.wall = 0 and selected_grid.activeNumber=1 
+						if selected_grid.wall = 0 and selected_grid.activeNumber=1
+						{
 							ismoving=1
+							//Mushroom jump: selected a space 2 away, hop there first
+							is_hopping = (abs(selected_grid.grid_x-grid_x)=2 or abs(selected_grid.grid_y-grid_y)=2)
+						}
 					}
 					//else {
 					//	selected_grid=noone
@@ -138,7 +142,14 @@ if (ismoving=0)
 			next_target_y = grid_y + derY
 	
 			target_x = grid_x +(derX*selected_grid.my_number)
-			target_y = grid_y +(derY*selected_grid.my_number)		
+			target_y = grid_y +(derY*selected_grid.my_number)
+
+			//Mushroom hop: the move starts from the space 1 further out
+			if is_hopping
+			{
+				target_x+=derX
+				target_y+=derY
+			}
 	
 			///*
 			//keep the target in bounds
@@ -152,7 +163,7 @@ if (ismoving=0)
 		
 			idletime=0
 
-			if(abs((derX+derY) mod 2) = 0){
+			if(abs((derX+derY) mod 2) = 0) or is_hopping{
 				isjumping=1
 			}
 			else if selected_grid.my_number<=3 and derY=0
@@ -171,7 +182,9 @@ if (ismoving=0)
 			//Update the previous slime trail
 			current_grid_number.exitX=derX
 			current_grid_number.exitY=derY
-			scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)		
+			//A hop leaves the starting trail as it is.  The slime jumps off from the center
+			if !is_hopping
+				scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)
 
 	}
 }
@@ -201,7 +214,10 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=global.BLUE or powerUp2=globa
 
 if ismoving=1 {
 	
-	var next_inst = scr_get_grid_id(grid_x+derX, grid_y+derY)
+	var step_size = 1
+	if is_hopping
+		step_size = 2
+	var next_inst = scr_get_grid_id(grid_x+derX*step_size, grid_y+derY*step_size)
 	
 	
 	gridNumberX=next_inst.x
@@ -226,12 +242,19 @@ if ismoving=1 {
 	}
 
 	var trail_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,10)
-	if trail_index>5 and next_inst.trail_animating=0
+	if trail_index>5 and next_inst.trail_animating=0 and !is_hopping
 		scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
-	
+
 	var gloop_speed =1
-	if ((derX+derY) mod 2) = 0
-		gloop_speed = scr_get_jump_speed2(scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8))*move_speed*0.75
+	if isjumping=1
+	{
+		//Jump progress uses total distance so straight up/down hops animate too
+		var jump_total = abs(gridNumberX-gridNumberPrevX) + abs(gridNumberY-gridNumberPrevY)
+		var jump_done = abs(x-gridNumberPrevX) + abs(y-gridNumberPrevY)
+		gloop_speed = scr_get_jump_speed2(scr_get_jump_sprite(jump_total,jump_done,0,8))*move_speed*0.75
+		if is_hopping
+			gloop_speed*=2 //Twice the distance in the same time as a normal jump
+	}
 	else
 		gloop_speed=move_speed
 
@@ -372,7 +395,33 @@ if ismoving=1 {
 		}
 		
 		scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
-		
+
+		//Mushroom hop landed.  Straight hops slide the rest of the way, diagonal hops keep jumping
+		if is_hopping
+		{
+			is_hopping=0
+			if abs((derX+derY) mod 2) = 1
+			{
+				if grid_x=target_x and grid_y=target_y
+				{
+					//Stopping where we landed: just a splat spot
+					next_inst.sprite_index=scr_get_slime_trail(0)
+					next_inst.trail_custom=0
+				}
+				else
+				{
+					//Trail starts here and heads out the way we're sliding
+					scr_start_trail_anim(next_inst, Trl_Grn_End, -derX, -derY, -derX, -derY, 0)
+					next_inst.image_speed=1
+					isjumping=0
+					if selected_grid.my_number<=3 and derY=0
+						isslurp=1
+					else
+						isrolling=1
+				}
+			}
+		}
+
 		if grid_x=target_x and grid_y=target_y
 		{
 			sprite_index=s_idol

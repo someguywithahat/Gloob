@@ -117,7 +117,10 @@ else if isjumping=1{
 	image_speed = 0; 
 	
 	//We are starting with the 4th sprite and looping through 8 images
-	image_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,8)	
+	//Uses total distance so straight up/down mushroom hops animate too
+	var jump_total = abs(gridNumberX-gridNumberPrevX) + abs(gridNumberY-gridNumberPrevY)
+	var jump_done = abs(x-gridNumberPrevX) + abs(y-gridNumberPrevY)
+	image_index = scr_get_jump_sprite(jump_total,jump_done,0,8)
 } 
 else if isrolling=1{
 	//if abs(derY)>0
