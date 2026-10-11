@@ -110,6 +110,17 @@ if (ismoving=0)
 							ismoving=1
 							//Mushroom jump: selected a space 2 away, hop there first
 							is_hopping = (abs(selected_grid.grid_x-grid_x)=2 or abs(selected_grid.grid_y-grid_y)=2)
+
+							//The hop uses up one mushroom
+							if is_hopping
+							{
+								if powerUp3=global.RED
+									powerUp3=-1
+								else if powerUp2=global.RED
+									powerUp2=-1
+								else if powerUp1=global.RED
+									powerUp1=-1
+							}
 						}
 					}
 				}
