@@ -221,7 +221,8 @@ if ismoving=1 and isteleporting=0 {
 	if is_sliding
 	{
 		//Trail grows into the tile we are sliding onto (Spr_Trl_End)
-		if next_inst.trail_animating=0 and next_inst.activeNumber>0
+		//A rainbow slime also redraws trails it slides over
+		if next_inst.trail_animating=0 and (next_inst.activeNumber>0 or rainbow_turns>0)
 			scr_start_trail_anim(next_inst, Spr_Trl_End, derX, derY, derX, derY, 1)
 
 		//Continuing straight: trail slides out of the tile we are leaving (Spr_Trl_Mid)
@@ -286,8 +287,10 @@ if ismoving=1 and isteleporting=0 {
 		
 		gridNumberPrevX=x
 		gridNumberPrevY=y
-		
-		next_inst.activeNumber=0		
+
+		//A rainbow slime can slide over old trails.  Those spaces don't score again
+		var is_new_space = next_inst.activeNumber>0
+		next_inst.activeNumber=0
 		if next_inst.has_powerUP>=0
 		{
 			var powerUpCheck=0
@@ -343,8 +346,12 @@ if ismoving=1 and isteleporting=0 {
 				audio_play_sound(snd_yawn, 1, false);
 			}
 			else if next_inst.has_powerUP=global.WHITE{
-				var fairy = instance_create_layer(x+16, y, "Instances", obj_power_bubble);				
-				audio_play_sound(snd_slm_chomp, 1, false);	
+				var fairy = instance_create_layer(x+16, y, "Instances", obj_power_bubble);
+				audio_play_sound(snd_slm_chomp, 1, false);
+			}
+			else if next_inst.has_powerUP=global.RAINBOW{
+				scr_rainbow_start(id)
+				audio_play_sound(snd_slm_chomp, 1, false);
 			}
 			else 
 			{
@@ -373,14 +380,18 @@ if ismoving=1 and isteleporting=0 {
 		
 
 		//change to spawn a flower
-		scr_spawn_flower(x,y,gloop_color_index)
-		
+		if is_new_space
+			scr_spawn_flower(x,y,gloop_color_index)
+
 		grid_x=next_inst.grid_x
 		grid_y=next_inst.grid_y
-		
+
 		//Add gloop score and remaining grid value
-		controller.season_goal--
-		gloop_score_obj.gloop_score++
+		if is_new_space
+		{
+			controller.season_goal--
+			gloop_score_obj.gloop_score++
+		}
 		
 		var snd = audio_play_sound(snd_slime_move, 1, false);
 		audio_sound_pitch(snd, random_range(0.9, 1.2));
@@ -437,9 +448,10 @@ if ismoving=1 and isteleporting=0 {
 			current_grid_number.exitY=derY
 			
 			with(obj_gridFlower){
-				image_index++	
+				image_index++
 			}
-			
+
+			scr_rainbow_end_move(id)
 			scr_end_turn()
 		}
 		else
@@ -450,9 +462,22 @@ if ismoving=1 and isteleporting=0 {
 			next_target_y = grid_y + derY
 			
 			next_inst = scr_get_grid_id(next_target_x, next_target_y)
-			if next_inst.activeNumber=0 or next_inst.wall=1 
+
+			//Rainbow slime is invincible: smashes obstacles and slides over old trails
+			var rainbow_pass = rainbow_turns>0 and next_inst.wall=0
+			if rainbow_pass and next_inst.obs=1
 			{
-				if puBonk>0
+				scr_remove_obstacle(next_inst)
+				audio_play_sound(snd_bonk, 1, false);
+			}
+
+			if (next_inst.activeNumber=0 or next_inst.wall=1) and !rainbow_pass
+			{
+				if rainbow_turns>0
+				{
+					//Rainbow slime hit the edge of the map: just stop
+				}
+				else if puBonk>0
 				{
 					puBonk--
 					audio_play_sound(snd_bonk, 1, false);
@@ -481,6 +506,7 @@ if ismoving=1 and isteleporting=0 {
 				has_targeting_cursor=0
 				derX=0
 				derY=0
+				scr_rainbow_end_move(id)
 				scr_end_turn()
 			}
 		}

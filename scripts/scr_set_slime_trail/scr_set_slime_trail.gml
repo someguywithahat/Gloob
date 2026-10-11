@@ -113,7 +113,7 @@ function scr_start_trail_anim(target, sprite, in_x, in_y, out_x, out_y, animate)
 //progress -- 0 to 1, how far the slime has moved across one tile
 function scr_update_trail_anim(target, progress){
 	if target.trail_animating=0
-		return
+		return;
 	var frames = sprite_get_number(target.sprite_index)
 	target.image_index = clamp(floor(progress*frames), 0, frames-1)
 }
@@ -121,7 +121,7 @@ function scr_update_trail_anim(target, progress){
 //Called when the slime finishes crossing a tile.  Swaps the trail to its looping idle sprite
 function scr_finish_trail_anim(target){
 	if target.trail_animating=0
-		return
+		return;
 	target.trail_animating=0
 
 	var idle_sprite = noone

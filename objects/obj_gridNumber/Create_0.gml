@@ -6,6 +6,7 @@ my_shade = c_white
 activeNumber=1
 wall=0
 obs=0
+obs_owner=noone //Top-left grid space of the obstacle covering this space
 
 grid_x=0
 grid_y=0

@@ -122,6 +122,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 			break
 		gridInst.activeNumber=0
 		gridInst.obs=1
+		gridInst.obs_owner=gridInst
 		gridInst.sprite_index=Spr_Obs_1x1
 		//show_debug_message(string(sprite_get_number(spr_PowerUp1)))
 		
@@ -206,6 +207,7 @@ function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
 			gridNum = grid_arrays[i+ii][j+jj] 
 			gridNum.activeNumber=0
 			gridNum.obs=1
+			gridNum.obs_owner=grid_arrays[i][j]
 			gridNum.sprite_index=noone
 			//show_debug_message("deactivating: " + string(i+ii) + "," + string(j+jj));
 		}
@@ -226,8 +228,44 @@ function scr_setup_add_pu()
 {
 	var gridNum = scr_find_free_cell(global.controller.grid_refs, true)
 	if gridNum=noone
-		return
+		return;
 	gridNum.has_powerUP=irandom_range(0,8)
+}
+
+
+/// @function scr_remove_obstacle(gridNum)
+/// @description Deletes the whole obstacle covering gridNum.  Every space it covered gets a fresh number.
+function scr_remove_obstacle(gridNum)
+{
+	var owner = gridNum.obs_owner
+	if owner=noone
+		owner = gridNum
+
+	with(obj_gridNumber)
+	{
+		if obs=1 and (id=owner or obs_owner=owner)
+		{
+			obs=0
+			obs_owner=noone
+			activeNumber=1
+			my_number = scr_get_weighted_grid_number()
+			sprite_index=Numbers
+			image_index = my_number - 1
+			image_speed=0
+			depth=original_depth
+			gloop_color_index=5
+			highlighted=0
+			rotate=0
+			enterX=0
+			enterY=0
+			exitX=0
+			exitY=0
+			trail_animating=0
+			trail_custom=0
+			trail_angle=0
+			trail_xscale=1
+		}
+	}
 }
 
 

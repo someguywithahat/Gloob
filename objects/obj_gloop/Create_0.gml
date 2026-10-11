@@ -66,6 +66,8 @@ powerUp3=-1
 
 puBonk=0
 rainbow_power=0
+rainbow_turns=0 //Turns of rainbow invincibility left
+rainbow_original_color=0 //Color to go back to when the rainbow ends
 rainbow_delay=0.0
 gloop_color_index_old=0
 has_crown=0

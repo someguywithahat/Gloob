@@ -10,7 +10,7 @@ function scr_pu_teleport_random(gloopInst){
 	if gridinst=noone
 	{
 		show_debug_message("no tp location")
-		return
+		return;
 	}
 
 	var i = gridinst.grid_x;

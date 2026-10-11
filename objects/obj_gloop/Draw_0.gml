@@ -242,7 +242,7 @@ if is_glowing=1
 }
 
 
-if rainbow_power=1 or powerUp1=global.RAINBOW or powerUp2=global.RAINBOW or powerUp3=global.RAINBOW{
+if rainbow_power=1 or rainbow_turns>0{
 	rainbow_delay+=.05
 	if rainbow_delay>1{
 		gloop_color_index_old=gloop_color_index

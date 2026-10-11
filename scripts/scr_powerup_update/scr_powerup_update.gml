@@ -24,3 +24,42 @@ function scr_powerup_update(gloop_id){
 
 
 }
+
+
+#macro RAINBOW_TURNS 6
+
+/// @function scr_rainbow_start(gloop_id)
+/// @description Rainbow powerup picked up: color cycling and invincibility for RAINBOW_TURNS turns
+function scr_rainbow_start(gloop_id){
+	with(gloop_id)
+	{
+		if rainbow_turns<=0
+			rainbow_original_color=gloop_color_index
+		//+1 because the move the rainbow was picked up on doesn't count
+		rainbow_turns=RAINBOW_TURNS+1
+	}
+}
+
+/// @function scr_rainbow_end_move(gloop_id)
+/// @description Call when the slime finishes a move.  Counts down the rainbow and ends it when time is up
+function scr_rainbow_end_move(gloop_id){
+	if gloop_id.rainbow_turns<=0
+		return;
+	gloop_id.rainbow_turns--
+	if gloop_id.rainbow_turns>0
+		return;
+		
+	//Rainbow is over: go back to the slime's real color and drop the powerup icon
+	with(gloop_id)
+	{
+		gloop_color_index=rainbow_original_color
+		gloop_color_index_old=rainbow_original_color
+		rainbow_delay=0
+		if powerUp1=global.RAINBOW
+			powerUp1=-1
+		if powerUp2=global.RAINBOW
+			powerUp2=-1
+		if powerUp3=global.RAINBOW
+			powerUp3=-1
+	}
+}
