@@ -330,13 +330,30 @@ function scr_refresh_grid(grid_arrays)
 				gridNum.enterY=0
 				gridNum.exitX=0
 				gridNum.exitY=0
+				gridNum.trail_animating=0
+				gridNum.trail_custom=0
+				gridNum.trail_angle=0
+				gridNum.trail_xscale=1
 				//show_debug_message("Am I refreshing grid?");
 				
 			}		
 			//show_debug_message("Wall: " + string(gridNum.wall) + " obs: " + string(gridNum.obs))
         }
-		
+
     }
+
+	//Each slime starts the new day fresh on its current tile, same as scr_setup_grid
+	with(obj_gloop)
+	{
+		prev_derX=0
+		prev_derY=0
+		var start_inst = grid_arrays[grid_x][grid_y]
+		start_inst.activeNumber=false
+		start_inst.gloop_color_index=gloop_color_index
+		start_inst.sprite_index = scr_get_slime_trail(0)
+		start_inst.image_speed=1
+		current_grid_number=start_inst
+	}
 	instance_destroy(obj_gridFlower);
 	
 }

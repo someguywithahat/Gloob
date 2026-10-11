@@ -38,6 +38,10 @@ exitY=0
 rot_x=0
 rot_y=0
 rotate=0
+trail_animating=0 //1 when obj_gloop is driving the trail's image_index as it slides out
+trail_custom=0 //1 when the trail is drawn with trail_angle/trail_xscale instead of rotate
+trail_angle=0
+trail_xscale=1
 
 
 //sprite_index=Spr_PU_N1

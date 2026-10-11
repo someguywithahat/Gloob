@@ -40,7 +40,18 @@ if has_powerUP<>global.RAINBOW
 	// Draw the sprite
 	//draw_self();
 
-	if sprite_index <> noone
+	//Only trails use the custom transform.  Fresh numbers (activeNumber=1) always draw upright
+	if sprite_index <> noone and trail_custom=1 and (activeNumber=0 or trail_animating=1)
+	{
+		//Rotate/mirror around the tile center (sprite origin is top left)
+		var half = sprite_get_width(sprite_index)/2
+		var lx = half*trail_xscale
+		var ly = half
+		var draw_x = x + half - (lx*dcos(trail_angle) + ly*dsin(trail_angle))
+		var draw_y = y + half - (-lx*dsin(trail_angle) + ly*dcos(trail_angle))
+		draw_sprite_ext(sprite_index,image_index,draw_x,draw_y,trail_xscale,1,trail_angle,c_white,1)
+	}
+	else if sprite_index <> noone
 	{
 		rot_x=0
 		rot_y=0

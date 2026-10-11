@@ -2,7 +2,11 @@
 //if activeNumber == 0
 //	visible = false;
 
-if has_powerUP>-1 and activeNumber>0 and wall=0
+//A slime is sliding onto this tile.  Leave the trail sprite alone
+if trail_animating=1 and activeNumber>0
+{
+}
+else if has_powerUP>-1 and activeNumber>0 and wall=0
 {
 	switch(my_number)
 	{

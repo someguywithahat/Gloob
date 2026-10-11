@@ -77,7 +77,67 @@ function scr_set_slime_trail(target, derX, derY, prev_derX, prev_derY, entering,
 	//scr_rotate_sprite(target,rotate)
 	target.image_speed=1
 	target.gloop_color_index=color
+	target.trail_animating=0
+	target.trail_custom=0
 
+	//Corner trail is animated frame by frame by obj_gloop as it slides out of the tile
+	if trail_type=3 and entering=0
+		scr_start_trail_anim(target, Spr_Trl_Corner, prev_derX, prev_derY, derX, derY, 1)
+	//Straight trail rests on the first Mid frame (trail reaches the center). obj_gloop animates it when the slime slides out
+	else if trail_type=2
+		scr_start_trail_anim(target, Spr_Trl_Mid, derX, derY, derX, derY, 0)
+
+}
+
+/*
+	Sets a tile to an animated trail sprite, oriented by the slime's travel direction.
+	Base sprites travel upward (Corner enters from the right, then goes up)
+	in_x/in_y  -- direction the slime was moving when it entered the tile
+	out_x/out_y -- direction the slime is moving when it leaves the tile
+*/
+function scr_start_trail_anim(target, sprite, in_x, in_y, out_x, out_y, animate){
+	target.sprite_index=sprite
+	target.image_speed=0
+	target.image_index=0
+	target.trail_animating=animate
+	target.trail_custom=1
+
+	//Rotate so "up" in the sprite points the way the slime leaves
+	target.trail_angle = (point_direction(0, 0, out_x, out_y) + 270) mod 360
+
+	//Base corner is a right turn.  Mirror it for left turns
+	target.trail_xscale = 1
+	if (in_x*out_y - in_y*out_x) < 0
+		target.trail_xscale = -1
+
+}
+
+//progress -- 0 to 1, how far the slime has moved across one tile
+function scr_update_trail_anim(target, progress){
+	if target.trail_animating=0
+		return
+	var frames = sprite_get_number(target.sprite_index)
+	target.image_index = clamp(floor(progress*frames), 0, frames-1)
+}
+
+//Called when the slime finishes crossing a tile.  Swaps the trail to its looping idle sprite
+function scr_finish_trail_anim(target){
+	if target.trail_animating=0
+		return
+	target.trail_animating=0
+
+	var idle_sprite = noone
+	switch(target.sprite_index){
+		case Spr_Trl_Corner: idle_sprite=Trl_Grn_Corner; break;
+		case Spr_Trl_Mid:    idle_sprite=Trl_Grn_Mid; break;
+	}
+	if idle_sprite<>noone
+	{
+		//Keeps trail_angle/trail_xscale so the idle sprite faces the same way
+		target.sprite_index=idle_sprite
+		target.image_index=0
+		target.image_speed=1
+	}
 }
 
 

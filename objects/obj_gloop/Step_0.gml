@@ -210,8 +210,23 @@ if ismoving=1 {
 
 	
 
+	var is_sliding = isjumping=0 and isteleporting=0 and (derX<>0 or derY<>0)
+	if is_sliding
+	{
+		//Trail grows into the tile we are sliding onto (Spr_Trl_End)
+		if next_inst.trail_animating=0 and next_inst.activeNumber>0
+			scr_start_trail_anim(next_inst, Spr_Trl_End, derX, derY, derX, derY, 1)
+
+		//Continuing straight: trail slides out of the tile we are leaving (Spr_Trl_Mid)
+		if current_grid_number.trail_animating=0 and current_grid_number.sprite_index=Spr_Trl_Mid
+			and current_grid_number.image_index=0 and derX=prev_derX and derY=prev_derY
+			current_grid_number.trail_animating=1
+
+		next_inst.gloop_color_index=gloop_color_index
+	}
+
 	var trail_index = scr_get_jump_sprite(gridNumberX,x,gridNumberPrevX,10)
-	if trail_index>5
+	if trail_index>5 and next_inst.trail_animating=0
 		scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 	
 	var gloop_speed =1
@@ -240,11 +255,18 @@ if ismoving=1 {
 	    y -= gloop_speed;
 	    if (y < gridNumberY) y = gridNumberY;
 	}
-	
 
-	
+	//Animate the trails on the tiles we are sliding out of and onto based on how far we've moved
+	var trail_progress = (abs(x-gridNumberPrevX) + abs(y-gridNumberPrevY)) / controller.spacing
+	scr_update_trail_anim(current_grid_number, trail_progress)
+	scr_update_trail_anim(next_inst, trail_progress)
+
+
 	if x==gridNumberX and y==gridNumberY
 	{
+		scr_finish_trail_anim(current_grid_number)
+		scr_finish_trail_anim(next_inst)
+
 		prev_derX=derX
 		prev_derY=derY
 		
