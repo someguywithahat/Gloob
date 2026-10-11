@@ -347,6 +347,10 @@ if ismoving=1 {
 				gloop_score_obj.gloop_score+=nightTimePoints
 				audio_play_sound(snd_yawn, 1, false);
 			}
+			else if next_inst.has_powerUP=global.WHITE{
+				var fairy = instance_create_layer(x+16, y, "Instances", obj_power_bubble);				
+				audio_play_sound(snd_slm_chomp, 1, false);	
+			}
 			else 
 			{
 				audio_play_sound(snd_slm_chomp, 1, false);	

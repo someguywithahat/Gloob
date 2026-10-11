@@ -156,6 +156,10 @@ else if has_powerUP=global.BLACK{
 	draw_sprite(Spr_Pu_Night,powerUpImageIndex,x,y)
 	powerUpImageIndex=powerUpImageIndex+.2
 }
+else if has_powerUP=global.GREEN{
+	draw_sprite(Spr_Pu_Grass,powerUpImageIndex,x,y)
+	powerUpImageIndex=powerUpImageIndex+.2
+}
 
 
 
