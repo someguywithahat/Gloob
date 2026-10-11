@@ -32,10 +32,6 @@ if alive=0
 	return
 //Everything below only runs when it's your turn
 
-//selected_grid=noone
-//if selected_grid<>noone show_debug_message("Why here5?" + string(selected_grid.activeNumber))
-
-//if (mouse_check_button_pressed(mb_left)=fales and ismoving=0) 
 if (ismoving=0) 
 {
 	var targeting = global.obj_targeting
@@ -105,9 +101,9 @@ if (ismoving=0)
 						else
 							derY=0
 							
-						//selected_grid = scr_get_grid_id(grid_x+derX, grid_y+derY)
+							
 						selected_grid = scr_get_grid_id(movement_array[a].grid_x, movement_array[a].grid_y)
-						//if a>=8
+
 							
 						if selected_grid.wall = 0 and selected_grid.activeNumber=1
 						{
@@ -116,9 +112,6 @@ if (ismoving=0)
 							is_hopping = (abs(selected_grid.grid_x-grid_x)=2 or abs(selected_grid.grid_y-grid_y)=2)
 						}
 					}
-					//else {
-					//	selected_grid=noone
-					//}
 				}
 			}
 			//*/
@@ -131,12 +124,7 @@ if (ismoving=0)
 	*/
 	if ismoving=1
 	{
-		//if selected_grid.wall = 0 and selected_grid.activeNumber=1 
-		//{
-
-				
-			//var to_move = selected_grid.my_number; 
-	
+		
 			//set the target
 			next_target_x = grid_x + derX
 			next_target_y = grid_y + derY
@@ -158,9 +146,7 @@ if (ismoving=0)
 			if target_y<0 target_y=0
 			if target_y>=controller.cols-1 target_y=controller.cols-1
 
-			//ismoving=1;
-			//*/	
-		
+
 			idletime=0
 
 			if(abs((derX+derY) mod 2) = 0) or is_hopping{
@@ -188,8 +174,6 @@ if (ismoving=0)
 
 	}
 }
-	//*/
-	
 
 if (keyboard_check_pressed(vk_space) and (powerUp1=global.BLUE or powerUp2=global.BLUE or powerUp3=global.BLUE) and ismoving=0) {
 
@@ -333,7 +317,11 @@ if ismoving=1 {
 				friend_gloop.grid_y=next_inst.grid_y
 				audio_play_sound(snd_slm_chomp, 1, false);	
 			}
-			
+			else if next_inst.has_powerUP=global.GREEN
+			{
+				has_grass=1
+				audio_play_sound(snd_slm_chomp, 1, false);
+			}
 			else if next_inst.has_powerUP=global.BLUE{
 				var fairy = instance_create_layer(x+16, y, "Instances", obj_effect_fairy);
 				fairy.parent_gloop=id		
@@ -384,7 +372,6 @@ if ismoving=1 {
 		grid_y=next_inst.grid_y
 		
 		//Add gloop score and remaining grid value
-		//controller.remaining_grid--
 		controller.season_goal--
 		gloop_score_obj.gloop_score++
 		
@@ -441,7 +428,6 @@ if ismoving=1 {
 			
 			current_grid_number.exitX=derX
 			current_grid_number.exitY=derY
-			///scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 			
 			with(obj_gridFlower){
 				image_index++	
@@ -453,7 +439,6 @@ if ismoving=1 {
 		{
 			current_grid_number.exitX=derX
 			current_grid_number.exitY=derY
-			///scr_set_slime_trail(next_inst, derX, derY, prev_derX, prev_derY, 1, gloop_color_index)
 			next_target_x = grid_x + derX
 			next_target_y = grid_y + derY
 			

@@ -69,6 +69,7 @@ rainbow_power=0
 rainbow_delay=0.0
 gloop_color_index_old=0
 has_crown=0
+has_grass=0
 draw_hat=0
 has_accessory=0
 

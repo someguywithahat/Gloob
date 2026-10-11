@@ -15,6 +15,17 @@ if puBonk>0
 	sh_roll_R = Spr_Slm_Hat_Move_Spin
 	sh_teleport = Spr_Slm_Hat_Tele
 	sh_slurp = Spr_Slm_Hat_Move_Slurp
+} else if has_grass=1
+{
+	draw_hat=1
+	sh_idol = Spr_Slm_Grass_Idol
+	sh_sleep = Spr_Slm_Grass_Sleep
+	sh_death = Spr_Slm_Grass_Stun
+	sh_jump = Spr_Slm_Grass_Move_Jump
+	sh_roll = Spr_Slm_Grass_Move_Roll
+	sh_roll_R = Spr_Slm_Grass_Move_Spin
+	sh_teleport = Spr_Slm_Grass_Tele
+	sh_slurp =Spr_Slm_Grass_Move_Slurp
 } else if has_crown=1
 {
 	draw_hat=1
