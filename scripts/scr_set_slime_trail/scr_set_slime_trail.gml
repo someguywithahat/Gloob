@@ -13,9 +13,7 @@ function scr_set_slime_trail(target, derX, derY, prev_derX, prev_derY, entering,
 	var move_angle = abs(derX + derY) mod 2
 	var prev_move_angle = abs(prev_derX + prev_derY) mod 2
 	
-	//show_debug_message(string(derX) + " " + string(derY)+ " move_angle " + string(move_angle)+ " prev_move_angle: " + string(prev_move_angle))
-	//show_debug_message(" prev_derX " + string(prev_derX)+ " prev_derY: " + string(prev_derY)+ " derX " + string(derX)+ " derY: " + string(derY))
-	
+
 	if move_angle=0 and prev_derX=0 and prev_derY=0
 	{
 		//show_debug_message("Not updating trail.  Sprite is jumping")
@@ -141,12 +139,7 @@ function scr_finish_trail_anim(target){
 }
 
 
-		//if derX<>0 and derY=0
-		//{
-		//	next_inst.image_angle=90
-		//	next_inst.y+=controller.spacing
-		//}
-		//else next_inst.image_angle=0
+
 function scr_rotate_sprite(target, rotate_amount){		
 	var controller = global.controller;
 	var spacing = controller.spacing
