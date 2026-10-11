@@ -61,9 +61,12 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 	//spawns players
 	for (var i = 0; i < number_of_players; i++)
 	{
-		var gloop_x = irandom_range(1,x_count-2);
-		var gloop_y = irandom_range(1,y_count-2);
-		
+		var spawn_cell = scr_find_free_cell(grid_array, false)
+		if spawn_cell=noone
+			break
+		var gloop_x = spawn_cell.grid_x;
+		var gloop_y = spawn_cell.grid_y;
+
         var xx = gloop_x * spacing;
         var yy = gloop_y * spacing;		
 		var gloop_color_index = controller.player_color[i]
@@ -104,19 +107,19 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 	//add powerups
 	for (var i = 0; i < number_of_powerups; i++)
 	{
-		var powerup_x = irandom_range(1,x_count-2);
-		var powerup_y = irandom_range(1,y_count-2);
-		var gridInst = grid_array[powerup_x,powerup_y]
+		var gridInst = scr_find_free_cell(grid_array, true)
+		if gridInst=noone
+			break
 		gridInst.has_powerUP=irandom_range(0,8)
 	}
-	
-		
+
+
 	//add obsticals
 	for (var i = 0; i < number_of_obstacles; i++)
 	{
-		var powerup_x = irandom_range(1,x_count-2);
-		var powerup_y = irandom_range(1,y_count-2);
-		var gridInst = grid_array[powerup_x,powerup_y]
+		var gridInst = scr_find_free_cell(grid_array, false)
+		if gridInst=noone
+			break
 		gridInst.activeNumber=0
 		gridInst.obs=1
 		gridInst.sprite_index=Spr_Obs_1x1
@@ -124,11 +127,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 		
 	}
 	
-	//for (var i = 0; i<7-number_of_players;i++)
-	//{
-	//	//instance_create_layer(70+irandom_range(1,10), 600+irandom_range(1,10), "Instances", obj_unusedGloop);
-		
-	//}
+
 	
 	var unused=noone
 	for (var i=0;i<8;i++)
@@ -140,7 +139,6 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 			unused.gloop_color_index=i
 			show_debug_message("Color found: " + string(i))
 		}
-		//show_debug_message("Color found: " + string(i))
 	}
 		
 
@@ -152,48 +150,7 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 
 
 
-/* TODO - Loop through the code to prevent objects from spawning on eachother.
-2 examples of ways to do this:
 
-----------------------------------------
-
-var max_i = array_length(grid_array);
-var max_j = array_length(grid_array[0]);
-
-repeat (1000) { // safety loop to prevent infinite searching
-    var i = irandom(max_i - 1);
-    var j = irandom(max_j - 1);
-    if (grid_array[i][j] != 1) {
-        show_debug_message("Found free cell: " + string(i) + "," + string(j));
-        break; // stop when found
-    }
-}
-
-----------------------------------------
-
-var available = [];
-for (var i = 0; i < array_length(grid_array); i++) {
-    for (var j = 0; j < array_length(grid_array[i]); j++) {
-        if (grid_array[i][j] != 1) {
-            array_push(available, [i, j]);
-        }
-    }
-}
-
-if (array_length(available) > 0) {
-    var choice = choose(available);
-    var i = choice[0];
-    var j = choice[1];
-    show_debug_message("Found free cell: " + string(i) + "," + string(j));
-}
-
-----------------------------------------
-
-
-
-
-
-*/
 
 
 function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
@@ -267,38 +224,60 @@ function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
 
 function scr_setup_add_pu()
 {
-	var grid_arrays = global.controller.grid_refs
-	var max_i = array_length(grid_arrays);
-	var max_j = array_length(grid_arrays[0]);
-	var placement_fail=0
-	
-	var i = 0
-	var j = 0
-
-	repeat (10) 
-	{
-		placement_fail=0
-	    i = irandom_range(1,max_i-1);
-	    j = irandom_range(1,max_j-1);
-		
-		var gridNum = grid_arrays[i][j]
-		if (gridNum.activeNumber=1 and gridNum.wall=0 and gridNum.has_powerUP=-1) {
-			show_debug_message("Found free cell: " + string(i) + "," + string(j));
-		}
-		else{
-			placement_fail=1
-			show_debug_message("Cell full at: " + string(i) + "," + string(j));
-		}
-		
-		if placement_fail=0
-			break
-	}	
-	
-	if placement_fail>0
+	var gridNum = scr_find_free_cell(global.controller.grid_refs, true)
+	if gridNum=noone
 		return
-	
-	var gridNum = grid_arrays[i][j]
-	gridNum.has_powerUP=irandom_range(0,8)	
+	gridNum.has_powerUP=irandom_range(0,8)
+}
+
+
+/// @function scr_find_free_cell(grid_array, avoid_powerups)
+/// @description Picks a random empty grid space: not a wall, obstacle, player, used space or powerup.
+/// @param avoid_powerups - true to also skip spaces touching a powerup (including diagonals)
+/// @returns the obj_gridNumber instance, or noone if the board is full
+function scr_find_free_cell(grid_array, avoid_powerups)
+{
+	var max_i = array_length(grid_array);
+	var max_j = array_length(grid_array[0]);
+	var available = [];
+
+	for (var i = 0; i < max_i; i++)
+	{
+		for (var j = 0; j < max_j; j++)
+		{
+			var gridNum = grid_array[i][j]
+			if gridNum.wall<>0 or gridNum.obs<>0 or gridNum.activeNumber<>1 or gridNum.has_powerUP<>-1
+				continue
+
+			//No player standing here (activeNumber covers this at setup, this covers a refreshed grid)
+			var has_player = false
+			with(obj_gloop)
+				if grid_x=i and grid_y=j
+					has_player = true
+			if has_player
+				continue
+
+			if avoid_powerups
+			{
+				var next_to_powerup = false
+				for (var ii = max(i-1,0); ii <= min(i+1,max_i-1); ii++)
+					for (var jj = max(j-1,0); jj <= min(j+1,max_j-1); jj++)
+						if grid_array[ii][jj].has_powerUP<>-1
+							next_to_powerup = true
+				if next_to_powerup
+					continue
+			}
+
+			array_push(available, gridNum)
+		}
+	}
+
+	if array_length(available)=0
+	{
+		show_debug_message("scr_find_free_cell: no free space found")
+		return noone
+	}
+	return available[irandom(array_length(available)-1)]
 }
 
 
@@ -322,7 +301,7 @@ function scr_refresh_grid(grid_arrays)
 				gridNum.sprite_index=Numbers
 				gridNum.image_index = gridNum.my_number - 1
 				gridNum.image_speed=0
-				gridNum.has_powerUp=-1
+				//gridNum.has_powerUp=-1
 				gridNum.rotate=0
 				gridNum.rot_x=0
 				gridNum.rot_y=0
@@ -334,10 +313,8 @@ function scr_refresh_grid(grid_arrays)
 				gridNum.trail_custom=0
 				gridNum.trail_angle=0
 				gridNum.trail_xscale=1
-				//show_debug_message("Am I refreshing grid?");
 				
 			}		
-			//show_debug_message("Wall: " + string(gridNum.wall) + " obs: " + string(gridNum.obs))
         }
 
     }
