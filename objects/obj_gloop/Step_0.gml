@@ -186,7 +186,13 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=global.BLUE or powerUp2=globa
 	isteleporting=1
 	ismoving=1
 	sprite_index=s_teleport
-	image_index=0	
+	image_index=0
+
+	//Clear the move options around the old position.  New ones show up after the teleport finishes
+	with (obj_gridNumber)
+	{
+	    highlighted=0
+	}
 }
 
 
@@ -196,8 +202,9 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=global.BLUE or powerUp2=globa
 
 
 
-if ismoving=1 {
-	
+//Teleporting is handled by the teleport animation in the Draw event, not by grid movement
+if ismoving=1 and isteleporting=0 {
+
 	var step_size = 1
 	if is_hopping
 		step_size = 2
@@ -472,7 +479,9 @@ if ismoving=1 {
 				isrolling=0
 				isslurp=0
 				has_targeting_cursor=0
-				scr_end_turn()				
+				derX=0
+				derY=0
+				scr_end_turn()
 			}
 		}
 	}
