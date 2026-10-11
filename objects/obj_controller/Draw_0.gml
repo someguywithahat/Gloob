@@ -46,9 +46,9 @@ if room == rm_gameScreen{
 
 	if game_over_status=20
 	{
-		scr_draw_sign(1120,310,200,60,2,0,2,4)
-		clicked_restart=scr_draw_menu_item(1150,325,"Restart",clicked_restart)	
-		clicked_main_menu=scr_draw_menu_item(1150,355,"Main Menu",clicked_main_menu)	
+		scr_draw_sign(5,460,180,90,2,0,2,4)
+		clicked_restart=scr_draw_menu_item(35,485,"Restart",clicked_restart)	
+		clicked_main_menu=scr_draw_menu_item(35,515,"Main Menu",clicked_main_menu)	
 		
 	}
 	
