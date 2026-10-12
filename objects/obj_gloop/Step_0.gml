@@ -206,6 +206,25 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=global.BLUE or powerUp2=globa
 	}
 }
 
+//Leaf powerup: Enter sends bushes out in 4 directions that turn trails and obstacles back into numbers
+if (keyboard_check_pressed(vk_enter) and (powerUp1=global.GREEN or powerUp2=global.GREEN or powerUp3=global.GREEN) and ismoving=0
+	and !instance_exists(obj_effect_grass_burst)) {
+
+	if powerUp3=global.GREEN
+		powerUp3=-1
+	else if powerUp2=global.GREEN
+		powerUp2=-1
+	else if powerUp1=global.GREEN
+		powerUp1=-1
+	//Grass hat stays on only if there's another leaf powerup left
+	has_grass = (powerUp1=global.GREEN or powerUp2=global.GREEN or powerUp3=global.GREEN)
+
+	var burst = instance_create_layer(x, y, "Instances", obj_effect_grass_burst)
+	burst.origin_grid_x=grid_x
+	burst.origin_grid_y=grid_y
+	audio_play_sound(snd_effect_leaf_crunch, 1, false)
+}
+
 
 
 

@@ -244,27 +244,72 @@ function scr_remove_obstacle(gridNum)
 	with(obj_gridNumber)
 	{
 		if obs=1 and (id=owner or obs_owner=owner)
+			scr_reset_grid_space(id)
+	}
+}
+
+
+/// @function scr_reset_grid_space(gridNum)
+/// @description Turns a used or blocked space back into a fresh number, clearing any trail, obstacle and flowers on it
+function scr_reset_grid_space(gridNum)
+{
+	with(gridNum)
+	{
+		obs=0
+		obs_owner=noone
+		activeNumber=1
+		my_number = scr_get_weighted_grid_number()
+		sprite_index=Numbers
+		image_index = my_number - 1
+		image_speed=0
+		depth=original_depth
+		gloop_color_index=5
+		highlighted=0
+		rotate=0
+		enterX=0
+		enterY=0
+		exitX=0
+		exitY=0
+		trail_animating=0
+		trail_custom=0
+		trail_angle=0
+		trail_xscale=1
+
+		//Flowers that grew on this space
+		var left = x
+		var top = y
+		var size = global.controller.spacing
+		with(obj_gridFlower)
 		{
-			obs=0
-			obs_owner=noone
-			activeNumber=1
-			my_number = scr_get_weighted_grid_number()
-			sprite_index=Numbers
-			image_index = my_number - 1
-			image_speed=0
-			depth=original_depth
-			gloop_color_index=5
-			highlighted=0
-			rotate=0
-			enterX=0
-			enterY=0
-			exitX=0
-			exitY=0
-			trail_animating=0
-			trail_custom=0
-			trail_angle=0
-			trail_xscale=1
+			if x>=left and x<left+size and y>=top and y<top+size
+				instance_destroy()
 		}
+	}
+}
+
+
+/// @function scr_grass_regrow_space(gridNum)
+/// @description Leaf powerup: a bush touched this space.  Trails and obstacles turn back into numbers
+function scr_grass_regrow_space(gridNum)
+{
+	if gridNum.wall=1
+		return;
+
+	if gridNum.obs=1
+	{
+		scr_remove_obstacle(gridNum)
+		return;
+	}
+
+	if gridNum.activeNumber=0
+	{
+		//Leave the space a slime is sitting on alone
+		var has_slime = false
+		with(obj_gloop)
+			if grid_x=gridNum.grid_x and grid_y=gridNum.grid_y
+				has_slime = true
+		if !has_slime
+			scr_reset_grid_space(gridNum)
 	}
 }
 
