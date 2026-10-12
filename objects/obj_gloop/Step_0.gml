@@ -85,7 +85,12 @@ if (ismoving=0)
 				{
 					targeting.grid_x=movement_array[a].grid_x
 					targeting.grid_y=movement_array[a].grid_y
-					if (mouse_check_button_pressed(mb_left) and ismoving=0)
+					//A click on a bubble pops it instead of moving
+					var clicked_bubble = false
+					with(obj_effect_bubble)
+						if blocks_click()
+							clicked_bubble = true
+					if (mouse_check_button_pressed(mb_left) and ismoving=0 and !clicked_bubble)
 					{
 						if movement_array[a].grid_x<grid_x
 							derX=-1
@@ -376,7 +381,8 @@ if ismoving=1 and isteleporting=0 {
 				audio_play_sound(snd_yawn, 1, false);
 			}
 			else if next_inst.has_powerUP=global.WHITE{
-				var fairy = instance_create_layer(x+16, y, "Instances", obj_power_bubble);
+				var bubble = instance_create_layer(x+16, y+16, "Instances", obj_effect_bubble);
+				bubble.owner=id
 				audio_play_sound(snd_slm_chomp, 1, false);
 			}
 			else if next_inst.has_powerUP=global.RAINBOW{
