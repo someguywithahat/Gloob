@@ -11,7 +11,7 @@ path draws
 JO
 make fire
 fix sings / wood
-accessories - fairy, glow
+accessories - fairy, glow, bow tie
 Color specific accessories
 	red - fire
 	orange - 
