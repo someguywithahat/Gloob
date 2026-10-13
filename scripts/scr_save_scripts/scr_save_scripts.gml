@@ -45,6 +45,34 @@ ini_close();
 }
 
 
+/// Pause menu options: volumes and default slime speed
+function scr_save_options(){
+	ini_open("save.ini");
+	ini_write_real("Options", "master_volume", global.master_volume);
+	ini_write_real("Options", "music_volume", global.music_volume);
+	ini_write_real("Options", "sfx_volume", global.sfx_volume);
+	ini_write_real("Options", "default_speed", global.controller.slime_speed);
+	ini_close();
+}
+
+function scr_load_options(){
+	ini_open("save.ini");
+	global.master_volume = ini_read_real("Options", "master_volume", 1);
+	global.music_volume = ini_read_real("Options", "music_volume", 1);
+	global.sfx_volume = ini_read_real("Options", "sfx_volume", 1);
+	global.controller.slime_speed = ini_read_real("Options", "default_speed", global.controller.slime_speed);
+	ini_close();
+}
+
+/// Applies the volume settings.
+/// Music (snd_track1, snd_track2) is in audiogroup_music.  Every other sound is in audiogroup_default and counts as SFX
+function scr_apply_audio(){
+	audio_master_gain(global.master_volume);
+	audio_group_set_gain(audiogroup_music, global.music_volume, 0);
+	audio_group_set_gain(audiogroup_default, global.sfx_volume, 0);
+}
+
+
 function scr_load_settings(){
 	var controller = global.controller;
 

@@ -1,3 +1,9 @@
+//Paused: just the frozen game and the pause menu
+if isPaused
+{
+	scr_pause_draw()
+	exit
+}
 
 
 if room == rm_gameScreen{
@@ -73,35 +79,6 @@ if room== rm_titleScreen
 	clicked_debugRoom=scr_draw_menu_item(1,1,"Debug Room",clicked_debugRoom)
 	clicked_debugRoom2=scr_draw_menu_item(300,1,"Debug Room2",clicked_debugRoom2)
 	clicked_characterSelect=scr_draw_menu_item(1100,740,"Character Select",clicked_characterSelect)
-}
-
-if isPaused=1
-{
-	scr_draw_sign(200,pauseMenuY,1000,500,3,10,0,4)	
-	
-	if pauseMenuY<pauseMenuyMax
-		pauseMenuY=pauseMenuY+50
-	else 
-	{
-		scr_draw_menu_item(270,200,"Resume",noone)
-		scr_draw_menu_item(270,250,"Return To Main Menu",noone)
-		scr_draw_menu_item(270,300,"Quit Game",noone)
-		
-		
-		scr_draw_menu_item(270,450,"BGM",noone)
-		scr_draw_menu_item(270,500,"SFX",noone)
-	}
-	
-}
-if isPaused=-1
-{
-	if pauseMenuY>pauseMenuyMin
-		pauseMenuY=pauseMenuY-50
-	else
-		isPaused=0
-	scr_draw_sign(200,pauseMenuY,1000,500,3,10,0,4)	
-	
-	
 }
 
 if isNight<>0

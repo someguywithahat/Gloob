@@ -200,6 +200,7 @@
     {"id":{"name":"scr_get_jump_sprite","path":"scripts/scr_get_jump_sprite/scr_get_jump_sprite.yy",},},
     {"id":{"name":"scr_get_weighted_grid_number","path":"scripts/scr_get_weighted_grid_number/scr_get_weighted_grid_number.yy",},},
     {"id":{"name":"scr_gloop_strings","path":"scripts/scr_gloop_strings/scr_gloop_strings.yy",},},
+    {"id":{"name":"scr_pause_menu","path":"scripts/scr_pause_menu/scr_pause_menu.yy",},},
     {"id":{"name":"scr_powerup_update","path":"scripts/scr_powerup_update/scr_powerup_update.yy",},},
     {"id":{"name":"scr_pu_teleport_random","path":"scripts/scr_pu_teleport_random/scr_pu_teleport_random.yy",},},
     {"id":{"name":"scr_resetGame","path":"scripts/scr_resetGame/scr_resetGame.yy",},},
