@@ -1,10 +1,11 @@
 global.controller = id;
 global.weather=0
+global.fnt_Gloop = font_add_sprite(spr_gloopFontOutline, ord("!"), true, 5);
 scr_set_GLOBAL_values()
 
-
-audio_group_set_gain(audiogroup_music, global.music_volume, 0);
-audio_group_set_gain(audiogroup_sfx, global.sfx_volume, 0);
+//Music is in its own audio group so it can have its own volume.  It loads in the background
+audio_group_load(audiogroup_music)
+music_group_ready=false
 
 //var high_score ={
 //	gname: "GLP",
@@ -35,6 +36,10 @@ slime_speed=2
 MINSPEED = .5
 MAXSPEED = 4
 
+//Saved volumes and default speed from the pause menu
+scr_load_options()
+scr_apply_audio()
+
 // Size of grid
 cols = 26;
 rows = 26;
@@ -44,9 +49,13 @@ grid_size=(cols-2)*(rows-2)
 season_goal_percentage=global.controller_default_season_goal_percentage
 season_goal = round(grid_size*season_goal_percentage)
 
+//Pause menu (Escape).  See scr_pause_menu
 isPaused=0
+pause_snapshot=-1 //Picture of the game taken when pausing.  Drawn behind the menu
+pause_dragging="" //Name of the slider being dragged
+pause_music_frame=0 //Spr_Slm_music animation on the pause menu
 pauseMenuY=-750
-pauseMenuyMax=100
+pauseMenuyMax=134
 pauseMenuyMin=-750
 
 // Starting position
@@ -64,8 +73,11 @@ persistent=true
 depth=-20000
 //layer_create(-20001, "AboveEverything");
 
-music_playing = 0;
+//Starting track.  audiogroup_music is still loading here, so the Step event starts it once it's ready
+music_playing = 3;
 global.music_current=noone
+start_music=snd_track2
+
 
 target_obj=noone
 
@@ -97,7 +109,7 @@ settings_NumberOfPowerUps=4
 settings_MaxNumberOfPowerUps=3
 settings_obstacles=0
 
-global.fnt_Gloop = font_add_sprite(spr_gloopFontOutline, ord("!"), true, 5);
+
 
 PU_SPRITES = array_create(10,noone)
 PU_SPRITES[global.YELLOW]=Spr_Pu_Hat_Sign

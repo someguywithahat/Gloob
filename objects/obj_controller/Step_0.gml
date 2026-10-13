@@ -1,3 +1,27 @@
+//Music loads in the background.  Apply the saved volume once it's ready
+if !music_group_ready and audio_group_is_loaded(audiogroup_music)
+{
+	music_group_ready=true
+	scr_apply_audio()
+	if start_music<>noone
+		global.music_current=audio_play_sound(start_music, 1, true)
+}
+
+//Escape opens/closes the pause menu (scr_pause_menu)
+if keyboard_check_pressed(vk_escape)
+{
+	if isPaused
+		scr_pause_close()
+	else
+		scr_pause_open()
+}
+if (keyboard_check_pressed(vk_f11)) {
+    window_set_fullscreen(!window_get_fullscreen());
+}
+//Everything else waits while paused.  The menu itself runs in the Draw event
+if isPaused
+	exit
+
 //Disable most controls while waiting on user input
 if game_over_status>0
 {
@@ -90,13 +114,6 @@ if (keyboard_check_pressed(ord("M")))and disable_game_inputs=0 {
 
 
 
-if (keyboard_check_pressed(vk_escape)) {
-    game_end();
-}
-
-if (keyboard_check_pressed(vk_f11)) {
-    window_set_fullscreen(!window_get_fullscreen());
-}
 
 ///*
 if grid_refs == noone and room == rm_gameScreen{
@@ -249,36 +266,3 @@ if clicked_end_day=1
 		isNight=1
 	}
 }
-
-
-if (keyboard_check_pressed(ord("P")) and room = rm_gameScreen)and disable_game_inputs=0 {
-//if (keyboard_check_pressed(ord("P"))) {
-	if isPaused=0
-	{
-		isPaused=1
-		//grid_refs.visible=false
-		// Make them all invisible
-		for (var i = 0; i < array_length(grid_refs); i++) {
-		    for (var j = 0; j < array_length(grid_refs[i]); j++) {
-		        var inst = grid_refs[i][j];
-		        if (instance_exists(inst)) {
-		            inst.visible = false;
-		        }
-		    }
-		}
-	}
-	else
-	{
-		isPaused=-1
-		// Make them all visible
-		for (var i = 0; i < array_length(grid_refs); i++) {
-		    for (var j = 0; j < array_length(grid_refs[i]); j++) {
-		        var inst = grid_refs[i][j];
-		        if (instance_exists(inst)) {
-		            inst.visible = true;
-		        }
-		    }
-		}
-	}
-}
-

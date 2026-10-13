@@ -8,6 +8,8 @@ function scr_set_GLOBAL_values(){
 	global.SPRING = 2
 	global.SUMMER = 0
 	
+	//Volumes are 0 to 1.  Set from the pause menu and saved by scr_save_options
+	global.master_volume=1
 	global.music_volume=1
 	global.sfx_volume=1
 	
