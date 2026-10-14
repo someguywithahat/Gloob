@@ -182,6 +182,7 @@
     {"id":{"name":"rm_titleScreen","path":"rooms/rm_titleScreen/rm_titleScreen.yy",},},
     {"id":{"name":"rm_town","path":"rooms/rm_town/rm_town.yy",},},
     {"id":{"name":"SMPL_Options","path":"rooms/SMPL_Options/SMPL_Options.yy",},},
+    {"id":{"name":"SMPL_Play_2","path":"rooms/SMPL_Play_2/SMPL_Play_2.yy",},},
     {"id":{"name":"SMPL_Play","path":"rooms/SMPL_Play/SMPL_Play.yy",},},
     {"id":{"name":"SMPL_Score","path":"rooms/SMPL_Score/SMPL_Score.yy",},},
     {"id":{"name":"SMPL_Title","path":"rooms/SMPL_Title/SMPL_Title.yy",},},
@@ -701,6 +702,7 @@
     {"roomId":{"name":"Fish","path":"rooms/Fish/Fish.yy",},},
     {"roomId":{"name":"rm_fishingTest","path":"rooms/rm_fishingTest/rm_fishingTest.yy",},},
     {"roomId":{"name":"rm_testRoomAnimations","path":"rooms/rm_testRoomAnimations/rm_testRoomAnimations.yy",},},
+    {"roomId":{"name":"SMPL_Play_2","path":"rooms/SMPL_Play_2/SMPL_Play_2.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
