@@ -1,0 +1,44 @@
+[ ] Red - mushroom - Jump
+ > better sound effect
+ > Mushroom bounce next to gloop, move to number to indicate it would be used
+ > Possible multiple uses if week
+
+[ ] Orange - Fish - Minigame token
+	>everything ever > start by getting a count going
+
+[X] Yellow - Hat - Bonk
+
+[ ] Green - Leaves - clear grid
+ > Update slime end paths
+ 
+[ ] Blue - Fairy - teleport
+ Fly above goo
+ Sound Effect
+
+[ ] Purple - Crown - Split
+ > wrong facing path
+ > new player / long sign
+ > teleport in
+
+[ ] Black - Night - Next Season
+ > more obvious (firerfly to score)
+ > Darker night
+
+[ ] White - Bubble - pop
+ > poping animation
+ > max size (?)
+ > Pop sound
+ > hit box size (?)
+ > smoother tracking (0-7 appear, 8-34 Float, 35-47 Pop)
+ 
+
+[ ] Rainbow - Super star
+ > Update slime end paths
+ > Duration indicator
+ > Speedy music (?)
+
+GENERAL
+> Powerups add in each season
+> give aaway powerups
+> non sign / spent powerups in gloop pen
+> tutorial descriptions
