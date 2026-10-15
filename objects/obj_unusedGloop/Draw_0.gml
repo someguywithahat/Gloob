@@ -46,6 +46,18 @@ if sprite_index=Spr_Slm_Snowball
 	draw_x-=8
 	draw_y-=8
 }
+//Idle animations are drawn on bigger sprites.  Shift them so the slime lines up, and flip them if they'd run off the right side of the room
+var xscale = 1
+if array_length(look)>2
+{
+	draw_x += look[2]
+	draw_y += look[3]
+	if look[4] and x+sprite_get_width(sprite_index)>room_width
+	{
+		xscale = -1
+		draw_x = x+31-look[2]
+	}
+}
 //Spin around the slime's center while launched (sprite origin is the top left corner)
 if state=UG_STATE.LAUNCHED and rotation<>0
 {
@@ -54,7 +66,7 @@ if state=UG_STATE.LAUNCHED and rotation<>0
 	draw_y += half - (-half*dsin(rotation) + half*dcos(rotation))
 }
 if image_alpha>0
-	draw_sprite_ext(sprite_index,image_index,draw_x,draw_y,1,1,rotation,c_white,image_alpha)
+	draw_sprite_ext(sprite_index,image_index,draw_x,draw_y,xscale,1,rotation,c_white,image_alpha)
 
 // End shader
 shader_reset();

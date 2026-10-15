@@ -33,7 +33,15 @@ enum UG_STATE {
 	SNOW_SHAKE, //Shaking the snow off, then doing next_state
 	GO_HOME,    //Day is over: hopping to the house
 	HOME,       //Made it to the house: fading out
-	GAME_OVER   //Game lost: sad until fed
+	GAME_OVER,  //Game lost: sad until fed
+
+	//Idle animations.  Like SLEEP these are base states a slime just hangs out in.  Each one plays all the way
+	//through before the slime goes back to SLEEP.  See get_idle_look() for the sprites
+	IDLE_ANGLE,      //Slm_Grn_angle: zips around the corners of a square
+	IDLE_JUMP_UP,    //Slm_Grn_Move_Up_Jump: a few little hops in place
+	IDLE_JUMP,       //Slm_Grn_Jump: one big jump
+	IDLE_HOP_JIGGLE, //Slm_Grn_hop_jiggle: hops to the side and back
+	IDLE_MUSIC       //Spr_Slm_music: bobs along to music in headphones
 }
 
 //Frames in Slm_All_Base_Expressions
@@ -50,6 +58,9 @@ enum UG_FACE {
 state=UG_STATE.SLEEP
 state_time=0 //Steps spent in the current state
 sleep_time=0 //Steps asleep.  Activities can require a minimum nap first
+rest_time=0 //Steps asleep since the last idle animation.  Idle animations wait a bit between each other
+anim_frame=0 //Idle animations: frames played so far, counting every loop
+anim_loops=1 //Idle animations: how many times this one plays before the slime settles back down
 
 //Moods show on top of whatever the slime is doing
 happy_timer=0
@@ -92,6 +103,8 @@ next_state=UG_STATE.SLEEP //What to do after shaking off the snow
 		odds      -- chance per step of starting
 		min_sleep -- steps it has to nap first
 		allowed   -- extra conditions, like the season
+		idle_anim -- true for the idle animations.  These also need min_rest steps since the last one, and never
+		             start while the slime is napping in a leaf pile
 */
 wake_activities = [
 	{
@@ -99,6 +112,7 @@ wake_activities = [
 		odds: 4/100000,
 		min_sleep: 1000,
 		state: UG_STATE.CHASE,
+		idle_anim: false,
 		allowed: function() { return true }
 	},
 	{
@@ -106,6 +120,7 @@ wake_activities = [
 		odds: 4/10000,
 		min_sleep: 300,
 		state: UG_STATE.LEAF_WALK,
+		idle_anim: false,
 		allowed: function() { return global.weather=global.FALL and instance_exists(obj_effectLeafPile) }
 	},
 	{
@@ -113,9 +128,77 @@ wake_activities = [
 		odds: 1/300,
 		min_sleep: 900,
 		state: UG_STATE.SNOWED,
+		idle_anim: false,
 		allowed: function() { return global.weather=global.WINTER }
+	},
+
+	//Idle animations
+	{
+		name: "angle",
+		odds: 1/6000,
+		min_sleep: 180,
+		min_rest: 120,
+		state: UG_STATE.IDLE_ANGLE,
+		idle_anim: true,
+		allowed: function() { return true }
+	},
+	{
+		name: "jump up",
+		odds: 1/6000,
+		min_sleep: 180,
+		min_rest: 120,
+		state: UG_STATE.IDLE_JUMP_UP,
+		idle_anim: true,
+		allowed: function() { return true }
+	},
+	{
+		name: "jump",
+		odds: 1/6000,
+		min_sleep: 180,
+		min_rest: 120,
+		state: UG_STATE.IDLE_JUMP,
+		idle_anim: true,
+		allowed: function() { return true }
+	},
+	{
+		name: "hop jiggle",
+		odds: 1/6000,
+		min_sleep: 180,
+		min_rest: 120,
+		state: UG_STATE.IDLE_HOP_JIGGLE,
+		idle_anim: true,
+		allowed: function() { return true }
+	},
+	{
+		name: "music",
+		odds: 1/6000,
+		min_sleep: 180,
+		min_rest: 120,
+		state: UG_STATE.IDLE_MUSIC,
+		idle_anim: true,
+		allowed: function() { return true }
 	}
 ]
+
+
+/*
+	How each idle animation is drawn.  Returns undefined for states that aren't idle animations.
+		sprite     -- the animation
+		off_x/off_y -- where to draw it relative to the slime so its resting pose lines up with Spr_Slm_Sleep
+		               (these sprites are bigger than 32x32 and have the slime somewhere inside)
+*/
+get_idle_look = function(for_state)
+{
+	switch(for_state)
+	{
+		case UG_STATE.IDLE_ANGLE:      return { sprite: Slm_Grn_angle,         off_x: 0,  off_y: -32 }
+		case UG_STATE.IDLE_JUMP_UP:    return { sprite: Slm_Grn_Move_Up_Jump,  off_x: 0,  off_y: 0 }
+		case UG_STATE.IDLE_JUMP:       return { sprite: Slm_Grn_Jump,          off_x: 0,  off_y: -64 }
+		case UG_STATE.IDLE_HOP_JIGGLE: return { sprite: Slm_Grn_hop_jiggle,    off_x: 0,  off_y: 0 }
+		case UG_STATE.IDLE_MUSIC:      return { sprite: Spr_Slm_music,         off_x: -6, off_y: 0 }
+	}
+	return undefined
+}
 
 
 /// Switch to a new state and do any setup it needs
@@ -131,6 +214,16 @@ set_state = function(new_state)
 	{
 		case UG_STATE.SLEEP:
 			sleep_time=0
+			rest_time=0
+			break
+
+		case UG_STATE.IDLE_ANGLE:
+		case UG_STATE.IDLE_JUMP_UP:
+		case UG_STATE.IDLE_JUMP:
+		case UG_STATE.IDLE_HOP_JIGGLE:
+		case UG_STATE.IDLE_MUSIC:
+			anim_frame=0
+			anim_loops=irandom_range(2, 5)
 			break
 
 		case UG_STATE.LEAF_WALK:
@@ -172,6 +265,7 @@ step_state = function()
 	{
 		case UG_STATE.SLEEP:
 			sleep_time++
+			rest_time++
 
 			//Annoy sleeping slime
 			if mouse_check_button_pressed(mb_left) and position_meeting(mouse_x, mouse_y, id)
@@ -191,6 +285,23 @@ step_state = function()
 				set_state(activity_state)
 			break
 
+		case UG_STATE.IDLE_ANGLE:
+		case UG_STATE.IDLE_JUMP_UP:
+		case UG_STATE.IDLE_JUMP:
+		case UG_STATE.IDLE_HOP_JIGGLE:
+		case UG_STATE.IDLE_MUSIC:
+			//Still counts as napping time, but nothing new starts until the animation has played all the way through
+			sleep_time++
+			var idle = get_idle_look(state)
+			anim_frame += sprite_get_speed(idle.sprite) / game_get_speed(gamespeed_fps)
+			if anim_frame >= sprite_get_number(idle.sprite)*anim_loops
+			{
+				var nap_so_far = sleep_time
+				set_state(UG_STATE.SLEEP)
+				sleep_time = nap_so_far
+			}
+			break
+
 		case UG_STATE.SNOWED:
 			sleep_time++
 			//Snow piles on, then stays on the last frame
@@ -204,7 +315,7 @@ step_state = function()
 			}
 
 			//Waking up: shake the snow off first
-			var wake_state = pick_wake_activity()
+			var wake_state = pick_wake_activity(false)
 			if wake_state<>-1 and wake_state<>UG_STATE.SNOWED
 				shake_off_snow(wake_state)
 			break
@@ -329,11 +440,13 @@ step_state = function()
 
 
 /// Rolls the dice on each wake activity.  Returns the state to start, or -1 to keep napping
-pick_wake_activity = function()
+pick_wake_activity = function(include_idle = true)
 {
 	for (var i = 0; i < array_length(wake_activities); i++)
 	{
 		var activity = wake_activities[i]
+		if activity.idle_anim and (!include_idle or in_leaf_pile<>noone or rest_time<activity.min_rest)
+			continue
 		if sleep_time>activity.min_sleep and activity.allowed() and random(1)<activity.odds
 			return activity.state
 	}
@@ -379,6 +492,7 @@ step_moods = function()
 
 
 /// Which sprite to show.  Returns [sprite, frame].  A frame of -1 means play the animation
+/// Idle animations also return [sprite, frame, off_x, off_y, wide] so Draw can line them up (wide = sprite sticks out to the right)
 get_look = function()
 {
 	//States with their own face
@@ -398,6 +512,10 @@ get_look = function()
 	if angry_timer>60        return [Slm_All_Base_Expressions, UG_FACE.ANGRY]
 	if angry_timer>0         return [Slm_All_Base_Expressions, UG_FACE.ANNOYED]
 	if state=UG_STATE.SAD    return [Slm_All_Base_Expressions, UG_FACE.SAD]
+
+	var idle = get_idle_look(state)
+	if idle<>undefined
+		return [idle.sprite, floor(anim_frame) mod sprite_get_number(idle.sprite), idle.off_x, idle.off_y, sprite_get_width(idle.sprite)>sprite_get_width(Spr_Slm_Sleep)]
 
 	if state=UG_STATE.SLEEP  return [Spr_Slm_Sleep, -1]
 	return [Spr_Slm_Move_Jump, -1]

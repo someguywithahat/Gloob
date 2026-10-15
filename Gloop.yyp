@@ -301,6 +301,7 @@
     {"id":{"name":"Slm_Blu_Roll_R","path":"sprites/Slm_Blu_Roll_R/Slm_Blu_Roll_R.yy",},},
     {"id":{"name":"Slm_Blu_Sleep","path":"sprites/Slm_Blu_Sleep/Slm_Blu_Sleep.yy",},},
     {"id":{"name":"Slm_Grn_angle","path":"sprites/Slm_Grn_angle/Slm_Grn_angle.yy",},},
+    {"id":{"name":"Slm_Grn_hop_jiggle","path":"sprites/Slm_Grn_hop_jiggle/Slm_Grn_hop_jiggle.yy",},},
     {"id":{"name":"Slm_Grn_hop","path":"sprites/Slm_Grn_hop/Slm_Grn_hop.yy",},},
     {"id":{"name":"Slm_Grn_Jump","path":"sprites/Slm_Grn_Jump/Slm_Grn_Jump.yy",},},
     {"id":{"name":"Slm_Grn_Move_Up_Jump","path":"sprites/Slm_Grn_Move_Up_Jump/Slm_Grn_Move_Up_Jump.yy",},},
