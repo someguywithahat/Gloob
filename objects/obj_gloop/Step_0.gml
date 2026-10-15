@@ -328,18 +328,23 @@ if ismoving=1 and isteleporting=0 {
 		next_inst.activeNumber=0
 		if next_inst.has_powerUP>=0
 		{
+			//Crown, bubble, night and fish are used immediately.  They don't take a powerup slot
+			var takes_slot = next_inst.has_powerUP<>global.PURPLE
+				and next_inst.has_powerUP<>global.WHITE
+				and next_inst.has_powerUP<>global.BLACK
+				and next_inst.has_powerUP<>global.ORANGE
 			var powerUpCheck=0
-			if powerUp1=-1 and next_inst.has_powerUP<>global.PURPLE
+			if takes_slot and powerUp1=-1
 			{
 				powerUp1=next_inst.has_powerUP
 				powerUpCheck=1
 			}
-			else if powerUp2=-1 and next_inst.has_powerUP<>global.PURPLE
+			else if takes_slot and powerUp2=-1
 			{
 				powerUp2=next_inst.has_powerUP
 				powerUpCheck=2
 			}
-			else if next_inst.has_powerUP<>global.PURPLE
+			else if takes_slot
 			{
 				powerUp3=next_inst.has_powerUP
 				powerUpCheck=3
