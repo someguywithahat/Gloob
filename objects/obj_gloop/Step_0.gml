@@ -209,6 +209,8 @@ if (keyboard_check_pressed(vk_space) and (powerUp1=global.BLUE or powerUp2=globa
 	{
 	    highlighted=0
 	}
+	var _snd = audio_play_sound(snd_flap, 1, false)
+	audio_sound_pitch(_snd, 0.75);
 }
 
 //Leaf powerup: Enter sends bushes out in 4 directions that turn trails and obstacles back into numbers
