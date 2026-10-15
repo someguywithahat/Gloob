@@ -33,6 +33,12 @@ if x+sprite_width>room_width
 if y+sprite_height>room_height
 	yy=abs(yy)*-1
 
+//Bounce off walls.  Check each axis on its own so the slime slides along a wall it hits from the side
+if place_meeting(x+xx, y, obj_gloopFishingWall)
+	xx*=-1
+if place_meeting(x, y+yy, obj_gloopFishingWall)
+	yy*=-1
+
 x+=xx
 y+=yy
 

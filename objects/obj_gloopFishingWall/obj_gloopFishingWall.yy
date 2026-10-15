@@ -32,5 +32,5 @@
     "path":"sprites/spr_fishing_wall/spr_fishing_wall.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }
