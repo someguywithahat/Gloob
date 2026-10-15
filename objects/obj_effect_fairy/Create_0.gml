@@ -1,5 +1,5 @@
 parent_gloop = noone
-
+depth=-2001
 xx=0
 yy=0
 
