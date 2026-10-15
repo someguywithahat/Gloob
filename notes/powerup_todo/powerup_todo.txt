@@ -11,9 +11,7 @@
 [ ] Green - Leaves - clear grid
  > Update slime end paths
  
-[ ] Blue - Fairy - teleport
- Fly above goo
- Sound Effect
+[x] Blue - Fairy - teleport
 
 [ ] Purple - Crown - Split
  > wrong facing path
