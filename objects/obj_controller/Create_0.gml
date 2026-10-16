@@ -1,7 +1,9 @@
 global.controller = id;
 global.weather=0
 global.fnt_Gloop = font_add_sprite(spr_gloopFontOutline, ord("!"), true, 5);
+global.fnt_Gloop_small = font_add_sprite(spr_gloopFont_Tiny, ord("!"), true, 2);
 scr_set_GLOBAL_values()
+scr_load_fishing_tickets()
 
 //Music is in its own audio group so it can have its own volume.  It loads in the background
 audio_group_load(audiogroup_music)

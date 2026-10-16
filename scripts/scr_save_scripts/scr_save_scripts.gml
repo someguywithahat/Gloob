@@ -45,6 +45,29 @@ ini_close();
 }
 
 
+/// Fishing tickets from the orange powerup.  Saved right away so they carry over between sessions
+function scr_load_fishing_tickets(){
+	ini_open("save.ini");
+	global.fishing_tickets = ini_read_real("Fishing", "tickets", 0);
+	ini_close();
+}
+
+function scr_add_fishing_tickets(amount){
+	global.fishing_tickets += amount
+	ini_open("save.ini");
+	ini_write_real("Fishing", "tickets", global.fishing_tickets);
+	ini_close();
+}
+
+/// For the fishing game: uses up one ticket.  Returns false if there aren't any
+function scr_spend_fishing_ticket(){
+	if global.fishing_tickets<=0
+		return false
+	scr_add_fishing_tickets(-1)
+	return true
+}
+
+
 /// Pause menu options: volumes and default slime speed
 function scr_save_options(){
 	ini_open("save.ini");

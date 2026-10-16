@@ -393,9 +393,14 @@ if ismoving=1 and isteleporting=0 {
 				audio_play_sound(snd_slm_chomp, 1, false);	
 			}
 			else if next_inst.has_powerUP=global.BLACK{
+				//One firefly per point.  Each one flies to the "left" counter and lowers it by 1 when it gets there
 				var nightTimePoints = round(controller.grid_size*0.05)
-				controller.season_goal-=nightTimePoints
-				gloop_score_obj.gloop_score+=nightTimePoints
+				for (var f = 0; f < nightTimePoints; f++)
+				{
+					var firefly = instance_create_layer(x+4, y+4, "Instances", obj_effect_night_firefly);
+					firefly.owner=id
+					firefly.home_delay=20 + f*3
+				}
 				audio_play_sound(snd_yawn, 1, false);
 			}
 			else if next_inst.has_powerUP=global.WHITE{
@@ -405,6 +410,11 @@ if ismoving=1 and isteleporting=0 {
 			}
 			else if next_inst.has_powerUP=global.RAINBOW{
 				scr_rainbow_start(id)
+				audio_play_sound(snd_slm_chomp, 1, false);
+			}
+			else if next_inst.has_powerUP=global.ORANGE{
+				//Fishing ticket to spend in the fishing game
+				scr_add_fishing_tickets(1)
 				audio_play_sound(snd_slm_chomp, 1, false);
 			}
 			else if next_inst.has_powerUP=global.RED{
