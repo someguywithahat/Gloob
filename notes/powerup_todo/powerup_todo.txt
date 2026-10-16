@@ -19,15 +19,15 @@
  > teleport in
 
 [ ] Black - Night - Next Season
- > more obvious (firerfly to score)
  > Darker night
+ > balancing, more points?
 
 [ ] White - Bubble - pop
  > poping animation
  > max size (?)
  > Pop sound
  > hit box size (?)
- > smoother tracking (0-7 appear, 8-34 Float, 35-47 Pop)
+ > smoother tracking (0-7 appear, 8-34 Float, 35-47 Pop) Tom - shorten pop to end on frame 38
  
 
 [ ] Rainbow - Super star
