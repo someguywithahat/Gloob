@@ -301,3 +301,90 @@ function scr_get_slime_trail(trail_type){
 	return trail_sprite
 		
 }
+
+
+
+/*
+	Rounding off cut trails.
+	Every trail space remembers the side the slime came in from (enterX/enterY) and left by (exitX/exitY).
+	Two spaces are joined when they point at each other.  When a space's trail is removed or replaced
+	(leaf powerup, rainbow, a crown slime starting from the space), call scr_trail_fix_neighbors on it.
+	Any neighbor that pointed at it but isn't joined anymore gets a rounded end.
+*/
+
+/// True if gridNum has a slime trail on it
+function scr_is_trail_space(gridNum){
+	return gridNum<>noone and gridNum.wall=0 and gridNum.obs=0 and gridNum.activeNumber=0
+}
+
+/// True if gridNum's trail goes out the (dx,dy) side
+function scr_trail_points(gridNum, dx, dy){
+	return (gridNum.enterX=dx and gridNum.enterY=dy) or (gridNum.exitX=dx and gridNum.exitY=dy)
+}
+
+/// Rounds off the trails next to gridNum that used to connect to it
+function scr_trail_fix_neighbors(gridNum){
+	var directions = [[0,-1], [0,1], [-1,0], [1,0]]
+	for (var i = 0; i < array_length(directions); i++)
+	{
+		var dx = directions[i][0]
+		var dy = directions[i][1]
+		var neighbor = scr_get_grid_id(gridNum.grid_x+dx, gridNum.grid_y+dy)
+		
+		//Only trails that point back at gridNum.  Skip ones a slime is sliding across right now
+		if !scr_is_trail_space(neighbor) or neighbor.trail_animating=1
+			continue;
+		var in_use = false
+		with(obj_gloop)
+			if ismoving=1 and current_grid_number=neighbor
+				in_use = true
+		if in_use
+			continue;
+		if !scr_trail_points(neighbor, -dx, -dy)
+			continue;
+		//Still joined
+		if scr_is_trail_space(gridNum) and scr_trail_points(gridNum, dx, dy)
+			continue;
+		
+		//Cut: forget that side and round off what's left
+		if neighbor.enterX=-dx and neighbor.enterY=-dy
+		{
+			neighbor.enterX=0
+			neighbor.enterY=0
+		}
+		if neighbor.exitX=-dx and neighbor.exitY=-dy
+		{
+			neighbor.exitX=0
+			neighbor.exitY=0
+		}
+		scr_trail_round_off(neighbor)
+	}
+}
+
+/// Redraws a trail that lost a connection.  One side left: Trl_Grn_End.  Nothing left: Trl_Grn_Spot_O
+function scr_trail_round_off(gridNum){
+	//Straight (not diagonal) sides still connected
+	var sides = []
+	if abs(gridNum.enterX)+abs(gridNum.enterY)=1
+		array_push(sides, [gridNum.enterX, gridNum.enterY])
+	if abs(gridNum.exitX)+abs(gridNum.exitY)=1
+		array_push(sides, [gridNum.exitX, gridNum.exitY])
+	
+	if array_length(sides)>=2
+		return;
+		
+	if array_length(sides)=1
+	{
+		//Trl_Grn_End opens at the bottom and is rounded at the top.  Point the rounded end away from the connected side
+		var away_x = -sides[0][0]
+		var away_y = -sides[0][1]
+		scr_start_trail_anim(gridNum, Trl_Grn_End, away_x, away_y, away_x, away_y, 0)
+	}
+	else
+	{
+		gridNum.sprite_index=Trl_Grn_Spot_O
+		gridNum.trail_custom=0
+	}
+	gridNum.image_index=0
+	gridNum.image_speed=1
+}

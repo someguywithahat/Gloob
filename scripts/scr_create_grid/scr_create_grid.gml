@@ -285,6 +285,9 @@ function scr_reset_grid_space(gridNum)
 				instance_destroy()
 		}
 	}
+
+	//Trails that ran into this space get rounded ends
+	scr_trail_fix_neighbors(gridNum)
 }
 
 

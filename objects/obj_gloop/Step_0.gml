@@ -125,6 +125,7 @@ if (ismoving=0)
 									powerUp2=-1
 								else if powerUp1=global.RED
 									powerUp1=-1
+								audio_play_sound(snd_boing, 1, false)
 							}
 						}
 					}
@@ -184,6 +185,16 @@ if (ismoving=0)
 			//Update the previous slime trail
 			current_grid_number.exitX=derX
 			current_grid_number.exitY=derY
+
+			//Starting fresh (crown slime, new day, after a teleport): this trail starts here.
+			//Another slime's trail that ran through this space gets cut and rounded off
+			if prev_derX=0 and prev_derY=0
+			{
+				current_grid_number.enterX=0
+				current_grid_number.enterY=0
+				scr_trail_fix_neighbors(current_grid_number)
+			}
+
 			//A hop leaves the starting trail as it is.  The slime jumps off from the center
 			if !is_hopping
 				scr_set_slime_trail(current_grid_number, derX, derY, prev_derX, prev_derY, 0, gloop_color_index)
@@ -396,6 +407,11 @@ if ismoving=1 and isteleporting=0 {
 				scr_rainbow_start(id)
 				audio_play_sound(snd_slm_chomp, 1, false);
 			}
+			else if next_inst.has_powerUP=global.RED{
+				var mushroom = instance_create_layer(x, y, "Instances", obj_effect_mushroom);
+				mushroom.parent_gloop=id
+				audio_play_sound(snd_slm_chomp, 1, false);
+			}
 			else 
 			{
 				audio_play_sound(snd_slm_chomp, 1, false);	
@@ -452,6 +468,15 @@ if ismoving=1 and isteleporting=0 {
 		if is_hopping
 		{
 			is_hopping=0
+			//The hop skipped a space, so the trail isn't joined to where it jumped from
+			next_inst.enterX=0
+			next_inst.enterY=0
+			var hop_from = scr_get_grid_id(grid_x-derX*2, grid_y-derY*2)
+			if hop_from<>noone and hop_from.exitX=derX and hop_from.exitY=derY
+			{
+				hop_from.exitX=0
+				hop_from.exitY=0
+			}
 			if abs((derX+derY) mod 2) = 1
 			{
 				if grid_x=target_x and grid_y=target_y
@@ -549,10 +574,17 @@ if ismoving=1 and isteleporting=0 {
 				has_targeting_cursor=0
 				derX=0
 				derY=0
+				//Stopped here, so the trail doesn't go on to the space it bonked into
+				current_grid_number.exitX=0
+				current_grid_number.exitY=0
 				scr_rainbow_end_move(id)
 				scr_end_turn()
 			}
 		}
+
+		//Rainbow slid over an old trail.  The trail it cut across gets rounded ends
+		if !is_new_space
+			scr_trail_fix_neighbors(current_grid_number)
 	}
 }
 
