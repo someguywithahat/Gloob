@@ -69,6 +69,7 @@ spacing = 32;
 //score_yy=20
 
 number_of_players = 1
+starting_number_of_players = 1 //Players at the start of the game, before any crown slimes
 current_player=0
 total_score=0
 persistent=true

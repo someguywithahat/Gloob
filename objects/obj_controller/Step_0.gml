@@ -117,6 +117,8 @@ if (keyboard_check_pressed(ord("M")))and disable_game_inputs=0 {
 
 ///*
 if grid_refs == noone and room == rm_gameScreen{
+	//Remember the real player count.  The crown powerup adds slimes during the game, and a restart goes back to this
+	starting_number_of_players = number_of_players
 	grid_refs = scr_setup_grid(rows, cols, spacing, start_x, start_y, number_of_players)
 	//target_obj = instance_create_layer(1, 1, "Instances", obj_targeting);
 

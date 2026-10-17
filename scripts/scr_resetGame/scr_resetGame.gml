@@ -3,7 +3,8 @@ function scr_resetGame(){
 	season_goal = round(grid_size*season_goal_percentage)
 	isPaused=0
 	current_player=0
-	number_of_players = 1
+	//Undo slimes added by the crown powerup, but keep everyone who started the game
+	number_of_players = starting_number_of_players
 	total_score=0
 	disable_game_inputs=0
 	isNight=0

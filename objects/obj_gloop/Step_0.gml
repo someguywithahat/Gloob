@@ -1,7 +1,9 @@
 var controller = global.controller;
 var controller_current_player = controller.current_player
 move_speed = controller.slime_speed
-gloop_score_obj.gloop_color_index = gloop_color_index
+//The score sign shows the color of the slime it belongs to (crown slimes share their owner's sign)
+if gloop_score_obj.gloop=id
+	gloop_score_obj.gloop_color_index = gloop_color_index
 
 
 
@@ -367,14 +369,16 @@ if ismoving=1 and isteleporting=0 {
 			{
 				has_crown=1
 				var friend_gloop = instance_create_layer(x, y, "Instances", obj_gloop);
+				//Shares this slime's score sign instead of getting its own
 				instance_destroy(friend_gloop.gloop_score_obj)
-				friend_gloop.gloop_color_index=gloop_color_index
+				//Real color, not whatever the rainbow is showing right now
+				friend_gloop.gloop_color_index = rainbow_turns>0 ? rainbow_original_color : gloop_color_index
 				friend_gloop.current_grid_number=next_inst
 				friend_gloop.gloop_score_obj=gloop_score_obj
 				friend_gloop.has_accessory=has_accessory
-	
+
+				//Gets its own turn.  (player_color only holds colors from character select, so it isn't added there)
 				controller.number_of_players++
-				controller.player_color[controller.number_of_players-1]=friend_gloop
 				friend_gloop.player_number=controller.number_of_players-1
 				friend_gloop.grid_x=next_inst.grid_x
 				friend_gloop.grid_y=next_inst.grid_y
@@ -576,6 +580,14 @@ if ismoving=1 and isteleporting=0 {
 				else {
 					audio_play_sound(snd_bonk, 1, false);
 					alive=0
+					//A crown slime's powerups go with it (its row on the score sign is removed too)
+					if gloop_score_obj.gloop<>id
+					{
+						powerUp1=-1
+						powerUp2=-1
+						powerUp3=-1
+						puBonk=0
+					}
 				}
 				ismoving=0
 				isjumping=0
