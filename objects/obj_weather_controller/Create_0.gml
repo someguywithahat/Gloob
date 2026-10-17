@@ -17,6 +17,7 @@ toggle_add_obs=0
 toggle_add_pu=0
 toggle_night=0
 toggle_addPoints=0
+toggle_preview_night=0
 
 isNight=0
 isNightShader=0

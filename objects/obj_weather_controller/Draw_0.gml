@@ -22,17 +22,7 @@ if isNightShader<>0
     draw_set_alpha(1); // reset alpha
 }
 
-if global.controller.season_goal<=0
-{
-	if isDuskShader<0.25
-		isDuskShader+=0.005
-    draw_set_color(c_black);
-    draw_set_alpha(isDuskShader); // 0 = transparent, 1 = solid
-    draw_rectangle(0, 0, display_get_width(), display_get_height(), false);
-    draw_set_alpha(1); // reset alpha	
-}
-else 
-	isDuskShader=0
+//Dusk darkening is done by obj_lighting now (the board gets dark as the goal gets close)
 
 if toggle_debug_options<1
 {
@@ -40,6 +30,14 @@ if toggle_debug_options<1
 }
 else 
 {
+	//Preview the night lighting without playing to the end of the day
+	toggle_preview_night=scr_draw_menu_item(text_xx,520,"Preview Night",toggle_preview_night)
+	if toggle_preview_night>0
+	{
+		toggle_preview_night=0
+		with(obj_lighting)
+			force_night=!force_night
+	}
 	toggle_addPoints=scr_draw_menu_item(text_xx,550,"Add Points",toggle_addPoints)
 	toggle_night=scr_draw_menu_item(text_xx,580,"End Day",toggle_night)
 	toggle_add_pu=scr_draw_menu_item(text_xx,610,"Add PowerUP",toggle_add_pu)	
