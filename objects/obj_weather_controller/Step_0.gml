@@ -167,8 +167,12 @@ if isNight=1{
 			else if spawnObs>=0
 				scr_setup_add_obstacle(controller.grid_refs,1,1)
 		}
-		
-		audio_stop_sound(weather_sound)	
+
+		//New season, new powerups.  After the obstacles so they don't land on each other
+		repeat (2)
+			scr_setup_add_pu()
+
+		audio_stop_sound(weather_sound)
 		//layer_background_sprite(back_id, -1);
 
 		//var lay_id = layer_get_id("Instances");
