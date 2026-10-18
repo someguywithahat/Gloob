@@ -1,11 +1,11 @@
 {
   "$GMSprite":"v2",
-  "%Name":"Spr_House_Mushroom_Fish_Sm",
+  "%Name":"Spr_Shell",
   "bboxMode":0,
-  "bbox_bottom":100,
+  "bbox_bottom":105,
   "bbox_left":13,
   "bbox_right":106,
-  "bbox_top":1,
+  "bbox_top":10,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -25,10 +25,10 @@
     {"$GMImageLayer":"","%Name":"e2f76f77-f862-4b3f-8c4d-157333645aa3","blendMode":0,"displayName":"Layer 8","isLocked":false,"name":"e2f76f77-f862-4b3f-8c4d-157333645aa3","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"fd9bbd6a-5a42-4d85-93df-cf5d65c22312","blendMode":0,"displayName":"Layer 4","isLocked":false,"name":"fd9bbd6a-5a42-4d85-93df-cf5d65c22312","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"0ead8e87-0549-425a-a25e-ceea068a7bbc","blendMode":0,"displayName":"Layer 5","isLocked":false,"name":"0ead8e87-0549-425a-a25e-ceea068a7bbc","opacity":32.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
-    {"$GMImageLayer":"","%Name":"f434037f-3709-4330-b8de-368a0fc4b258","blendMode":0,"displayName":"Layer 7","isLocked":false,"name":"f434037f-3709-4330-b8de-368a0fc4b258","opacity":25.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"f434037f-3709-4330-b8de-368a0fc4b258","blendMode":0,"displayName":"Layer 7","isLocked":false,"name":"f434037f-3709-4330-b8de-368a0fc4b258","opacity":25.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"a859f8c0-da5e-4d75-9480-e9f3c3d9ab96","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"a859f8c0-da5e-4d75-9480-e9f3c3d9ab96","opacity":44.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
-  "name":"Spr_House_Mushroom_Fish_Sm",
+  "name":"Spr_Shell",
   "nineSlice":null,
   "origin":9,
   "parent":{
@@ -40,7 +40,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"Spr_House_Mushroom_Fish_Sm",
+    "%Name":"Spr_Shell",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -64,7 +64,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"Spr_House_Mushroom_Fish_Sm",
+    "name":"Spr_Shell",
     "playback":1,
     "playbackSpeed":4.0,
     "playbackSpeedType":0,
@@ -78,7 +78,7 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d90e4ca6-e32d-4914-94f9-ccdef8283a11","path":"sprites/Spr_House_Mushroom_Fish_Sm/Spr_House_Mushroom_Fish_Sm.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d90e4ca6-e32d-4914-94f9-ccdef8283a11","path":"sprites/Spr_Shell/Spr_Shell.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"dad2f828-5c39-4f19-9cd9-6c9ddf496b5d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
