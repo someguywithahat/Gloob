@@ -317,6 +317,17 @@ function scr_grass_regrow_space(gridNum)
 }
 
 
+/// @function scr_day_progress()
+/// @description How much of today's goal is done: 0 at the start of the day, 1 when the goal is reached,
+///              above 1 when players keep going past it.  Used for dusk lighting and time-of-day behavior
+function scr_day_progress()
+{
+	var controller = global.controller
+	var day_goal = max(1, round(controller.grid_size*controller.season_goal_percentage))
+	return max(0, 1 - controller.season_goal/day_goal)
+}
+
+
 /// @function scr_find_free_cell(grid_array, avoid_powerups)
 /// @description Picks a random empty grid space: not a wall, obstacle, player, used space or powerup.
 /// @param avoid_powerups - true to also skip spaces touching a powerup (including diagonals)

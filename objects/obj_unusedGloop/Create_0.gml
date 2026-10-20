@@ -105,6 +105,8 @@ next_state=UG_STATE.SLEEP //What to do after shaking off the snow
 		allowed   -- extra conditions, like the season
 		idle_anim -- true for the idle animations.  These also need min_rest steps since the last one, and never
 		             start while the slime is napping in a leaf pile
+		max_progress -- optional.  Doesn't start once the day's goal is this far done (0.4 = 40%).
+		                For animations that don't look right with the dusk/night lighting
 */
 wake_activities = [
 	{
@@ -140,6 +142,7 @@ wake_activities = [
 		min_rest: 120,
 		state: UG_STATE.IDLE_ANGLE,
 		idle_anim: true,
+		max_progress: 0.4,
 		allowed: function() { return true }
 	},
 	{
@@ -158,6 +161,7 @@ wake_activities = [
 		min_rest: 120,
 		state: UG_STATE.IDLE_JUMP,
 		idle_anim: true,
+		max_progress: 0.4,
 		allowed: function() { return true }
 	},
 	{
@@ -167,6 +171,7 @@ wake_activities = [
 		min_rest: 120,
 		state: UG_STATE.IDLE_HOP_JIGGLE,
 		idle_anim: true,
+		max_progress: 0.4,
 		allowed: function() { return true }
 	},
 	{
@@ -218,12 +223,17 @@ set_state = function(new_state)
 			break
 
 		case UG_STATE.IDLE_ANGLE:
-		case UG_STATE.IDLE_JUMP_UP:
 		case UG_STATE.IDLE_JUMP:
 		case UG_STATE.IDLE_HOP_JIGGLE:
-		case UG_STATE.IDLE_MUSIC:
 			anim_frame=0
 			anim_loops=irandom_range(2, 5)
+			break
+
+
+		case UG_STATE.IDLE_JUMP_UP:
+		case UG_STATE.IDLE_MUSIC:
+			anim_frame=0
+			anim_loops=irandom_range(8, 12)
 			break
 
 		case UG_STATE.LEAF_WALK:
@@ -446,6 +456,9 @@ pick_wake_activity = function(include_idle = true)
 	{
 		var activity = wake_activities[i]
 		if activity.idle_anim and (!include_idle or in_leaf_pile<>noone or rest_time<activity.min_rest)
+			continue
+		//Daytime-only activities stop once the day's goal is far enough along
+		if variable_struct_exists(activity, "max_progress") and scr_day_progress()>=activity.max_progress
 			continue
 		if sleep_time>activity.min_sleep and activity.allowed() and random(1)<activity.odds
 			return activity.state

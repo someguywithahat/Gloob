@@ -26,6 +26,60 @@ function scr_powerup_update(gloop_id){
 }
 
 
+/// Puts a powerup in the first empty slot.  If all 3 slots are full, slot 1 is lost and the others shift forward
+function scr_powerup_add(gloop_id, powerup){
+	with(gloop_id)
+	{
+		if powerUp1=-1
+			powerUp1=powerup
+		else if powerUp2=-1
+			powerUp2=powerup
+		else if powerUp3=-1
+			powerUp3=powerup
+		else
+		{
+			powerUp1=powerUp2
+			powerUp2=powerUp3
+			powerUp3=powerup
+		}
+	}
+}
+
+/// How many slots hold this powerup
+function scr_powerup_count(gloop_id, powerup){
+	return (gloop_id.powerUp1=powerup) + (gloop_id.powerUp2=powerup) + (gloop_id.powerUp3=powerup)
+}
+
+/// How many slots are empty
+function scr_powerup_empty_slots(gloop_id){
+	return scr_powerup_count(gloop_id, -1)
+}
+
+/// Creates the buddy that follows a slime around for powerups that have one (mushroom, fairy).
+/// Buddies count their slime's powerups and go away on their own when it has fewer than buddies
+function scr_powerup_spawn_buddy(gloop_id, powerup){
+	if powerup=global.RED
+	{
+		var mushroom = instance_create_layer(gloop_id.x, gloop_id.y, "Instances", obj_effect_mushroom)
+		mushroom.parent_gloop=gloop_id
+	}
+	else if powerup=global.BLUE
+	{
+		var fairy = instance_create_layer(gloop_id.x+16, gloop_id.y, "Instances", obj_effect_fairy)
+		fairy.parent_gloop=gloop_id
+	}
+}
+
+/// Call after the slots change.  Updates the hardhat count and the grass hat
+function scr_powerup_refresh(gloop_id){
+	with(gloop_id)
+	{
+		puBonk = scr_powerup_count(id, global.YELLOW)
+		has_grass = scr_powerup_count(id, global.GREEN)>0
+	}
+}
+
+
 #macro RAINBOW_TURNS 6
 
 /// @function scr_rainbow_start(gloop_id)

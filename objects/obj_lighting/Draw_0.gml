@@ -1,9 +1,8 @@
 //---- How dark should it be? ----
 //Gets darker as the day's goal gets close (the "N left" counter)
 var controller = global.controller
-var day_goal = max(1, round(controller.grid_size*controller.season_goal_percentage))
 //Fraction of the goal done.  Keeps going past 1 when players play on after reaching the goal
-var progress = max(0, 1 - controller.season_goal/day_goal)
+var progress = scr_day_progress()
 //Winter evenings come earlier
 var shift = (global.weather=global.WINTER) ? winter_earlier : 0
 var dusk_at = dusk_start-shift

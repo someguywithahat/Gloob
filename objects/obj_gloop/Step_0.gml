@@ -348,23 +348,20 @@ if ismoving=1 and isteleporting=0 {
 				and next_inst.has_powerUP<>global.WHITE
 				and next_inst.has_powerUP<>global.BLACK
 				and next_inst.has_powerUP<>global.ORANGE
-			var powerUpCheck=0
-			if takes_slot and powerUp1=-1
+			if takes_slot
 			{
-				powerUp1=next_inst.has_powerUP
-				powerUpCheck=1
+				//Mushrooms fill every empty slot.  Everything else takes one slot.
+				//With all 3 slots full, slot 1 is lost and the others shift forward (scr_powerup_add)
+				var copies = 1
+				if next_inst.has_powerUP=global.RED
+					copies = max(1, scr_powerup_empty_slots(id))
+				repeat(copies)
+				{
+					scr_powerup_add(id, next_inst.has_powerUP)
+					scr_powerup_spawn_buddy(id, next_inst.has_powerUP)
+				}
 			}
-			else if takes_slot and powerUp2=-1
-			{
-				powerUp2=next_inst.has_powerUP
-				powerUpCheck=2
-			}
-			else if takes_slot
-			{
-				powerUp3=next_inst.has_powerUP
-				powerUpCheck=3
-			}	
-			
+
 			if next_inst.has_powerUP=global.PURPLE
 			{
 				has_crown=1
@@ -382,23 +379,31 @@ if ismoving=1 and isteleporting=0 {
 				friend_gloop.player_number=controller.number_of_players-1
 				friend_gloop.grid_x=next_inst.grid_x
 				friend_gloop.grid_y=next_inst.grid_y
-				audio_play_sound(snd_slm_chomp, 1, false);	
+
+				//The copy gets all of this slime's powerups (and their buddies), plus any rainbow time left
+				friend_gloop.powerUp1=powerUp1
+				friend_gloop.powerUp2=powerUp2
+				friend_gloop.powerUp3=powerUp3
+				scr_powerup_spawn_buddy(friend_gloop, powerUp1)
+				scr_powerup_spawn_buddy(friend_gloop, powerUp2)
+				scr_powerup_spawn_buddy(friend_gloop, powerUp3)
+				scr_powerup_refresh(friend_gloop)
+				friend_gloop.rainbow_turns=rainbow_turns
+				friend_gloop.rainbow_original_color=rainbow_original_color
+
+				audio_play_sound(snd_slm_chomp, 1, false);
 			}
 			else if next_inst.has_powerUP=global.GREEN
 			{
-				has_grass=1
 				audio_play_sound(snd_slm_chomp, 1, false);
 			}
 			else if next_inst.has_powerUP=global.BLUE{
-				var fairy = instance_create_layer(x+16, y, "Instances", obj_effect_fairy);
-				fairy.parent_gloop=id		
-				fairy.gloop_powerUp_check = powerUpCheck
-				show_debug_message("Picked UP fairy")
-				audio_play_sound(snd_slm_chomp, 1, false);	
+				//The fairy buddy was created with the slot above
+				audio_play_sound(snd_slm_chomp, 1, false);
 			}
 			else if next_inst.has_powerUP=global.BLACK{
 				//One firefly per point.  Each one flies to the "left" counter and lowers it by 1 when it gets there
-				var nightTimePoints = round(controller.grid_size*0.05)
+				var nightTimePoints = round(controller.grid_size*0.08)
 				for (var f = 0; f < nightTimePoints; f++)
 				{
 					var firefly = instance_create_layer(x+4, y+4, "Instances", obj_effect_night_firefly);
@@ -422,8 +427,7 @@ if ismoving=1 and isteleporting=0 {
 				audio_play_sound(snd_slm_chomp, 1, false);
 			}
 			else if next_inst.has_powerUP=global.RED{
-				var mushroom = instance_create_layer(x, y, "Instances", obj_effect_mushroom);
-				mushroom.parent_gloop=id
+				//The mushroom buddies were created with the slots above
 				audio_play_sound(snd_slm_chomp, 1, false);
 			}
 			else 
@@ -431,15 +435,9 @@ if ismoving=1 and isteleporting=0 {
 				audio_play_sound(snd_slm_chomp, 1, false);	
 			}
 			next_inst.has_powerUP=-1
-			
-			
-			puBonk=0
-			if powerUp1=global.YELLOW
-				puBonk+=1
-			if powerUp2=global.YELLOW
-				puBonk+=1
-			if powerUp3=global.YELLOW
-				puBonk+=1				
+
+			//Hardhat count and grass hat (a full-slot shift can push one out)
+			scr_powerup_refresh(id)
 		}
 		
 		
