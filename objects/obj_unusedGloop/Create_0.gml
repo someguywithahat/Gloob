@@ -31,6 +31,8 @@ enum UG_STATE {
 	LAUNCHED,   //Fall: knocked out of the leaf pile by another slime diving in
 	SNOWED,     //Winter: napped so long it's covered in snow
 	SNOW_SHAKE, //Shaking the snow off, then doing next_state
+	FIGHT_WALK, //Winter: hopping to its spot for a snowball fight
+	FIGHT,      //Winter: throwing snowballs up/down at fight_partner
 	GO_HOME,    //Day is over: hopping to the house
 	HOME,       //Made it to the house: fading out
 	GAME_OVER,  //Game lost: sad until fed
@@ -97,6 +99,21 @@ home_y=50
 snow_frame=0
 next_state=UG_STATE.SLEEP //What to do after shaking off the snow
 
+//Snowball fight.  Two slimes line up one above the other and throw snowballs at each other
+fight_partner=noone //The slime it's fighting
+fight_dir=1 //1 = on top throwing down, -1 = on the bottom throwing up
+fight_spot_x=0
+fight_spot_y=0
+fight_gap=140 //Pixels between the two fighters
+fight_throws_left=0 //Snowballs left to throw.  The fight ends when both run out
+fight_throw_timer=0
+fight_throw_every=50 //Steps between throws (re-rolled each throw)
+fight_hits=0 //Times it got hit
+fight_windup=15 //Steps of wind-up before each throw (same as obj_test_slimebrawl)
+snowball_speed=5
+aim_wobble=1.5 //Sideways error on each throw.  Bigger = more misses
+hit_timer=0 //Dizzy face after getting hit
+
 
 /*
 	Things a sleeping slime can wake up and do.  Checked in order every step.
@@ -132,6 +149,24 @@ wake_activities = [
 		state: UG_STATE.SNOWED,
 		idle_anim: false,
 		allowed: function() { return global.weather=global.WINTER }
+	},
+	{
+		name: "snowball fight",
+		odds: 1/4000,
+		min_sleep: 300,
+		state: UG_STATE.FIGHT_WALK, //Picks a napping slime to fight in set_state()
+		idle_anim: false,
+		allowed: function()
+		{
+			//One fight at a time
+			if global.weather<>global.WINTER
+				return false
+			var fight_on = false
+			with(obj_unusedGloop)
+				if state=UG_STATE.FIGHT_WALK or state=UG_STATE.FIGHT
+					fight_on = true
+			return !fight_on
+		}
 	},
 
 	//Idle animations
@@ -209,6 +244,19 @@ get_idle_look = function(for_state)
 /// Switch to a new state and do any setup it needs
 set_state = function(new_state)
 {
+	//Leaving a snowball fight for any reason (going home, game over, ...): the other slime stops too
+	if is_fighting() and new_state<>UG_STATE.FIGHT_WALK and new_state<>UG_STATE.FIGHT
+	{
+		var partner = fight_partner
+		fight_partner=noone
+		if instance_exists(partner) and partner.fight_partner=id
+			with(partner)
+			{
+				fight_partner=noone
+				set_state(UG_STATE.SLEEP)
+			}
+	}
+
 	state=new_state
 	state_time=0
 	speed=0
@@ -255,6 +303,55 @@ set_state = function(new_state)
 
 		case UG_STATE.SNOW_SHAKE:
 			snow_frame=11
+			break
+
+		case UG_STATE.FIGHT_WALK:
+			//No partner yet: this slime is starting the fight.  Challenge the nearest slime that's napping
+			if fight_partner=noone
+			{
+				var me = id
+				var closest = noone
+				var closest_dist = infinity
+				with(obj_unusedGloop)
+				{
+					if id<>me and state=UG_STATE.SLEEP and in_leaf_pile=noone and image_alpha>0
+					{
+						var d = point_distance(x, y, me.x, me.y)
+						if d<closest_dist
+						{
+							closest = id
+							closest_dist = d
+						}
+					}
+				}
+				if closest=noone
+				{
+					set_state(UG_STATE.SLEEP)
+					break
+				}
+
+				//Line up one above the other, between where the two of them are now
+				var center_x = clamp((x+closest.x)/2, left_boundry, right_boundry-32)
+				var center_y = clamp((y+closest.y)/2, top_boundry+fight_gap/2, bottom_boundry-fight_gap/2)
+				fight_partner = closest
+				fight_dir = (y<=closest.y) ? 1 : -1 //Whoever's higher up takes the top spot
+				fight_spot_x = center_x
+				fight_spot_y = center_y - fight_dir*fight_gap/2
+				fight_throws_left = irandom_range(5, 8)
+
+				closest.fight_partner = id
+				closest.fight_dir = -fight_dir
+				closest.fight_spot_x = center_x
+				closest.fight_spot_y = center_y + fight_dir*fight_gap/2
+				closest.fight_throws_left = fight_throws_left
+				with(closest)
+					set_state(UG_STATE.FIGHT_WALK)
+			}
+			fight_hits=0
+			hit_timer=0
+			fight_throw_every=irandom_range(40, 60)
+			//The bottom slime starts half a throw later so they take turns
+			fight_throw_timer = (fight_dir=1) ? 0 : -fight_throw_every/2
 			break
 
 		case UG_STATE.GO_HOME:
@@ -338,6 +435,49 @@ step_state = function()
 				next_state=UG_STATE.SLEEP
 				set_state(after_shake)
 			}
+			break
+
+		case UG_STATE.FIGHT_WALK:
+			if !fight_partner_ok()
+			{
+				set_state(UG_STATE.SLEEP)
+				break
+			}
+			move_towards_point(fight_spot_x, fight_spot_y, 1.5)
+			if distance_to_point(fight_spot_x, fight_spot_y)<2
+			{
+				x=fight_spot_x
+				y=fight_spot_y
+				set_state(UG_STATE.FIGHT)
+			}
+			break
+
+		case UG_STATE.FIGHT:
+			if !fight_partner_ok()
+			{
+				set_state(UG_STATE.SLEEP)
+				break
+			}
+			if hit_timer>0
+				hit_timer--
+			//Wait for the other slime to get to its spot
+			if fight_partner.state<>UG_STATE.FIGHT
+				break
+
+			if fight_throws_left>0
+			{
+				fight_throw_timer++
+				if fight_throw_timer>=fight_throw_every
+				{
+					throw_snowball()
+					fight_throws_left--
+					fight_throw_timer=0
+					fight_throw_every=irandom_range(40, 60)
+				}
+			}
+			//The top slime calls the fight once both are out of snowballs and the last one has landed
+			else if fight_dir=1 and fight_partner.fight_throws_left<=0 and !snowballs_flying()
+				finish_fight()
 			break
 
 		case UG_STATE.CHASE:
@@ -476,6 +616,83 @@ shake_off_snow = function(after_state)
 }
 
 
+//---- Snowball fight ----
+
+/// True while in a snowball fight (walking to its spot or throwing)
+is_fighting = function()
+{
+	return state=UG_STATE.FIGHT_WALK or state=UG_STATE.FIGHT
+}
+
+/// The other fighter is still around and still fighting this slime
+fight_partner_ok = function()
+{
+	return instance_exists(fight_partner) and fight_partner.fight_partner=id
+		and (fight_partner.state=UG_STATE.FIGHT_WALK or fight_partner.state=UG_STATE.FIGHT)
+}
+
+/// Throws a snowball straight at the other fighter, with a little wobble so some miss
+throw_snowball = function()
+{
+	var start_x = x+16
+	var start_y = y+16 + fight_dir*18
+	var target_x = fight_partner.x+16
+	var target_y = fight_partner.y+16
+	var steps = max(1, abs(target_y-start_y)/snowball_speed)
+
+	var ball = instance_create_layer(start_x, start_y, "Instances", obj_effectSnowball)
+	ball.thrower = id
+	ball.target = fight_partner
+	ball.yy = snowball_speed*fight_dir
+	ball.xx = (target_x-start_x)/steps + random_range(-aim_wobble, aim_wobble)
+	ball.despawnTimer = steps*2 //Misses fly on past for a bit, then melt
+}
+
+/// Snowballs from this fight still in the air
+snowballs_flying = function()
+{
+	var me = id
+	var partner = fight_partner
+	var flying = false
+	with(obj_effectSnowball)
+		if thrower=me or thrower=partner
+			flying = true
+	return flying
+}
+
+/// Got hit by a snowball
+snowball_hit = function()
+{
+	fight_hits++
+	hit_timer=20
+	shake(2)
+}
+
+/// Both are out of snowballs.  Whoever got hit less smiles, the other is annoyed.  Then both go back to napping
+finish_fight = function()
+{
+	var partner = fight_partner
+	var my_hits = fight_hits
+	var their_hits = partner.fight_hits
+
+	//Clear the partners first so set_state doesn't try to stop the fight a second time
+	fight_partner=noone
+	partner.fight_partner=noone
+	set_state(UG_STATE.SLEEP)
+	with(partner)
+		set_state(UG_STATE.SLEEP)
+
+	if my_hits<=their_hits
+		happy_timer=90
+	else
+		angry_timer=60
+	if their_hits<=my_hits
+		partner.happy_timer=90
+	else
+		partner.angry_timer=60
+}
+
+
 /// True while covered in snow or shaking it off
 is_snowy = function()
 {
@@ -518,6 +735,19 @@ get_look = function()
 		case UG_STATE.LAUNCHED:  return [Slm_All_Base_Expressions, UG_FACE.DIZZY]
 		case UG_STATE.SNOWED:
 		case UG_STATE.SNOW_SHAKE: return [Spr_Slm_Snowball, floor(snow_frame)]
+		case UG_STATE.FIGHT_WALK: return [Spr_Slm_Move_Jump, -1]
+		case UG_STATE.FIGHT:
+			if hit_timer>0
+				return [Slm_All_Base_Expressions, UG_FACE.DIZZY]
+			//Wind-up before a throw: Spr_Slm_Move_Roll played backwards, fast (like obj_test_slimebrawl's image_speed=-3)
+			var windup_left = fight_throw_every-fight_throw_timer
+			if fight_throws_left>0 and windup_left<=fight_windup
+			{
+				var roll_frames = sprite_get_number(Spr_Slm_Move_Roll)
+				var played = (fight_windup-windup_left) * 3*sprite_get_speed(Spr_Slm_Move_Roll)/game_get_speed(gamespeed_fps)
+				return [Spr_Slm_Move_Roll, (roll_frames-1) - (floor(played) mod roll_frames)]
+			}
+			return [Spr_Slm_Idol, -1]
 	}
 
 	//Moods
@@ -540,6 +770,7 @@ is_busy = function()
 {
 	return state=UG_STATE.LEAF_WALK or state=UG_STATE.LEAF_DIVE or state=UG_STATE.LAUNCHED
 		or state=UG_STATE.GO_HOME or state=UG_STATE.HOME
+		or state=UG_STATE.FIGHT_WALK or state=UG_STATE.FIGHT
 }
 
 
