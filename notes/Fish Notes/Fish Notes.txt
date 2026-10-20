@@ -1,0 +1,49 @@
+Finance Fish
+	Fools
+	Goal
+	Gold
+	Golden
+	Guilded
+	Marigold
+	Sold
+	Stoled
+
+Creature Fish
+	Colt
+	Finch
+	Ghoul
+	Gloop
+	Goat
+	God
+	Soul
+	Old
+
+Elemental Fish
+	Bowl
+	Coal
+	Cold
+	Gail
+	Globe
+	Glow
+	Valt
+	Scalled
+
+Object Fish
+	Bowed
+	Bowled
+	Go
+	Golf
+	Halt
+	Mold
+	Poled
+	Slow
+
+Movement Fish
+	Bold
+	Fold
+	Grow
+	Hold
+	Holed
+	Loled
+	Rolled
+	Wholed
