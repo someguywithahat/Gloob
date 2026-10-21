@@ -132,17 +132,22 @@ if grid_refs == noone and room == rm_gameScreen{
 }
 //*/
 
-if (keyboard_check_pressed(ord("F")))and disable_game_inputs=0 {
+//Slime speed keys only work on the game board (F starts fishing and S walks down in the fishing room)
+if (keyboard_check_pressed(ord("F")))and disable_game_inputs=0 and room == rm_gameScreen {
     // code here runs once when F is pressed
     if slime_speed<MAXSPEED
-		slime_speed+=.5		
+		slime_speed+=.5
 }
 
-if (keyboard_check_pressed(ord("S")))and disable_game_inputs=0 {
+if (keyboard_check_pressed(ord("S")))and disable_game_inputs=0 and room == rm_gameScreen {
     // code here runs once when F is pressed
     if slime_speed>MINSPEED
-		slime_speed-=.5		
+		slime_speed-=.5
 }
+
+//Fishing minigame (test room for now)
+if keyboard_check_pressed(ord("F")) and room == rm_fishingTest and !instance_exists(obj_fishing_minigame)
+	instance_create_depth(0, 0, -15000, obj_fishing_minigame)
 
 if (keyboard_check_pressed(ord("R"))and disable_game_inputs=0 and room == rm_gameScreen)or clicked_restart=1 {
 

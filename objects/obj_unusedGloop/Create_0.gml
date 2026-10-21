@@ -1,4 +1,4 @@
-gloop_color_index=7
+ gloop_color_index=7
 sprite_index=Spr_Slm_Sleep
 mask_index=Spr_Slm_Sleep //Keeps clicks/collisions the same size when showing bigger sprites like Spr_Slm_Snowball
 
