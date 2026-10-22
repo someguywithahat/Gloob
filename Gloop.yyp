@@ -204,6 +204,7 @@
     {"id":{"name":"scr_draw_score","path":"scripts/scr_draw_score/scr_draw_score.yy",},},
     {"id":{"name":"scr_draw_sign","path":"scripts/scr_draw_sign/scr_draw_sign.yy",},},
     {"id":{"name":"scr_end_turn","path":"scripts/scr_end_turn/scr_end_turn.yy",},},
+    {"id":{"name":"scr_fish_data","path":"scripts/scr_fish_data/scr_fish_data.yy",},},
     {"id":{"name":"scr_get_accessory","path":"scripts/scr_get_accessory/scr_get_accessory.yy",},},
     {"id":{"name":"scr_get_grid_id","path":"scripts/scr_get_grid_id/scr_get_grid_id.yy",},},
     {"id":{"name":"scr_get_jump_speed","path":"scripts/scr_get_jump_speed/scr_get_jump_speed.yy",},},

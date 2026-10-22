@@ -31,7 +31,7 @@ draw_rectangle(bar_x, box_y, bar_x+bar_width, box_y+box_size, true)
 if result<>0
 {
 	draw_set_font(global.fnt_Gloop)
-	var text = (result=1) ? "Caught it!" : "It got away..."
+	var text = (result=1) ? "Caught a " + fish.name + "!" : "The " + fish.name + " got away..."
 	draw_text(box_x + (box_size-string_width(text))/2, box_y - string_height(text) - 10, text)
 }
 draw_set_color(c_white)

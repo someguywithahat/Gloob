@@ -34,7 +34,7 @@ if circle_y<circle_min_y or circle_y>circle_max_y
 
 
 //---- Fish ----
-fish.swim(fish)
+swim(fish) //Movement depends on the fish's type (see the swim functions in Create)
 fish.x += fish.vx
 fish.y += fish.vy
 
