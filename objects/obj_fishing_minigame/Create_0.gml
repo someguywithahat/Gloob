@@ -46,6 +46,12 @@ end_time = 90 //Steps the result shows before the minigame closes
 //-1 = a random fish from any group.  Set to 0-4 to only get fish from that group (see scr_fish_data)
 fish_group = -1
 fish_data = (fish_group<0) ? scr_fish_random_any() : scr_fish_random(fish_group)
+//obj_fishingTest asks for a specific fish
+if variable_global_exists("fishing_test_fish") and !is_undefined(global.fishing_test_fish)
+{
+	fish_data = global.fishing_test_fish
+	global.fishing_test_fish = undefined
+}
 
 
 /// Builds the swimming fish from its scr_fish_data row
