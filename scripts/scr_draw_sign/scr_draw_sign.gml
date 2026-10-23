@@ -227,3 +227,108 @@ function scr_draw_sign_HighscorePrompt()
 	draw_sprite(Slm_All_Base_Expressions,0,710,490)
 	draw_sprite(Arrow,3,740,490)
 }
+
+
+/// @function scr_draw_goal_sign(xx, yy, hover_or_click)
+/// @description The hanging sign in the top right of the game screen.
+///   Line 1: percent of the grid needed for today
+///   Line 2: slime bar showing how far through the goal you are, from this season's icon to the next season's icon
+///   Line 3: points still needed to end the day, or the End Day button once the goal is reached
+/// @returns the End Day button state from scr_draw_menu_item (pass in clicked_end_day)
+function scr_draw_goal_sign(xx, yy, hover_or_click)
+{
+	var controller = global.controller
+
+	//Frames in spr_Seasons and the season that follows, both indexed by global.weather (SUMMER 0, WINTER 1, SPRING 2, FALL 3)
+	var season_icon = [0, 4, 6, 2]
+	var next_season = [global.FALL, global.SPRING, global.SUMMER, global.WINTER]
+
+	var goal_total = max(1, round(controller.grid_size*controller.season_goal_percentage))
+	var progress = clamp((goal_total - controller.season_goal)/goal_total, 0, 1)
+	var goal_reached = controller.season_goal<=0
+
+	//Lay the rows out from the font height, then size the sign to fit
+	draw_set_font(global.fnt_Gloop)
+	var text_h = string_height("0")
+	var pad = 10
+	var gap = 8
+	var icon_size = sprite_get_width(spr_Seasons)
+	var content_h = pad + text_h + gap + icon_size + gap + text_h + pad
+
+	var tile = sprite_get_width(Signage)
+	var sign_tiles_wide = 13
+	var sign_tiles_high = ceil(content_h/tile) - 1
+	var sign_w = (sign_tiles_wide+1)*tile
+	scr_draw_sign(xx, yy, sign_tiles_wide*tile, sign_tiles_high*tile, 1, 2, 0, 0)
+
+	var center_x = xx + sign_w/2
+	var row1_y = yy + pad
+	var row2_y = row1_y + text_h + gap
+	//The bar and the bottom line sit this far above their natural spot.  The season icons stay put
+	var lift = 16
+	var row3_y = row2_y + icon_size + gap - lift
+
+	//Line 1
+	scr_draw_text(center_x, row1_y, "Goal "+string(round(controller.season_goal_percentage*100))+"%", 1)
+
+	//Line 2: season icons with the slime bar between them
+	var icon_inset = tile
+	draw_sprite(spr_Seasons, season_icon[global.weather], xx+icon_inset, row2_y)
+	draw_sprite(spr_Seasons, season_icon[next_season[global.weather]], xx+sign_w-icon_inset-icon_size, row2_y)
+
+	var bar_x1 = xx + icon_inset + icon_size + 6
+	var bar_x2 = xx + sign_w - icon_inset - icon_size - 6
+	var bar_y1 = row2_y + 3 - lift
+	var bar_y2 = row2_y + icon_size - 3 - lift
+	var bar_h = bar_y2 - bar_y1
+
+	draw_set_alpha(0.55)
+	draw_set_color(make_color_rgb(40, 60, 70))
+	draw_roundrect_ext(bar_x1, bar_y1, bar_x2, bar_y2, bar_h, bar_h, false)
+	draw_set_alpha(1)
+	var fill_x1 = bar_x1 + 4
+	var fill_x2 = fill_x1 + (bar_x2 - bar_x1 - 8)*progress
+	if fill_x2-fill_x1>=1
+	{
+		//Player 1's slime color.  The fill is drawn from single pixels of the slime palette so the palette swap shader recolors it
+		var player_one_color = 2
+		with(obj_gloop_score)
+			if player=0
+				player_one_color = clamp(gloop_color_index, 0, 7)
+
+		shader_set(shd_palette_swap)
+		var u_palette_orig = shader_get_sampler_index(shd_palette_swap, "palette_orig")
+		var u_palette_swap = shader_get_sampler_index(shd_palette_swap, "palette_swap")
+		var u_color_count  = shader_get_uniform(shd_palette_swap, "color_count")
+		texture_set_stage(u_palette_orig, sprite_get_texture(spr_palette_index, 0))
+		texture_set_stage(u_palette_swap, sprite_get_texture(spr_palette_all, player_one_color))
+		shader_set_uniform_f(u_color_count, 6.0)
+
+		//Stretching one pixel only keeps its exact color if the texture isn't smoothed
+		var smoothing = gpu_get_texfilter()
+		gpu_set_texfilter(false)
+		var fw = fill_x2 - fill_x1
+		var fy1 = bar_y1 + 1
+		var fh = bar_y2 - bar_y1 - 2
+		draw_sprite_part_ext(spr_palette_index, 0, 2, 0, 1, 1, fill_x1, fy1, fw, fh, c_white, 1)         //body
+		draw_sprite_part_ext(spr_palette_index, 0, 0, 0, 1, 1, fill_x1, fy1, fw, 2, c_white, 1)          //glossy highlight on top
+		draw_sprite_part_ext(spr_palette_index, 0, 3, 0, 1, 1, fill_x1, fy1+fh-2, fw, 2, c_white, 1)     //shade underneath
+		gpu_set_texfilter(smoothing)
+		shader_reset()
+	}
+	draw_set_color(c_white)
+
+	//Line 3
+	if !goal_reached
+		scr_draw_text(center_x, row3_y, string(controller.season_goal)+" left", 1)
+	else if controller.game_over_status<1
+	{
+		draw_set_font(global.fnt_Gloop)
+		var end_day_text = "End Day?"
+		hover_or_click = scr_draw_menu_item(center_x - string_width(end_day_text)/2, row3_y, end_day_text, hover_or_click)
+	}
+	else
+		scr_draw_text(center_x, row3_y, "Goal Reached", 1)
+
+	return hover_or_click
+}

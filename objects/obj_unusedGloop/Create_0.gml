@@ -7,7 +7,7 @@ controller = global.controller
 depth=0
 
 //Area on the right side of the screen the slimes stay inside
-top_boundry = 100
+top_boundry = 140 //Below the goal sign
 bottom_boundry = 580
 left_boundry=1120
 right_boundry=room_width
