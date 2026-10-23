@@ -13,8 +13,8 @@
   "name":"obj_weather_controller",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"weather",
+    "path":"folders/Objects/weather.yy",
   },
   "parentObjectId":null,
   "persistent":false,

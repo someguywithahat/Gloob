@@ -27,8 +27,8 @@
   ],
   "name":"rm_testRoomAnimations",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Des_Bugs",
+    "path":"folders/Rooms/Des_Bugs.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

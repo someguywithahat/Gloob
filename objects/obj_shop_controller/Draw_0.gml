@@ -16,8 +16,8 @@ var yy_spr = yy+16 -(spr_height/2)
 clicked_left =  scr_draw_menu_item(xx-25, yy,"<",clicked_left)	
 clicked_right = scr_draw_menu_item(xx+115, yy,">",clicked_right)	
 
-clicked_up = scr_draw_menu_spr(xx+38, yy-8-(spr_height/2), Arrow, 6, clicked_up)
-clicked_down = scr_draw_menu_spr(xx+38, yy+16+(spr_height/2), Arrow, 4, clicked_down)
+clicked_up = scr_draw_menu_spr(xx+38, yy-8-(spr_height/2), Icons, 6, clicked_up)
+clicked_down = scr_draw_menu_spr(xx+38, yy+16+(spr_height/2), Icons, 4, clicked_down)
 
 //clicked_up = scr_draw_menu_spr(xx+50, yy+50, Arrow, 6, clicked_up)
 //clicked_down = scr_draw_menu_spr(xx+50, yy+50, Arrow, 4, clicked_down)

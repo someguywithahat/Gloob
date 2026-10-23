@@ -1,4 +1,4 @@
-[ ] Red - mushroom - Jump
+[x ] Red - mushroom - Jump
  > better sound effect
  > Mushroom bounce next to gloop, move to number to indicate it would be used
  > Possible multiple uses if week
@@ -8,17 +8,17 @@
 
 [X] Yellow - Hat - Bonk
 
-[ ] Green - Leaves - clear grid
+[x ] Green - Leaves - clear grid
  > Update slime end paths
  
 [x] Blue - Fairy - teleport
 
-[ ] Purple - Crown - Split
+[x ] Purple - Crown - Split
  > wrong facing path
  > new player / long sign
  > teleport in
 
-[ ] Black - Night - Next Season
+[x ] Black - Night - Next Season
  > Darker night
  > balancing, more points?
 

@@ -10,8 +10,8 @@
   "name":"obj_TestRoom1",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"obj_Prolly_Not",
+    "path":"folders/Objects/obj_Prolly_Not.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Arrow",
-    "path":"sprites/Arrow/Arrow.yy",
+    "name":"Icons",
+    "path":"sprites/Icons/Icons.yy",
   },
   "spriteMaskId":null,
   "visible":true,

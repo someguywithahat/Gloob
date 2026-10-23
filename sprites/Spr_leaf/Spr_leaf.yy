@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"Obs_leaf",
+  "%Name":"Spr_leaf",
   "bboxMode":0,
   "bbox_bottom":31,
   "bbox_left":0,
@@ -22,19 +22,19 @@
     {"$GMImageLayer":"","%Name":"4a164397-2bf3-4405-84a2-5b7e3647c01e","blendMode":0,"displayName":"default","isLocked":false,"name":"4a164397-2bf3-4405-84a2-5b7e3647c01e","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"28cad443-712b-4ff0-b43a-5d33f8d573da","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"28cad443-712b-4ff0-b43a-5d33f8d573da","opacity":20.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"Obs_leaf",
+  "name":"Spr_leaf",
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Prolly Not",
+    "path":"folders/Sprites/Prolly Not.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"Obs_leaf",
+    "%Name":"Spr_leaf",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -58,7 +58,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"Obs_leaf",
+    "name":"Spr_leaf",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -72,7 +72,7 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8975b909-bcea-4899-8c11-18559a7b3e68","path":"sprites/Obs_leaf/Obs_leaf.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8975b909-bcea-4899-8c11-18559a7b3e68","path":"sprites/Spr_leaf/Spr_leaf.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"377167ee-4e09-484d-bdbf-2a1c5e280975","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

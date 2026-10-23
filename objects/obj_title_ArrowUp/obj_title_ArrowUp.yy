@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Arrow",
-    "path":"sprites/Arrow/Arrow.yy",
+    "name":"Icons",
+    "path":"sprites/Icons/Icons.yy",
   },
   "spriteMaskId":null,
   "visible":true,

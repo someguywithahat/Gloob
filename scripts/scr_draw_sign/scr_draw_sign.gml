@@ -223,9 +223,9 @@ function scr_draw_sign_HighscorePrompt()
 	scr_draw_menu_item(560,460,"Enter Initials:",noone)	
 	scr_draw_menu_item(560,490,"___",noone)	
 	
-	draw_sprite(Arrow,1,680,490)
+	draw_sprite(Icons,1,680,490)
 	draw_sprite(Slm_All_Base_Expressions,0,710,490)
-	draw_sprite(Arrow,3,740,490)
+	draw_sprite(Icons,3,740,490)
 }
 
 

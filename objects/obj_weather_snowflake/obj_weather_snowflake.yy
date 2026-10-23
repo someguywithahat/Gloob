@@ -9,8 +9,8 @@
   "name":"obj_weather_snowflake",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"weather",
+    "path":"folders/Objects/weather.yy",
   },
   "parentObjectId":null,
   "persistent":false,

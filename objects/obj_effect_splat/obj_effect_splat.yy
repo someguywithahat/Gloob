@@ -10,8 +10,8 @@
   "name":"obj_effect_splat",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"effects",
+    "path":"folders/Objects/effects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"ripple",
-    "path":"sprites/ripple/ripple.yy",
+    "name":"Spr_Ripple",
+    "path":"sprites/Spr_Ripple/Spr_Ripple.yy",
   },
   "spriteMaskId":null,
   "visible":true,

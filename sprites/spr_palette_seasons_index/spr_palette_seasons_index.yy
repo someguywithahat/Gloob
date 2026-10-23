@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Color pallets",
+    "path":"folders/Sprites/Color pallets.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -10,8 +10,8 @@
   "name":"obj_targeting",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"effects",
+    "path":"folders/Objects/effects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_GloopDebug",
-    "path":"sprites/spr_GloopDebug/spr_GloopDebug.yy",
+    "name":"Spr_Slime_Butterfly",
+    "path":"sprites/Spr_Slime_Butterfly/Spr_Slime_Butterfly.yy",
   },
   "spriteMaskId":null,
   "visible":true,
