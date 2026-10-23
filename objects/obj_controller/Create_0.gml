@@ -4,6 +4,7 @@ global.fnt_Gloop = font_add_sprite(spr_gloopFontOutline, ord("!"), true, 5);
 global.fnt_Gloop_small = font_add_sprite(spr_gloopFont_Tiny, ord("!"), true, 2);
 scr_set_GLOBAL_values()
 scr_load_fishing_tickets()
+scr_load_fish_caught()
 
 //Music is in its own audio group so it can have its own volume.  It loads in the background
 audio_group_load(audiogroup_music)
@@ -105,6 +106,7 @@ clicked_main_menu=-1
 clicked_exitGame=-1
 clicked_characterSelect = -1 //remake of character select
 clicked_end_day=-1
+clicked_reset_fishing=-1 //Testing button in rm_fishingCenter
 
 window_set_fullscreen(true);
 

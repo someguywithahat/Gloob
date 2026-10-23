@@ -23,6 +23,7 @@ winter_earlier=0.2 //Winter nights come this much earlier (all three above move 
 max_night=1 //Darkest it gets
 fade_speed=0.005 //How fast night_amount moves per step
 force_night=false //Debug: preview full night (obj_weather_controller's debug menu toggles this)
+always_night=false //Dark rooms (the fishing cave): full night all the time, no dusk.  Set by whoever creates this
 
 //Sky color at each time of day
 day_color=c_white
@@ -44,6 +45,12 @@ bubble_light_radius=40
 trail_light_radius=22 //A bit bigger than half a space, so neighboring glows blend into a line
 trail_light_strength=0.3 //0-1.  Kept low so the trails don't outshine the slimes
 trail_light_sprite=spr_effect_glow //Softer than light_sprite, so the glows blend into smooth lines
+
+//Fishing cave lights
+boat_light_radius=150 //The boat's lantern
+boat_light_color=make_colour_rgb(255,215,150) //Warm lantern tint
+fish_light_radius=40 //Each fish glows in its own color (light in scr_fish_data)
+fish_light_strength=0.9
 
 //Each slime glows a soft version of its own color (indexed by global.BLACK, global.BLUE, ...)
 slime_light_colors = array_create(8, c_white)

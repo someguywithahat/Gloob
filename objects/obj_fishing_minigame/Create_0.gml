@@ -48,6 +48,9 @@ circle_hooked = false //True while hooked: the circle only gets half its usual a
 //---- Wind (Gail's gusts push the circle) ----
 wind_amount = 0 //-1 full gust left, 1 full gust right
 
+//---- The fish in the fishing room this round is for (obj_gloopFish).  It leaves the water when it's caught ----
+source_fish = noone
+
 //---- Ending ----
 result = 0 //0 = playing, 1 = caught, -1 = got away
 end_timer = 0

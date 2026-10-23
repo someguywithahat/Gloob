@@ -1,42 +1,22 @@
-xx=1
+/*
+	A fish swimming in a fishing room.  Spawned by scr_fishing_spawn_fish, which calls set_fish with its scr_fish_data row.
+	Wanders around, swims away from the boat when it gets close, and stays in the water.
+	Click it to try to catch it in the fishing minigame.
+*/
+fish_data = undefined
+light_color = c_white //Glow color in dark rooms (from the fish's scr_fish_data row)
 
-stepCounter=0
+vx = random_range(-1, 1) //Speed
+vy = random_range(-0.3, 0.3)
+max_speed = 2.5
+turn_timer = irandom_range(60, 180) //Steps until it picks a new direction
+flee_range = 100 //How close the boat gets before it swims away
+flee_push = 0.02 //How hard it swims away
 
-
-derx=random_range(1,-1)
-dery=random_range(0.2,-0.2)
-
-
-maxSpeed=2.5
-
-randomSprite=irandom_range(1,24)
-
-
-//gloop_distance=1000
-
-if randomSprite=1 sprite_index=Spr_Fish_Bold
-else if randomSprite=2 sprite_index=Spr_Fish_Bowed
-else if randomSprite=3 sprite_index=Spr_Fish_Coal
-else if randomSprite=4 sprite_index=Spr_Fish_Cold
-else if randomSprite=5 sprite_index=Spr_Fish_Fold
-else if randomSprite=6 sprite_index=Spr_Fish_Ghoul
-else if randomSprite=7 sprite_index=Spr_Fish_Globe
-else if randomSprite=8 sprite_index=Spr_Fish_Glow
-else if randomSprite=9 sprite_index=Spr_Fish_Go
-else if randomSprite=10 sprite_index=Spr_Fish_Goal
-else if randomSprite=11 sprite_index=Spr_Fish_God
-else if randomSprite=12 sprite_index=Spr_Fish_Bowled
-else if randomSprite=13 sprite_index=Spr_Fish_Golden
-else if randomSprite=14 sprite_index=Spr_Fish_Grow
-else if randomSprite=15 sprite_index=Spr_Fish_Holed
-else if randomSprite=16 sprite_index=Spr_Fish_LoLed
-else if randomSprite=17 sprite_index=Spr_Fish_Mold
-else if randomSprite=18 sprite_index=Spr_Fish_Old
-else if randomSprite=19 sprite_index=Spr_Fish_Poled
-else if randomSprite=20 sprite_index=Spr_Fish_Rolled
-else if randomSprite=21 sprite_index=Spr_Fish_Slow
-else if randomSprite=22 sprite_index=Spr_Fish_Sold
-else if randomSprite=23 sprite_index=Spr_Fish_Soul
-else if randomSprite=24 sprite_index=Spr_Fish_Wholed
-
-
+/// Sets which fish this is (a row from scr_fish_data)
+set_fish = function(data)
+{
+	fish_data = data
+	sprite_index = data.sprite
+	light_color = data.light
+}

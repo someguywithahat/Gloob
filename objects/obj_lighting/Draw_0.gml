@@ -14,7 +14,7 @@ if progress<dark_at
 else
 	night_target = 0.5 + clamp((progress-dark_at)/(full_at-dark_at), 0, 1) * 0.5
 night_target *= max_night
-if force_night
+if force_night or always_night
 	night_target = max_night
 night_amount += clamp(night_target-night_amount, -fade_speed, fade_speed)
 
@@ -34,6 +34,12 @@ gpu_set_blendmode(bm_add)
 //Lights fade in with the dark
 var strength = night_amount
 var t = current_time
+
+//Fishing: the boat's lantern, and every fish glowing in its own color
+with(obj_gloopFishing)
+	other.add_light(center_x(), center_y(), other.boat_light_radius, other.boat_light_color, strength)
+with(obj_gloopFish)
+	other.add_light(x+sprite_width/2, y+sprite_height/2, other.fish_light_radius, light_color, strength*other.fish_light_strength, spr_effect_glow)
 
 //Slime trails: a faint glow on every space a slime has been, in that slime's color
 var half_space = controller.spacing/2

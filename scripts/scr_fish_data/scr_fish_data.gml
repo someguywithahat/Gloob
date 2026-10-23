@@ -11,6 +11,7 @@
 		start_bar -- how full the catch bar starts, 0-1 (0.3 = 30%)
 		bar_grow  -- how fast the bar fills while the fish is caught, in bars per second (0.25 = a quarter of the bar each second)
 		bar_shrink-- how fast the bar drains while it isn't, in bars per second
+		light     -- optional.  The color it glows in dark rooms like the cave (rm_fishingDown).  Leave it off for a soft white
 
 	To change a fish, edit its row.  To add a movement type, add it to FISH_MOVE and give it a swim
 	function in obj_fishing_minigame's Create event.
@@ -45,8 +46,8 @@ enum FISH_MOVE {
 }
 
 /// One fish row
-function fish_def(name, sprite, accel, decel, max_speed, move, start_bar, bar_grow, bar_shrink){
-	return { name: name, sprite: sprite, accel: accel, decel: decel, max_speed: max_speed, move: move, start_bar: start_bar, bar_grow: bar_grow, bar_shrink: bar_shrink }
+function fish_def(name, sprite, accel, decel, max_speed, move, start_bar, bar_grow, bar_shrink, light=make_colour_rgb(220,230,240)){
+	return { name: name, sprite: sprite, accel: accel, decel: decel, max_speed: max_speed, move: move, start_bar: start_bar, bar_grow: bar_grow, bar_shrink: bar_shrink, light: light }
 }
 
 function scr_fish_data(){
@@ -72,7 +73,7 @@ function scr_fish_data(){
 			fish_def("Wholed",    Spr_Fish_Wholed,    0.4,  0.4,  3.0,   FISH_MOVE.WRAP    ,             0.3,      0.25, 0.15),
 			fish_def("Fold",      Spr_Fish_Fold,      0.4,  0.4,  3.0,   FISH_MOVE.ZIGZAG_LEFT_RIGHT,    0.3,      0.25, 0.2),
 			fish_def("Rolled",    Spr_Fish_Rolled,    0.4,  0.4,  3.0,   FISH_MOVE.ZIGZAG_UP_DOWN,       0.3,      0.25, 0.2),
-			fish_def("Grow",      Spr_Fish_Grow,      0.4,  0.4,  4.0,   FISH_MOVE.GROW,                 0.1,      0.25, 0.2)
+			fish_def("Grow",      Spr_Fish_Grow,      0.4,  0.4,  4.0,   FISH_MOVE.GROW,                 0.1,      0.20, 0.15)
 		],
 		//Group 2
 		[
@@ -98,14 +99,14 @@ function scr_fish_data(){
 		],
 		//Group 4
 		[
-			fish_def("Coal",      Spr_Fish_Coal,      0.5,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Scalled",   Spr_Fish_Scalled,   0.6,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Cold",      Spr_Fish_Cold,      0.7,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Bowl",      Spr_Fish_Bowl,      0.8,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Volt",      Spr_Fish_Volt,      0.9,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Gail",      Spr_Fish_Gail,      0.9,  0.1,  5.5,   FISH_MOVE.WIND,                 0.3,      0.25, 0.2),
-			fish_def("Glow",      Spr_Fish_Glow,      0.9,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Globe",     Spr_Fish_Globe,     0.9,  0.4,  4.5,   FISH_MOVE.ORBIT,                0.3,      0.25, 0.2)
+			fish_def("Coal",      Spr_Fish_Coal,      0.5,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(90,25,20)),
+			fish_def("Scalled",   Spr_Fish_Scalled,   0.6,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(255,70,25)),
+			fish_def("Cold",      Spr_Fish_Cold,      0.7,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(130,210,255)),
+			fish_def("Bowl",      Spr_Fish_Bowl,      0.8,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(30,60,200)),
+			fish_def("Volt",      Spr_Fish_Volt,      0.9,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(255,235,60)),
+			fish_def("Gail",      Spr_Fish_Gail,      0.9,  0.1,  5.5,   FISH_MOVE.WIND,                 0.3,      0.25, 0.2,  make_colour_rgb(220,225,235)),
+			fish_def("Glow",      Spr_Fish_Glow,      0.9,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(120,255,80)),
+			fish_def("Globe",     Spr_Fish_Globe,     0.9,  0.4,  4.5,   FISH_MOVE.ORBIT,                0.3,      0.25, 0.2,  make_colour_rgb(60,190,90))
 		]
 	]
 }

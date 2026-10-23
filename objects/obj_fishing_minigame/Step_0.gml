@@ -90,6 +90,9 @@ if bar_fill>=1
 {
 	result = 1
 	audio_play_sound(snd_slm_yay, 1, false)
+	scr_fish_mark_caught(fish.name) //Opens its trophy clam
+	if instance_exists(source_fish)
+		instance_destroy(source_fish)
 }
 else if bar_fill<=0
 {
