@@ -11,13 +11,18 @@ if result<>0
 //---- Circle: chase the mouse, speeding up and slowing down gradually ----
 var want_vx = clamp((mouse_x-circle_x)*circle_follow, -circle_max_speed, circle_max_speed)
 var want_vy = clamp((mouse_y-circle_y)*circle_follow, -circle_max_speed, circle_max_speed)
-circle_vx += clamp(want_vx-circle_vx, -circle_accel, circle_accel)
-circle_vy += clamp(want_vy-circle_vy, -circle_accel, circle_accel)
+//Hooked by a fishing line (Poled): the circle fights for control with half its usual acceleration
+var accel = circle_hooked ? circle_accel*0.5 : circle_accel
+circle_vx += clamp(want_vx-circle_vx, -accel, accel)
+circle_vy += clamp(want_vy-circle_vy, -accel, accel)
 circle_x += circle_vx
 circle_y += circle_vy
 //Wind gusts (Gail) gently push the circle left or right, but only while the player isn't steering it sideways
 if abs(circle_vx)<0.3
 	circle_x += wind_amount*wind_push
+//A fishing line (Poled) drags a hooked circle toward its edge
+circle_x += hook_pull_x
+circle_y += hook_pull_y
 
 //Stay inside the pond
 var circle_min_x = box_x+circle_radius
@@ -58,7 +63,10 @@ if !fish.no_walls
 	}
 }
 
-if abs(fish.vx)>0.3
+//Face the way it's moving, unless the swim function locked its facing (wall jump)
+if fish.face_lock<>0
+	fish.facing = fish.face_lock
+else if abs(fish.vx)>0.3
 	fish.facing = sign(fish.vx)
 if !fish.manual_frame
 	fish.frame += sprite_get_speed(fish.sprite)/game_get_speed(gamespeed_fps)

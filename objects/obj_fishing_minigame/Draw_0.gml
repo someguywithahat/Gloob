@@ -64,6 +64,19 @@ if fish.move=FISH_MOVE.BOWLING
 	}
 }
 
+//---- Decoy crowd (Hold): drawn in two halves, with the real fish slipped in between ----
+var crowd_from = 0
+var crowd_to = min(crowd_draw_slot, array_length(crowd))
+if fish.move=FISH_MOVE.CROWD
+{
+	var half_decoy = sprite_get_width(crowd_sprite)/2
+	for (var i = crowd_from; i < crowd_to; i++)
+	{
+		var decoy = crowd[i]
+		draw_sprite_ext(crowd_sprite, floor(decoy.frame), decoy.x-half_decoy*decoy.facing, decoy.y-half_decoy, decoy.facing, 1, 0, c_white, 1)
+	}
+}
+
 //---- Fish (sprite is 24x24 with a top left origin, flipped to face the way it's swimming) ----
 //Flipping, scaling and rotating all happen around the fish's center, so work out where the top left corner ends up
 if !fish.hidden and fish.scale>0
@@ -93,6 +106,35 @@ if !fish.hidden and fish.scale>0
 			draw_sprite_ext(fish.sprite, floor(fish.frame), draw_x+copies_x[cx], draw_y+copies_y[cy], fish.facing*fish.scale, fish.scale*fish.flip_y, fish.angle, c_white, 1)
 }
 
+//---- Rest of the decoy crowd (Hold), on top of the real fish ----
+crowd_from = min(crowd_draw_slot, array_length(crowd))
+crowd_to = array_length(crowd)
+if fish.move=FISH_MOVE.CROWD
+{
+	var half_decoy = sprite_get_width(crowd_sprite)/2
+	for (var i = crowd_from; i < crowd_to; i++)
+	{
+		var decoy = crowd[i]
+		draw_sprite_ext(crowd_sprite, floor(decoy.frame), decoy.x-half_decoy*decoy.facing, decoy.y-half_decoy, decoy.facing, 1, 0, c_white, 1)
+	}
+}
+
+//---- Fishing line and hook (Poled) ----
+if fish.move=FISH_MOVE.HOOKED and fish.hook_state<>0
+{
+	draw_set_color(make_colour_rgb(40,40,50))
+	draw_line_width(fish.hook_anchor_x, fish.hook_anchor_y, fish.hook_x, fish.hook_y, 1)
+	//spr_effect_hook is 6x10 with a top left origin.  The line ties on at the top middle, so hang it from there,
+	//turned so the top points back up the line
+	var hook_scale = 2
+	var line_dir = point_direction(fish.hook_x, fish.hook_y, fish.hook_anchor_x, fish.hook_anchor_y)
+	var hook_angle = line_dir - 90
+	var tie_x = sprite_get_width(spr_effect_hook)/2*hook_scale
+	var hook_draw_x = fish.hook_x - tie_x*dcos(hook_angle)
+	var hook_draw_y = fish.hook_y + tie_x*dsin(hook_angle)
+	draw_sprite_ext(spr_effect_hook, 0, hook_draw_x, hook_draw_y, hook_scale, hook_scale, hook_angle, c_white, 1)
+}
+
 gpu_set_scissor(old_scissor)
 
 //---- Circle: turns yellow while the bar is filling (fish inside, or outside for a stick-to-circle fish) ----
@@ -111,6 +153,14 @@ if bar_fill>0
 	draw_rectangle(bar_x, bar_top, bar_x+bar_width, box_y+box_size, false)
 draw_set_color(c_white)
 draw_rectangle(bar_x, box_y, bar_x+bar_width, box_y+box_size, true)
+
+//---- Hint above the pond (Hold) ----
+if result=0 and fish.move=FISH_MOVE.CROWD
+{
+	draw_set_font(global.fnt_Gloop)
+	draw_set_color(c_white)
+	draw_text(box_x + (box_size-string_width(crowd_message))/2, box_y - string_height(crowd_message) - 10, crowd_message)
+}
 
 //---- Result ----
 if result<>0

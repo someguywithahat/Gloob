@@ -469,6 +469,7 @@
     {"id":{"name":"spr_effect_glow_harder","path":"sprites/spr_effect_glow_harder/spr_effect_glow_harder.yy",},},
     {"id":{"name":"spr_effect_glow","path":"sprites/spr_effect_glow/spr_effect_glow.yy",},},
     {"id":{"name":"spr_effect_heart","path":"sprites/spr_effect_heart/spr_effect_heart.yy",},},
+    {"id":{"name":"spr_effect_hook","path":"sprites/spr_effect_hook/spr_effect_hook.yy",},},
     {"id":{"name":"spr_effect_leaf","path":"sprites/spr_effect_leaf/spr_effect_leaf.yy",},},
     {"id":{"name":"spr_effect_particle_test","path":"sprites/spr_effect_particle_test/spr_effect_particle_test.yy",},},
     {"id":{"name":"spr_effect_rain","path":"sprites/spr_effect_rain/spr_effect_rain.yy",},},

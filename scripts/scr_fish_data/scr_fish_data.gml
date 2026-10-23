@@ -38,7 +38,10 @@ enum FISH_MOVE {
 	STICK_TO_CIRCLE, //Chases the middle of the player's circle.  Backwards catch: the bar fills while it's OUTSIDE the circle
 	BOWLING,    //Bowls up the pond through a rack of pins and off the top, then comes back at the bottom.  The bar holds while it's gone
 	GROW,       //Switches between tiny and fat.  Fat is drawn twice as big and swims at half speed.  Uses the sprite's fat (0, 5) and tiny (2, 3) frames
-	WRAP        //Swims off one side of the pond and comes back in the opposite side
+	WRAP,       //Swims off one side of the pond and comes back in the opposite side
+	HOOKED,     //Swims normally.  Every so often a fishing line casts in from an edge, and if it hooks the circle it drags it around
+	CROWD,      //Where's Waldo: hides in a crowd of animated gold fish.  It's the one that isn't animated
+	WALL_JUMP   //Climbs a side wall in little wall-jump hops.  About 70% of the way up it leaps to the bottom of the other wall
 }
 
 /// One fish row
@@ -64,29 +67,29 @@ function scr_fish_data(){
 		[
 			fish_def("Bold",      Spr_Fish_Bold,      0.4,  0.4,  3.5,   FISH_MOVE.CHARGE,               0.3,      0.25, 0.2),
 			fish_def("LoLed",     Spr_Fish_LoLed,     0.4,  0.4,  2.5,   FISH_MOVE.STICK_TO_CIRCLE,      0.9,      0.25, 0.2),
-			fish_def("Hold",      Spr_Fish_Hold,      0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
-			fish_def("Holed",     Spr_Fish_Holed,     0.4,  0.4,  3.5,   FISH_MOVE.HOLE_HOP,             0.3,      0.25, 0.2),
+			fish_def("Hold",      Spr_Fish_Hold,      0.4,  0.4,  0.5,   FISH_MOVE.CROWD,                0.9,      0.15, 0.1),
+			fish_def("Holed",     Spr_Fish_Holed,     0.4,  0.4,  3.0,   FISH_MOVE.HOLE_HOP,             0.3,      0.25, 0.2),
 			fish_def("Wholed",    Spr_Fish_Wholed,    0.4,  0.4,  3.0,   FISH_MOVE.WRAP    ,             0.3,      0.25, 0.15),
-			fish_def("Fold",      Spr_Fish_Fold,      0.4,  0.4,  3.5,   FISH_MOVE.ZIGZAG_LEFT_RIGHT,    0.3,      0.25, 0.2),
-			fish_def("Rolled",    Spr_Fish_Rolled,    0.4,  0.4,  3.5,   FISH_MOVE.ZIGZAG_UP_DOWN,       0.3,      0.25, 0.2),
-			fish_def("Grow",      Spr_Fish_Grow,      0.4,  0.4,  3.5,   FISH_MOVE.GROW,                 0.1,      0.25, 0.2)
+			fish_def("Fold",      Spr_Fish_Fold,      0.4,  0.4,  3.0,   FISH_MOVE.ZIGZAG_LEFT_RIGHT,    0.3,      0.25, 0.2),
+			fish_def("Rolled",    Spr_Fish_Rolled,    0.4,  0.4,  3.0,   FISH_MOVE.ZIGZAG_UP_DOWN,       0.3,      0.25, 0.2),
+			fish_def("Grow",      Spr_Fish_Grow,      0.4,  0.4,  4.0,   FISH_MOVE.GROW,                 0.1,      0.25, 0.2)
 		],
 		//Group 2
 		[
 			fish_def("Bowed",     Spr_Fish_Bowed,     0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
 			fish_def("Mold",      Spr_Fish_Mold,      0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
 			fish_def("Go",        Spr_Fish_Go,        3.0,  3.0,  8.0,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Slow",      Spr_Fish_Slow,      0.1,  0.1,  1.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
+			fish_def("Slow",      Spr_Fish_Slow,      1.0,  1.0,  1.0,   FISH_MOVE.CONSTANT,             0.3,      0.02, 0.2),
 			fish_def("Halt",      Spr_Fish_Halt,      0.4,  0.4,  3.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Poled",     Spr_Fish_Poled,     0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
+			fish_def("Poled",     Spr_Fish_Poled,     0.4,  0.4,  2.5,   FISH_MOVE.HOOKED,               0.3,      0.25, 0.1),
 			fish_def("Golf",      Spr_Fish_Golf,      0.4,  0.4,  3.5,   FISH_MOVE.GOLF,                 0.3,      0.25, 0.2),
 			fish_def("Bowled",    Spr_Fish_Bowled,    0.4,  0.4,  3.5,   FISH_MOVE.BOWLING,              0.3,      0.25, 0.2)
 		],
 		//Group 3
 		[
-			fish_def("Goat",      Spr_Fish_Goat,      0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
+			fish_def("Goat",      Spr_Fish_Goat,      0.4,  0.4,  5.5,   FISH_MOVE.WALL_JUMP,            0.3,      0.25, 0.2),
 			fish_def("Colt",      Spr_Fish_Colt,      0.1,  0.1,  3.5,   FISH_MOVE.WALKING,              0.3,      0.25, 0.2),
-			fish_def("Old",       Spr_Fish_Old,       1.0,  1.0,  1.0,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
+			fish_def("Old",       Spr_Fish_Old,       1.0,  1.0,  1.0,   FISH_MOVE.CONSTANT,             0.3,      0.20, 0.2),
 			fish_def("Finch",     Spr_Fish_Finch,     0.4,  0.4,  3.5,   FISH_MOVE.FLY_TOP,              0.3,      0.25, 0.2),
 			fish_def("Gloop",     Spr_Fish_Gloop,     0.4,  0.4,  3.5,   FISH_MOVE.GRID_HOP,             0.3,      0.25, 0.2),
 			fish_def("Ghoul",     Spr_Fish_Ghoul,     0.4,  0.4,  3.5,   FISH_MOVE.FLOAT_UP,             0.3,      0.25, 0.2),

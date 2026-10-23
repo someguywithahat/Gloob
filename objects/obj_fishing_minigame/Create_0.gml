@@ -36,6 +36,15 @@ circle_max_speed = 4
 circle_follow = 0.06 //How hard it pulls toward the mouse.  Lower = lazier near the mouse
 catching = false //True while the bar is filling
 
+//---- Crowd of decoy fish (Hold) ----
+crowd = [] //The decoys.  Filled in by swim_crowd
+crowd_draw_slot = 0 //Where the real fish is drawn among the decoys
+
+//---- Fishing line (Poled) drags a hooked circle ----
+hook_pull_x = 0 //Pixels per step this step
+hook_pull_y = 0
+circle_hooked = false //True while hooked: the circle only gets half its usual acceleration
+
 //---- Wind (Gail's gusts push the circle) ----
 wind_amount = 0 //-1 full gust left, 1 full gust right
 
@@ -102,7 +111,16 @@ make_fish = function(data)
 		pins: [], //Bowling: the rack of pins
 		rolls: 0, //Bowling: rolls since the pins were last set up
 		flip_y: 1, //-1 draws the fish upside down (float up)
-		manual_frame: false //True when the swim function picks the animation frame itself (grow), so Step doesn't animate it
+		manual_frame: false, //True when the swim function picks the animation frame itself (grow), so Step doesn't animate it
+		hook_state: 0, //Hooked: 0 waiting, 1 casting, 2 hooked the circle, 3 reeling the line back in
+		hook_timer: 0,
+		hook_anchor_x: 0, //Hooked: where the line comes in from, on an edge of the pond
+		hook_anchor_y: 0,
+		hook_x: 0, //Hooked: where the hook is
+		hook_y: 0,
+		hook_target_x: 0, //Hooked: where the cast is aimed
+		hook_target_y: 0,
+		face_lock: 0 //0 = face the way it's moving.  1 or -1 = always face right or left (wall jump clings to a wall)
 	}
 }
 
@@ -983,6 +1001,258 @@ swim_wrap = function(fish)
 		fish.y -= box_size
 }
 
+hook_wait_min = 50 //Hooked: steps between casts
+hook_wait_max = 100
+hook_cast_speed = 6 //Hooked: how fast the hook flies out
+hook_reel_speed = 8 //Hooked: how fast the line reels back in
+hook_catch = 0.8 //Hooked: how close to the middle of the circle the hook has to get to catch it (fraction of the circle's radius)
+hook_hold_min = 90 //Hooked: steps it holds on to the circle
+hook_hold_max = 150
+hook_pull = 2.2 //Hooked: pixels per step the line drags the circle toward its edge (the circle tops out at 4)
+hook_tug = 1.5 //Hooked: random jerks on the line while it's hooked
+
+/// Hooked: swims around normally.  Every so often a fishing line comes in from a random spot on a random edge and
+/// casts its hook at the circle.  If the hook gets to the middle of the circle, the line drags the circle toward
+/// its edge with random tugs, and the circle only gets half its usual acceleration until the line lets go
+swim_hooked = function(fish)
+{
+	swim_constant(fish)
+	hook_pull_x = 0
+	hook_pull_y = 0
+	circle_hooked = false
+	if !fish.setup
+	{
+		fish.setup = true
+		fish.hook_timer = irandom_range(hook_wait_min, hook_wait_max)
+	}
+	
+	switch(fish.hook_state)
+	{
+		case 0: //Waiting for the next cast
+			fish.hook_timer--
+			if fish.hook_timer<=0
+			{
+				//Line comes in from a random spot on a random edge
+				switch(irandom(3))
+				{
+					case 0: fish.hook_anchor_x = random_range(box_x, box_x+box_size); fish.hook_anchor_y = box_y; break
+					case 1: fish.hook_anchor_x = random_range(box_x, box_x+box_size); fish.hook_anchor_y = box_y+box_size; break
+					case 2: fish.hook_anchor_x = box_x; fish.hook_anchor_y = random_range(box_y, box_y+box_size); break
+					case 3: fish.hook_anchor_x = box_x+box_size; fish.hook_anchor_y = random_range(box_y, box_y+box_size); break
+				}
+				fish.hook_x = fish.hook_anchor_x
+				fish.hook_y = fish.hook_anchor_y
+				//Aim at where the circle is right now.  Overshoot a bit so a circle that holds still gets hooked
+				var aim_dir = point_direction(fish.hook_x, fish.hook_y, circle_x, circle_y)
+				var aim_dist = point_distance(fish.hook_x, fish.hook_y, circle_x, circle_y) + circle_radius
+				fish.hook_target_x = fish.hook_x + lengthdir_x(aim_dist, aim_dir)
+				fish.hook_target_y = fish.hook_y + lengthdir_y(aim_dist, aim_dir)
+				fish.hook_state = 1
+				var cast_snd = audio_play_sound(snd_flap, 1, false)
+				audio_sound_pitch(cast_snd, 1.3)
+			}
+			break
+			
+		case 1: //Casting: the hook flies toward where the circle was
+			var cast_dir = point_direction(fish.hook_x, fish.hook_y, fish.hook_target_x, fish.hook_target_y)
+			fish.hook_x += lengthdir_x(hook_cast_speed, cast_dir)
+			fish.hook_y += lengthdir_y(hook_cast_speed, cast_dir)
+			if point_distance(fish.hook_x, fish.hook_y, circle_x, circle_y)<circle_radius*hook_catch
+			{
+				fish.hook_state = 2
+				fish.hook_timer = irandom_range(hook_hold_min, hook_hold_max)
+				var hooked_snd = audio_play_sound(snd_boing, 1, false)
+				audio_sound_pitch(hooked_snd, 1.4)
+			}
+			else if point_distance(fish.hook_x, fish.hook_y, fish.hook_target_x, fish.hook_target_y)<=hook_cast_speed
+				fish.hook_state = 3 //Missed
+			break
+			
+		case 2: //Hooked: drag the circle toward the edge the line comes from, with random tugs
+			fish.hook_x = circle_x
+			fish.hook_y = circle_y
+			var pull_dir = point_direction(circle_x, circle_y, fish.hook_anchor_x, fish.hook_anchor_y)
+			hook_pull_x = lengthdir_x(hook_pull, pull_dir) + random_range(-hook_tug, hook_tug)
+			hook_pull_y = lengthdir_y(hook_pull, pull_dir) + random_range(-hook_tug, hook_tug)
+			circle_hooked = true
+			fish.hook_timer--
+			if fish.hook_timer<=0
+				fish.hook_state = 3 //Lets go
+			break
+			
+		case 3: //Reeling the line back in to its edge
+			var reel_dir = point_direction(fish.hook_x, fish.hook_y, fish.hook_anchor_x, fish.hook_anchor_y)
+			fish.hook_x += lengthdir_x(hook_reel_speed, reel_dir)
+			fish.hook_y += lengthdir_y(hook_reel_speed, reel_dir)
+			if point_distance(fish.hook_x, fish.hook_y, fish.hook_anchor_x, fish.hook_anchor_y)<=hook_reel_speed
+			{
+				fish.hook_state = 0
+				fish.hook_timer = irandom_range(hook_wait_min, hook_wait_max)
+			}
+			break
+	}
+}
+
+crowd_count = 50 //Crowd: how many decoy fish
+crowd_sprite = Spr_Fish_Gold //Crowd: what the decoys look like.  Spr_Fish_Hold is Spr_Fish_Gold's first frame, without the animation
+crowd_hold_speed = 0.4 //Crowd: the real fish's speed and acceleration, as a fraction of its own from scr_fish_data (it barely moves)
+crowd_decoy_speed = 2.5 //Crowd: decoy top speed in pixels per step (much faster than the real fish)
+crowd_decoy_accel = 0.3 //Crowd: decoy acceleration and deceleration
+crowd_circle_size = 0.5 //Crowd: the player's circle radius is multiplied by this for this catch
+crowd_message = "Find the still one"
+
+/// Crowd: a Where's Waldo fish.  It hides at a random spot in a crowd of animated decoys that look just like it.
+/// The real fish never animates and barely moves while the decoys dart around, so it's the one to track.  Only it can be caught
+swim_crowd = function(fish)
+{
+	fish.manual_frame = true
+	fish.frame = 0
+	if !fish.setup
+	{
+		fish.setup = true
+		circle_radius *= crowd_circle_size //Smaller circle for this one
+		fish.max_speed *= crowd_hold_speed
+		fish.accel *= crowd_hold_speed
+		fish.decel *= crowd_hold_speed
+		
+		//Hide somewhere random instead of the middle
+		var margin = 20
+		fish.x = random_range(box_x+margin, box_x+box_size-margin)
+		fish.y = random_range(box_y+margin, box_y+box_size-margin)
+		fish.goal_x = fish.x
+		fish.goal_y = fish.y
+		
+		//The decoys: much faster than the real fish, scattered all over, each partway through its animation
+		crowd = []
+		repeat(crowd_count)
+		{
+			var decoy = make_fish({ name: "", sprite: crowd_sprite, accel: crowd_decoy_accel, decel: crowd_decoy_accel, max_speed: crowd_decoy_speed, move: FISH_MOVE.CONSTANT })
+			decoy.x = random_range(box_x+margin, box_x+box_size-margin)
+			decoy.y = random_range(box_y+margin, box_y+box_size-margin)
+			decoy.goal_x = decoy.x
+			decoy.goal_y = decoy.y
+			decoy.frame = random(sprite_get_number(crowd_sprite))
+			decoy.facing = choose(-1, 1)
+			array_push(crowd, decoy)
+		}
+		crowd_draw_slot = irandom(crowd_count) //So the real fish isn't always drawn on top
+	}
+	swim_constant(fish)
+	
+	//Move the decoys (same swimming as the real fish, just faster)
+	var half_decoy = sprite_get_width(crowd_sprite)/2
+	var frame_step = sprite_get_speed(crowd_sprite)/game_get_speed(gamespeed_fps)
+	for (var i = 0; i < array_length(crowd); i++)
+	{
+		var decoy = crowd[i]
+		swim_constant(decoy)
+		decoy.x += decoy.vx
+		decoy.y += decoy.vy
+		if decoy.x<box_x+half_decoy or decoy.x>box_x+box_size-half_decoy
+		{
+			decoy.x = clamp(decoy.x, box_x+half_decoy, box_x+box_size-half_decoy)
+			decoy.vx *= -0.5
+		}
+		if decoy.y<box_y+half_decoy or decoy.y>box_y+box_size-half_decoy
+		{
+			decoy.y = clamp(decoy.y, box_y+half_decoy, box_y+box_size-half_decoy)
+			decoy.vy *= -0.5
+		}
+		if abs(decoy.vx)>0.3
+			decoy.facing = sign(decoy.vx)
+		decoy.frame += frame_step
+	}
+}
+
+goat_hop_height = 40 //Wall jump: how far up each hop goes
+goat_hop_out = 14 //Wall jump: how far each hop pushes off the wall
+goat_hop_steps = 16 //Wall jump: steps per hop
+goat_cling_min = 3 //Wall jump: steps it clings to the wall between hops
+goat_cling_max = 9
+goat_jump_at = 0.7 //Wall jump: how far up the wall (0 bottom, 1 top) it climbs before leaping across
+goat_jump_arc = 70 //Wall jump: how high the leap across arcs
+goat_jump_steps = 50 //Wall jump: steps the leap across takes
+
+/// Wall jump: swims to the bottom of a side wall, then climbs it in little wall-jump hops (pushing off and landing
+/// higher), clinging nose-up between hops.  About 70% of the way up it leaps across to the bottom of the other wall.
+///   mode 0 heading to the first wall, 1 clinging, 2 hopping up, 3 leaping across
+///   zig_dir is the wall it's on (-1 left, 1 right).  mode_x/mode_y is where the current hop or leap started
+swim_wall_jump = function(fish)
+{
+	var half_fish = sprite_get_width(fish.sprite)/2
+	var bottom_y = box_y + box_size - half_fish
+	var wall_x = (fish.zig_dir<0) ? box_x+half_fish : box_x+box_size-half_fish
+	var target_x = fish.x
+	var target_y = fish.y
+	
+	switch(fish.mode)
+	{
+		case 0: //Heading to the bottom of a wall (zig_dir starts as a random side)
+			fish.goal_x = wall_x
+			fish.goal_y = bottom_y
+			swim_toward_goal(fish, fish.max_speed)
+			if point_distance(fish.x, fish.y, wall_x, bottom_y)<4
+			{
+				fish.mode = 1
+				fish.mode_timer = irandom_range(goat_cling_min, goat_cling_max)
+			}
+			return;
+			
+		case 1: //Clinging to the wall, nose up, belly against it
+			target_x = wall_x
+			fish.mode_timer--
+			if fish.mode_timer<=0
+			{
+				fish.mode_x = fish.x
+				fish.mode_y = fish.y
+				fish.mode_timer = 0 //Now counts 0 to 1 through the hop or leap
+				var climbed = (bottom_y-fish.y)/(box_size-half_fish*2)
+				fish.mode = (climbed>=goat_jump_at) ? 3 : 2
+			}
+			break
+			
+		case 2: //Hopping up: pushes off the wall in an arc and lands higher up
+			fish.mode_timer = min(fish.mode_timer + 1/goat_hop_steps, 1)
+			target_x = wall_x - fish.zig_dir*goat_hop_out*sin(fish.mode_timer*pi)
+			target_y = fish.mode_y - goat_hop_height*fish.mode_timer
+			if fish.mode_timer>=1
+			{
+				fish.mode = 1
+				fish.mode_timer = irandom_range(goat_cling_min, goat_cling_max)
+			}
+			break
+			
+		case 3: //Leaping across to the bottom of the other wall
+			fish.mode_timer = min(fish.mode_timer + 1/goat_jump_steps, 1)
+			var other_wall_x = (fish.zig_dir<0) ? box_x+box_size-half_fish : box_x+half_fish
+			target_x = lerp(fish.mode_x, other_wall_x, fish.mode_timer)
+			target_y = lerp(fish.mode_y, bottom_y, fish.mode_timer) - sin(fish.mode_timer*pi)*goat_jump_arc
+			if fish.mode_timer>=1
+			{
+				fish.zig_dir *= -1 //Now on the other wall
+				fish.mode = 1
+				fish.mode_timer = irandom_range(goat_cling_min, goat_cling_max)
+			}
+			break
+	}
+	
+	//Move exactly to this step's spot (Step adds the speed on)
+	fish.vx = target_x - fish.x
+	fish.vy = target_y - fish.y
+	
+	//On the wall: nose up with its belly against the wall.  Leaping: level, facing the way it's flying
+	if fish.mode=3
+	{
+		fish.angle = 0
+		fish.face_lock = -fish.zig_dir
+	}
+	else
+	{
+		fish.angle = 90*fish.zig_dir
+		fish.face_lock = fish.zig_dir
+	}
+}
+
 /// Moves the fish for one step using its movement type
 swim = function(fish)
 {
@@ -1010,6 +1280,9 @@ swim = function(fish)
 		case FISH_MOVE.BOWLING:           swim_bowling(fish);         break
 		case FISH_MOVE.GROW:              swim_grow(fish);            break
 		case FISH_MOVE.WRAP:              swim_wrap(fish);            break
+		case FISH_MOVE.HOOKED:            swim_hooked(fish);          break
+		case FISH_MOVE.CROWD:             swim_crowd(fish);           break
+		case FISH_MOVE.WALL_JUMP:         swim_wall_jump(fish);       break
 	}
 }
 
