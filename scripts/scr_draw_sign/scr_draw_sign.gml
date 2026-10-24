@@ -100,8 +100,71 @@ function scr_draw_sign(xx, yy, width, height, scale, hasChains, hasPost, hasFlow
 
 
 
-function scr_draw_grass_sign(xx, yy, text, scale)
+/// Scroll bar along the inside of the right edge of an area (used by the grass sign and grass leaves area).
+///   inset            -- how far in from the area's edges the bar sits (the border's thickness)
+///   scroll           -- 0 top to 1 bottom
+///   visible_fraction -- how much of the content fits, 0-1 (sets the thumb's size)
+/// The bar can be dragged, clicked, or scrolled with the mouse wheel over the area.  Returns the new scroll
+function scr_draw_scroll_bar(area_x, area_y, area_w, area_h, inset, scroll, visible_fraction)
+{
+	static dragging = false //Only one scroll bar is dragged at a time
+	static drag_offset = 0
+	
+	var bar_w = 8
+	var bar_x = area_x + area_w - inset - bar_w - 4
+	var track_top = area_y + inset + 4
+	var track_h = area_h - inset*2 - 8
+	var thumb_h = max(20, track_h*clamp(visible_fraction, 0, 1))
+	var thumb_travel = max(1, track_h-thumb_h)
+	var thumb_y = track_top + thumb_travel*scroll
+	var over_area = point_in_rectangle(mouse_x, mouse_y, area_x, area_y, area_x+area_w, area_y+area_h)
+	var over_thumb = point_in_rectangle(mouse_x, mouse_y, bar_x-4, thumb_y, bar_x+bar_w+4, thumb_y+thumb_h)
+	var over_track = point_in_rectangle(mouse_x, mouse_y, bar_x-4, track_top, bar_x+bar_w+4, track_top+track_h)
+	
+	//Mouse wheel over the area
+	var wheel_step = clamp(visible_fraction, 0.02, 1)*0.25
+	if over_area and mouse_wheel_up()
+		scroll -= wheel_step
+	if over_area and mouse_wheel_down()
+		scroll += wheel_step
+	
+	//Grab the thumb, or click the track to jump there
+	if mouse_check_button_pressed(mb_left)
+	{
+		if over_thumb
+		{
+			dragging = true
+			drag_offset = mouse_y - thumb_y
+		}
+		else if over_track
+		{
+			dragging = true
+			drag_offset = thumb_h/2
+		}
+	}
+	if !mouse_check_button(mb_left)
+		dragging = false
+	if dragging
+		scroll = (mouse_y - drag_offset - track_top)/thumb_travel
+	scroll = clamp(scroll, 0, 1)
+	thumb_y = track_top + thumb_travel*scroll
+	
+	//Track and thumb
+	draw_set_color(c_black)
+	draw_set_alpha(0.35)
+	draw_roundrect(bar_x, track_top, bar_x+bar_w, track_top+track_h, false)
+	draw_set_alpha((over_thumb or dragging) ? 1 : 0.8)
+	draw_set_color(c_white)
+	draw_roundrect(bar_x, thumb_y, bar_x+bar_w, thumb_y+thumb_h, false)
+	draw_set_alpha(1)
+	return scroll;
+}
 
+
+/// Grass sign with text centered along the top in global.fnt_Gloop.  Normally sized to fit the text.
+/// Optional: box_w/box_h give it a fixed size in pixels (the text becomes a title), and scroll/visible_fraction
+/// add a scroll bar (see scr_draw_scroll_bar).  Returns the new scroll, or -1 with no scroll bar
+function scr_draw_grass_sign(xx, yy, text, scale, box_w=-1, box_h=-1, scroll=-1, visible_fraction=1)
 {
 	draw_set_font(global.fnt_Gloop)
 	//var w = string_width(text)
@@ -113,6 +176,11 @@ function scr_draw_grass_sign(xx, yy, text, scale)
 	var spacer = sprite_get_width(Signage)*scale
 	var sWidth = round(width/spacer)
 	var sHeight = round(height/spacer)
+	//Fixed size: the sign is (sWidth+1) by (sHeight+1) tiles
+	if box_w>0
+		sWidth = max(2, round(box_w/spacer)-1)
+	if box_h>0
+		sHeight = max(2, round(box_h/spacer)-1)
 	
 	
 	var textCenter=(((sWidth+1)*spacer)-string_width(text)) /2
@@ -154,11 +222,17 @@ function scr_draw_grass_sign(xx, yy, text, scale)
 	
 	draw_set_colour(c_white)
 	draw_text(xx+textCenter, yy+alignment_mod, text);
-
-
+	
+	if scroll<0
+		return -1;
+	return scr_draw_scroll_bar(xx, yy, (sWidth+1)*spacer, (sHeight+1)*spacer, spacer, scroll, visible_fraction)
 }
 
-function scr_draw_grass_leaves_area(xx, yy, x_tiles, y_tiles, scale)
+/// Draws a leafy border area (Spr_Garden_path, changes with the season).
+/// Optional scroll bar: pass scroll (0 top to 1 bottom) and visible_fraction (how much of the content fits, 0-1).
+/// The bar can be dragged, clicked, or scrolled with the mouse wheel over the area.  Returns the new scroll.
+/// Leave scroll off (or -1) for no scroll bar
+function scr_draw_grass_leaves_area(xx, yy, x_tiles, y_tiles, scale, scroll=-1, visible_fraction=1)
 {
 	
 	var leaf_sprite=Spr_Garden_path
@@ -207,6 +281,10 @@ function scr_draw_grass_leaves_area(xx, yy, x_tiles, y_tiles, scale)
 			}
 		}
 	}
+
+	if scroll<0
+		return scroll;
+	return scr_draw_scroll_bar(xx, yy, (x_tiles+1)*spacer, (y_tiles+1)*spacer, spacer, scroll, visible_fraction)
 }
 
 
