@@ -60,6 +60,18 @@ if room==rm_gameScreen
 }
 
 
+//Testing: wipe the fishing catch history so the trophy clams can be opened again
+if room==rm_fishingCenter
+{
+	clicked_reset_fishing=scr_draw_menu_item(10,736,"Reset fishing save data",clicked_reset_fishing)
+	if clicked_reset_fishing=1
+	{
+		clicked_reset_fishing=-1
+		scr_fish_reset_caught()
+	}
+}
+
+
 if room== rm_titleScreen
 {
 	scr_draw_sign(500,410,340,140,2,0,2,4)

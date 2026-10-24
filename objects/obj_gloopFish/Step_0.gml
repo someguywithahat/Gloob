@@ -1,35 +1,42 @@
-
-stepCounter++
-x+=derx
-y+=dery
-
-
-
-if stepCounter>50 and random_range(1,200)=1
+//---- Wander: pick a new direction every so often ----
+turn_timer--
+if turn_timer<=0
 {
-	derx=random_range(1,-1)
-	dery=random_range(0.2,-0.2)	
+	vx = random_range(-1, 1)
+	vy = random_range(-0.3, 0.3)
+	turn_timer = irandom_range(60, 180)
 }
 
-if x<-40 or y<-40 or x>room_width+40 or y>room_height+40
+//---- Swim away from the boat when it gets close ----
+var my_x = (bbox_left+bbox_right)/2
+var my_y = (bbox_top+bbox_bottom)/2
+var boat = instance_nearest(my_x, my_y, obj_gloopFishing)
+if boat<>noone
 {
-	if x>room_width+40 x=-40
-	if y>room_height+40 y=-40
-	if x<-40 x=room_width+40
-	if y<-40 x=room_height+40
-	
-	derx=random_range(1,-1)
-	dery=random_range(0.2,-0.2)		
-	
+	var boat_x = (boat.bbox_left+boat.bbox_right)/2
+	var boat_y = (boat.bbox_top+boat.bbox_bottom)/2
+	if point_distance(my_x, my_y, boat_x, boat_y)<flee_range
+	{
+		vx += sign(my_x-boat_x)*flee_push
+		vy += sign(my_y-boat_y)*flee_push
+	}
 }
+vx = clamp(vx, -max_speed, max_speed)
+vy = clamp(vy, -max_speed, max_speed)
 
-if derx>maxSpeed
-	derx=maxSpeed
-if dery>maxSpeed
-	dery=maxSpeed
-if derx<maxSpeed*-1
-	derx=maxSpeed*-1
-if dery<maxSpeed*-1
-	dery=maxSpeed*-1
+//---- Stay in the water: turn around at the shore and at the edges of the room ----
+if place_meeting(x+vx, y, obj_gloopFishingWall) or x+vx<0 or x+vx+sprite_width>room_width
+	vx *= -1
+if place_meeting(x, y+vy, obj_gloopFishingWall) or y+vy<0 or y+vy+sprite_height>room_height
+	vy *= -1
+x += vx
+y += vy
 
-
+//---- Click it to try to catch it ----
+if mouse_check_button_pressed(mb_left) and !instance_exists(obj_fishing_minigame) and !is_undefined(fish_data)
+	and position_meeting(mouse_x, mouse_y, id)
+{
+	global.fishing_test_fish = fish_data //obj_fishing_minigame picks this up and clears it
+	var game = instance_create_depth(0, 0, -15000, obj_fishing_minigame)
+	game.source_fish = id //Caught fish leave the water
+}

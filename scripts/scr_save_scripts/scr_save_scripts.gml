@@ -68,6 +68,54 @@ function scr_spend_fishing_ticket(){
 }
 
 
+/// Fish that have been caught, by name (scr_fish_data).  Saved right away so they carry over between sessions
+function scr_load_fish_caught(){
+	global.fish_caught = {}
+	ini_open("save.ini");
+	for (var g = 0; g < array_length(global.FISH_GROUPS); g++)
+	{
+		var fish_list = global.FISH_GROUPS[g]
+		for (var i = 0; i < array_length(fish_list); i++)
+		{
+			var name = fish_list[i].name
+			if ini_read_real("FishCaught", name, 0)>0
+				global.fish_caught[$ name] = true
+		}
+	}
+	ini_close();
+}
+
+function scr_fish_mark_caught(name){
+	if !variable_global_exists("fish_caught")
+		scr_load_fish_caught()
+	global.fish_caught[$ name] = true
+	ini_open("save.ini");
+	ini_write_real("FishCaught", name, 1);
+	ini_close();
+}
+
+/// Testing: forgets every fish that's been caught (closes all the trophy clams)
+function scr_fish_reset_caught(){
+	global.fish_caught = {}
+	ini_open("save.ini");
+	ini_section_delete("FishCaught");
+	ini_close();
+	with(obj_clamTrophy)
+	{
+		is_open = false
+		opening = false
+		shell_frame = 0
+		bowl_frame = 0
+	}
+}
+
+function scr_fish_is_caught(name){
+	if !variable_global_exists("fish_caught")
+		scr_load_fish_caught()
+	return variable_struct_exists(global.fish_caught, name)
+}
+
+
 /// Pause menu options: volumes and default slime speed
 function scr_save_options(){
 	ini_open("save.ini");

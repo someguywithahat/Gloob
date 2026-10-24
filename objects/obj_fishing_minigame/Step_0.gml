@@ -3,7 +3,11 @@ if result<>0
 {
 	end_timer++
 	if end_timer>end_time
+	{
+		if surface_exists(pond_light_surf)
+			surface_free(pond_light_surf)
 		instance_destroy()
+	}
 	exit
 }
 
@@ -11,10 +15,18 @@ if result<>0
 //---- Circle: chase the mouse, speeding up and slowing down gradually ----
 var want_vx = clamp((mouse_x-circle_x)*circle_follow, -circle_max_speed, circle_max_speed)
 var want_vy = clamp((mouse_y-circle_y)*circle_follow, -circle_max_speed, circle_max_speed)
-circle_vx += clamp(want_vx-circle_vx, -circle_accel, circle_accel)
-circle_vy += clamp(want_vy-circle_vy, -circle_accel, circle_accel)
+//Hooked by a fishing line (Poled): the circle fights for control with half its usual acceleration
+var accel = circle_hooked ? circle_accel*0.5 : circle_accel
+circle_vx += clamp(want_vx-circle_vx, -accel, accel)
+circle_vy += clamp(want_vy-circle_vy, -accel, accel)
 circle_x += circle_vx
 circle_y += circle_vy
+//Wind gusts (Gail) gently push the circle left or right, but only while the player isn't steering it sideways
+if abs(circle_vx)<0.3
+	circle_x += wind_amount*wind_push
+//A fishing line (Poled) drags a hooked circle toward its edge
+circle_x += hook_pull_x
+circle_y += hook_pull_y
 
 //Stay inside the pond
 var circle_min_x = box_x+circle_radius
@@ -38,29 +50,43 @@ swim(fish) //Movement depends on the fish's type (see the swim functions in Crea
 fish.x += fish.vx
 fish.y += fish.vy
 
-//Bounce softly off the sides of the pond
-var half_fish = sprite_get_width(fish.sprite)/2
-if fish.x<box_x+half_fish or fish.x>box_x+box_size-half_fish
+//Bounce off the sides of the pond (softly for most fish, hard for a flying golf fish)
+//(a bowling fish rolling through the pins skips this so it can roll out the top)
+if !fish.no_walls
 {
-	fish.x = clamp(fish.x, box_x+half_fish, box_x+box_size-half_fish)
-	fish.vx *= -0.5
-}
-if fish.y<box_y+half_fish or fish.y>box_y+box_size-half_fish
-{
-	fish.y = clamp(fish.y, box_y+half_fish, box_y+box_size-half_fish)
-	fish.vy *= -0.5
+	var half_fish = sprite_get_width(fish.sprite)*max(fish.scale, 1)/2 //Bigger when drawn bigger (fat Grow)
+	if fish.x<box_x+half_fish or fish.x>box_x+box_size-half_fish
+	{
+		fish.x = clamp(fish.x, box_x+half_fish, box_x+box_size-half_fish)
+		fish.vx *= -fish.bounce
+	}
+	if fish.y<box_y+half_fish or fish.y>box_y+box_size-half_fish
+	{
+		fish.y = clamp(fish.y, box_y+half_fish, box_y+box_size-half_fish)
+		fish.vy *= -fish.bounce
+	}
 }
 
-if abs(fish.vx)>0.3
+//Face the way it's moving, unless the swim function locked its facing (wall jump)
+if fish.face_lock<>0
+	fish.facing = fish.face_lock
+else if abs(fish.vx)>0.3
 	fish.facing = sign(fish.vx)
-fish.frame += sprite_get_speed(fish.sprite)/game_get_speed(gamespeed_fps)
+if !fish.manual_frame
+	fish.frame += sprite_get_speed(fish.sprite)/game_get_speed(gamespeed_fps)
 
 
 //---- Green bar: grows while the fish is in the circle, shrinks while it isn't ----
-fish_in_circle = point_distance(fish.x, fish.y, circle_x, circle_y)<=circle_radius
-if fish_in_circle
-	bar_fill += bar_grow
+//A fish hiding underground (Holed) can't be caught, and the bar holds still until it comes back out
+var fish_inside = point_distance(fish.x, fish.y, circle_x, circle_y)<=circle_radius
+//Most fish are caught by keeping them in the circle.  A stick-to-circle fish (Fools) is backwards: keep it out
+if fish.move=FISH_MOVE.STICK_TO_CIRCLE
+	catching = !fish.hidden and !fish_inside
 else
+	catching = !fish.hidden and fish_inside
+if catching
+	bar_fill += bar_grow
+else if !fish.hidden
 	bar_fill -= bar_shrink
 bar_fill = clamp(bar_fill, 0, 1)
 
@@ -68,6 +94,9 @@ if bar_fill>=1
 {
 	result = 1
 	audio_play_sound(snd_slm_yay, 1, false)
+	scr_fish_mark_caught(fish.name) //Opens its trophy clam
+	if instance_exists(source_fish)
+		instance_destroy(source_fish)
 }
 else if bar_fill<=0
 {

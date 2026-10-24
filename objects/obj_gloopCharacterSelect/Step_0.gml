@@ -26,7 +26,19 @@ if (mouse_x > x - sprite_xoffset && mouse_x < x - sprite_xoffset + sprite_width 
     mouse_y > y - sprite_yoffset && mouse_y < y - sprite_yoffset + sprite_height
 	&& mouse_check_button_pressed(mb_left)) 
 {
-	if selected=0{
+	//Only so many slimes can be picked at once (obj_controller_characterSelect's max_selected)
+	var picked = 0
+	with(obj_gloopCharacterSelect)
+		picked += selected
+	var select_controller = instance_find(obj_controller_characterSelect, 0)
+	var team_full = select_controller<>noone and picked>=select_controller.max_selected
+
+	if selected=0 and team_full{
+		//No room on the stumps
+		var full_snd = audio_play_sound(snd_slm_confused, 1, false);
+		audio_sound_pitch(full_snd, random_range(0.8, 0.9));
+	}
+	else if selected=0{
 	    sprite_index=s_roll_R
 		selected=1
 		var yay_snd = audio_play_sound(snd_slm_yay, 1, false);	
@@ -70,3 +82,4 @@ if clicked_right>0
 		has_accessory=0
 	else has_accessory++
 }
+
