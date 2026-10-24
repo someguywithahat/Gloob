@@ -3,7 +3,11 @@ if result<>0
 {
 	end_timer++
 	if end_timer>end_time
+	{
+		if surface_exists(pond_light_surf)
+			surface_free(pond_light_surf)
 		instance_destroy()
+	}
 	exit
 }
 

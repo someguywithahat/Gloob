@@ -137,6 +137,33 @@ if fish.move=FISH_MOVE.HOOKED and fish.hook_state<>0
 
 gpu_set_scissor(old_scissor)
 
+//---- Dark rooms (the fishing cave): darken the pond, lit by the circle and the fish's own glow ----
+var lighting = instance_find(obj_lighting, 0)
+if lighting<>noone and lighting.always_night
+{
+	if !surface_exists(pond_light_surf)
+		pond_light_surf = surface_create(box_size, box_size)
+	surface_set_target(pond_light_surf)
+	draw_clear(lighting.sky_color(lighting.night_amount))
+	gpu_set_blendmode(bm_add)
+	var light_strength = lighting.night_amount
+	//The circle: a lantern about the size of the circle (positions are relative to the pond's corner)
+	lighting.add_light(circle_x-box_x, circle_y-box_y, circle_radius*circle_light_size, lighting.boat_light_color, light_strength)
+	//The fish glows in its own color (light in scr_fish_data)
+	if !fish.hidden
+		lighting.add_light(fish.x-box_x, fish.y-box_y, lighting.fish_light_radius*max(fish.scale, 1), fish_data.light,
+			light_strength*lighting.fish_light_strength, spr_effect_glow)
+	gpu_set_blendmode(bm_normal)
+	surface_reset_target()
+
+	//Multiply it over the pond, then put the pond's outline back on top
+	gpu_set_blendmode_ext(bm_dest_colour, bm_zero)
+	draw_surface(pond_light_surf, box_x, box_y)
+	gpu_set_blendmode(bm_normal)
+	draw_set_color(c_white)
+	draw_rectangle(box_x, box_y, box_x+box_size, box_y+box_size, true)
+}
+
 //---- Circle: turns yellow while the bar is filling (fish inside, or outside for a stick-to-circle fish) ----
 draw_set_color(catching ? c_yellow : c_white)
 draw_circle(circle_x, circle_y, circle_radius, true)

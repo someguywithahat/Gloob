@@ -51,6 +51,11 @@ wind_amount = 0 //-1 full gust left, 1 full gust right
 //---- The fish in the fishing room this round is for (obj_gloopFish).  It leaves the water when it's caught ----
 source_fish = noone
 
+//---- Dark rooms (the fishing cave): the pond is dark too ----
+//Uses the room's obj_lighting (always-night) for the night color and the fish glow settings
+pond_light_surf = -1
+circle_light_size = 1.1 //The circle's light, as a multiple of its radius.  spr_effect_glow_harder is solid to about 85% of its size, so 1.1 lines the bright part up with the circle
+
 //---- Ending ----
 result = 0 //0 = playing, 1 = caught, -1 = got away
 end_timer = 0
