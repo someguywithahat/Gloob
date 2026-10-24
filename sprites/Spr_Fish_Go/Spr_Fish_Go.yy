@@ -24,8 +24,7 @@
   "height":24,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"b4f41ade-0e05-4423-9da5-1553435ac484","blendMode":0,"displayName":"Layer 4","isLocked":false,"name":"b4f41ade-0e05-4423-9da5-1553435ac484","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"82b37a4c-f641-4c41-8206-f16107a9866c","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"82b37a4c-f641-4c41-8206-f16107a9866c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"8a379fad-f13f-46f7-9779-828ed48a0e41","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"8a379fad-f13f-46f7-9779-828ed48a0e41","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"bd3d2acb-b31c-4ee9-b5c4-1054624fd4cb","blendMode":0,"displayName":"Layer 5","isLocked":false,"name":"bd3d2acb-b31c-4ee9-b5c4-1054624fd4cb","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"Spr_Fish_Go",
