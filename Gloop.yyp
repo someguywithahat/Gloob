@@ -471,6 +471,8 @@
     {"id":{"name":"Spr_Bowl_Volt","path":"sprites/Spr_Bowl_Volt/Spr_Bowl_Volt.yy",},},
     {"id":{"name":"Spr_Bowl_Wholed","path":"sprites/Spr_Bowl_Wholed/Spr_Bowl_Wholed.yy",},},
     {"id":{"name":"Spr_break_rock","path":"sprites/Spr_break_rock/Spr_break_rock.yy",},},
+    {"id":{"name":"Spr_Catch_Bowl","path":"sprites/Spr_Catch_Bowl/Spr_Catch_Bowl.yy",},},
+    {"id":{"name":"Spr_Catch_Net","path":"sprites/Spr_Catch_Net/Spr_Catch_Net.yy",},},
     {"id":{"name":"spr_effect_bowlingPin","path":"sprites/spr_effect_bowlingPin/spr_effect_bowlingPin.yy",},},
     {"id":{"name":"spr_effect_dropped_hat","path":"sprites/spr_effect_dropped_hat/spr_effect_dropped_hat.yy",},},
     {"id":{"name":"spr_effect_glow_harder","path":"sprites/spr_effect_glow_harder/spr_effect_glow_harder.yy",},},
