@@ -10,8 +10,8 @@ home_delay=20 //Steps of fluttering around before heading to the counter.  Stagg
 depth=-2002 //Above everything on the board
 
 //Where it flies to: the "N left" counter drawn by obj_controller
-target_x=1195
-target_y=52
+target_x=1242 //Middle of the "N left" line on the goal sign (scr_draw_goal_sign at 1130, 0)
+target_y=73
 
 //Burst out in a random direction
 direction=random(360)

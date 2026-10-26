@@ -325,39 +325,45 @@ function scr_draw_goal_sign(xx, yy, hover_or_click)
 	var progress = clamp((goal_total - controller.season_goal)/goal_total, 0, 1)
 	var goal_reached = controller.season_goal<=0
 
-	//Lay the rows out from the font height, then size the sign to fit
+	//---- Layout.  Everything is lined up by what's actually visible, not by sprite boxes ----
+	//fnt_Gloop letters are 32 pixels tall, but only rows 5-27 have anything in them
 	draw_set_font(global.fnt_Gloop)
-	var text_h = string_height("0")
-	var pad = 10
-	var gap = 8
-	var icon_size = sprite_get_width(spr_Seasons)
-	var content_h = pad + text_h + gap + icon_size + gap + text_h + pad
+	var text_top_space = 5 //Empty rows above the letters
+	var text_h = 22 //Height of the letters themselves
+	var icon_size = sprite_get_width(spr_Seasons) //spr_Seasons has its origin in the middle (8, 8)
+	var pad = 10 //Space between the sign's edge and the content
+	var gap = 6 //Space between the rows
+	var content_h = text_h + gap + icon_size + gap + text_h
 
+	//Sign just tall enough for the content (scr_draw_sign makes it (tiles+1) tiles tall)
 	var tile = sprite_get_width(Signage)
 	var sign_tiles_wide = 13
-	var sign_tiles_high = ceil(content_h/tile) - 1
+	var sign_tiles_high = ceil((content_h + pad*2)/tile) - 1
 	var sign_w = (sign_tiles_wide+1)*tile
+	var sign_h = (sign_tiles_high+1)*tile
 	scr_draw_sign(xx, yy, sign_tiles_wide*tile, sign_tiles_high*tile, 1, 2, 0, 0)
 
+	//Rows, centered top to bottom in the sign
 	var center_x = xx + sign_w/2
-	var row1_y = yy + pad
-	var row2_y = row1_y + text_h + gap
-	//The bar and the bottom line sit this far above their natural spot.  The season icons stay put
-	var lift = 16
-	var row3_y = row2_y + icon_size + gap - lift
+	var content_top = yy + (sign_h - content_h)/2
+	var row1_y = content_top - text_top_space //Where to draw line 1 so its letters start at content_top
+	var row2_mid = content_top + text_h + gap + icon_size/2 //Middle of the icons and the bar
+	var row3_y = row2_mid + icon_size/2 + gap - text_top_space
 
 	//Line 1
 	scr_draw_text(center_x, row1_y, "Goal "+string(round(controller.season_goal_percentage*100))+"%", 1)
 
-	//Line 2: season icons with the slime bar between them
+	//Line 2: season icons with the slime bar between them, all centered on row2_mid
 	var icon_inset = tile
-	draw_sprite(spr_Seasons, season_icon[global.weather], xx+icon_inset, row2_y)
-	draw_sprite(spr_Seasons, season_icon[next_season[global.weather]], xx+sign_w-icon_inset-icon_size, row2_y)
+	var left_icon_x = xx + icon_inset + icon_size/2
+	var right_icon_x = xx + sign_w - icon_inset - icon_size/2
+	draw_sprite(spr_Seasons, season_icon[global.weather], left_icon_x, row2_mid)
+	draw_sprite(spr_Seasons, season_icon[next_season[global.weather]], right_icon_x, row2_mid)
 
-	var bar_x1 = xx + icon_inset + icon_size + 6
-	var bar_x2 = xx + sign_w - icon_inset - icon_size - 6
-	var bar_y1 = row2_y + 3 - lift
-	var bar_y2 = row2_y + icon_size - 3 - lift
+	var bar_x1 = left_icon_x + icon_size/2 + 6
+	var bar_x2 = right_icon_x - icon_size/2 - 6
+	var bar_y1 = row2_mid - icon_size/2 + 3
+	var bar_y2 = row2_mid + icon_size/2 - 3
 	var bar_h = bar_y2 - bar_y1
 
 	draw_set_alpha(0.55)
