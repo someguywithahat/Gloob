@@ -24,3 +24,7 @@ TOGETHER
 	Play as rock
 	fish minigame
 	write rules
+	
+FISH
+	If we can randomize what frame they start on so they arent in sync
+	Jo - waterfall and background assets
