@@ -3,7 +3,7 @@
   "%Name":"Spr_Bowl_Gold",
   "bboxMode":0,
   "bbox_bottom":47,
-  "bbox_left":5,
+  "bbox_left":9,
   "bbox_right":65,
   "bbox_top":7,
   "collisionKind":1,
