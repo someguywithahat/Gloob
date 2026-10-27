@@ -27,6 +27,9 @@ if abs(circle_vx)<0.3
 //A fishing line (Poled) drags a hooked circle toward its edge
 circle_x += hook_pull_x
 circle_y += hook_pull_y
+//A whirlpool (Bowl) carries the circle around
+circle_x += whirl_push_x
+circle_y += whirl_push_y
 
 //Stay inside the pond
 var circle_min_x = box_x+circle_radius

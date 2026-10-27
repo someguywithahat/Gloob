@@ -6,6 +6,55 @@ draw_set_alpha(1)
 draw_set_color(c_white)
 draw_rectangle(box_x, box_y, box_x+box_size, box_y+box_size, true)
 
+//---- Whirlpool (Bowl): darker water in the middle, spiral arms turning, and splashes.  Under the net and the fish ----
+if fish.move=FISH_MOVE.WHIRLPOOL
+{
+	var whirl_old_scissor = gpu_get_scissor()
+	gpu_set_scissor(box_x, box_y, box_size, box_size)
+	if whirl_amount>0
+	{
+		var R = box_size*whirl_radius
+		//Deeper water toward the middle (overlapping circles get darker)
+		draw_set_color(make_colour_rgb(40,90,170))
+		draw_set_alpha(0.08*whirl_amount)
+		for (var k = 1; k <= 4; k++)
+			draw_circle(whirl_x, whirl_y, R*k/4, false)
+		//Spiral arms, curling in from the edge to the middle
+		draw_set_color(c_white)
+		var arm_steps = 16
+		for (var arm = 0; arm < whirl_arms; arm++)
+		{
+			var prev_x = 0
+			var prev_y = 0
+			for (var s = 0; s <= arm_steps; s++)
+			{
+				var f = s/arm_steps //0 at the edge, 1 in the middle
+				var r = R*(1 - f*0.95)
+				var a = whirl_angle + arm*360/whirl_arms + f*whirl_twist*whirl_dir
+				var px = whirl_x + lengthdir_x(r, a)
+				var py = whirl_y + lengthdir_y(r, a)
+				if s>0
+				{
+					draw_set_alpha(whirl_amount*0.6*sin(f*pi)) //Fades in from the edge and out at the middle
+					draw_line_width(prev_x, prev_y, px, py, 2)
+				}
+				prev_x = px
+				prev_y = py
+			}
+		}
+		//Faint edge
+		draw_set_alpha(0.25*whirl_amount)
+		draw_circle(whirl_x, whirl_y, R, true)
+		draw_set_alpha(1)
+	}
+	//Splashes.  Spr_Ripple is 32x32 with a top left origin, so center it
+	var splash_half = sprite_get_width(Spr_Ripple)/2
+	for (var i = 0; i < array_length(whirl_splashes); i++)
+		draw_sprite(Spr_Ripple, floor(whirl_splashes[i].frame), whirl_splashes[i].x-splash_half, whirl_splashes[i].y-splash_half)
+	gpu_set_scissor(whirl_old_scissor)
+	draw_set_color(c_white)
+}
+
 //---- Catch bowl (the circle the player steers), drawn under everything else so the fish swims over it ----
 //Spr_Catch_net has a top left origin, so scale its visible ring to the circle's size and center it on the circle
 var bowl_ring = sprite_get_bbox_right(Spr_Catch_net) - sprite_get_bbox_left(Spr_Catch_net) + 1
@@ -249,6 +298,9 @@ if lighting<>noone and lighting.always_night
 		if bolt_flash>0
 			lighting.add_light(box_size/2, box_size/2, box_size, bolt_flash_color, light_strength*bolt_flash)
 	}
+	//A whirlpool (Bowl) glows faintly in the fish's color
+	if fish.move=FISH_MOVE.WHIRLPOOL and whirl_amount>0
+		lighting.add_light(whirl_x-box_x, whirl_y-box_y, box_size*whirl_radius, fish_data.light, light_strength*0.4*whirl_amount, spr_effect_glow)
 	//Embers (Scald) glow in the fish's color
 	if fish.move=FISH_MOVE.EMBERS
 		for (var i = 0; i < array_length(embers); i++)

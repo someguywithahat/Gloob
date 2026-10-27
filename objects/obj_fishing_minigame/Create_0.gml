@@ -1685,6 +1685,155 @@ ember_strength = function(ember)
 	return clamp(ember.life/ember.fade_steps, 0, 1)
 }
 
+//---- Whirlpool (Bowl) ----
+whirl_radius = 0.36 //Size of the whirlpool, as a fraction of the pond's size
+whirl_every_min = 150 //Steps of normal dashing between whirlpools
+whirl_every_max = 260
+whirl_windup = 45 //Steps it spins in place while the whirlpool opens
+whirl_time = 300 //Steps the whirlpool lasts
+whirl_winddown = 45 //Steps it takes to calm down again
+whirl_spin = 2.2 //How hard the current carries the circle around, pixels per step
+whirl_pull = 0.6 //How hard it drags the circle toward the middle, pixels per step
+whirl_rim = 0.75 //The fish rides around at this much of the whirlpool's radius
+whirl_fish_speed = 3.2 //How fast the fish rides around the rim, pixels per step
+whirl_arms = 3 //Spiral arms drawn on the water
+whirl_twist = 240 //How far each arm curls on its way to the middle (degrees)
+whirl_turn = 3 //How fast the arms turn (degrees per step)
+whirl_splash_every = 12 //Steps between little splashes (Spr_Ripple) on the whirlpool
+whirl_splash_speed = 12 //Splash animation, frames per second
+whirl_amount = 0 //0-1.  How strong the whirlpool is right now
+whirl_x = 0 //The whirlpool's middle
+whirl_y = 0
+whirl_dir = 1 //Which way it spins: 1 counterclockwise, -1 clockwise
+whirl_angle = 0 //Turn of the spiral arms
+whirl_splashes = [] //{ x, y, frame }
+whirl_splash_timer = 0
+whirl_push_x = 0 //Pixels the current moves the circle this step (Step adds them on)
+whirl_push_y = 0
+
+/// A little splash on the water
+whirl_splash = function(sx, sy)
+{
+	array_push(whirl_splashes, { x: sx, y: sy, frame: 0 })
+}
+
+/// Whirlpool: dashes and waits.  Every so often it stops, spins, and opens a whirlpool around itself.  The current
+/// carries the player's circle around in a spiral toward the middle, while the fish rides around the rim.
+///   mode 0 dashing, 1 opening the whirlpool, 2 whirlpool, 3 calming down.  mode_timer counts down each part
+swim_whirlpool = function(fish)
+{
+	if !fish.setup
+	{
+		fish.setup = true
+		fish.mode_timer = irandom_range(whirl_every_min, whirl_every_max)
+	}
+	var R = box_size*whirl_radius
+	var rim = R*whirl_rim
+
+	//Splashes play once and are gone
+	var splash_step = whirl_splash_speed/game_get_speed(gamespeed_fps)
+	for (var i = array_length(whirl_splashes)-1; i >= 0; i--)
+	{
+		whirl_splashes[i].frame += splash_step
+		if whirl_splashes[i].frame>=sprite_get_number(Spr_Ripple)
+			array_delete(whirl_splashes, i, 1)
+	}
+
+	fish.mode_timer--
+	switch(fish.mode)
+	{
+		case 0: //Dashing and waiting
+			swim_dash_wait(fish)
+			if fish.mode_timer<=0
+			{
+				//Open a whirlpool right here (kept mostly inside the pond)
+				whirl_x = clamp(fish.x, box_x+R*0.6, box_x+box_size-R*0.6)
+				whirl_y = clamp(fish.y, box_y+R*0.6, box_y+box_size-R*0.6)
+				whirl_dir = choose(-1, 1)
+				whirl_splash(fish.x, fish.y)
+				var splash = audio_play_sound(snd_squish, 1, false)
+				audio_sound_pitch(splash, 0.6)
+				fish.mode = 1
+				fish.mode_timer = whirl_windup
+			}
+			break
+
+		case 1: //Spinning in the middle while the whirlpool opens
+			fish.goal_x = whirl_x
+			fish.goal_y = whirl_y
+			swim_toward_goal(fish, fish.max_speed)
+			fish.angle += 25*whirl_dir
+			whirl_amount = 1 - fish.mode_timer/whirl_windup
+			if fish.mode_timer<=0
+			{
+				fish.angle = 0
+				fish.orbit_angle = point_direction(whirl_x, whirl_y, fish.x, fish.y)
+				fish.mode = 2
+				fish.mode_timer = whirl_time
+			}
+			break
+
+		case 2: //Riding around the rim
+			whirl_amount = 1
+			fish.orbit_angle += whirl_dir*radtodeg(whirl_fish_speed/rim)
+			var ride_x = whirl_x + lengthdir_x(rim, fish.orbit_angle)
+			var ride_y = whirl_y + lengthdir_y(rim, fish.orbit_angle)
+			//Heads out to the rim at the start, then sticks to it
+			var to_rim = point_direction(fish.x, fish.y, ride_x, ride_y)
+			var gap = min(point_distance(fish.x, fish.y, ride_x, ride_y), whirl_fish_speed*1.5)
+			fish.vx = lengthdir_x(gap, to_rim)
+			fish.vy = lengthdir_y(gap, to_rim)
+			//Little splashes around the whirlpool
+			whirl_splash_timer--
+			if whirl_splash_timer<=0
+			{
+				whirl_splash_timer = whirl_splash_every
+				var splash_dir = random(360)
+				var splash_dist = R*random_range(0.4, 1)
+				whirl_splash(whirl_x + lengthdir_x(splash_dist, splash_dir), whirl_y + lengthdir_y(splash_dist, splash_dir))
+			}
+			if fish.mode_timer<=0
+			{
+				fish.mode = 3
+				fish.mode_timer = whirl_winddown
+				fish.wait_timer = 0
+				pick_goal(fish)
+			}
+			break
+
+		case 3: //Calming down.  The fish swims off
+			swim_dash_wait(fish)
+			whirl_amount = fish.mode_timer/whirl_winddown
+			if fish.mode_timer<=0
+			{
+				whirl_amount = 0
+				fish.mode = 0
+				fish.mode_timer = irandom_range(whirl_every_min, whirl_every_max)
+			}
+			break
+	}
+
+	//The spiral arms turn with the current
+	whirl_angle += whirl_turn*whirl_dir*whirl_amount
+
+	//The current: carries the circle around and drags it toward the middle.  Stronger closer in
+	whirl_push_x = 0
+	whirl_push_y = 0
+	if whirl_amount>0
+	{
+		var dist = point_distance(whirl_x, whirl_y, circle_x, circle_y)
+		var closeness = clamp(1 - dist/(R*1.15), 0, 1)
+		if closeness>0
+		{
+			var around = point_direction(whirl_x, whirl_y, circle_x, circle_y)
+			var spin = whirl_spin*whirl_amount*(0.4 + 0.6*closeness)
+			var pull = whirl_pull*whirl_amount*closeness*min(dist/20, 1) //Eases off right in the middle so it doesn't jitter
+			whirl_push_x = lengthdir_x(spin, around+90*whirl_dir) + lengthdir_x(pull, around+180)
+			whirl_push_y = lengthdir_y(spin, around+90*whirl_dir) + lengthdir_y(pull, around+180)
+		}
+	}
+}
+
 /// Moves the fish for one step using its movement type
 swim = function(fish)
 {
@@ -1719,6 +1868,7 @@ swim = function(fish)
 		case FISH_MOVE.SHY_GHOST:         swim_shy_ghost(fish);       break
 		case FISH_MOVE.LIGHTNING:         swim_lightning(fish);       break
 		case FISH_MOVE.EMBERS:            swim_embers(fish);          break
+		case FISH_MOVE.WHIRLPOOL:         swim_whirlpool(fish);       break
 	}
 }
 
