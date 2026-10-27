@@ -47,7 +47,10 @@ enum FISH_MOVE {
 	SHY_GHOST,  //Drifts around like a ghost and fades away the closer it is to the middle of the circle.  Flickers back into sight now and then
 	LIGHTNING,  //Sits crackling, then zips to a new spot in a jagged lightning-bolt path, leaving a glowing trail that fades.  Lights up the cave as it goes
 	EMBERS,     //Dashes and waits, dropping glowing embers that sit on the water.  Every ember inside the circle makes the bar fill slower
-	WHIRLPOOL   //Dashes and waits, and every so often opens a whirlpool that drags the circle around in a spiral while it rides the rim
+	WHIRLPOOL,  //Dashes and waits, and every so often opens a whirlpool that drags the circle around in a spiral while it rides the rim
+	ANGLER,     //Anglerfish: a dark, dim body that lurks behind a bright bobbing lure.  Catch the body, not the lure.  Darkens the pond in any room
+	SHADOW,     //Dashes and waits.  Every few seconds it puts out every light, its own too, and makes the room darker, for a few seconds
+	ICE_WALLS   //Dashes and waits, leaving a wall of ice blocks behind it.  The circle can't pass through them, but the fish can.  They melt after a while
 }
 
 /// One fish row
@@ -104,13 +107,13 @@ function scr_fish_data(){
 		],
 		//Group 4
 		[
-			fish_def("Coal",      Spr_Fish_Coal,      0.5,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17,  make_colour_rgb(90,25,20)),
+			fish_def("Coal",      Spr_Fish_Coal,      0.5,  0.4,  4.5,   FISH_MOVE.SHADOW,               0.3,      0.21, 0.17,  make_colour_rgb(90,25,20)),
 			fish_def("Scalled",   Spr_Fish_Scalled,   0.6,  0.4,  4.5,   FISH_MOVE.EMBERS,               0.3,      0.21, 0.17,  make_colour_rgb(255,70,25)),
-			fish_def("Cold",      Spr_Fish_Cold,      0.7,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17,  make_colour_rgb(130,210,255)),
+			fish_def("Cold",      Spr_Fish_Cold,      0.8,  0.3,  6.0,   FISH_MOVE.ICE_WALLS,            0.3,      0.21, 0.17,  make_colour_rgb(130,210,255)),
 			fish_def("Bowl",      Spr_Fish_Bowl,      0.8,  0.4,  4.5,   FISH_MOVE.WHIRLPOOL,            0.3,      0.21, 0.17,  make_colour_rgb(30,60,200)),
 			fish_def("Volt",      Spr_Fish_Volt,      0.9,  0.4,  4.5,   FISH_MOVE.LIGHTNING,            0.3,      0.21, 0.17,  make_colour_rgb(255,235,60)),
 			fish_def("Gail",      Spr_Fish_Gail,      0.9,  0.1,  5.5,   FISH_MOVE.WIND,                 0.3,      0.21, 0.17,  make_colour_rgb(220,225,235)),
-			fish_def("Glow",      Spr_Fish_Glow,      0.9,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17,  make_colour_rgb(120,255,80)),
+			fish_def("Glow",      Spr_Fish_Glow,      0.9,  0.4,  4.5,   FISH_MOVE.ANGLER,               0.3,      0.21, 0.17,  make_colour_rgb(120,255,80)),
 			fish_def("Globe",     Spr_Fish_Globe,     0.9,  0.4,  4.5,   FISH_MOVE.ORBIT,                0.3,      0.21, 0.17,  make_colour_rgb(60,190,90))
 		]
 	]

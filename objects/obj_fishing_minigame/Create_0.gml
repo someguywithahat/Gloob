@@ -56,6 +56,17 @@ source_fish = noone
 //---- Dark rooms (the fishing cave): the pond is dark too ----
 //Uses the room's obj_lighting (always-night) for the night color and the fish glow settings
 pond_light_surf = -1
+//Used when the room has no obj_lighting (the anglerfish darkens the pond in any room)
+pond_lantern_color = make_colour_rgb(255,215,150)
+pond_fish_light_radius = 40
+pond_fish_light_strength = 0.9
+
+/// Draws one light onto the pond's light map.  Same as obj_lighting's add_light, but works without one
+pond_light = function(lx, ly, radius, color, strength, sprite=spr_effect_glow_harder)
+{
+	var scale = radius*2 / sprite_get_width(sprite)
+	draw_sprite_ext(sprite, 0, round(lx), round(ly), scale, scale, 0, color, strength)
+}
 circle_light_size = 1.1 //The circle's light, as a multiple of its radius.  spr_effect_glow_harder is solid to about 85% of its size, so 1.1 lines the bright part up with the circle
 
 //---- Ending ----
@@ -133,6 +144,7 @@ make_fish = function(data)
 		bolt_path: [], //Lightning: the corners of the bolt it's zipping along, as [x, y]
 		bolt_index: 0, //Lightning: which corner it's heading for
 		alpha: 1, //How see-through it's drawn (shy ghost fades near the circle)
+		tint: c_white, //Color it's drawn with (the anglerfish's body is dark)
 		face_lock: 0 //0 = face the way it's moving.  1 or -1 = always face right or left (wall jump clings to a wall)
 	}
 }
@@ -1596,7 +1608,7 @@ swim_embers = function(fish)
 		ember_travel = 0
 		if ember_dash_on
 		{
-			ember_far_goal(fish)
+			pick_far_goal(fish, ember_fire_distance)
 			var whoosh = audio_play_sound(snd_fireball, 1, false)
 			audio_sound_pitch(whoosh, random_range(0.9, 1.1))
 		}
@@ -1656,8 +1668,8 @@ swim_embers = function(fish)
 	bar_grow_mult = max(1 - in_circle*ember_slow, ember_min_grow)
 }
 
-/// Points a fire dash at a spot far across the pond
-ember_far_goal = function(fish)
+/// Points the fish at a spot far across the pond: at least min_fraction of the pond's size away, if it can find one
+pick_far_goal = function(fish, min_fraction)
 {
 	var best = -1
 	var best_x = fish.goal_x
@@ -1672,7 +1684,7 @@ ember_far_goal = function(fish)
 			best_x = fish.goal_x
 			best_y = fish.goal_y
 		}
-		if dist>=box_size*ember_fire_distance
+		if dist>=box_size*min_fraction
 			break
 	}
 	fish.goal_x = best_x
@@ -1834,6 +1846,295 @@ swim_whirlpool = function(fish)
 	}
 }
 
+//---- Anglerfish (Glow) ----
+angler_speed = 0.55 //Lurking speed, as a multiple of max_speed
+angler_body_alpha = 0.05 //The body is dim and see-through...
+angler_body_tint = make_colour_rgb(70,95,85) //...and dark
+angler_dark_color = make_colour_rgb(60,70,115) //How dark the pond gets in rooms that aren't already dark
+angler_lure_dist = 66 //How far out the lure hangs from its head (pixels)
+angler_lure_raise = 25 //How far above level the lure hangs out in front (degrees)
+angler_lure_sway = 18 //How far the lure sways back and forth (degrees)
+angler_sway_speed = 3 //How fast it sways (degrees per step)
+angler_lure_follow = 0.15 //How quickly the lure swings after the head (0-1)
+angler_flick_min = 110 //Steps between flicks, where it throws the lure way out to one side
+angler_flick_max = 220
+angler_flick_time = 50 //Steps the lure stays out
+angler_flick_dist = 95 //How far out it throws it (pixels)
+angler_flick_follow = 0.3 //Flicks are quick
+angler_lure_light = 60 //How much of the pond the lure lights up (radius)
+angler_lure_glow = 16 //Size of the glow drawn around the lure
+angler_lure_x = 0 //Where the lure is
+angler_lure_y = 0
+angler_flick_x = 0 //Where a flick throws it, from the head
+angler_flick_y = 0
+
+/// Where the lure's stalk grows from: the top of its head
+angler_anchor_x = function(fish)
+{
+	return fish.x + fish.facing*sprite_get_width(fish.sprite)*0.25
+}
+angler_anchor_y = function(fish)
+{
+	return fish.y - sprite_get_height(fish.sprite)*0.3
+}
+
+/// Anglerfish: a dark, dim body that lurks slowly around the pond behind a bright lure on a stalk.  The lure
+/// bobs and sways in front of it, and now and then it flicks the lure way out to one side to throw you off.
+/// Only the body counts for the catch.  The pond goes dark (in any room), lit by the lure and the player's lantern.
+///   mode_timer counts down to the next flick, wait_timer is how long the current flick has left
+swim_angler = function(fish)
+{
+	if !fish.setup
+	{
+		fish.setup = true
+		fish.alpha = angler_body_alpha
+		fish.tint = angler_body_tint
+		fish.mode_timer = irandom_range(angler_flick_min, angler_flick_max)
+		angler_lure_x = fish.x
+		angler_lure_y = fish.y
+	}
+
+	//Lurking slowly from spot to spot
+	fish.goal_timer--
+	if fish.goal_timer<=0 or point_distance(fish.x, fish.y, fish.goal_x, fish.goal_y)<10
+	{
+		pick_goal(fish)
+		fish.goal_timer = irandom_range(60, 150)
+	}
+	swim_toward_goal(fish, fish.max_speed*angler_speed)
+
+	//The lure
+	var anchor_x = angler_anchor_x(fish)
+	var anchor_y = angler_anchor_y(fish)
+	var target_x, target_y, follow
+	fish.phase += angler_sway_speed
+	if fish.wait_timer>0
+	{
+		//Flicked way out to one side
+		fish.wait_timer--
+		target_x = anchor_x + angler_flick_x
+		target_y = anchor_y + angler_flick_y
+		follow = angler_flick_follow
+	}
+	else
+	{
+		//Dangling out in front, swaying
+		var hang_dir = ((fish.facing>0) ? angler_lure_raise : 180-angler_lure_raise) + dsin(fish.phase)*angler_lure_sway*fish.facing
+		target_x = anchor_x + lengthdir_x(angler_lure_dist, hang_dir)
+		target_y = anchor_y + lengthdir_y(angler_lure_dist, hang_dir)
+		follow = angler_lure_follow
+		//Time for a flick
+		fish.mode_timer--
+		if fish.mode_timer<=0
+		{
+			var flick_dir = random(360)
+			angler_flick_x = lengthdir_x(angler_flick_dist, flick_dir)
+			angler_flick_y = lengthdir_y(angler_flick_dist, flick_dir)
+			fish.wait_timer = angler_flick_time
+			fish.mode_timer = irandom_range(angler_flick_min, angler_flick_max)
+		}
+	}
+	angler_lure_x += (target_x-angler_lure_x)*follow
+	angler_lure_y += (target_y-angler_lure_y)*follow
+	angler_lure_x = clamp(angler_lure_x, box_x+4, box_x+box_size-4)
+	angler_lure_y = clamp(angler_lure_y, box_y+4, box_y+box_size-4)
+}
+
+//---- Shadow (Coal) ----
+shadow_time = 4 //Seconds every light but Coal's stays out
+shadow_recharge = 1.7 //Seconds before it can do it again
+shadow_warning = 0.7 //Seconds the lights flicker before they go out
+shadow_fade = 15 //Steps the lights take to go out or come back
+shadow_dark_color = make_colour_rgb(18,12,30) //How dark the pond gets while the lights are out
+shadow_amount = 0 //0-1.  How far the lights are out.  The room's obj_lighting reads this too
+
+/// Shadow: dashes and waits like Dash and Wait.  Every few seconds the lights flicker, then every light goes out,
+/// Coal's own too (the player's lantern, and the boat and fish out in the room) and the room gets even darker.
+/// The player has to remember where it was heading.  After a few seconds they come back, and it recharges.
+///   mode 0 recharging, 1 lights out.  mode_timer counts down each part
+swim_shadow = function(fish)
+{
+	var steps_per_second = game_get_speed(gamespeed_fps)
+	if !fish.setup
+	{
+		fish.setup = true
+		fish.mode_timer = round(shadow_recharge*steps_per_second)
+	}
+	swim_dash_wait(fish)
+
+	fish.mode_timer--
+	if fish.mode=0
+	{
+		//Lights coming back, then flickering as it gets ready again
+		var flicker = 0
+		if fish.mode_timer<shadow_warning*steps_per_second and random(1)<0.3
+			flicker = random_range(0.3, 0.8)
+		shadow_amount = max(shadow_amount - 1/shadow_fade, flicker)
+		if fish.mode_timer<=0
+		{
+			fish.mode = 1
+			fish.mode_timer = round(shadow_time*steps_per_second)
+			var snuff = audio_play_sound(snd_slm_grrrrr, 1, false)
+			audio_sound_pitch(snuff, 0.6)
+			audio_sound_gain(snuff, 0.6, 0)
+		}
+	}
+	else
+	{
+		//Lights out
+		shadow_amount = min(shadow_amount + 1/shadow_fade, 1)
+		if fish.mode_timer<=0
+		{
+			fish.mode = 0
+			fish.mode_timer = round(shadow_recharge*steps_per_second)
+		}
+	}
+}
+
+//---- Ice walls (Cold) ----
+ice_walls = [] //{ x1, y1, x2, y2, thick, life, form, growing, solid }.  One block of ice from (x1, y1) to (x2, y2)
+ice_every = 3 //Every this-many dashes is an ice dash
+ice_distance = 0.5 //An ice dash goes at least this far (a fraction of the pond's size)
+ice_length = 50 //How long the wall is, end to end (pixels)
+ice_thick = 22 //How thick the wall is (pixels)
+ice_form_time = 15 //Steps the wall takes to freeze solid after it appears
+ice_life = 360 //Steps a wall lasts once it's frozen (6 seconds)
+ice_melt = 0.35 //Shrinks and fades over the last this-much of its life
+ice_glow = 1.6 //Glow around the wall, as a multiple of its thickness
+ice_dash_count = 0 //Dashes so far.  The first one is an ice dash
+ice_was_moving = false //Was it dashing last step (to spot when a dash starts)
+ice_pending = false //True while an ice dash hasn't dropped its wall yet
+ice_start_x = 0 //Where the ice dash started...
+ice_start_y = 0
+ice_halfway = 0 //...and how far it goes before dropping the wall
+
+/// Ice walls: dashes and waits like Dash and Wait.  Every few dashes it goes a long way, and halfway there it
+/// drops a short wall of ice across its path, behind it.  The wall freezes solid a moment later.  The player's
+/// circle can't pass through it and has to go around, but the fish slips right through.  The wall melts after a while
+swim_ice_walls = function(fish)
+{
+	swim_dash_wait(fish)
+
+	var moving = fish.wait_timer<=0
+	//A dash starts.  Every few is an ice dash
+	if moving and !ice_was_moving
+	{
+		ice_pending = (ice_dash_count mod ice_every)=0
+		ice_dash_count++
+		if ice_pending
+		{
+			pick_far_goal(fish, ice_distance)
+			ice_start_x = fish.x
+			ice_start_y = fish.y
+			ice_halfway = point_distance(fish.x, fish.y, fish.goal_x, fish.goal_y)/2
+		}
+	}
+	ice_was_moving = moving
+
+	//Halfway there: drop the wall across its path
+	if ice_pending and point_distance(ice_start_x, ice_start_y, fish.x, fish.y)>=ice_halfway
+	{
+		ice_pending = false
+		var across = point_direction(ice_start_x, ice_start_y, fish.goal_x, fish.goal_y) + 90
+		var reach = max(ice_length-ice_thick, 0)/2 //The ends are rounded off by half the thickness (ice_shape)
+		array_push(ice_walls, {
+			x1: fish.x + lengthdir_x(reach, across), y1: fish.y + lengthdir_y(reach, across),
+			x2: fish.x - lengthdir_x(reach, across), y2: fish.y - lengthdir_y(reach, across),
+			thick: ice_thick, life: ice_life, form: ice_form_time, growing: true, solid: false })
+	}
+
+	//Freezing solid, then melting
+	for (var i = array_length(ice_walls)-1; i >= 0; i--)
+	{
+		var wall = ice_walls[i]
+		if wall.growing
+		{
+			wall.form--
+			if wall.form<=0
+			{
+				wall.growing = false
+				var freeze = audio_play_sound(snd_icefreeze2, 1, false)
+				audio_sound_pitch(freeze, random_range(0.95, 1.1))
+			}
+			continue
+		}
+		wall.life--
+		if wall.life<=0
+			array_delete(ice_walls, i, 1)
+	}
+}
+
+/// How solid a wall still is: 1 most of its life, down to 0 as it melts away
+ice_strength = function(wall)
+{
+	return wall.growing ? 1 : clamp(wall.life/(ice_life*ice_melt), 0, 1)
+}
+
+/// A wall's shape right now: { cx, cy, angle, half_length, half_thick }.  Melting shrinks it in from the ends and the sides
+ice_shape = function(wall)
+{
+	var melt = ice_strength(wall)
+	return {
+		cx: (wall.x1+wall.x2)/2,
+		cy: (wall.y1+wall.y2)/2,
+		angle: point_direction(wall.x1, wall.y1, wall.x2, wall.y2),
+		half_length: (point_distance(wall.x1, wall.y1, wall.x2, wall.y2)/2 + wall.thick/2)*(0.4 + 0.6*melt), //Rounded off past each end
+		half_thick: wall.thick/2*melt
+	}
+}
+
+/// A point on a wall, from its middle: along its length, and across it
+ice_point_x = function(shape, along, across)
+{
+	return shape.cx + along*dcos(shape.angle) + across*dsin(shape.angle)
+}
+ice_point_y = function(shape, along, across)
+{
+	return shape.cy - along*dsin(shape.angle) + across*dcos(shape.angle)
+}
+
+/// Pushes the player's circle out of any ice it's run into, and stops it moving into the ice.  A wall that's still
+/// forming isn't solid, and a wall that froze on top of the circle doesn't count until the circle has moved off it
+ice_push_circle = function()
+{
+	for (var i = 0; i < array_length(ice_walls); i++)
+	{
+		var wall = ice_walls[i]
+		if wall.growing
+			continue
+		var shape = ice_shape(wall)
+		//Closest point on the wall to the middle of the circle (worked out along and across the wall)
+		var dx = circle_x - shape.cx
+		var dy = circle_y - shape.cy
+		var along = clamp(dx*dcos(shape.angle) - dy*dsin(shape.angle), -shape.half_length, shape.half_length)
+		var across = clamp(dx*dsin(shape.angle) + dy*dcos(shape.angle), -shape.half_thick, shape.half_thick)
+		var near_x = ice_point_x(shape, along, across)
+		var near_y = ice_point_y(shape, along, across)
+		var dist = point_distance(near_x, near_y, circle_x, circle_y)
+		var touching = dist<circle_radius
+		if !wall.solid
+		{
+			if !touching
+				wall.solid = true
+			continue
+		}
+		if touching and dist>0.01
+		{
+			//Push straight out, and cancel any speed going into the ice
+			var out_x = (circle_x-near_x)/dist
+			var out_y = (circle_y-near_y)/dist
+			circle_x += out_x*(circle_radius-dist)
+			circle_y += out_y*(circle_radius-dist)
+			var into = circle_vx*out_x + circle_vy*out_y
+			if into<0
+			{
+				circle_vx -= into*out_x
+				circle_vy -= into*out_y
+			}
+		}
+	}
+}
+
 /// Moves the fish for one step using its movement type
 swim = function(fish)
 {
@@ -1869,6 +2170,9 @@ swim = function(fish)
 		case FISH_MOVE.LIGHTNING:         swim_lightning(fish);       break
 		case FISH_MOVE.EMBERS:            swim_embers(fish);          break
 		case FISH_MOVE.WHIRLPOOL:         swim_whirlpool(fish);       break
+		case FISH_MOVE.ANGLER:            swim_angler(fish);          break
+		case FISH_MOVE.SHADOW:            swim_shadow(fish);          break
+		case FISH_MOVE.ICE_WALLS:         swim_ice_walls(fish);       break
 	}
 }
 

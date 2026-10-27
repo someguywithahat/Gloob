@@ -18,8 +18,18 @@ if force_night or always_night
 	night_target = max_night
 night_amount += clamp(night_target-night_amount, -fade_speed, fade_speed)
 
+//Coal (the shadow fish) in the fishing minigame puts out every light, its own too, and makes it even darker
+var shadow = 0
+with(obj_fishing_minigame)
+{
+	if fish.move=FISH_MOVE.SHADOW and shadow_amount>shadow
+	{
+		shadow = shadow_amount
+	}
+}
+
 //Broad daylight: nothing to draw
-if night_amount<=0.001
+if night_amount<=0.001 and shadow<=0
 	exit
 
 
@@ -28,11 +38,11 @@ if !surface_exists(light_surf)
 	light_surf = surface_create(room_width, room_height)
 
 surface_set_target(light_surf)
-draw_clear(sky_color(night_amount))
+draw_clear(merge_colour(sky_color(night_amount), shadow_dark_color, shadow*shadow_darkness))
 gpu_set_blendmode(bm_add)
 
-//Lights fade in with the dark
-var strength = night_amount
+//Lights fade in with the dark.  Coal puts them all out, its own too
+var strength = night_amount*(1-shadow)
 var t = current_time
 
 //Fishing: the boat's lantern, and every fish glowing in its own color

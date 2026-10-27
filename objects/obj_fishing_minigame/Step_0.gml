@@ -2,6 +2,7 @@
 if result<>0
 {
 	end_timer++
+	shadow_amount = max(shadow_amount - 1/shadow_fade, 0) //Coal's lights come back on
 	if end_timer>end_time
 	{
 		if surface_exists(pond_light_surf)
@@ -30,6 +31,10 @@ circle_y += hook_pull_y
 //A whirlpool (Bowl) carries the circle around
 circle_x += whirl_push_x
 circle_y += whirl_push_y
+
+//Ice walls (Cold) block the circle
+if fish.move=FISH_MOVE.ICE_WALLS
+	ice_push_circle()
 
 //Stay inside the pond
 var circle_min_x = box_x+circle_radius
