@@ -145,6 +145,7 @@ make_fish = function(data)
 		bolt_index: 0, //Lightning: which corner it's heading for
 		alpha: 1, //How see-through it's drawn (shy ghost fades near the circle)
 		tint: c_white, //Color it's drawn with (the anglerfish's body is dark)
+		spin_x: 1, //Squashes it sideways (0-1), so it looks like it's turning around (ballet pirouettes)
 		face_lock: 0 //0 = face the way it's moving.  1 or -1 = always face right or left (wall jump clings to a wall)
 	}
 }
@@ -385,6 +386,8 @@ swim_golf = function(fish)
 				fish.golf_state = 2
 				fish.golf_timer = irandom_range(120, 200) //Flight time before it settles down again
 				fish.bounce = golf_bounce
+				var swing = audio_play_sound(snd_golf, 1, false)
+				audio_sound_pitch(swing, random_range(0.95, 1.05))
 			}
 			break
 
@@ -2135,6 +2138,334 @@ ice_push_circle = function()
 	}
 }
 
+//---- Ballet (Bowed) ----
+//The routine, in order.  It loops, dancing the other way each time
+ballet_routine = ["glide", "hop", "hop", "hop", "leap", "pirouette", "leap_back", "pirouette", "arabesque", "curtsy"]
+ballet_margin = 40 //Keeps the dancing this far inside the pond
+ballet_glide_time = 60 //Steps to glide to the starting spot
+ballet_hop_dist = 28 //Little hops
+ballet_hop_height = 10
+ballet_hop_time = 14
+ballet_leap_dist = 150 //Grand leaps
+ballet_leap_height = 55
+ballet_leap_time = 45
+ballet_leap_grow = 0.25 //Gets this much bigger at the top of a leap, like she's leaping toward you
+ballet_spin_time = 50 //Pirouettes
+ballet_spin_turns = 2
+ballet_spin_rise = 6 //Rises up on her toes while she spins
+ballet_pose_time = 40 //Arabesque: holds a pose, nose up
+ballet_pose_tilt = 20
+ballet_curtsy_time = 60 //Curtsy: dips and holds.  The easiest moment to catch her
+ballet_curtsy_dip = 6
+ballet_curtsy_tilt = 15
+ballet_sparkle_color = make_colour_rgb(255,170,215)
+ballet_dir = 1 //Which way this routine travels: 1 right, -1 left
+ballet_kind = "" //The step she's on
+ballet_time = 1 //How many steps it lasts
+ballet_height = 0 //How high it arcs
+ballet_sparkles = [] //{ x, y, vx, vy, life, spin }
+
+/// Little sparkles that drift and fade
+ballet_sparkle = function(sx, sy)
+{
+	array_push(ballet_sparkles, { x: sx + random_range(-6, 6), y: sy + random_range(-6, 6), vx: random_range(-0.4, 0.4), vy: random_range(-0.6, -0.1), life: 30, spin: random(90) })
+}
+
+/// Starts the next step of the routine: works out where it goes and how long it takes
+ballet_begin = function(fish)
+{
+	ballet_kind = ballet_routine[fish.mode]
+	fish.mode_timer = 0
+	fish.mode_x = fish.x
+	fish.mode_y = fish.y
+	fish.goal_x = fish.x
+	fish.goal_y = fish.y
+	ballet_height = 0
+	var left = box_x + ballet_margin
+	var right = box_x + box_size - ballet_margin
+	var top = box_y + ballet_margin + ballet_leap_height //Room above for the leaps
+	var bottom = box_y + box_size - ballet_margin
+	switch(ballet_kind)
+	{
+		case "glide": //To the side she'll dance away from, so there's room
+			fish.goal_x = (ballet_dir>0) ? random_range(left, box_x+box_size*0.3) : random_range(box_x+box_size*0.7, right)
+			fish.goal_y = random_range(max(top, box_y+box_size*0.35), box_y+box_size*0.75)
+			ballet_time = ballet_glide_time
+			break
+		case "hop":
+			fish.goal_x = clamp(fish.x + ballet_dir*ballet_hop_dist, left, right)
+			ballet_height = ballet_hop_height
+			ballet_time = ballet_hop_time
+			break
+		case "leap":
+		case "leap_back":
+			var leap_dir = (ballet_kind="leap") ? ballet_dir : -ballet_dir
+			fish.goal_x = clamp(fish.x + leap_dir*ballet_leap_dist, left, right)
+			fish.goal_y = clamp(fish.y + random_range(-20, 20), top, bottom)
+			ballet_height = ballet_leap_height
+			ballet_time = ballet_leap_time
+			break
+		case "pirouette":
+			ballet_time = ballet_spin_time
+			break
+		case "arabesque":
+			ballet_time = ballet_pose_time
+			break
+		case "curtsy":
+			ballet_time = ballet_curtsy_time
+			var chime = audio_play_sound(snd_menu_chime, 1, false)
+			audio_sound_pitch(chime, 1.5)
+			audio_sound_gain(chime, 0.4, 0)
+			break
+	}
+}
+
+/// Ballet: dances a little routine across the pond.  Glides to one side, three little hops, a grand leap,
+/// a pirouette, a leap back, another pirouette, an arabesque pose, and a curtsy.  Then again the other way.
+///   mode is which step of ballet_routine she's on, mode_timer counts up through it.
+///   mode_x/mode_y is where the step started, goal_x/goal_y where it ends
+swim_ballet = function(fish)
+{
+	if !fish.setup
+	{
+		fish.setup = true
+		fish.mode = 0
+		ballet_begin(fish)
+	}
+
+	//Sparkles drift and fade
+	for (var i = array_length(ballet_sparkles)-1; i >= 0; i--)
+	{
+		var sparkle = ballet_sparkles[i]
+		sparkle.x += sparkle.vx
+		sparkle.y += sparkle.vy
+		sparkle.spin += 6
+		sparkle.life--
+		if sparkle.life<=0
+			array_delete(ballet_sparkles, i, 1)
+	}
+
+	fish.mode_timer++
+	var t = min(fish.mode_timer/ballet_time, 1)
+	var smooth = 0.5 - 0.5*cos(pi*t) //Eases in and out
+	var arc = sin(pi*t) //0 at the ends, 1 in the middle
+	var hold = clamp(min(t/0.2, (1-t)/0.2), 0, 1) //Eases into a pose, holds it, eases out
+	var travel = sign(fish.goal_x-fish.mode_x)
+	var place_x = lerp(fish.mode_x, fish.goal_x, smooth)
+	var place_y = lerp(fish.mode_y, fish.goal_y, smooth) - arc*ballet_height
+	fish.angle = 0
+	fish.scale = 1
+	fish.spin_x = 1
+	fish.face_lock = fish.facing //Keeps facing the same way unless the step says otherwise
+
+	switch(ballet_kind)
+	{
+		case "glide": //Smooth, with a gentle bob
+			place_y += sin(fish.mode_timer*0.25)*2
+			fish.face_lock = 0 //Faces the way it's going
+			break
+		case "hop":
+		case "leap":
+		case "leap_back": //Nose up on the way up, nose down on the way down
+			if travel<>0
+				fish.face_lock = travel
+			var tilt = (ballet_kind="hop") ? 20 : 35
+			fish.angle = fish.face_lock*tilt*(1-2*t)
+			if ballet_kind<>"hop"
+			{
+				fish.scale = 1 + ballet_leap_grow*arc
+				if fish.mode_timer mod 3=0
+					ballet_sparkle(fish.x, fish.y)
+			}
+			break
+		case "pirouette": //Spins around on the spot, rising up on her toes
+			var turn = t*360*ballet_spin_turns
+			fish.spin_x = max(abs(dcos(turn)), 0.15)
+			fish.face_lock = (dcos(turn)>=0) ? ballet_dir : -ballet_dir
+			place_y -= arc*ballet_spin_rise
+			if fish.mode_timer mod 4=0
+				ballet_sparkle(fish.x, fish.y-8)
+			break
+		case "arabesque": //Holds a pose, nose up
+			fish.angle = fish.face_lock*ballet_pose_tilt*hold
+			place_y -= 4*hold
+			break
+		case "curtsy": //Dips with its nose down and holds it
+			fish.angle = -fish.face_lock*ballet_curtsy_tilt*hold
+			place_y += ballet_curtsy_dip*hold
+			if fish.mode_timer=round(ballet_time/2)
+				repeat(5) ballet_sparkle(fish.x, fish.y-10)
+			break
+	}
+
+	//Move exactly to this step's spot (Step adds the speed on)
+	fish.vx = place_x - fish.x
+	fish.vy = place_y - fish.y
+
+	//Next step.  After the curtsy, start over going the other way
+	if t>=1
+	{
+		fish.mode++
+		if fish.mode>=array_length(ballet_routine)
+		{
+			fish.mode = 0
+			ballet_dir = -ballet_dir
+		}
+		ballet_begin(fish)
+	}
+}
+
+//---- Moldy net (Mold) ----
+mold_color = make_colour_rgb(120,165,70)
+mold_dark_color = make_colour_rgb(70,105,45)
+mold_puff_min = 100 //Steps between spore puffs
+mold_puff_max = 170
+mold_cloud_size = 30 //How big a spore cloud gets (radius)
+mold_cloud_life = 300 //Steps a cloud hangs around (5 seconds)
+mold_cloud_max = 4 //Most clouds at once
+mold_catch_rate = 0.008 //How fast mold grows on the net while it's in a cloud (0-1 per step, so about 2 seconds to cover it)
+mold_spread = 0.0006 //Once there's some mold, it slowly spreads on its own
+mold_shrink = 0.45 //A fully moldy net is this much smaller
+mold_shake_stroke = 25 //A shake is a quick back-and-forth: each stroke has to be at least this long (pixels)...
+mold_shake_time = 12 //...and take no more than this many steps
+mold_shake_clean = 0.12 //How much mold each shake knocks off
+mold_hint_at = 0.25 //Shows "Shake it off!" when the net is this moldy
+mold_hint = "Shake it off!"
+mold_amount = 0 //0-1.  How moldy the net is
+mold_base_radius = -1 //The net's size before any mold
+mold_clouds = [] //{ x, y, vx, vy, life, puffs }  puffs: [ { x, y, size } ] offsets
+mold_clumps = [] //Bits of mold flying off when it's shaken: { x, y, vx, vy, life, size }
+mold_spots = [] //Where mold grows on the net, in order: { angle, out, size }.  out is 0-1 from the middle to the rim
+mold_prev_mouse_x = 0
+mold_prev_mouse_y = 0
+mold_stroke_x = { dir: 0, length: 0, time: 0 } //The mouse's current back-and-forth stroke, sideways
+mold_stroke_y = { dir: 0, length: 0, time: 0 } //...and up and down
+
+/// Puffs out a spore cloud
+mold_puff = function(px, py)
+{
+	if array_length(mold_clouds)>=mold_cloud_max
+		array_delete(mold_clouds, 0, 1)
+	var puffs = []
+	repeat(8)
+		array_push(puffs, { x: random_range(-0.6, 0.6), y: random_range(-0.6, 0.6), size: random_range(0.35, 0.6) })
+	array_push(mold_clouds, { x: px, y: py, vx: random_range(-0.15, 0.15), vy: random_range(-0.2, 0), life: mold_cloud_life, puffs: puffs })
+	var puff = audio_play_sound(snd_squish, 1, false)
+	audio_sound_pitch(puff, 1.4)
+	audio_sound_gain(puff, 0.5, 0)
+}
+
+/// How big and thick a cloud is: grows in quickly, fades at the end
+mold_cloud_strength = function(cloud)
+{
+	var age = mold_cloud_life - cloud.life
+	return min(age/20, 1) * min(cloud.life/(mold_cloud_life*0.3), 1)
+}
+
+/// Follows one direction of the mouse (sideways or up and down) and returns true when it finishes a quick shake stroke
+mold_check_stroke = function(stroke, move)
+{
+	var dir = sign(move)
+	var shook = false
+	if dir<>0 and dir<>stroke.dir
+	{
+		//Turned around.  The stroke it just finished counts as a shake if it was long and quick
+		shook = stroke.dir<>0 and stroke.length>=mold_shake_stroke and stroke.time<=mold_shake_time
+		stroke.dir = dir
+		stroke.length = 0
+		stroke.time = 0
+	}
+	stroke.length += abs(move)
+	stroke.time++
+	return shook
+}
+
+/// Moldy net: swims around like Moving Constantly, puffing out spore clouds every so often.  Any cloud the player's
+/// circle touches grows fuzzy mold on the net, which shrinks it.  Shaking the mouse quickly back and forth knocks
+/// the mold off in clumps
+swim_moldy_net = function(fish)
+{
+	if !fish.setup
+	{
+		fish.setup = true
+		fish.mode_timer = irandom_range(mold_puff_min, mold_puff_max)/2 //First puff comes sooner
+		mold_base_radius = circle_radius
+		mold_prev_mouse_x = mouse_x
+		mold_prev_mouse_y = mouse_y
+		//Spots for mold to grow, mostly around the rim, in a random order
+		repeat(26)
+			array_push(mold_spots, { angle: random(360), out: random_range(0.55, 1), size: random_range(4, 8) })
+	}
+	swim_constant(fish)
+
+	//Spore puffs
+	fish.mode_timer--
+	if fish.mode_timer<=0
+	{
+		mold_puff(fish.x, fish.y)
+		fish.mode_timer = irandom_range(mold_puff_min, mold_puff_max)
+	}
+
+	//Clouds drift and fade.  Touching one grows mold on the net
+	for (var i = array_length(mold_clouds)-1; i >= 0; i--)
+	{
+		var cloud = mold_clouds[i]
+		cloud.x += cloud.vx
+		cloud.y += cloud.vy
+		cloud.life--
+		if cloud.life<=0
+		{
+			array_delete(mold_clouds, i, 1)
+			continue
+		}
+		var strength = mold_cloud_strength(cloud)
+		if point_distance(cloud.x, cloud.y, circle_x, circle_y)<circle_radius + mold_cloud_size*0.6*strength
+			mold_amount += mold_catch_rate*strength
+	}
+	if mold_amount>0
+		mold_amount += mold_spread
+
+	//Shaking the mouse knocks mold off
+	var shook_x = mold_check_stroke(mold_stroke_x, mouse_x-mold_prev_mouse_x)
+	var shook_y = mold_check_stroke(mold_stroke_y, mouse_y-mold_prev_mouse_y)
+	mold_prev_mouse_x = mouse_x
+	mold_prev_mouse_y = mouse_y
+	if (shook_x or shook_y) and mold_amount>0
+	{
+		//Clumps fly off from the moldy spots, the way it was shaken
+		var flick_x = shook_x ? -mold_stroke_x.dir*3 : 0
+		var flick_y = shook_y ? -mold_stroke_y.dir*3 : 0
+		var clumps = ceil(mold_amount*6) + 1
+		for (var k = 0; k < clumps; k++)
+		{
+			var spot = mold_spots[irandom(max(floor(mold_amount*array_length(mold_spots))-1, 0))]
+			var spot_x = circle_x + lengthdir_x(circle_radius*spot.out, spot.angle)
+			var spot_y = circle_y + lengthdir_y(circle_radius*spot.out, spot.angle)
+			array_push(mold_clumps, { x: spot_x, y: spot_y, vx: flick_x + random_range(-1.5, 1.5), vy: flick_y + random_range(-2.5, 0.5), life: 35, size: spot.size*0.7 })
+		}
+		mold_amount -= mold_shake_clean
+		var plop = audio_play_sound(snd_squish, 1, false)
+		audio_sound_pitch(plop, random_range(1.7, 2))
+		audio_sound_gain(plop, 0.4, 0)
+	}
+	mold_amount = clamp(mold_amount, 0, 1)
+
+	//Mold shrinks the net
+	circle_radius = mold_base_radius*(1 - mold_shrink*mold_amount)
+
+	//Flying clumps fall and fade
+	for (var i = array_length(mold_clumps)-1; i >= 0; i--)
+	{
+		var clump = mold_clumps[i]
+		clump.vy += 0.15
+		clump.x += clump.vx
+		clump.y += clump.vy
+		clump.life--
+		if clump.life<=0
+			array_delete(mold_clumps, i, 1)
+	}
+}
+
 /// Moves the fish for one step using its movement type
 swim = function(fish)
 {
@@ -2173,6 +2504,8 @@ swim = function(fish)
 		case FISH_MOVE.ANGLER:            swim_angler(fish);          break
 		case FISH_MOVE.SHADOW:            swim_shadow(fish);          break
 		case FISH_MOVE.ICE_WALLS:         swim_ice_walls(fish);       break
+		case FISH_MOVE.BALLET:            swim_ballet(fish);          break
+		case FISH_MOVE.MOLDY_NET:         swim_moldy_net(fish);       break
 	}
 }
 

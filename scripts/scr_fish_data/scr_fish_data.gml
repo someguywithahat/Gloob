@@ -50,7 +50,9 @@ enum FISH_MOVE {
 	WHIRLPOOL,  //Dashes and waits, and every so often opens a whirlpool that drags the circle around in a spiral while it rides the rim
 	ANGLER,     //Anglerfish: a dark, dim body that lurks behind a bright bobbing lure.  Catch the body, not the lure.  Darkens the pond in any room
 	SHADOW,     //Dashes and waits.  Every few seconds it puts out every light, its own too, and makes the room darker, for a few seconds
-	ICE_WALLS   //Dashes and waits, leaving a wall of ice blocks behind it.  The circle can't pass through them, but the fish can.  They melt after a while
+	ICE_WALLS,  //Dashes and waits.  Every few dashes it drops a short wall of ice across its path.  The circle can't pass through it, but the fish can.  It melts after a while
+	BALLET,     //Dances a little ballet routine: glide, three hops, grand leap, pirouette, leap back, pirouette, arabesque, curtsy.  Then again the other way
+	MOLDY_NET   //Swims around puffing out spore clouds.  Spores grow mold on the circle's net and shrink it.  Shake the mouse to clean it off
 }
 
 /// One fish row
@@ -85,8 +87,8 @@ function scr_fish_data(){
 		],
 		//Group 2
 		[
-			fish_def("Bowed",     Spr_Fish_Bowed,     0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.21, 0.17),
-			fish_def("Mold",      Spr_Fish_Mold,      0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.21, 0.17),
+			fish_def("Bowed",     Spr_Fish_Bowed,     0.4,  0.4,  3.5,   FISH_MOVE.BALLET,               0.3,      0.21, 0.17),
+			fish_def("Mold",      Spr_Fish_Mold,      0.3,  0.4,  3.0,   FISH_MOVE.MOLDY_NET,            0.3,      0.18, 0.14),
 			fish_def("Go",        Spr_Fish_Go,        3.0,  3.0,  8.0,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17),
 			fish_def("Slow",      Spr_Fish_Slow,      1.0,  1.0,  1.0,   FISH_MOVE.CONSTANT,             0.3,      0.04, 0.17),
 			fish_def("Halt",      Spr_Fish_Halt,      0.4,  0.4,  3.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17),

@@ -61,13 +61,39 @@ var bowl_ring = sprite_get_bbox_right(Spr_Catch_net) - sprite_get_bbox_left(Spr_
 var bowl_scale = circle_radius*2/bowl_ring
 var bowl_draw_x = circle_x - sprite_get_width(Spr_Catch_net)/2*bowl_scale
 var bowl_draw_y = circle_y - sprite_get_height(Spr_Catch_net)/2*bowl_scale
-draw_sprite_ext(Spr_Catch_net, 0, bowl_draw_x, bowl_draw_y, bowl_scale, bowl_scale, 0, c_white, 1)
+var net_tint = (fish.move=FISH_MOVE.MOLDY_NET) ? merge_colour(c_white, mold_color, mold_amount*0.5) : c_white //Goes green as it gets moldy (Mold)
+draw_sprite_ext(Spr_Catch_net, 0, bowl_draw_x, bowl_draw_y, bowl_scale, bowl_scale, 0, net_tint, 1)
 //Glows yellow while the bar is filling (fish inside, or outside for a stick-to-circle fish)
 if catching
 {
 	gpu_set_blendmode(bm_add)
 	draw_sprite_ext(Spr_Catch_net, 0, bowl_draw_x, bowl_draw_y, bowl_scale, bowl_scale, 0, c_yellow, catch_glow)
 	gpu_set_blendmode(bm_normal)
+}
+
+//---- Mold growing on the net (Mold): fuzzy green blobs, more of them the moldier it is ----
+if fish.move=FISH_MOVE.MOLDY_NET and mold_amount>0
+{
+	var spots_shown = mold_amount*array_length(mold_spots)
+	for (var i = 0; i < ceil(spots_shown); i++)
+	{
+		var spot = mold_spots[i]
+		var grow = min(spots_shown-i, 1) //The newest spot grows in
+		var spot_x = circle_x + lengthdir_x(circle_radius*spot.out, spot.angle)
+		var spot_y = circle_y + lengthdir_y(circle_radius*spot.out, spot.angle)
+		var size = spot.size*grow
+		//Fuzzy hairs, then the blob with a darker middle
+		draw_set_color(mold_color)
+		for (var h = 0; h < 6; h++)
+		{
+			var hair = spot.angle*3 + h*60
+			draw_line(spot_x, spot_y, spot_x + lengthdir_x(size*1.4, hair), spot_y + lengthdir_y(size*1.4, hair))
+		}
+		draw_circle(spot_x, spot_y, size, false)
+		draw_set_color(mold_dark_color)
+		draw_circle(spot_x, spot_y, size*0.5, false)
+	}
+	draw_set_color(c_white)
 }
 
 //---- Wind streaks while a gust is blowing (Gail) ----
@@ -248,7 +274,7 @@ if fish.move=FISH_MOVE.CROWD
 if !fish.hidden and fish.scale>0
 {
 	var half_fish = sprite_get_width(fish.sprite)/2
-	var corner_x = -half_fish*fish.facing*fish.scale
+	var corner_x = -half_fish*fish.facing*fish.scale*fish.spin_x
 	var corner_y = -half_fish*fish.scale*fish.flip_y //Upside down flips around the middle too
 	var draw_x = fish.x + corner_x*dcos(fish.angle) + corner_y*dsin(fish.angle)
 	var draw_y = fish.y - corner_x*dsin(fish.angle) + corner_y*dcos(fish.angle)
@@ -269,7 +295,7 @@ if !fish.hidden and fish.scale>0
 	}
 	for (var cx = 0; cx < array_length(copies_x); cx++)
 		for (var cy = 0; cy < array_length(copies_y); cy++)
-			draw_sprite_ext(fish.sprite, floor(fish.frame), draw_x+copies_x[cx], draw_y+copies_y[cy], fish.facing*fish.scale, fish.scale*fish.flip_y, fish.angle, fish.tint, fish.alpha)
+			draw_sprite_ext(fish.sprite, floor(fish.frame), draw_x+copies_x[cx], draw_y+copies_y[cy], fish.facing*fish.scale*fish.spin_x, fish.scale*fish.flip_y, fish.angle, fish.tint, fish.alpha)
 }
 
 //---- Anglerfish (Glow): the lure's stalk, curving up from its head and out to the lure.  The lure itself is drawn
@@ -292,6 +318,59 @@ if fish.move=FISH_MOVE.ANGLER
 		draw_line_width(prev_x, prev_y, px, py, 1)
 		prev_x = px
 		prev_y = py
+	}
+	draw_set_alpha(1)
+	draw_set_color(c_white)
+}
+
+//---- Spore clouds (Mold): soft green puffs with specks, over the fish.  Then the clumps flying off the net ----
+if fish.move=FISH_MOVE.MOLDY_NET
+{
+	for (var i = 0; i < array_length(mold_clouds); i++)
+	{
+		var cloud = mold_clouds[i]
+		var strength = mold_cloud_strength(cloud)
+		var radius = mold_cloud_size*strength
+		var wobble = current_time/400 + i
+		draw_set_color(mold_color)
+		for (var k = 0; k < array_length(cloud.puffs); k++)
+		{
+			var puff = cloud.puffs[k]
+			draw_set_alpha(0.28*strength)
+			draw_circle(cloud.x + puff.x*radius + sin(wobble+k)*2, cloud.y + puff.y*radius + cos(wobble+k*1.3)*2, puff.size*radius, false)
+		}
+		//Specks of spores
+		draw_set_alpha(0.8*strength)
+		draw_set_color(mold_dark_color)
+		for (var k = 0; k < array_length(cloud.puffs); k++)
+		{
+			var puff = cloud.puffs[k]
+			draw_circle(cloud.x + puff.y*radius*1.1 + sin(wobble*1.7+k)*4, cloud.y + puff.x*radius*1.1 + cos(wobble*1.3+k)*4, 1, false)
+		}
+	}
+	draw_set_color(mold_color)
+	for (var i = 0; i < array_length(mold_clumps); i++)
+	{
+		var clump = mold_clumps[i]
+		draw_set_alpha(min(clump.life/15, 1))
+		draw_circle(clump.x, clump.y, clump.size, false)
+	}
+	draw_set_alpha(1)
+	draw_set_color(c_white)
+}
+
+//---- Ballet sparkles (Bowed): little four-pointed stars, drawn in code ----
+if fish.move=FISH_MOVE.BALLET
+{
+	for (var i = 0; i < array_length(ballet_sparkles); i++)
+	{
+		var sparkle = ballet_sparkles[i]
+		var fade = sparkle.life/30
+		var arm = 4*fade + 1
+		draw_set_alpha(fade)
+		draw_set_color((i mod 2=0) ? ballet_sparkle_color : c_white)
+		draw_line_width(sparkle.x + lengthdir_x(arm, sparkle.spin), sparkle.y + lengthdir_y(arm, sparkle.spin), sparkle.x - lengthdir_x(arm, sparkle.spin), sparkle.y - lengthdir_y(arm, sparkle.spin), 1)
+		draw_line_width(sparkle.x + lengthdir_x(arm, sparkle.spin+90), sparkle.y + lengthdir_y(arm, sparkle.spin+90), sparkle.x - lengthdir_x(arm, sparkle.spin+90), sparkle.y - lengthdir_y(arm, sparkle.spin+90), 1)
 	}
 	draw_set_alpha(1)
 	draw_set_color(c_white)
@@ -445,6 +524,16 @@ if bar_fill>0
 	draw_rectangle(bar_x, bar_top, bar_x+bar_width, box_y+box_size, false)
 draw_set_color(c_white)
 draw_rectangle(bar_x, box_y, bar_x+bar_width, box_y+box_size, true)
+
+//---- Hint above the pond (Mold): shake it off! ----
+if result=0 and fish.move=FISH_MOVE.MOLDY_NET and mold_amount>=mold_hint_at
+{
+	draw_set_font(global.fnt_Gloop)
+	draw_set_color(mold_color)
+	var hint_shake = sin(current_time/40)*2 //Wiggles, to show what to do
+	draw_text(box_x + (box_size-string_width(mold_hint))/2 + hint_shake, box_y - string_height(mold_hint) - 10, mold_hint)
+	draw_set_color(c_white)
+}
 
 //---- Hint above the pond (Hold) ----
 if result=0 and fish.move=FISH_MOVE.CROWD
