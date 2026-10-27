@@ -129,6 +129,7 @@ make_fish = function(data)
 		hook_y: 0,
 		hook_target_x: 0, //Hooked: where the cast is aimed
 		hook_target_y: 0,
+		alpha: 1, //How see-through it's drawn (shy ghost fades near the circle)
 		face_lock: 0 //0 = face the way it's moving.  1 or -1 = always face right or left (wall jump clings to a wall)
 	}
 }
@@ -1377,6 +1378,60 @@ swim_gift = function(fish)
 	}
 }
 
+//---- Shy ghost (Soul) ----
+ghost_speed = 0.6 //Drifting speed, as a multiple of max_speed
+ghost_min_alpha = 0.06 //How visible it is right in the middle of the circle
+ghost_fade_start = 0.15 //Starts fading in from this far out from the middle (as a multiple of circle_radius)...
+ghost_fade_range = 1.3 //...and is fully visible this much further out (also a multiple of circle_radius)
+ghost_fade_speed = 0.08 //How quickly it fades in and out (0-1 per step)
+ghost_bob = 0.6 //Up and down float, pixels per step at its fastest
+ghost_flicker_min = 70 //Steps between flickers, where it shows itself for a moment
+ghost_flicker_max = 160
+ghost_flicker_time = 8 //Steps a flicker lasts
+ghost_flicker_alpha = 0.55 //How visible it gets during a flicker
+
+/// Shy ghost: drifts slowly from spot to spot, bobbing up and down.  The closer it is to the middle of the
+/// player's circle the more it fades away, so you have to keep track of it by feel.  Every so often it flickers into sight.
+///   mode_timer counts down to the next flicker, wait_timer is how long the current flicker has left
+swim_shy_ghost = function(fish)
+{
+	if !fish.setup
+	{
+		fish.setup = true
+		fish.mode_timer = irandom_range(ghost_flicker_min, ghost_flicker_max)
+	}
+	
+	//Drifting from spot to spot, floating up and down as it goes
+	fish.goal_timer--
+	if fish.goal_timer<=0 or point_distance(fish.x, fish.y, fish.goal_x, fish.goal_y)<10
+	{
+		pick_goal(fish)
+		fish.goal_timer = irandom_range(60, 140)
+	}
+	swim_toward_goal(fish, fish.max_speed*ghost_speed)
+	fish.phase += 4
+	fish.vy += dsin(fish.phase)*ghost_bob*0.1
+	
+	//Fades away near the middle of the circle
+	var dist = point_distance(fish.x, fish.y, circle_x, circle_y)
+	var seen = clamp((dist - circle_radius*ghost_fade_start)/(circle_radius*ghost_fade_range), 0, 1)
+	var want_alpha = lerp(ghost_min_alpha, 1, seen)
+	
+	//Now and then it flickers into sight for a moment
+	fish.mode_timer--
+	if fish.mode_timer<=0
+	{
+		fish.wait_timer = ghost_flicker_time
+		fish.mode_timer = irandom_range(ghost_flicker_min, ghost_flicker_max)
+	}
+	if fish.wait_timer>0
+	{
+		fish.wait_timer--
+		want_alpha = max(want_alpha, ghost_flicker_alpha*(0.6 + random(0.4)))
+	}
+	fish.alpha += clamp(want_alpha-fish.alpha, -ghost_fade_speed, ghost_fade_speed)
+}
+
 /// Moves the fish for one step using its movement type
 swim = function(fish)
 {
@@ -1408,6 +1463,7 @@ swim = function(fish)
 		case FISH_MOVE.CROWD:             swim_crowd(fish);           break
 		case FISH_MOVE.WALL_JUMP:         swim_wall_jump(fish);       break
 		case FISH_MOVE.GIFT:              swim_gift(fish);            break
+		case FISH_MOVE.SHY_GHOST:         swim_shy_ghost(fish);       break
 	}
 }
 

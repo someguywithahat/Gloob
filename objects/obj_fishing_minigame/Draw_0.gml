@@ -127,7 +127,7 @@ if !fish.hidden and fish.scale>0
 	}
 	for (var cx = 0; cx < array_length(copies_x); cx++)
 		for (var cy = 0; cy < array_length(copies_y); cy++)
-			draw_sprite_ext(fish.sprite, floor(fish.frame), draw_x+copies_x[cx], draw_y+copies_y[cy], fish.facing*fish.scale, fish.scale*fish.flip_y, fish.angle, c_white, 1)
+			draw_sprite_ext(fish.sprite, floor(fish.frame), draw_x+copies_x[cx], draw_y+copies_y[cy], fish.facing*fish.scale, fish.scale*fish.flip_y, fish.angle, c_white, fish.alpha)
 }
 
 //---- Gift (Marigold): the flower in her mouth, held by the bottom of its stem, and the hearts floating up ----
@@ -197,7 +197,7 @@ if lighting<>noone and lighting.always_night
 	//The fish glows in its own color (light in scr_fish_data)
 	if !fish.hidden
 		lighting.add_light(fish.x-box_x, fish.y-box_y, lighting.fish_light_radius*max(fish.scale, 1), fish_data.light,
-			light_strength*lighting.fish_light_strength, spr_effect_glow)
+			light_strength*lighting.fish_light_strength*fish.alpha, spr_effect_glow) //A fading ghost's glow fades too
 	gpu_set_blendmode(bm_normal)
 	surface_reset_target()
 

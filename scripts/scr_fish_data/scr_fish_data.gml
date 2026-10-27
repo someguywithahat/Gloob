@@ -43,7 +43,8 @@ enum FISH_MOVE {
 	HOOKED,     //Swims normally.  Every so often a fishing line casts in from an edge, and if it hooks the circle it drags it around
 	CROWD,      //Where's Waldo: hides in a crowd of animated gold fish.  It's the one that isn't animated
 	WALL_JUMP,  //Climbs a side wall in little wall-jump hops.  About 70% of the way up it leaps to the bottom of the other wall
-	GIFT        //A marigold pops up far from the circle.  Rushes off to grab it, then slowly brings it to the circle.  A heart pops out, and a new marigold appears
+	GIFT,       //A marigold pops up far from the circle.  Rushes off to grab it, then slowly brings it to the circle.  A heart pops out, and a new marigold appears
+	SHY_GHOST   //Drifts around like a ghost and fades away the closer it is to the middle of the circle.  Flickers back into sight now and then
 }
 
 /// One fish row
@@ -95,7 +96,7 @@ function scr_fish_data(){
 			fish_def("Finch",     Spr_Fish_Finch,     0.4,  0.4,  3.5,   FISH_MOVE.FLY_TOP,              0.3,      0.21, 0.17),
 			fish_def("Gloop",     Spr_Fish_Gloop,     0.4,  0.4,  3.5,   FISH_MOVE.GRID_HOP,             0.3,      0.21, 0.17),
 			fish_def("Ghoul",     Spr_Fish_Ghoul,     0.4,  0.4,  3.5,   FISH_MOVE.FLOAT_UP,             0.3,      0.21, 0.17),
-			fish_def("Soul",      Spr_Fish_Soul,      0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.21, 0.17),
+			fish_def("Soul",      Spr_Fish_Soul,      0.4,  0.4,  3.5,   FISH_MOVE.SHY_GHOST,            0.3,      0.21, 0.17),
 			fish_def("God",       Spr_Fish_God,       0.4,  0.4,  2.5,   FISH_MOVE.MIRROR,               0.3,      0.21, 0.17)
 		],
 		//Group 4
