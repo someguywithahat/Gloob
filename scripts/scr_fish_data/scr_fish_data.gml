@@ -55,58 +55,58 @@ function scr_fish_data(){
 	global.FISH_GROUPS = [
 		//Group 0
 		[
-			fish_def("Gold",      Spr_Fish_Gold,      0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
-			fish_def("Golden",    Spr_Fish_Golden,    0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
-			fish_def("Goal",      Spr_Fish_Goal,      0.3,  0.3,  4.0,   FISH_MOVE.PONG,                 0.3,      0.25, 0.2),
-			fish_def("Marigold",  Spr_Fish_Marigold,  0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
-			fish_def("Fools",     Spr_Fish_Fools,     0.3,  0.3,  3.5,   FISH_MOVE.FAKE_OUT,             0.3,      0.25, 0.2),
-			fish_def("Sold",      Spr_Fish_Sold,      0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
-			fish_def("Stoled",    Spr_Fish_Stoled,    0.3,  0.3,  2.5,   FISH_MOVE.FLEE,                 0.3,      0.25, 0.2),
+			fish_def("Gold",      Spr_Fish_Gold,      0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.17),
+			fish_def("Golden",    Spr_Fish_Golden,    0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.17),
+			fish_def("Goal",      Spr_Fish_Goal,      0.3,  0.3,  4.0,   FISH_MOVE.PONG,                 0.3,      0.25, 0.17),
+			fish_def("Marigold",  Spr_Fish_Marigold,  0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.17),
+			fish_def("Fools",     Spr_Fish_Fools,     0.3,  0.3,  3.5,   FISH_MOVE.FAKE_OUT,             0.3,      0.25, 0.17),
+			fish_def("Sold",      Spr_Fish_Sold,      0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.17),
+			fish_def("Stoled",    Spr_Fish_Stoled,    0.3,  0.3,  2.5,   FISH_MOVE.FLEE,                 0.3,      0.25, 0.17),
 			fish_def("Guilded",   Spr_Fish_Guilded,   0.10,  0.05, 20,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.15)
 		],
 		//Group 1
 		[
-			fish_def("Bold",      Spr_Fish_Bold,      0.4,  0.4,  3.5,   FISH_MOVE.CHARGE,               0.3,      0.25, 0.2),
-			fish_def("LoLed",     Spr_Fish_LoLed,     0.4,  0.4,  2.5,   FISH_MOVE.STICK_TO_CIRCLE,      0.9,      0.25, 0.2),
+			fish_def("Bold",      Spr_Fish_Bold,      0.4,  0.4,  3.5,   FISH_MOVE.CHARGE,               0.3,      0.21, 0.17),
+			fish_def("LoLed",     Spr_Fish_LoLed,     0.4,  0.4,  2.5,   FISH_MOVE.STICK_TO_CIRCLE,      0.9,      0.21, 0.17),
 			fish_def("Hold",      Spr_Fish_Hold,      0.4,  0.4,  0.5,   FISH_MOVE.CROWD,                0.9,      0.15, 0.1),
-			fish_def("Holed",     Spr_Fish_Holed,     0.4,  0.4,  3.0,   FISH_MOVE.HOLE_HOP,             0.3,      0.25, 0.2),
-			fish_def("Wholed",    Spr_Fish_Wholed,    0.4,  0.4,  3.0,   FISH_MOVE.WRAP    ,             0.3,      0.25, 0.15),
-			fish_def("Fold",      Spr_Fish_Fold,      0.4,  0.4,  3.0,   FISH_MOVE.ZIGZAG_LEFT_RIGHT,    0.3,      0.25, 0.2),
-			fish_def("Rolled",    Spr_Fish_Rolled,    0.4,  0.4,  3.0,   FISH_MOVE.ZIGZAG_UP_DOWN,       0.3,      0.25, 0.2),
-			fish_def("Grow",      Spr_Fish_Grow,      0.4,  0.4,  4.0,   FISH_MOVE.GROW,                 0.1,      0.20, 0.15)
+			fish_def("Holed",     Spr_Fish_Holed,     0.4,  0.4,  3.0,   FISH_MOVE.HOLE_HOP,             0.3,      0.21, 0.17),
+			fish_def("Wholed",    Spr_Fish_Wholed,    0.4,  0.4,  3.0,   FISH_MOVE.WRAP    ,             0.3,      0.21, 0.15),
+			fish_def("Fold",      Spr_Fish_Fold,      0.4,  0.4,  3.0,   FISH_MOVE.ZIGZAG_LEFT_RIGHT,    0.3,      0.21, 0.17),
+			fish_def("Rolled",    Spr_Fish_Rolled,    0.4,  0.4,  3.0,   FISH_MOVE.ZIGZAG_UP_DOWN,       0.3,      0.21, 0.17),
+			fish_def("Grow",      Spr_Fish_Grow,      0.4,  0.4,  4.0,   FISH_MOVE.GROW,                 0.3,      0.20, 0.15)
 		],
 		//Group 2
 		[
-			fish_def("Bowed",     Spr_Fish_Bowed,     0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
-			fish_def("Mold",      Spr_Fish_Mold,      0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
-			fish_def("Go",        Spr_Fish_Go,        3.0,  3.0,  8.0,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Slow",      Spr_Fish_Slow,      1.0,  1.0,  1.0,   FISH_MOVE.CONSTANT,             0.3,      0.02, 0.2),
-			fish_def("Halt",      Spr_Fish_Halt,      0.4,  0.4,  3.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2),
-			fish_def("Poled",     Spr_Fish_Poled,     0.4,  0.4,  2.5,   FISH_MOVE.HOOKED,               0.3,      0.25, 0.1),
-			fish_def("Golf",      Spr_Fish_Golf,      0.4,  0.4,  3.5,   FISH_MOVE.GOLF,                 0.3,      0.25, 0.2),
-			fish_def("Bowled",    Spr_Fish_Bowled,    0.4,  0.4,  3.5,   FISH_MOVE.BOWLING,              0.3,      0.25, 0.2)
+			fish_def("Bowed",     Spr_Fish_Bowed,     0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.21, 0.17),
+			fish_def("Mold",      Spr_Fish_Mold,      0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.21, 0.17),
+			fish_def("Go",        Spr_Fish_Go,        3.0,  3.0,  8.0,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17),
+			fish_def("Slow",      Spr_Fish_Slow,      1.0,  1.0,  1.0,   FISH_MOVE.CONSTANT,             0.3,      0.04, 0.17),
+			fish_def("Halt",      Spr_Fish_Halt,      0.4,  0.4,  3.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17),
+			fish_def("Poled",     Spr_Fish_Poled,     0.4,  0.4,  2.5,   FISH_MOVE.HOOKED,               0.3,      0.21, 0.1),
+			fish_def("Golf",      Spr_Fish_Golf,      0.4,  0.4,  3.5,   FISH_MOVE.GOLF,                 0.3,      0.21, 0.17),
+			fish_def("Bowled",    Spr_Fish_Bowled,    0.4,  0.4,  3.5,   FISH_MOVE.BOWLING,              0.3,      0.21, 0.17)
 		],
 		//Group 3
 		[
-			fish_def("Goat",      Spr_Fish_Goat,      0.4,  0.4,  5.5,   FISH_MOVE.WALL_JUMP,            0.3,      0.25, 0.2),
-			fish_def("Colt",      Spr_Fish_Colt,      0.1,  0.1,  3.5,   FISH_MOVE.WALKING,              0.3,      0.25, 0.2),
-			fish_def("Old",       Spr_Fish_Old,       1.0,  1.0,  1.0,   FISH_MOVE.CONSTANT,             0.3,      0.20, 0.2),
-			fish_def("Finch",     Spr_Fish_Finch,     0.4,  0.4,  3.5,   FISH_MOVE.FLY_TOP,              0.3,      0.25, 0.2),
-			fish_def("Gloop",     Spr_Fish_Gloop,     0.4,  0.4,  3.5,   FISH_MOVE.GRID_HOP,             0.3,      0.25, 0.2),
-			fish_def("Ghoul",     Spr_Fish_Ghoul,     0.4,  0.4,  3.5,   FISH_MOVE.FLOAT_UP,             0.3,      0.25, 0.2),
-			fish_def("Soul",      Spr_Fish_Soul,      0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
-			fish_def("God",       Spr_Fish_God,       0.4,  0.4,  3.5,   FISH_MOVE.MIRROR,               0.3,      0.25, 0.2)
+			fish_def("Goat",      Spr_Fish_Goat,      0.4,  0.4,  5.5,   FISH_MOVE.WALL_JUMP,            0.3,      0.21, 0.17),
+			fish_def("Colt",      Spr_Fish_Colt,      0.1,  0.1,  3.5,   FISH_MOVE.WALKING,              0.3,      0.21, 0.17),
+			fish_def("Old",       Spr_Fish_Old,       1.0,  1.0,  1.0,   FISH_MOVE.CONSTANT,             0.3,      0.20, 0.17),
+			fish_def("Finch",     Spr_Fish_Finch,     0.4,  0.4,  3.5,   FISH_MOVE.FLY_TOP,              0.3,      0.21, 0.17),
+			fish_def("Gloop",     Spr_Fish_Gloop,     0.4,  0.4,  3.5,   FISH_MOVE.GRID_HOP,             0.3,      0.21, 0.17),
+			fish_def("Ghoul",     Spr_Fish_Ghoul,     0.4,  0.4,  3.5,   FISH_MOVE.FLOAT_UP,             0.3,      0.21, 0.17),
+			fish_def("Soul",      Spr_Fish_Soul,      0.4,  0.4,  3.5,   FISH_MOVE.CONSTANT,             0.3,      0.21, 0.17),
+			fish_def("God",       Spr_Fish_God,       0.4,  0.4,  2.5,   FISH_MOVE.MIRROR,               0.3,      0.21, 0.17)
 		],
 		//Group 4
 		[
-			fish_def("Coal",      Spr_Fish_Coal,      0.5,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(90,25,20)),
-			fish_def("Scalled",   Spr_Fish_Scalled,   0.6,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(255,70,25)),
-			fish_def("Cold",      Spr_Fish_Cold,      0.7,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(130,210,255)),
-			fish_def("Bowl",      Spr_Fish_Bowl,      0.8,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(30,60,200)),
-			fish_def("Volt",      Spr_Fish_Volt,      0.9,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(255,235,60)),
-			fish_def("Gail",      Spr_Fish_Gail,      0.9,  0.1,  5.5,   FISH_MOVE.WIND,                 0.3,      0.25, 0.2,  make_colour_rgb(220,225,235)),
-			fish_def("Glow",      Spr_Fish_Glow,      0.9,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.25, 0.2,  make_colour_rgb(120,255,80)),
-			fish_def("Globe",     Spr_Fish_Globe,     0.9,  0.4,  4.5,   FISH_MOVE.ORBIT,                0.3,      0.25, 0.2,  make_colour_rgb(60,190,90))
+			fish_def("Coal",      Spr_Fish_Coal,      0.5,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17,  make_colour_rgb(90,25,20)),
+			fish_def("Scalled",   Spr_Fish_Scalled,   0.6,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17,  make_colour_rgb(255,70,25)),
+			fish_def("Cold",      Spr_Fish_Cold,      0.7,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17,  make_colour_rgb(130,210,255)),
+			fish_def("Bowl",      Spr_Fish_Bowl,      0.8,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17,  make_colour_rgb(30,60,200)),
+			fish_def("Volt",      Spr_Fish_Volt,      0.9,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17,  make_colour_rgb(255,235,60)),
+			fish_def("Gail",      Spr_Fish_Gail,      0.9,  0.1,  5.5,   FISH_MOVE.WIND,                 0.3,      0.21, 0.17,  make_colour_rgb(220,225,235)),
+			fish_def("Glow",      Spr_Fish_Glow,      0.9,  0.4,  4.5,   FISH_MOVE.DASH_WAIT,            0.3,      0.21, 0.17,  make_colour_rgb(120,255,80)),
+			fish_def("Globe",     Spr_Fish_Globe,     0.9,  0.4,  4.5,   FISH_MOVE.ORBIT,                0.3,      0.21, 0.17,  make_colour_rgb(60,190,90))
 		]
 	]
 }

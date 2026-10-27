@@ -7,17 +7,17 @@ draw_set_color(c_white)
 draw_rectangle(box_x, box_y, box_x+box_size, box_y+box_size, true)
 
 //---- Catch bowl (the circle the player steers), drawn under everything else so the fish swims over it ----
-//Spr_Catch_Bowl has a top left origin, so scale its visible ring to the circle's size and center it on the circle
-var bowl_ring = sprite_get_bbox_right(Spr_Catch_Bowl) - sprite_get_bbox_left(Spr_Catch_Bowl) + 1
+//Spr_Catch_net has a top left origin, so scale its visible ring to the circle's size and center it on the circle
+var bowl_ring = sprite_get_bbox_right(Spr_Catch_net) - sprite_get_bbox_left(Spr_Catch_net) + 1
 var bowl_scale = circle_radius*2/bowl_ring
-var bowl_draw_x = circle_x - sprite_get_width(Spr_Catch_Bowl)/2*bowl_scale
-var bowl_draw_y = circle_y - sprite_get_height(Spr_Catch_Bowl)/2*bowl_scale
-draw_sprite_ext(Spr_Catch_Bowl, 0, bowl_draw_x, bowl_draw_y, bowl_scale, bowl_scale, 0, c_white, 1)
+var bowl_draw_x = circle_x - sprite_get_width(Spr_Catch_net)/2*bowl_scale
+var bowl_draw_y = circle_y - sprite_get_height(Spr_Catch_net)/2*bowl_scale
+draw_sprite_ext(Spr_Catch_net, 0, bowl_draw_x, bowl_draw_y, bowl_scale, bowl_scale, 0, c_white, 1)
 //Glows yellow while the bar is filling (fish inside, or outside for a stick-to-circle fish)
 if catching
 {
 	gpu_set_blendmode(bm_add)
-	draw_sprite_ext(Spr_Catch_Bowl, 0, bowl_draw_x, bowl_draw_y, bowl_scale, bowl_scale, 0, c_yellow, catch_glow)
+	draw_sprite_ext(Spr_Catch_net, 0, bowl_draw_x, bowl_draw_y, bowl_scale, bowl_scale, 0, c_yellow, catch_glow)
 	gpu_set_blendmode(bm_normal)
 }
 

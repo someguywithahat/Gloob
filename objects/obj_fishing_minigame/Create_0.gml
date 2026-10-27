@@ -31,7 +31,7 @@ circle_x = box_x + box_size/2
 circle_y = box_y + box_size/2
 circle_vx = 0
 circle_vy = 0
-circle_accel = 0.3 //How quickly it speeds up or slows down
+circle_accel = 0.6 //How quickly it speeds up or slows down
 circle_max_speed = 4
 circle_follow = 0.06 //How hard it pulls toward the mouse.  Lower = lazier near the mouse
 catching = false //True while the bar is filling
