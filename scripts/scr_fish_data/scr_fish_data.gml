@@ -42,7 +42,8 @@ enum FISH_MOVE {
 	WRAP,       //Swims off one side of the pond and comes back in the opposite side
 	HOOKED,     //Swims normally.  Every so often a fishing line casts in from an edge, and if it hooks the circle it drags it around
 	CROWD,      //Where's Waldo: hides in a crowd of animated gold fish.  It's the one that isn't animated
-	WALL_JUMP   //Climbs a side wall in little wall-jump hops.  About 70% of the way up it leaps to the bottom of the other wall
+	WALL_JUMP,  //Climbs a side wall in little wall-jump hops.  About 70% of the way up it leaps to the bottom of the other wall
+	GIFT        //A marigold pops up far from the circle.  Rushes off to grab it, then slowly brings it to the circle.  A heart pops out, and a new marigold appears
 }
 
 /// One fish row
@@ -58,7 +59,7 @@ function scr_fish_data(){
 			fish_def("Gold",      Spr_Fish_Gold,      0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.17),
 			fish_def("Golden",    Spr_Fish_Golden,    0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.17),
 			fish_def("Goal",      Spr_Fish_Goal,      0.3,  0.3,  4.0,   FISH_MOVE.PONG,                 0.3,      0.25, 0.17),
-			fish_def("Marigold",  Spr_Fish_Marigold,  0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.17),
+			fish_def("Marigold",  Spr_Fish_Marigold,  0.8,  0.8,  6.0,   FISH_MOVE.GIFT,                 0.3,      0.25, 0.17),
 			fish_def("Fools",     Spr_Fish_Fools,     0.3,  0.3,  3.5,   FISH_MOVE.FAKE_OUT,             0.3,      0.25, 0.17),
 			fish_def("Sold",      Spr_Fish_Sold,      0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.17),
 			fish_def("Stoled",    Spr_Fish_Stoled,    0.3,  0.3,  2.5,   FISH_MOVE.FLEE,                 0.3,      0.25, 0.17),

@@ -1262,6 +1262,121 @@ swim_wall_jump = function(fish)
 	}
 }
 
+//---- Gift (Marigold) ----
+gift_fetch_speed = 1.7 //Rushing off to grab the flower, as a multiple of max_speed
+gift_deliver_speed = 0.4 //Bringing it back to the circle, as a multiple of max_speed
+gift_fetch_accel = 2 //Extra acceleration while rushing off, so she darts away
+gift_give_distance = 10 //How close to the middle of the circle she gets before handing it over
+gift_linger = 25 //Steps she hangs around the circle after giving it, before rushing off again
+gift_far_tries = 8 //New flowers go at the farthest of this many random spots from the circle
+gift_flower_scale = 2 //spr_effect_marigold is tiny (5x11)
+gift_flower_anim = 6 //Flower sway, frames per second
+gift_heart_life = 50 //Steps a heart floats up before it's gone
+gift_heart_rise = 0.6 //Pixels per step
+gift_flower_x = 0 //The flower floating in the pond, waiting to be picked
+gift_flower_y = 0
+gift_flower_grow = 0 //0-1.  Pops in when it appears
+gift_flower_frame = 0
+gift_carrying = false //True while she has it in her mouth
+gift_hearts = [] //{ x, y, life }
+
+/// Puts a new marigold far from the player's circle
+gift_spawn_flower = function()
+{
+	var margin = 24
+	var best_dist = -1
+	for (var i = 0; i < gift_far_tries; i++)
+	{
+		var try_x = random_range(box_x+margin, box_x+box_size-margin)
+		var try_y = random_range(box_y+margin, box_y+box_size-margin)
+		var dist = point_distance(try_x, try_y, circle_x, circle_y)
+		if dist>best_dist
+		{
+			best_dist = dist
+			gift_flower_x = try_x
+			gift_flower_y = try_y
+		}
+	}
+	gift_flower_grow = 0
+}
+
+/// Where the flower sits in her mouth: just in front of her nose
+gift_mouth_x = function(fish)
+{
+	return fish.x + fish.facing*sprite_get_width(fish.sprite)*0.45
+}
+
+/// Gift: a marigold pops up far from the circle.  She rushes off to grab it, then slowly swims it over to the
+/// middle of the circle.  A heart pops out, and a new marigold appears far away again.
+///   mode 0 rushing to the flower, 1 bringing it over, 2 lingering after giving it
+swim_gift = function(fish)
+{
+	if !fish.setup
+	{
+		fish.setup = true
+		gift_spawn_flower()
+	}
+
+	//Flower sway and pop-in, hearts floating up
+	gift_flower_frame += gift_flower_anim/game_get_speed(gamespeed_fps)
+	gift_flower_grow = min(gift_flower_grow + 0.1, 1)
+	for (var i = array_length(gift_hearts)-1; i >= 0; i--)
+	{
+		var heart = gift_hearts[i]
+		heart.life--
+		heart.y -= gift_heart_rise
+		if heart.life<=0
+			array_delete(gift_hearts, i, 1)
+	}
+
+	switch(fish.mode)
+	{
+		case 0: //Rushing off to grab the flower
+			fish.goal_x = gift_flower_x
+			fish.goal_y = gift_flower_y
+			var dir = point_direction(fish.x, fish.y, fish.goal_x, fish.goal_y)
+			var top = fish.max_speed*gift_fetch_speed
+			var rush_accel = fish.accel*gift_fetch_accel
+			fish.vx = approach_speed(fish.vx, lengthdir_x(top, dir), rush_accel, rush_accel)
+			fish.vy = approach_speed(fish.vy, lengthdir_y(top, dir), rush_accel, rush_accel)
+			//Grabs it with her mouth
+			if point_distance(gift_mouth_x(fish), fish.y, gift_flower_x, gift_flower_y)<10 or point_distance(fish.x, fish.y, gift_flower_x, gift_flower_y)<8
+			{
+				gift_carrying = true
+				fish.mode = 1
+				var chomp = audio_play_sound(snd_pop, 1, false)
+				audio_sound_pitch(chomp, 1.4)
+				audio_sound_gain(chomp, 0.6, 0)
+			}
+			break
+
+		case 1: //Slowly bringing it to the middle of the circle (it follows the circle around)
+			fish.goal_x = circle_x
+			fish.goal_y = circle_y
+			swim_toward_goal(fish, fish.max_speed*gift_deliver_speed)
+			if point_distance(fish.x, fish.y, circle_x, circle_y)<gift_give_distance
+			{
+				//Here you go!
+				gift_carrying = false
+				array_push(gift_hearts, { x: circle_x, y: circle_y - 10, life: gift_heart_life })
+				var chime = audio_play_sound(snd_tweet, 1, false)
+				audio_sound_pitch(chime, random_range(1.1, 1.3))
+				gift_spawn_flower() //Already showing where she'll rush off to next
+				fish.mode = 2
+				fish.mode_timer = gift_linger
+			}
+			break
+
+		case 2: //Lingering for a moment after giving it
+			fish.vx = approach_speed(fish.vx, 0, fish.accel, fish.decel)
+			fish.vy = approach_speed(fish.vy, 0, fish.accel, fish.decel)
+			fish.mode_timer--
+			if fish.mode_timer<=0
+				fish.mode = 0
+			break
+	}
+}
+
 /// Moves the fish for one step using its movement type
 swim = function(fish)
 {
@@ -1292,6 +1407,7 @@ swim = function(fish)
 		case FISH_MOVE.HOOKED:            swim_hooked(fish);          break
 		case FISH_MOVE.CROWD:             swim_crowd(fish);           break
 		case FISH_MOVE.WALL_JUMP:         swim_wall_jump(fish);       break
+		case FISH_MOVE.GIFT:              swim_gift(fish);            break
 	}
 }
 

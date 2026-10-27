@@ -79,6 +79,15 @@ if fish.move=FISH_MOVE.BOWLING
 	}
 }
 
+//---- Gift (Marigold): the flower waiting to be picked.  spr_effect_marigold has a top left origin, so center it ----
+if fish.move=FISH_MOVE.GIFT and !gift_carrying
+{
+	var flower_scale = gift_flower_scale*gift_flower_grow
+	var flower_x = gift_flower_x - sprite_get_width(spr_effect_marigold)/2*flower_scale
+	var flower_y = gift_flower_y - sprite_get_height(spr_effect_marigold)/2*flower_scale
+	draw_sprite_ext(spr_effect_marigold, floor(gift_flower_frame), flower_x, flower_y, flower_scale, flower_scale, 0, c_white, 1)
+}
+
 //---- Decoy crowd (Hold): drawn in two halves, with the real fish slipped in between ----
 var crowd_from = 0
 var crowd_to = min(crowd_draw_slot, array_length(crowd))
@@ -119,6 +128,27 @@ if !fish.hidden and fish.scale>0
 	for (var cx = 0; cx < array_length(copies_x); cx++)
 		for (var cy = 0; cy < array_length(copies_y); cy++)
 			draw_sprite_ext(fish.sprite, floor(fish.frame), draw_x+copies_x[cx], draw_y+copies_y[cy], fish.facing*fish.scale, fish.scale*fish.flip_y, fish.angle, c_white, 1)
+}
+
+//---- Gift (Marigold): the flower in her mouth, held by the bottom of its stem, and the hearts floating up ----
+if fish.move=FISH_MOVE.GIFT
+{
+	if gift_carrying
+	{
+		var carry_x = gift_mouth_x(fish) - sprite_get_width(spr_effect_marigold)/2*gift_flower_scale
+		var carry_y = fish.y + 2 - sprite_get_height(spr_effect_marigold)*gift_flower_scale
+		draw_sprite_ext(spr_effect_marigold, floor(gift_flower_frame), carry_x, carry_y, gift_flower_scale, gift_flower_scale, 0, c_white, 1)
+	}
+	//spr_effect_heart is 16x16 with a top left origin.  Pops in big, then shrinks a little and fades as it rises
+	var heart_half = sprite_get_width(spr_effect_heart)/2
+	for (var i = 0; i < array_length(gift_hearts); i++)
+	{
+		var heart = gift_hearts[i]
+		var age = 1 - heart.life/gift_heart_life //0 new, 1 gone
+		var heart_scale = (age<0.15) ? lerp(0.5, 1.4, age/0.15) : lerp(1.4, 1, (age-0.15)/0.85)
+		var heart_alpha = (age<0.6) ? 1 : 1 - (age-0.6)/0.4
+		draw_sprite_ext(spr_effect_heart, 0, heart.x - heart_half*heart_scale, heart.y - heart_half*heart_scale, heart_scale, heart_scale, 0, c_white, heart_alpha)
+	}
 }
 
 //---- Rest of the decoy crowd (Hold), on top of the real fish ----
