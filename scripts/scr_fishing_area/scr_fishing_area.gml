@@ -64,10 +64,6 @@ function scr_fishing_room_start(){
 	repeat(irandom_range(FISHING_FISH_MIN, FISHING_FISH_MAX))
 		scr_fishing_spawn_fish(info.group, boat)
 
-	//Trophy clams on the center island
-	if room=rm_fishingCenter
-		scr_fishing_spawn_clams()
-
 	//The cave is always dark.  Same night lighting as the game board, lit by the boat and the fish
 	if room=rm_fishingDown
 	{
@@ -77,20 +73,6 @@ function scr_fishing_room_start(){
 	}
 }
 
-#macro CLAM_LEFT 460 //Trophy clams: the island in rm_fishingCenter is x 384-896, y 192-576
-#macro CLAM_TOP 340 //(clam positions are the bottom middle of each shell)
-#macro CLAM_SPACING_X 120
-#macro CLAM_SPACING_Y 170
-
-/// Puts the 8 trophy clams on the center island, two rows of four, one for each fish in group 0 (in table order)
-function scr_fishing_spawn_clams(){
-	var fish_list = global.FISH_GROUPS[0]
-	for (var i = 0; i < array_length(fish_list); i++)
-	{
-		var clam = instance_create_layer(CLAM_LEFT + (i mod 4)*CLAM_SPACING_X, CLAM_TOP + (i div 4)*CLAM_SPACING_Y, "Instances", obj_clamTrophy)
-		clam.set_fish(fish_list[i])
-	}
-}
 
 /// Spawns one fish from a fish group somewhere in the water (not on land, and not right under the boat)
 function scr_fishing_spawn_fish(group, boat){

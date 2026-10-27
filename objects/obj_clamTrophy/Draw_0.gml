@@ -8,6 +8,6 @@ if grown>0
 	var bowl_w = sprite_get_width(bowl_sprite)
 	var bowl_h = sprite_get_height(bowl_sprite)
 	var bowl_x = x - bowl_w/2
-	var bowl_y = y + mouth_y - bowl_h*grown
+	var bowl_y = y + mouth_y + bowl_h*bowl_lower - bowl_h*grown
 	draw_sprite_ext(bowl_sprite, floor(bowl_frame), bowl_x, bowl_y, 1, grown, 0, c_white, 1)
 }
