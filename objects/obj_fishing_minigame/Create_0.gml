@@ -35,6 +35,7 @@ circle_accel = 0.3 //How quickly it speeds up or slows down
 circle_max_speed = 4
 circle_follow = 0.06 //How hard it pulls toward the mouse.  Lower = lazier near the mouse
 catching = false //True while the bar is filling
+catch_glow = 0.35 //How strongly the catch bowl (Spr_Catch_Bowl) lights up yellow while catching
 
 //---- Crowd of decoy fish (Hold) ----
 crowd = [] //The decoys.  Filled in by swim_crowd

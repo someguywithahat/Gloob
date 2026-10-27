@@ -40,6 +40,17 @@ with(obj_gloopFishing)
 	other.add_light(center_x(), center_y(), other.boat_light_radius, other.boat_light_color, strength)
 with(obj_gloopFish)
 	other.add_light(x+sprite_width/2, y+sprite_height/2, other.fish_light_radius, light_color, strength*other.fish_light_strength, spr_effect_glow)
+//Trophy clams: an open bowl glows in its fish's color, like the fish does.  Fades in as the bowl grows
+with(obj_clamTrophy)
+{
+	var grown = bowl_size()
+	if grown>0 and !is_undefined(fish_data)
+	{
+		var bowl_h = sprite_get_height(bowl_sprite)
+		var glow_y = y + mouth_y + bowl_h*bowl_lower - bowl_h*grown/2 //Middle of the bowl
+		other.add_light(x, glow_y, other.fish_light_radius*other.bowl_light_size, fish_data.light, strength*other.fish_light_strength*grown, spr_effect_glow)
+	}
+}
 
 //Slime trails: a faint glow on every space a slime has been, in that slime's color
 var half_space = controller.spacing/2
