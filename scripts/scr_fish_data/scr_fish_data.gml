@@ -62,7 +62,7 @@ function scr_fish_data(){
 			fish_def("Fools",     Spr_Fish_Fools,     0.3,  0.3,  3.5,   FISH_MOVE.FAKE_OUT,             0.3,      0.25, 0.2),
 			fish_def("Sold",      Spr_Fish_Sold,      0.3,  0.3,  2.5,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2),
 			fish_def("Stoled",    Spr_Fish_Stoled,    0.3,  0.3,  2.5,   FISH_MOVE.FLEE,                 0.3,      0.25, 0.2),
-			fish_def("Guilded",   Spr_Fish_Guilded,   0.15,  0.15,  100,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.2)
+			fish_def("Guilded",   Spr_Fish_Guilded,   0.10,  0.05, 20,   FISH_MOVE.CONSTANT,             0.3,      0.25, 0.15)
 		],
 		//Group 1
 		[
