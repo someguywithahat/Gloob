@@ -40,6 +40,20 @@ with(obj_gloopFishing)
 	other.add_light(center_x(), center_y(), other.boat_light_radius, other.boat_light_color, strength)
 with(obj_gloopFish)
 	other.add_light(x+sprite_width/2, y+sprite_height/2, other.fish_light_radius, light_color, strength*other.fish_light_strength, spr_effect_glow)
+//Lightning fish (Volt) in the fishing minigame: each bolt flashes the cave around the pond, and the trail glows
+with(obj_fishing_minigame)
+{
+	if fish.move=FISH_MOVE.LIGHTNING
+	{
+		if bolt_flash>0
+			other.add_light(box_x+box_size/2, box_y+box_size/2, box_size*other.bolt_flash_size, bolt_flash_color, strength*bolt_flash)
+		for (var i = 0; i < array_length(bolt_trail); i += 3)
+		{
+			var bit = bolt_trail[i]
+			other.add_light(bit.x, bit.y, bolt_trail_light*3, bolt_trail_color, strength*0.5*bit.life/bolt_trail_life, spr_effect_glow)
+		}
+	}
+}
 //Trophy clams: an open bowl glows in its fish's color, like the fish does.  Fades in as the bowl grows
 with(obj_clamTrophy)
 {

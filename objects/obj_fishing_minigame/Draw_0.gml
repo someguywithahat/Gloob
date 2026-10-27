@@ -88,6 +88,46 @@ if fish.move=FISH_MOVE.GIFT and !gift_carrying
 	draw_sprite_ext(spr_effect_marigold, floor(gift_flower_frame), flower_x, flower_y, flower_scale, flower_scale, 0, c_white, 1)
 }
 
+//---- Lightning trail (Volt): a crackling bolt that fades.  Under the fish ----
+if fish.move=FISH_MOVE.LIGHTNING
+{
+	for (var i = 1; i < array_length(bolt_trail); i++)
+	{
+		var from = bolt_trail[i-1]
+		var to = bolt_trail[i]
+		var fade = min(from.life, to.life)/bolt_trail_life
+		//Each end jitters a little every frame, so it crackles
+		var jitter = 1.5*fade
+		var x1 = from.x + random_range(-jitter, jitter)
+		var y1 = from.y + random_range(-jitter, jitter)
+		var x2 = to.x + random_range(-jitter, jitter)
+		var y2 = to.y + random_range(-jitter, jitter)
+		//Soft glow, then a bright core
+		draw_set_color(bolt_trail_color)
+		draw_set_alpha(fade*0.35)
+		draw_line_width(x1, y1, x2, y2, 6)
+		draw_set_color(c_white)
+		draw_set_alpha(fade)
+		draw_line_width(x1, y1, x2, y2, 2)
+	}
+	draw_set_alpha(1)
+	draw_set_color(c_white)
+}
+
+//---- Embers (Scald) on the water.  Spr_Flame is 16x16 with a top left origin, so center it.  Under the fish ----
+if fish.move=FISH_MOVE.EMBERS
+{
+	var ember_half = sprite_get_width(Spr_Flame)/2
+	for (var i = 0; i < array_length(embers); i++)
+	{
+		var ember = embers[i]
+		var burn = ember_strength(ember)
+		var pop_in = min(ember.age/6, 1) //Pops in when dropped
+		var ember_scale = burn*pop_in
+		draw_sprite_ext(Spr_Flame, floor(ember.frame), ember.x-ember_half*ember_scale, ember.y-ember_half*ember_scale, ember_scale, ember_scale, 0, c_white, burn)
+	}
+}
+
 //---- Decoy crowd (Hold): drawn in two halves, with the real fish slipped in between ----
 var crowd_from = 0
 var crowd_to = min(crowd_draw_slot, array_length(crowd))
@@ -198,6 +238,21 @@ if lighting<>noone and lighting.always_night
 	if !fish.hidden
 		lighting.add_light(fish.x-box_x, fish.y-box_y, lighting.fish_light_radius*max(fish.scale, 1), fish_data.light,
 			light_strength*lighting.fish_light_strength*fish.alpha, spr_effect_glow) //A fading ghost's glow fades too
+	//Lightning trail (Volt) glows as it fades, and each new bolt flashes the whole pond
+	if fish.move=FISH_MOVE.LIGHTNING
+	{
+		for (var i = 0; i < array_length(bolt_trail); i += 2)
+		{
+			var bit = bolt_trail[i]
+			lighting.add_light(bit.x-box_x, bit.y-box_y, bolt_trail_light, bolt_trail_color, light_strength*bit.life/bolt_trail_life, spr_effect_glow)
+		}
+		if bolt_flash>0
+			lighting.add_light(box_size/2, box_size/2, box_size, bolt_flash_color, light_strength*bolt_flash)
+	}
+	//Embers (Scald) glow in the fish's color
+	if fish.move=FISH_MOVE.EMBERS
+		for (var i = 0; i < array_length(embers); i++)
+			lighting.add_light(embers[i].x-box_x, embers[i].y-box_y, ember_light, fish_data.light, light_strength*ember_strength(embers[i]), spr_effect_glow)
 	gpu_set_blendmode(bm_normal)
 	surface_reset_target()
 
@@ -215,7 +270,8 @@ draw_set_color(c_black)
 draw_set_alpha(0.4)
 draw_rectangle(bar_x, box_y, bar_x+bar_width, box_y+box_size, false)
 draw_set_alpha(1)
-draw_set_color(c_lime)
+//Turns orange while embers (Scald) are slowing it down
+draw_set_color(merge_colour(c_lime, c_orange, 1-bar_grow_mult))
 if bar_fill>0
 	draw_rectangle(bar_x, bar_top, bar_x+bar_width, box_y+box_size, false)
 draw_set_color(c_white)

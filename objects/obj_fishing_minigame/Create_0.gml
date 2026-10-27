@@ -24,6 +24,7 @@ bar_x = box_x - bar_gap - bar_width
 bar_fill = 0.3 //0-1.  Set from the fish's start_bar (scr_fish_data) once the fish is picked
 bar_grow = 0.25/60 //Per step while the fish is caught.  Set from the fish's bar_grow (scr_fish_data)
 bar_shrink = 0.2/60 //Per step while it isn't.  Set from the fish's bar_shrink (scr_fish_data)
+bar_grow_mult = 1 //Multiplies bar_grow.  Embers (Scald) in the circle lower it
 
 //---- Player circle: follows the mouse with slow acceleration and deceleration ----
 circle_radius = 52
@@ -129,6 +130,8 @@ make_fish = function(data)
 		hook_y: 0,
 		hook_target_x: 0, //Hooked: where the cast is aimed
 		hook_target_y: 0,
+		bolt_path: [], //Lightning: the corners of the bolt it's zipping along, as [x, y]
+		bolt_index: 0, //Lightning: which corner it's heading for
 		alpha: 1, //How see-through it's drawn (shy ghost fades near the circle)
 		face_lock: 0 //0 = face the way it's moving.  1 or -1 = always face right or left (wall jump clings to a wall)
 	}
@@ -1432,6 +1435,256 @@ swim_shy_ghost = function(fish)
 	fish.alpha += clamp(want_alpha-fish.alpha, -ghost_fade_speed, ghost_fade_speed)
 }
 
+//---- Lightning (Volt) ----
+bolt_speed = 2.2 //Zipping speed, as a multiple of max_speed
+bolt_wait_min = 45 //Steps it sits crackling between bolts
+bolt_wait_max = 100
+bolt_shake_time = 20 //The last this-many steps of the wait it shakes, warning it's about to go
+bolt_shake = 5 //How hard it shakes (degrees)
+bolt_corners_min = 4 //How many sharp turns in each bolt
+bolt_corners_max = 6
+bolt_jag = 40 //How far each turn kinks out to the side (pixels)
+bolt_min_length = 0.45 //Each bolt goes at least this far (a fraction of the pond's size)
+bolt_trail = [] //The glowing trail: { x, y, life }, oldest first
+bolt_trail_life = 50 //Steps a bit of trail glows before it's gone
+bolt_trail_color = make_colour_rgb(255,240,120)
+bolt_trail_light = 18 //Light radius of the trail in dark rooms (the cave)
+bolt_flash = 0 //0-1.  Jumps up when a bolt goes off and fades.  Lights up the cave around the pond (obj_lighting)
+bolt_flash_fade = 0.04 //Per step
+bolt_flash_color = make_colour_rgb(255,245,190)
+
+/// Lays out a new jagged bolt from where the fish is to a spot well across the pond
+bolt_plan = function(fish)
+{
+	var margin = 20
+	var start_x = fish.x
+	var start_y = fish.y
+	var end_x = start_x
+	var end_y = start_y
+	//Somewhere far enough away to be a proper zap
+	for (var tries = 0; tries < 20; tries++)
+	{
+		end_x = random_range(box_x+margin, box_x+box_size-margin)
+		end_y = random_range(box_y+margin, box_y+box_size-margin)
+		if point_distance(start_x, start_y, end_x, end_y)>=box_size*bolt_min_length
+			break
+	}
+	//Corners along the way, kinking out to alternate sides like a lightning bolt
+	var corners = irandom_range(bolt_corners_min, bolt_corners_max)
+	var dir = point_direction(start_x, start_y, end_x, end_y)
+	var side = choose(-1, 1)
+	fish.bolt_path = []
+	for (var i = 1; i < corners; i++)
+	{
+		var t = i/corners + random_range(-0.05, 0.05)
+		var kink = side*random_range(bolt_jag*0.5, bolt_jag)
+		var corner_x = lerp(start_x, end_x, t) + lengthdir_x(kink, dir+90)
+		var corner_y = lerp(start_y, end_y, t) + lengthdir_y(kink, dir+90)
+		array_push(fish.bolt_path, [clamp(corner_x, box_x+margin, box_x+box_size-margin), clamp(corner_y, box_y+margin, box_y+box_size-margin)])
+		side = -side
+	}
+	array_push(fish.bolt_path, [end_x, end_y])
+	fish.bolt_index = 0
+}
+
+/// Lightning: sits crackling, shakes, then zips to a new spot along a jagged bolt, leaving a glowing trail
+/// that fades away.  The trail shows where it's been, never where it's going.  Each bolt flashes the cave.
+///   mode 0 sitting, 1 zipping.  mode_timer is how long it has left to sit
+swim_lightning = function(fish)
+{
+	if !fish.setup
+	{
+		fish.setup = true
+		fish.mode_timer = irandom_range(bolt_wait_min, bolt_wait_max)
+	}
+
+	//Trail and flash fade
+	for (var i = array_length(bolt_trail)-1; i >= 0; i--)
+	{
+		bolt_trail[i].life--
+		if bolt_trail[i].life<=0
+			array_delete(bolt_trail, i, 1)
+	}
+	bolt_flash = max(bolt_flash - bolt_flash_fade, 0)
+
+	if fish.mode=0
+	{
+		//Sitting.  Shakes just before it goes
+		fish.vx = approach_speed(fish.vx, 0, fish.accel, fish.decel)
+		fish.vy = approach_speed(fish.vy, 0, fish.accel, fish.decel)
+		fish.mode_timer--
+		fish.angle = (fish.mode_timer<bolt_shake_time) ? random_range(-bolt_shake, bolt_shake) : 0
+		if fish.mode_timer<=0
+		{
+			bolt_plan(fish)
+			fish.mode = 1
+			fish.angle = 0
+			bolt_flash = 1
+			array_push(bolt_trail, { x: fish.x, y: fish.y, life: bolt_trail_life })
+			var zap = audio_play_sound(snd_thunder2, 1, false)
+			audio_sound_pitch(zap, random_range(1.6, 1.9))
+			audio_sound_gain(zap, 0.5, 0)
+		}
+		return;
+	}
+
+	//Zipping from corner to corner at full speed.  Moves exactly onto each corner so the turns are sharp
+	var speed_now = fish.max_speed*bolt_speed
+	var corner = fish.bolt_path[fish.bolt_index]
+	var dist = point_distance(fish.x, fish.y, corner[0], corner[1])
+	if dist<=speed_now
+	{
+		fish.vx = corner[0]-fish.x
+		fish.vy = corner[1]-fish.y
+		fish.bolt_index++
+		if fish.bolt_index>=array_length(fish.bolt_path)
+		{
+			//Landed
+			fish.mode = 0
+			fish.mode_timer = irandom_range(bolt_wait_min, bolt_wait_max)
+		}
+	}
+	else
+	{
+		var dir = point_direction(fish.x, fish.y, corner[0], corner[1])
+		fish.vx = lengthdir_x(speed_now, dir)
+		fish.vy = lengthdir_y(speed_now, dir)
+	}
+	//Trail point where it'll be after this step
+	array_push(bolt_trail, { x: fish.x+fish.vx, y: fish.y+fish.vy, life: bolt_trail_life })
+}
+
+//---- Embers (Scald) ----
+embers = [] //{ x, y, vx, vy, life, fade_steps, age, frame }
+ember_spacing = 10 //Drops a burst of embers every this many pixels it swims (fire dashes only)
+ember_burst = 2 //Embers in each burst
+ember_scatter_min = 0.4 //Each ember flies off in a random direction at this speed (pixels per step)...
+ember_scatter_max = 1.6
+ember_drag = 0.94 //...and slows down like this each step
+ember_life = 240 //Steps an ember lasts (4 seconds)
+ember_fade = 0.3 //Fades and shrinks over the last this-much of its life
+ember_max = 60 //Most embers on the water at once (the oldest goes out first)
+ember_slow = 0.15 //Each ember inside the circle takes this much off the bar's fill speed...
+ember_min_grow = 0.2 //...but it always fills at least this fast (a fraction of normal)
+ember_light = 16 //Light radius of each ember in dark rooms (the cave)
+ember_travel = 0 //Pixels swum since the last ember
+//Gravity: embers hop up a little when dropped, then slowly sink
+ember_gravity = 0.02 //Pixels per step, per step
+ember_max_fall = 0.7 //Fastest they sink, pixels per step
+ember_pop_min = 0.3 //Little upward hop when dropped, pixels per step
+ember_pop_max = 0.9
+//Fire dashes: only every few dashes, and they always go a long way
+ember_fire_every = 3 //Every this-many dashes is a fire dash
+ember_fire_distance = 0.6 //A fire dash goes at least this far (a fraction of the pond's size)
+ember_dash_count = 0 //Dashes so far.  The first one is a fire dash
+ember_dash_on = false //True while this dash is dropping embers
+ember_was_moving = false //Was it dashing last step (to spot when a new dash starts)
+
+/// Embers: dashes and waits like Dash and Wait.  Every few dashes is a long fire dash that sprays glowing embers
+/// (Spr_Flame) in all directions, which then slowly sink.  Every ember inside the player's circle makes the bar
+/// fill slower, so you're chasing it through its own fire
+swim_embers = function(fish)
+{
+	swim_dash_wait(fish)
+
+	//A new dash starts when the wait ends.  Every few dashes is a fire dash: a long one that sprays embers
+	var moving = fish.wait_timer<=0
+	if moving and !ember_was_moving
+	{
+		ember_dash_on = (ember_dash_count mod ember_fire_every)=0
+		ember_dash_count++
+		ember_travel = 0
+		if ember_dash_on
+		{
+			ember_far_goal(fish)
+			var whoosh = audio_play_sound(snd_fireball, 1, false)
+			audio_sound_pitch(whoosh, random_range(0.9, 1.1))
+		}
+	}
+	ember_was_moving = moving
+
+	//Drop an ember every so often while moving
+	if ember_dash_on
+	{
+		ember_travel += point_distance(0, 0, fish.vx, fish.vy)
+		if ember_travel>=ember_spacing
+		{
+			ember_travel = 0
+			//A little burst, each one flying off in its own direction
+			repeat(ember_burst)
+			{
+				if array_length(embers)>=ember_max
+					array_delete(embers, 0, 1)
+				var scatter_dir = random(360)
+				var scatter_speed = random_range(ember_scatter_min, ember_scatter_max)
+				array_push(embers, { x: fish.x + random_range(-3, 3), y: fish.y + random_range(-3, 3),
+					vx: lengthdir_x(scatter_speed, scatter_dir), vy: lengthdir_y(scatter_speed, scatter_dir) - random_range(ember_pop_min, ember_pop_max),
+					life: ember_life + irandom_range(-30, 30), fade_steps: ember_life*ember_fade, age: 0, frame: random(sprite_get_number(Spr_Flame)) })
+			}
+		}
+	}
+
+	//Embers flicker, scatter, sink and burn out.  Add up how much is burning in the circle
+	var in_circle = 0
+	var flicker_speed = sprite_get_speed(Spr_Flame)/game_get_speed(gamespeed_fps)
+	var pond_bottom = box_y + box_size
+	for (var i = array_length(embers)-1; i >= 0; i--)
+	{
+		var ember = embers[i]
+		ember.life--
+		ember.age++
+		ember.frame += flicker_speed
+		//Scatters out, slowing down, while gravity pulls it down
+		ember.vx *= ember_drag
+		ember.vy = min(ember.vy*ember_drag + ember_gravity, ember_max_fall)
+		ember.x += ember.vx
+		ember.y += ember.vy
+		//Stays in the pond sideways
+		if ember.x<box_x or ember.x>box_x+box_size
+		{
+			ember.x = clamp(ember.x, box_x, box_x+box_size)
+			ember.vx = -ember.vx*0.5
+		}
+		if ember.life<=0 or ember.y>pond_bottom+8
+		{
+			array_delete(embers, i, 1)
+			continue
+		}
+		if point_distance(ember.x, ember.y, circle_x, circle_y)<=circle_radius
+			in_circle += ember_strength(ember) //Slows the bar less as it burns out
+	}
+	bar_grow_mult = max(1 - in_circle*ember_slow, ember_min_grow)
+}
+
+/// Points a fire dash at a spot far across the pond
+ember_far_goal = function(fish)
+{
+	var best = -1
+	var best_x = fish.goal_x
+	var best_y = fish.goal_y
+	repeat(20)
+	{
+		pick_goal(fish)
+		var dist = point_distance(fish.x, fish.y, fish.goal_x, fish.goal_y)
+		if dist>best
+		{
+			best = dist
+			best_x = fish.goal_x
+			best_y = fish.goal_y
+		}
+		if dist>=box_size*ember_fire_distance
+			break
+	}
+	fish.goal_x = best_x
+	fish.goal_y = best_y
+}
+
+/// How big and bright an ember is right now: 1 most of its life, down to 0 as it burns out
+ember_strength = function(ember)
+{
+	return clamp(ember.life/ember.fade_steps, 0, 1)
+}
+
 /// Moves the fish for one step using its movement type
 swim = function(fish)
 {
@@ -1464,6 +1717,8 @@ swim = function(fish)
 		case FISH_MOVE.WALL_JUMP:         swim_wall_jump(fish);       break
 		case FISH_MOVE.GIFT:              swim_gift(fish);            break
 		case FISH_MOVE.SHY_GHOST:         swim_shy_ghost(fish);       break
+		case FISH_MOVE.LIGHTNING:         swim_lightning(fish);       break
+		case FISH_MOVE.EMBERS:            swim_embers(fish);          break
 	}
 }
 

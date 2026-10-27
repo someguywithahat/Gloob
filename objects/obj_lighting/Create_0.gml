@@ -51,6 +51,7 @@ boat_light_radius=150 //The boat's lantern
 boat_light_color=make_colour_rgb(255,215,150) //Warm lantern tint
 fish_light_radius=40 //Each fish glows in its own color (light in scr_fish_data)
 fish_light_strength=0.9
+bolt_flash_size=1.4 //Volt's lightning flash in the fishing minigame lights the cave this far around the pond (times the pond's size)
 bowl_light_size=1.5 //Trophy clam bowls glow in their fish's color too, this much bigger than a fish's glow
 
 //Each slime glows a soft version of its own color (indexed by global.BLACK, global.BLUE, ...)

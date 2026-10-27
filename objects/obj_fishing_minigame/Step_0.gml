@@ -85,7 +85,7 @@ if fish.move=FISH_MOVE.STICK_TO_CIRCLE
 else
 	catching = !fish.hidden and fish_inside
 if catching
-	bar_fill += bar_grow
+	bar_fill += bar_grow*bar_grow_mult //Slower with embers (Scald) in the circle
 else if !fish.hidden
 	bar_fill -= bar_shrink
 bar_fill = clamp(bar_fill, 0, 1)
