@@ -438,7 +438,7 @@ if room_dark or fish.move=FISH_MOVE.ANGLER or shadow_amount>0
 	surface_set_target(pond_light_surf)
 	//Uses the room's obj_lighting settings when there is one
 	var light_strength = room_dark ? lighting.night_amount : 1
-	var pond_sky = room_dark ? lighting.sky_color(lighting.night_amount) : ((fish.move=FISH_MOVE.ANGLER) ? angler_dark_color : c_white)
+	var pond_sky = room_dark ? lighting.sky_color(lighting.night_amount) : ((fish.move=FISH_MOVE.ANGLER) ? merge_colour(c_white, angler_dark_color, angler_hidden) : c_white)
 	draw_clear(merge_colour(pond_sky, shadow_dark_color, shadow_amount)) //Even darker while Coal has the lights out
 	var lantern_color = (lighting<>noone) ? lighting.boat_light_color : pond_lantern_color
 	var fish_light_radius = (lighting<>noone) ? lighting.fish_light_radius : pond_fish_light_radius
@@ -453,7 +453,12 @@ if room_dark or fish.move=FISH_MOVE.ANGLER or shadow_amount>0
 			light_strength*fish_light_strength*fish.alpha*(1-shadow_amount), spr_effect_glow) //A fading ghost's glow fades too.  Coal puts its own out too
 	//The anglerfish's lure lights up the water around it, just enough to make out the dark body behind it
 	if fish.move=FISH_MOVE.ANGLER
+	{
 		pond_light(angler_lure_x-box_x, angler_lure_y-box_y, angler_lure_light, fish_data.light, light_strength, spr_effect_glow)
+		//At the start its body is lit up too, so you can see it in a dark room before it fades away
+		if angler_hidden<1
+			pond_light(fish.x-box_x, fish.y-box_y, fish_light_radius*1.5, c_white, light_strength*(1-angler_hidden), spr_effect_glow)
+	}
 	//Lightning trail (Volt) glows as it fades, and each new bolt flashes the whole pond
 	if fish.move=FISH_MOVE.LIGHTNING
 	{

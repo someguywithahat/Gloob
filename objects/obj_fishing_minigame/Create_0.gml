@@ -1870,6 +1870,8 @@ angler_lure_x = 0 //Where the lure is
 angler_lure_y = 0
 angler_flick_x = 0 //Where a flick throws it, from the head
 angler_flick_y = 0
+angler_reveal_time = 1 //Seconds it starts fully visible (in a lit pond) before fading into the dark
+angler_hidden = 0 //0-1.  0 fully visible at the start, 1 dark and hidden
 
 /// Where the lure's stalk grows from: the top of its head
 angler_anchor_x = function(fish)
@@ -1890,12 +1892,15 @@ swim_angler = function(fish)
 	if !fish.setup
 	{
 		fish.setup = true
-		fish.alpha = angler_body_alpha
-		fish.tint = angler_body_tint
 		fish.mode_timer = irandom_range(angler_flick_min, angler_flick_max)
 		angler_lure_x = fish.x
 		angler_lure_y = fish.y
 	}
+
+	//Starts fully visible, then quickly fades into the dark: the body dims and the pond darkens
+	angler_hidden = min(angler_hidden + 1/(angler_reveal_time*game_get_speed(gamespeed_fps)), 1)
+	fish.alpha = lerp(1, angler_body_alpha, angler_hidden)
+	fish.tint = merge_colour(c_white, angler_body_tint, angler_hidden)
 
 	//Lurking slowly from spot to spot
 	fish.goal_timer--
