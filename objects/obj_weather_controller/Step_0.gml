@@ -146,6 +146,8 @@ if isNight=1{
 	if isNightShader>=1{
 		isNight=-1
 		scr_refresh_grid(controller.grid_refs)
+		//Players who are out get their main slime back for the new season (multiplayer only)
+		scr_revive_defeated_players()
 		controller.season_goal_percentage+=0.05
 		controller.season_goal = round(controller.grid_size*controller.season_goal_percentage)
 		

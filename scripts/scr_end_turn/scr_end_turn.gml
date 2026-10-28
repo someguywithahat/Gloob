@@ -58,6 +58,49 @@ function scr_end_turn(){
 	{
 		game_over()
 	}
-	
-	
+
+
+}
+
+
+/// @function scr_revive_defeated_players()
+/// @description New season: in a game with more than one player, any player with no slime still in play gets their
+///              main slime back, right where it fell.  (Each player has one score sign, shared with their crown slimes.)
+function scr_revive_defeated_players(){
+	if instance_number(obj_gloop_score)<2
+		return;
+
+	with(obj_gloop_score)
+	{
+		var score_sign = id
+		var main_slime = gloop
+		if !instance_exists(main_slime)
+			continue
+
+		//Does this player still have a slime in play?  (The main slime or any of its crown slimes)
+		var has_active = false
+		with(obj_gloop)
+		{
+			if gloop_score_obj=score_sign and alive=1
+				has_active = true
+		}
+		if has_active
+			continue
+
+		//Back on its feet
+		with(main_slime)
+		{
+			alive=1
+			ismoving=0
+			issleep=0
+			idletime=0
+			sprite_index=s_idol
+			hat_index=sh_idol
+			accessory_index=sa_idol
+			image_index=0
+			image_speed=1
+			var wake = audio_play_sound(snd_slm_wakeup2, 1, false)
+			audio_sound_pitch(wake, random_range(1, 1.2))
+		}
+	}
 }
