@@ -12,6 +12,9 @@ max_speed = 2.5
 turn_timer = irandom_range(60, 180) //Steps until it picks a new direction
 flee_range = 100 //How close the boat gets before it swims away
 flee_push = 0.02 //How hard it swims away
+catch_range = 320 //How close the boat has to be to try to catch it (bigger than flee_range, since it swims away up close)
+hovered = false //True while the mouse is over it
+in_range = false //True while the boat is close enough to catch it
 
 /// Sets which fish this is (a row from scr_fish_data)
 set_fish = function(data)

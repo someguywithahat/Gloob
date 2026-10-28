@@ -53,6 +53,14 @@ if circle_y<circle_min_y or circle_y>circle_max_y
 }
 
 
+//---- Starting pause: the circle can move, but the fish holds still and the bar doesn't change ----
+if start_timer>0
+{
+	start_timer--
+	catching = false
+	exit
+}
+
 //---- Fish ----
 swim(fish) //Movement depends on the fish's type (see the swim functions in Create)
 fish.x += fish.vx

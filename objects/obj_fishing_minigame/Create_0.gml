@@ -74,6 +74,10 @@ result = 0 //0 = playing, 1 = caught, -1 = got away
 end_timer = 0
 end_time = 90 //Steps the result shows before the minigame closes
 
+//---- Starting pause: a moment to get your bearings.  The fish holds still and the bar doesn't change ----
+start_pause = 0.5 //Seconds
+start_timer = round(start_pause*game_get_speed(gamespeed_fps))
+
 
 //---- Which fish ----
 //-1 = a random fish from any group.  Set to 0-4 to only get fish from that group (see scr_fish_data)
@@ -2515,6 +2519,9 @@ swim = function(fish)
 }
 
 fish = make_fish(fish_data)
+//Things that follow the fish start on it (they're set up on its first swim, after the starting pause)
+angler_lure_x = fish.x
+angler_lure_y = fish.y
 bar_fill = fish_data.start_bar
 //The table gives these per second.  The bar changes every step
 bar_grow = fish_data.bar_grow/game_get_speed(gamespeed_fps)
