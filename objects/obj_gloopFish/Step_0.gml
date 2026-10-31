@@ -39,7 +39,9 @@ hovered = !instance_exists(obj_fishing_minigame) and !is_undefined(fish_data) an
 in_range = false
 if boat<>noone
 	in_range = point_distance(fish_x, fish_y, (boat.bbox_left+boat.bbox_right)/2, (boat.bbox_top+boat.bbox_bottom)/2)<=catch_range
-if hovered and in_range and mouse_check_button_pressed(mb_left)
+//Catching it costs a fishing ticket, so you need one to try
+has_ticket = variable_global_exists("fishing_tickets") and global.fishing_tickets>0
+if hovered and in_range and has_ticket and mouse_check_button_pressed(mb_left)
 {
 	global.fishing_test_fish = fish_data //obj_fishing_minigame picks this up and clears it
 	var game = instance_create_depth(0, 0, -15000, obj_fishing_minigame)

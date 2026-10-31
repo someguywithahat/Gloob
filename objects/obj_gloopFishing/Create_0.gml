@@ -10,6 +10,12 @@ slow_down=0.04 //Gliding to a stop after letting go
 facing=1
 exit_distance=8 //Get the front of the boat this close to an edge with a room beyond it to sail there.  Keep it below FISHING_EDGE_MARGIN
 
+//Fishing ticket used: shows the ticket sign and the new total above the boat for a moment
+ticket_popup_time = 100 //Steps it shows
+ticket_popup_timer = 0
+ticket_popup_total = 0
+ticket_popup_rise = 12 //Floats up this many pixels while it shows
+
 /// Middle of the boat (its sprite has a top left origin)
 center_x = function() { return (bbox_left+bbox_right)/2 }
 center_y = function() { return (bbox_top+bbox_bottom)/2 }
@@ -33,4 +39,17 @@ place_at_edge = function(side, info)
 	//Keep a little speed going into the room
 	xx = (side="left") - (side="right")
 	yy = (side="top") - (side="bottom")
+}
+
+/// A fishing ticket was just used: toss it away (like a lost hard hat) and show the new total above the boat
+show_ticket_spent = function(total)
+{
+	ticket_popup_timer = ticket_popup_time
+	ticket_popup_total = total
+	var toss = instance_create_depth(center_x()-8, bbox_top-8, depth-1, obj_effect_dropped_hat)
+	toss.sprite_index = Spr_Pu_Fish_Sign
+	toss.xx = choose(-1, 1)*random_range(1.5, 2.5)
+	toss.yy = -3
+	var punch = audio_play_sound(snd_menu_chime, 1, false)
+	audio_sound_pitch(punch, 0.8)
 }

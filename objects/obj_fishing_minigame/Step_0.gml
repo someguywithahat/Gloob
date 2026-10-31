@@ -5,6 +5,10 @@ if result<>0
 	shadow_amount = max(shadow_amount - 1/shadow_fade, 0) //Coal's lights come back on
 	if end_timer>end_time
 	{
+		//The boat tosses the used ticket away and shows what's left (after the pond closes, so it can be seen)
+		var boat = instance_find(obj_gloopFishing, 0)
+		if ticket_spent and boat<>noone
+			boat.show_ticket_spent(global.fishing_tickets)
 		if surface_exists(pond_light_surf)
 			surface_free(pond_light_surf)
 		instance_destroy()
@@ -112,7 +116,10 @@ if bar_fill>=1
 	audio_play_sound(snd_slm_yay, 1, false)
 	scr_fish_mark_caught(fish.name) //Opens its trophy clam
 	if instance_exists(source_fish)
+	{
+		ticket_spent = scr_spend_fishing_ticket() //Catching a fish from the water costs a ticket (test buttons are free)
 		instance_destroy(source_fish)
+	}
 }
 else if bar_fill<=0
 {

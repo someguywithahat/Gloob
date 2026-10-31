@@ -73,6 +73,7 @@ circle_light_size = 1.1 //The circle's light, as a multiple of its radius.  spr_
 result = 0 //0 = playing, 1 = caught, -1 = got away
 end_timer = 0
 end_time = 90 //Steps the result shows before the minigame closes
+ticket_spent = false //True once catching the fish has used up a fishing ticket
 
 //---- Starting pause: a moment to get your bearings.  The fish holds still and the bar doesn't change ----
 start_pause = 0.5 //Seconds

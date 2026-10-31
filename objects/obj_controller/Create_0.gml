@@ -107,6 +107,7 @@ clicked_exitGame=-1
 clicked_characterSelect = -1 //remake of character select
 clicked_end_day=-1
 clicked_reset_fishing=-1 //Testing button in rm_fishingCenter
+clicked_add_ticket=-1 //Testing button in rm_fishingCenter
 
 window_set_fullscreen(true);
 

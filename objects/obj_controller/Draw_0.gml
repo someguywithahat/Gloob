@@ -69,6 +69,13 @@ if room==rm_fishingCenter
 		clicked_reset_fishing=-1
 		scr_fish_reset_caught()
 	}
+	//Testing: one more fishing ticket
+	clicked_add_ticket=scr_draw_menu_item(10,704,"Add fishing ticket (" + string(global.fishing_tickets) + ")",clicked_add_ticket)
+	if clicked_add_ticket=1
+	{
+		clicked_add_ticket=-1
+		scr_add_fishing_tickets(1)
+	}
 }
 
 
