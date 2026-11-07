@@ -72,57 +72,47 @@ for (var i = 0; i < min(array_length(stump_order), array_length(stumps)); i++)
 shader_reset()
 
 
-//---- Start sign: click it to start the game (needs at least one slime on a stump) ----
+//---- Start sign: click it to start the game (with nobody picked, a random slime is picked) ----
 var start_box = sign_box(start_sign_x, start_sign_y, start_sign_w, start_sign_h, start_sign_scale)
 var can_start = array_length(stump_order)>0
 var over_start = point_in_rectangle(mouse_x, mouse_y, start_box[0], start_box[1], start_box[0]+start_box[2], start_box[1]+start_box[3])
-scr_draw_sign(start_sign_x, start_sign_y, start_sign_w, start_sign_h, start_sign_scale, 0, 0, 1)
+scr_draw_sign(start_sign_x, start_sign_y, start_sign_w, start_sign_h, start_sign_scale, 0, start_sign_post_height, 1, 2)
+//Same look as the home screen's menu: only the letters light up on hover (see scr_draw_menu_item)
 draw_set_font(global.fnt_Gloop)
 draw_set_color(c_white)
+draw_set_alpha(over_start ? 0.6 : 1)
 draw_text(start_box[0] + (start_box[2]-string_width(start_text))/2, start_box[1] + (start_box[3]-string_height(start_text))/2, start_text)
-if !can_start
-{
-	//Nobody picked yet: dimmed
-	draw_set_color(c_black)
-	draw_set_alpha(0.01)
-	draw_rectangle(start_box[0], start_box[1], start_box[0]+start_box[2], start_box[1]+start_box[3], false)
-}
-else if over_start
-{
-	//Light up on hover
-	draw_set_color(c_white)
-	draw_set_alpha(0.2)
-	draw_rectangle(start_box[0], start_box[1], start_box[0]+start_box[2], start_box[1]+start_box[3], false)
-}
 draw_set_alpha(1)
-draw_set_color(c_white)
 
 
 //---- Custom sign, hanging under the Start sign by its chains ----
-var custom_x = start_box[0] + (start_box[2] - sign_box(0, 0, custom_sign_w, custom_sign_h, custom_sign_scale)[2])/2
+//Wide enough for the text in the menu font
+draw_set_font(global.fnt_Gloop)
+var custom_w = max(custom_sign_w, string_width(custom_text) + 24)
+var custom_x = start_box[0] + (start_box[2] - sign_box(0, 0, custom_w, custom_sign_h, custom_sign_scale)[2])/2
 var custom_y = start_box[1] + start_box[3] + custom_sign_gap
-var custom_box = sign_box(custom_x, custom_y, custom_sign_w, custom_sign_h, custom_sign_scale)
+var custom_box = sign_box(custom_x, custom_y, custom_w, custom_sign_h, custom_sign_scale)
 var over_custom = point_in_rectangle(mouse_x, mouse_y, custom_box[0], custom_box[1], custom_box[0]+custom_box[2], custom_box[1]+custom_box[3])
-scr_draw_sign(custom_x, custom_y, custom_sign_w, custom_sign_h, custom_sign_scale, 3, 0, 0)
-draw_set_font(global.fnt_Gloop_small)
-var custom_scale = 2
-var custom_text_w = string_width(custom_text)*custom_scale
-var custom_text_h = string_height(custom_text)*custom_scale
-draw_text_transformed(custom_box[0] + (custom_box[2]-custom_text_w)/2, custom_box[1] + (custom_box[3]-custom_text_h)/2, custom_text, custom_scale, custom_scale, 0)
-if over_custom
-{
-	draw_set_color(c_white)
-	draw_set_alpha(0.2)
-	draw_rectangle(custom_box[0], custom_box[1], custom_box[0]+custom_box[2], custom_box[1]+custom_box[3], false)
-	draw_set_alpha(1)
-}
+scr_draw_sign(custom_x, custom_y, custom_w, custom_sign_h, custom_sign_scale, 3, 0, 0)
+draw_set_font(global.fnt_Gloop)
+draw_set_color(c_white)
+draw_set_alpha(over_custom ? 0.6 : 1)
+draw_text(custom_box[0] + (custom_box[2]-string_width(custom_text))/2, custom_box[1] + (custom_box[3]-string_height(custom_text))/2, custom_text)
+draw_set_alpha(1)
 
 
 //---- Clicks ----
 if mouse_check_button_pressed(mb_left)
 {
-	if can_start and over_start
+	if over_start
 	{
+		//Nobody picked: pick a random slime for them
+		if !can_start
+		{
+			var pick = slimes[irandom(array_length(slimes)-1)]
+			pick.selected = 1
+			array_push(stump_order, pick)
+		}
 		audio_play_sound(snd_slm_woo, 1, false)
 		start_game()
 	}

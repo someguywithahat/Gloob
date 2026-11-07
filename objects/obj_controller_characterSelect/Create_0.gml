@@ -106,12 +106,13 @@ if layer_exists(stump_layer)
 }
 
 //---- Start sign (right side), with a smaller "Custom" sign hanging under it ----
-start_sign_x = 1080
+start_sign_x = 1040
 start_sign_y = 300
 start_sign_scale = 2
-start_sign_w = 160 //Size passed to scr_draw_sign (it rounds to whole tiles)
+start_sign_w = 270 //Size passed to scr_draw_sign (it rounds to whole tiles)
 start_sign_h = 64
-start_text = "Start"
+start_text = "Start Game"
+start_sign_post_height = 3 //How many post pieces tall the Start sign's two posts are
 
 custom_sign_scale = 1
 custom_sign_w = 112

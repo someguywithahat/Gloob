@@ -1,4 +1,5 @@
-function scr_draw_sign(xx, yy, width, height, scale, hasChains, hasPost, hasFlowers)
+/// hasPost is how many post pieces tall the post is.  postCount: 1 post in the middle, or 2 posts lined up with where chains attach
+function scr_draw_sign(xx, yy, width, height, scale, hasChains, hasPost, hasFlowers, postCount=1)
 {
 	
 	var spacer = sprite_get_width(Signage)*scale
@@ -7,6 +8,32 @@ function scr_draw_sign(xx, yy, width, height, scale, hasChains, hasPost, hasFlow
 	
 	
 	
+	//Chains and posts first, so they sit behind the sign
+	if hasChains>0{
+		var chain2 = sWidth-1		
+		for( var c=1; c<=hasChains; c++)
+		{
+		
+			draw_sprite_ext(Signage, 6, xx+(1*spacer), yy-(c*spacer-8), scale, scale, 0, c_white, 1)
+			draw_sprite_ext(Signage, 6, xx+(chain2*spacer), yy-(c*spacer+-8), scale, scale, 0, c_white, 1)
+		}		
+	}
+	
+	if hasPost>0{
+		var postLocs = [(((sWidth+1)*spacer)/2)-(spacer/2)] //One post in the middle
+		if postCount>=2
+			postLocs = [1*spacer, (sWidth-1)*spacer] //Two posts, one tile in from each side (same spots as the chains)
+		for( var p=0; p<array_length(postLocs); p++)
+		{
+			var postLoc = postLocs[p]
+			for( var c=-1; c<hasPost; c++) //Starts one piece up, tucked behind the sign's bottom edge
+			{
+				draw_sprite_ext(Signage, 10, xx+postLoc, yy+((sHeight+1+c)*spacer)-8, scale, scale, 0, c_white, 1)
+			}
+			draw_sprite_ext(Signage, 11, xx+postLoc, yy+((sHeight+1+hasPost)*spacer)-8, scale, scale, 0, c_white, 1)
+		}
+	}
+
 	for( var w=0; w<=sWidth; w++)
 	{
 		for( var h=0; h<=sHeight; h++)
@@ -40,27 +67,6 @@ function scr_draw_sign(xx, yy, width, height, scale, hasChains, hasPost, hasFlow
 			}
 		}
 	}
-	
-	if hasChains>0{
-		var chain2 = sWidth-1		
-		for( var c=1; c<=hasChains; c++)
-		{
-		
-			draw_sprite_ext(Signage, 6, xx+(1*spacer), yy-(c*spacer-8), scale, scale, 0, c_white, 1)
-			draw_sprite_ext(Signage, 6, xx+(chain2*spacer), yy-(c*spacer+-8), scale, scale, 0, c_white, 1)
-		}		
-	}
-	
-	if hasPost>0{
-		var postLoc = (((sWidth+1)*spacer)/2)-(spacer/2)
-		for( var c=0; c<hasPost; c++)
-		{
-		
-			draw_sprite_ext(Signage, 10, xx+postLoc, yy+((sHeight+1+c)*spacer)-8, scale, scale, 0, c_white, 1)
-		}
-		draw_sprite_ext(Signage, 11, xx+postLoc, yy+((sHeight+1+hasPost)*spacer)-8, scale, scale, 0, c_white, 1)
-	}
-
 	
 	if hasFlowers>0{
 		if hasFlowers=1
