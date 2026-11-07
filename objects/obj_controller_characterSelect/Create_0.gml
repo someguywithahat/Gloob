@@ -200,5 +200,5 @@ start_game = function()
 			controller.player_accessory[i] = 0
 		}
 	}
-	room_goto(rm_gameScreen)
+	scr_room_goto(rm_gameScreen)
 }

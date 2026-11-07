@@ -7,6 +7,10 @@ if !music_group_ready and audio_group_is_loaded(audiogroup_music)
 		global.music_current=audio_play_sound(start_music, 1, true)
 }
 
+//Title screen signs sway
+if room=rm_titleScreen
+	title_sway_update()
+
 //Escape opens/closes the pause menu (scr_pause_menu)
 if keyboard_check_pressed(vk_escape)
 {
@@ -241,7 +245,7 @@ if isNight=-1{
 //Menu buttons
 if(clicked_title_start=1){
 	clicked_title_start=0
-	room_goto(rm_characterSelect)
+	scr_room_goto(rm_characterSelect)
 }
 else if(clicked_title_options=1){
 	clicked_title_options=0
@@ -249,18 +253,18 @@ else if(clicked_title_options=1){
 }
 else if(clicked_title_village=1){
 	clicked_title_village=0
-	room_goto(rm_town)
+	scr_room_goto(rm_town)
 }
 else if(clicked_title_lake=1){
 	clicked_title_lake=0
 	global.fishing_enter_side = "" //Boat starts where it's placed
-	room_goto(rm_fishingCenter) //Same as clicking the fishing sign (obj_fishing_ticket_counter)
+	scr_room_goto(rm_fishingCenter) //Same as clicking the fishing sign (obj_fishing_ticket_counter)
 }
 else if(clicked_quickstart=1){
 	clicked_quickstart=-1
 	scr_load_settings()
 	scr_game_rules_reset() //Quickstart always uses the standard rules
-	room_goto(rm_gameScreen)
+	scr_room_goto(rm_gameScreen)
 }
 else if(clicked_character_select=1){
 	clicked_character_select=-1;
@@ -268,7 +272,7 @@ else if(clicked_character_select=1){
 }
 else if(clicked_characterSelect=1){
 	clicked_characterSelect=-1;
-	room_goto(rm_characterSelect);
+	scr_room_goto(rm_characterSelect);
 }
 else if(clicked_debugRoom=1){
 	clicked_debugRoom=-1;

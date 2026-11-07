@@ -104,7 +104,7 @@ if (clicked_coop=1 or clicked_vs=1) and player_count>0{
 		show_debug_message("slime8")
 	}
 
-	room_goto(rm_gameScreen)
+	scr_room_goto(rm_gameScreen)
 }
 
 //---- Which bio to show: the slime under the mouse, otherwise the one selected most recently ----

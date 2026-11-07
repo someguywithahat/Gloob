@@ -169,6 +169,133 @@ title_word_hovered = function(box)
 	}
 	return hovered;
 }
+
+//---- Title screen: hanging signs sway gently, with their letters ----
+//The signs slide side to side and stay level (no turning, so the pixel art stays crisp).  Their chains lean to follow:
+//each chain piece moves part of the way, more the further down it is.
+//Each sign: the Signs/Letters layer pieces whose top left is inside box [left, top, right, bottom].  pivot_y is where the chains hang from.
+//amount is how many pixels it swings each way, period is steps for one full swing, skip_frames are Signage frames to leave still.
+//riders are other layers whose sprites in the box ride along (the white and black slimes sitting on top of the Welcome sign, in Assets_1)
+title_sway_signs = [
+	{ name: "welcome", box: [470, -24, 900, 110], pivot_y: -40, amount: 5, period: 260, phase: 0, skip_frames: [], riders: ["Assets_1"] },
+]
+title_sway_chain_frames = [6, 7, 8] //Signage frames that hang between the pivot and the sign: chains, and the vines growing on them
+title_sway_time = 0
+title_sway_ready_room = noone //Room the pieces were collected in
+
+/// Finds the pieces of each sign and remembers where they started
+title_sway_setup = function()
+{
+	title_sway_ready_room = room
+	for (var s = 0; s < array_length(title_sway_signs); s++)
+	{
+		title_sway_signs[s].pieces = []
+		title_sway_signs[s].sign_top = infinity //Top of the sign itself (not its chains)
+	}
+	var layer_names = ["Signs", "Letters"]
+	for (var l = 0; l < array_length(layer_names); l++)
+	{
+		var lay = layer_get_id(layer_names[l])
+		if lay=-1
+			continue
+		var elements = layer_get_all_elements(lay)
+		for (var i = 0; i < array_length(elements); i++)
+		{
+			var el = elements[i]
+			if layer_get_element_type(el)<>layerelementtype_sprite
+				continue
+			var ex = layer_sprite_get_x(el)
+			var ey = layer_sprite_get_y(el)
+			for (var s = 0; s < array_length(title_sway_signs); s++)
+			{
+				var sw = title_sway_signs[s]
+				if !point_in_rectangle(ex, ey, sw.box[0], sw.box[1], sw.box[2], sw.box[3])
+					continue
+				var is_signage = layer_sprite_get_sprite(el)=Signage
+				if is_signage and array_contains(sw.skip_frames, layer_sprite_get_index(el))
+					break
+				var is_chain = is_signage and array_contains(title_sway_chain_frames, layer_sprite_get_index(el))
+				array_push(sw.pieces, { el: el, x: ex, y: ey, chain: is_chain })
+				if !is_chain
+					sw.sign_top = min(sw.sign_top, ey)
+				break
+			}
+		}
+	}
+
+	//Riders: sprites from other layers sitting on a sign.  They move with the sign
+	for (var s = 0; s < array_length(title_sway_signs); s++)
+	{
+		var sw = title_sway_signs[s]
+		for (var l = 0; l < array_length(sw.riders); l++)
+		{
+			var lay = layer_get_id(sw.riders[l])
+			if lay=-1
+				continue
+			var elements = layer_get_all_elements(lay)
+			for (var i = 0; i < array_length(elements); i++)
+			{
+				var el = elements[i]
+				if layer_get_element_type(el)<>layerelementtype_sprite
+					continue
+				var ex = layer_sprite_get_x(el)
+				var ey = layer_sprite_get_y(el)
+				if point_in_rectangle(ex, ey, sw.box[0], sw.box[1], sw.box[2], sw.box[3])
+					array_push(sw.pieces, { el: el, x: ex, y: ey, chain: false })
+			}
+		}
+	}
+}
+
+/// How far this sign is swung right now, in pixels (positive is right)
+title_sway_offset = function(sw)
+{
+	return sw.amount*sin(title_sway_time*2*pi/sw.period + sw.phase);
+}
+
+/// Swings the signs.  Run every step in the title room
+title_sway_update = function()
+{
+	if title_sway_ready_room<>room
+		title_sway_setup()
+	title_sway_time++
+	for (var s = 0; s < array_length(title_sway_signs); s++)
+	{
+		var sw = title_sway_signs[s]
+		var off = title_sway_offset(sw)
+		var chain_len = max(1, sw.sign_top-sw.pivot_y)
+		for (var i = 0; i < array_length(sw.pieces); i++)
+		{
+			var p = sw.pieces[i]
+			var move = off
+			if p.chain //Chains move less near the top, where they hang from
+				move = off*clamp((p.y-sw.pivot_y)/chain_len, 0, 1)
+			layer_sprite_x(p.el, p.x+move)
+		}
+	}
+}
+
+/// Draws whatever comes next moved along with the named sign.  Call title_sway_end() after
+title_sway_begin = function(sign_name)
+{
+	if title_sway_ready_room<>room
+		return;
+	for (var s = 0; s < array_length(title_sway_signs); s++)
+	{
+		var sw = title_sway_signs[s]
+		if sw.name<>sign_name
+			continue
+		matrix_set(matrix_world, matrix_build(title_sway_offset(sw), 0, 0, 0, 0, 0, 1, 1, 1))
+		return;
+	}
+}
+
+title_sway_end = function()
+{
+	matrix_set(matrix_world, matrix_build_identity())
+}
+
+scr_room_fade_get() //Fades in when the game starts (see obj_room_fade)
 clicked_end_day=-1
 clicked_reset_fishing=-1 //Testing button in rm_fishingCenter
 clicked_add_ticket=-1 //Testing button in rm_fishingCenter

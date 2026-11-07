@@ -82,14 +82,22 @@ if room==rm_fishingCenter
 if room== rm_titleScreen
 {
 	//"Start Game" on the sign in the room's Signs layer.  Move it with title_start_x/y (obj_controller Create)
+	//Nothing is clickable while fading out to another room
+	var title_active = !scr_room_fading_out()
 	draw_set_font(global.fnt_Gloop)
-	if scr_menu_button("Start Game", title_start_x, title_start_y-string_height("Start Game")/2, true)
+	if scr_menu_button("Start Game", title_start_x, title_start_y-string_height("Start Game")/2, title_active)
 		clicked_title_start=1 //Step goes to rm_characterSelect
 
 	//OPTIONS and VILLAGE: the words in the room's Letters layer.  Their letters fade when hovered, like the other menus
 	var over_options = title_word_hovered(title_options_box)
 	var over_village = title_word_hovered(title_village_box)
 	var over_lake = title_lake_hovered()
+	if !title_active
+	{
+		over_options = false
+		over_village = false
+		over_lake = false
+	}
 	if mouse_check_button_pressed(mb_left) and over_lake and !over_village
 		clicked_title_lake=1 //Step goes fishing (the fishing sign plays its own part if it was clicked too)
 	if mouse_check_button_pressed(mb_left) and (over_options or over_village)
