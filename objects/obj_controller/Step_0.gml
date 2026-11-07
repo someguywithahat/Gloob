@@ -9,7 +9,12 @@ if !music_group_ready and audio_group_is_loaded(audiogroup_music)
 
 //Title screen signs sway
 if room=rm_titleScreen
+{
 	title_sway_update()
+	//Now and then a slime blows across the sky, hanging from its kite
+	if !instance_exists(obj_title_kite_flyer) and random(1)<title_kite_chance
+		instance_create_depth(0, 0, -300, obj_title_kite_flyer) //Above everything in the room, below the menus
+}
 
 //Escape opens/closes the pause menu (scr_pause_menu)
 if keyboard_check_pressed(vk_escape)

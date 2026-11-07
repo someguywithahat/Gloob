@@ -178,6 +178,7 @@
     {"id":{"name":"obj_title_ArrowRight","path":"objects/obj_title_ArrowRight/obj_title_ArrowRight.yy",},},
     {"id":{"name":"obj_title_ArrowUp","path":"objects/obj_title_ArrowUp/obj_title_ArrowUp.yy",},},
     {"id":{"name":"obj_titleGloop","path":"objects/obj_titleGloop/obj_titleGloop.yy",},},
+    {"id":{"name":"obj_title_kite_flyer","path":"objects/obj_title_kite_flyer/obj_title_kite_flyer.yy",},},
     {"id":{"name":"obj_town_object","path":"objects/obj_town_object/obj_town_object.yy",},},
     {"id":{"name":"obj_town_parent","path":"objects/obj_town_parent/obj_town_parent.yy",},},
     {"id":{"name":"obj_town_slm","path":"objects/obj_town_slm/obj_town_slm.yy",},},

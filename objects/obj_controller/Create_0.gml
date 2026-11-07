@@ -179,6 +179,7 @@ title_word_hovered = function(box)
 title_sway_signs = [
 	{ name: "welcome", box: [470, -24, 900, 110], pivot_y: -40, amount: 5, period: 260, phase: 0, skip_frames: [], riders: ["Assets_1"] },
 ]
+title_kite_chance = 1/2400 //Title screen: chance each step a slime blows across hanging from a kite (obj_title_kite_flyer).  About every 40 seconds
 title_sway_chain_frames = [6, 7, 8] //Signage frames that hang between the pivot and the sign: chains, and the vines growing on them
 title_sway_time = 0
 title_sway_ready_room = noone //Room the pieces were collected in
