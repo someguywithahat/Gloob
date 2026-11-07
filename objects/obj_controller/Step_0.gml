@@ -239,7 +239,24 @@ if isNight=-1{
 }
 
 //Menu buttons
-if(clicked_quickstart=1){
+if(clicked_title_start=1){
+	clicked_title_start=0
+	room_goto(rm_characterSelect)
+}
+else if(clicked_title_options=1){
+	clicked_title_options=0
+	scr_pause_open() //Same menu as Escape
+}
+else if(clicked_title_village=1){
+	clicked_title_village=0
+	room_goto(rm_town)
+}
+else if(clicked_title_lake=1){
+	clicked_title_lake=0
+	global.fishing_enter_side = "" //Boat starts where it's placed
+	room_goto(rm_fishingCenter) //Same as clicking the fishing sign (obj_fishing_ticket_counter)
+}
+else if(clicked_quickstart=1){
 	clicked_quickstart=-1
 	scr_load_settings()
 	scr_game_rules_reset() //Quickstart always uses the standard rules

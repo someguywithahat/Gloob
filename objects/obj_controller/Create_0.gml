@@ -105,6 +105,70 @@ clicked_restart=-1
 clicked_main_menu=-1
 clicked_exitGame=-1
 clicked_characterSelect = -1 //remake of character select
+title_start_x = 688 //Title screen: middle of the "Start Game" text, on the sign in the room's Signs layer (x 560-816, y 472-568)
+title_start_y = 520
+clicked_title_start = 0 //Set when "Start Game" is clicked.  Step goes to rm_characterSelect
+//Title screen: the OPTIONS and VILLAGE words (Letters layer) on their little signs (Signs layer).  Click areas: [left, top, right, bottom]
+title_options_box = [120, 600, 200, 632]
+title_village_box = [1048, 616, 1128, 648]
+clicked_title_options = 0 //Step opens the pause menu
+clicked_title_village = 0 //Step goes to rm_town
+clicked_title_lake = 0 //Step goes to rm_fishingCenter, same as the fishing sign (obj_fishing_ticket_counter)
+title_lake_sprite = Spr_Obs_3x3 //The pond in the bottom right (Assets_1 layer).  Click it to go fishing
+title_lake_hover_color = c_white //Its tint while the mouse is over it
+title_lake_inset = 12 //Click area is this many pixels inside the pond's edges (its corners are rounded)
+
+/// Title screen: is the mouse over the pond?  Tints it while hovered
+title_lake_hovered = function()
+{
+	var assets_layer = layer_get_id("Assets_1")
+	if assets_layer=-1
+		return false;
+	var elements = layer_get_all_elements(assets_layer)
+	for (var i = 0; i < array_length(elements); i++)
+	{
+		var el = elements[i]
+		if layer_get_element_type(el)<>layerelementtype_sprite or layer_sprite_get_sprite(el)<>title_lake_sprite
+			continue
+		//Its tint from the room editor, remembered the first time
+		if !variable_instance_exists(id, "title_lake_blend") or title_lake_blend_room<>room
+		{
+			title_lake_blend = layer_sprite_get_blend(el)
+			title_lake_blend_room = room
+		}
+		var spr = title_lake_sprite
+		var sx = layer_sprite_get_xscale(el)
+		var sy = layer_sprite_get_yscale(el)
+		var left = layer_sprite_get_x(el) + (sprite_get_bbox_left(spr)-sprite_get_xoffset(spr))*sx + title_lake_inset
+		var top = layer_sprite_get_y(el) + (sprite_get_bbox_top(spr)-sprite_get_yoffset(spr))*sy + title_lake_inset
+		var right = layer_sprite_get_x(el) + (sprite_get_bbox_right(spr)+1-sprite_get_xoffset(spr))*sx - title_lake_inset
+		var bottom = layer_sprite_get_y(el) + (sprite_get_bbox_bottom(spr)+1-sprite_get_yoffset(spr))*sy - title_lake_inset
+		var hovered = point_in_rectangle(mouse_x, mouse_y, left, top, right, bottom)
+		layer_sprite_blend(el, hovered ? title_lake_hover_color : title_lake_blend)
+		return hovered;
+	}
+	return false;
+}
+
+/// Title screen: is the mouse over this click area?  Fades the Letters layer letters inside it while hovered
+title_word_hovered = function(box)
+{
+	var hovered = point_in_rectangle(mouse_x, mouse_y, box[0], box[1], box[2], box[3])
+	var letters_layer = layer_get_id("Letters")
+	if letters_layer=-1
+		return hovered;
+	var elements = layer_get_all_elements(letters_layer)
+	for (var i = 0; i < array_length(elements); i++)
+	{
+		if layer_get_element_type(elements[i])<>layerelementtype_sprite
+			continue
+		var lx = layer_sprite_get_x(elements[i])
+		var ly = layer_sprite_get_y(elements[i])
+		if point_in_rectangle(lx, ly, box[0], box[1], box[2], box[3])
+			layer_sprite_alpha(elements[i], hovered ? 0.6 : 1)
+	}
+	return hovered;
+}
 clicked_end_day=-1
 clicked_reset_fishing=-1 //Testing button in rm_fishingCenter
 clicked_add_ticket=-1 //Testing button in rm_fishingCenter

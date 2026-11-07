@@ -81,16 +81,29 @@ if room==rm_fishingCenter
 
 if room== rm_titleScreen
 {
-	scr_draw_sign(500,410,340,140,2,0,2,4)
-	
-	
-	
-	clicked_quickstart=scr_draw_menu_item(600,440,"QUICKSTART",clicked_quickstart)	
-	clicked_character_select=scr_draw_menu_item(550,472,"CHARACTER SELECT",clicked_character_select)
-	clicked_scoreRoom=scr_draw_menu_item(590,504,"High Scores",clicked_scoreRoom)
-	clicked_debugRoom=scr_draw_menu_item(1,1,"Debug Room",clicked_debugRoom)
-	clicked_debugRoom2=scr_draw_menu_item(300,1,"Debug Room2",clicked_debugRoom2)
-	clicked_characterSelect=scr_draw_menu_item(1100,740,"Character Select",clicked_characterSelect)
+	//"Start Game" on the sign in the room's Signs layer.  Move it with title_start_x/y (obj_controller Create)
+	draw_set_font(global.fnt_Gloop)
+	if scr_menu_button("Start Game", title_start_x, title_start_y-string_height("Start Game")/2, true)
+		clicked_title_start=1 //Step goes to rm_characterSelect
+
+	//OPTIONS and VILLAGE: the words in the room's Letters layer.  Their letters fade when hovered, like the other menus
+	var over_options = title_word_hovered(title_options_box)
+	var over_village = title_word_hovered(title_village_box)
+	var over_lake = title_lake_hovered()
+	if mouse_check_button_pressed(mb_left) and over_lake and !over_village
+		clicked_title_lake=1 //Step goes fishing (the fishing sign plays its own part if it was clicked too)
+	if mouse_check_button_pressed(mb_left) and (over_options or over_village)
+	{
+		var snd = audio_play_sound(snd_slime_move, 1, false)
+		audio_sound_pitch(snd, random_range(0.9, 1.2))
+		if over_options
+			clicked_title_options=1 //Step opens the pause menu
+		else
+			clicked_title_village=1 //Step goes to rm_town
+	}
+	//clicked_debugRoom=scr_draw_menu_item(1,1,"Debug Room",clicked_debugRoom)
+	//clicked_debugRoom2=scr_draw_menu_item(300,1,"Debug Room2",clicked_debugRoom2)
+	//clicked_characterSelect=scr_draw_menu_item(1100,740,"Character Select",clicked_characterSelect)
 }
 
 if isNight<>0
