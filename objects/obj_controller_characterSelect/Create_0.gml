@@ -71,10 +71,10 @@ last_selected = noone //Most recently selected slime
 bio_gloop = noone //Slime whose bio is showing
 bio_scroll = 0 //0 top to 1 bottom
 
-bio_x = 40 //Panel position, and size in 16 pixel grass sign tiles (Signage): x 40-424, y 120-568
-bio_y = 120
+bio_x = 40 //Panel position, and size in 16 pixel grass sign tiles (Signage): x 40-424, y 160-528
+bio_y = 160
 bio_x_tiles = 23
-bio_y_tiles = 27
+bio_y_tiles = 22
 bio_padding = 24 //Space between the border and the text
 bio_text_scale = 2 //Body text uses global.fnt_Gloop_small (8 pixel letters) drawn this much bigger
 bio_line_gap = 20 //Pixels between lines of body text, after scaling
@@ -127,11 +127,58 @@ sign_box = function(sx, sy, w, h, scale)
 	return [sx, sy, (round(w/tile)+1)*tile, (round(h/tile)+1)*tile]
 }
 
-/// Custom mode (not designed yet).  Called when the Custom sign is clicked
+//---- Custom game menu: pick the rules for the next game (drawn in Draw End, see scr_game_rules) ----
+custom_menu_open = false
+custom_menu_w = 900 //Size passed to scr_draw_sign (scale 3, so it rounds to 48 pixel tiles)
+custom_menu_h = 500
+custom_menu_scale = 3
+custom_menu_y_open = 134 //Slides down from custom_menu_y_start to here, like the pause menu
+custom_menu_y_start = -750
+custom_menu_y = custom_menu_y_start
+pause_dragging = "" //Which slider is being dragged (the pause menu's sliders use this name)
+custom_value_min = 0 //Every setting goes from 0 to 4
+custom_value_max = 4
+custom_value_default = 2
+//The menu remembers what was picked last time
+if !variable_global_exists("custom_menu_values")
+	global.custom_menu_values = {
+		pu_weights: array_create(9, custom_value_default),
+		obstacles: custom_value_default,
+		powerups: custom_value_default,
+	}
+custom_values = global.custom_menu_values
+
+/// Opens the custom game menu.  Called when the Custom sign is clicked
 start_custom = function()
 {
-	//TODO: custom game mode
+	custom_menu_open = true
+	custom_menu_y = custom_menu_y_start
+	pause_dragging = ""
 	audio_play_sound(snd_menu_chime, 1, false)
+}
+
+/// A label with one of the pause menu's sliders, snapped to whole numbers (custom_value_min to custom_value_max).
+/// Returns the new value
+draw_rule_slider = function(label, slider_name, value, label_x, slider_x, slider_w, value_x, row_y, active)
+{
+	var range = custom_value_max-custom_value_min
+	var t = scr_menu_slider_row(label, slider_name, (value-custom_value_min)/range, label_x, slider_x, slider_w, -1, row_y, active)
+	value = custom_value_min + round(t*range)
+	draw_text(value_x, row_y-string_height("0")/2, string(value))
+	return value;
+}
+
+/// Starts the game with the team on the stumps.  Nobody picked: a random slime is picked for them
+start_with_team = function()
+{
+	if array_length(stump_order)=0
+	{
+		var pick = slimes[irandom(array_length(slimes)-1)]
+		pick.selected = 1
+		array_push(stump_order, pick)
+	}
+	audio_play_sound(snd_slm_woo, 1, false)
+	start_game()
 }
 
 /// Starts the game with the slimes on the stumps, in stump order (leftmost is player 1)

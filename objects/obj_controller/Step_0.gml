@@ -242,6 +242,7 @@ if isNight=-1{
 if(clicked_quickstart=1){
 	clicked_quickstart=-1
 	scr_load_settings()
+	scr_game_rules_reset() //Quickstart always uses the standard rules
 	room_goto(rm_gameScreen)
 }
 else if(clicked_character_select=1){

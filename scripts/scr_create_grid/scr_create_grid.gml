@@ -14,6 +14,8 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 	var controller = global.controller;
     var grid_array = array_create(x_count, 0);
 	var number_of_powerups = controller.settings_NumberOfPowerUps
+	if scr_game_rules().starting_pu>=0
+		number_of_powerups = scr_game_rules().starting_pu //Custom game (see scr_game_rules)
 	var number_of_obstacles = controller.settings_obstacles
 	
 	//create targeting object
@@ -107,10 +109,13 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 	//add powerups
 	for (var i = 0; i < number_of_powerups; i++)
 	{
+		var pu_type = scr_pick_powerup() //Uses the game rules' power up mix
+		if pu_type<0
+			break
 		var gridInst = scr_find_free_cell(grid_array, true)
 		if gridInst=noone
 			break
-		gridInst.has_powerUP=irandom_range(0,8)
+		gridInst.has_powerUP=pu_type
 	}
 
 
@@ -226,10 +231,13 @@ function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
 
 function scr_setup_add_pu()
 {
+	var pu_type = scr_pick_powerup() //Uses the game rules' power up mix
+	if pu_type<0
+		return;
 	var gridNum = scr_find_free_cell(global.controller.grid_refs, true)
 	if gridNum=noone
 		return;
-	gridNum.has_powerUP=irandom_range(0,8)
+	gridNum.has_powerUP=pu_type
 }
 
 

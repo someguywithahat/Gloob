@@ -22,9 +22,15 @@ if sprite_index=s_sleep and (image_index > 50) {
 }
 
 
+//No picking slimes while the custom game menu is open
+var menu_blocked = false
+with(obj_controller_characterSelect)
+	if custom_menu_open
+		menu_blocked = true
+
 if (mouse_x > x - sprite_xoffset && mouse_x < x - sprite_xoffset + sprite_width &&
     mouse_y > y - sprite_yoffset && mouse_y < y - sprite_yoffset + sprite_height
-	&& mouse_check_button_pressed(mb_left)) 
+	&& mouse_check_button_pressed(mb_left) && !menu_blocked) 
 {
 	//Only so many slimes can be picked at once (obj_controller_characterSelect's max_selected)
 	var picked = 0
@@ -56,7 +62,7 @@ if (mouse_x > x - sprite_xoffset && mouse_x < x - sprite_xoffset + sprite_width 
 }
 else if (mouse_x > x - sprite_xoffset && mouse_x < x - sprite_xoffset + sprite_width &&
     mouse_y > y - sprite_yoffset && mouse_y < y - sprite_yoffset + sprite_height
-	&&  selected=0) 
+	&&  selected=0 && !menu_blocked) 
 {
     sprite_index=s_idol
 	if sleep_counter>5{

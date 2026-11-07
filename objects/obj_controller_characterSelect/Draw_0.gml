@@ -19,11 +19,9 @@ if bio_gloop<>noone
 	var panel_w = (bio_x_tiles+1)*tile
 	var panel_h = (bio_y_tiles+1)*tile
 
-	//The sign draws the name in global.fnt_Gloop.  The bio goes underneath it in global.fnt_Gloop_small
-	draw_set_font(global.fnt_Gloop)
-	var name_h = string_height(bio_gloop.gloop_name)
+	//Just the bio, in global.fnt_Gloop_small (no name on the sign)
 	var text_x = bio_x + bio_padding
-	var text_top = bio_y + 8 + name_h + 8
+	var text_top = bio_y + bio_padding
 	var text_w = panel_w - bio_padding*2 - 16 //Room for the scroll bar
 	var view_h = bio_y + panel_h - bio_padding - text_top
 
@@ -34,11 +32,11 @@ if bio_gloop<>noone
 	var content_h = string_height_ext(bio, line_gap, text_w/bio_text_scale)*bio_text_scale
 	var needs_scroll = content_h>view_h
 
-	//Sign with the name (and a scroll bar when the bio is too long)
+	//Sign (with a scroll bar when the bio is too long)
 	if needs_scroll
-		bio_scroll = scr_draw_grass_sign(bio_x, bio_y, bio_gloop.gloop_name, 1, panel_w, panel_h, bio_scroll, view_h/content_h)
+		bio_scroll = scr_draw_grass_sign(bio_x, bio_y, "", 1, panel_w, panel_h, bio_scroll, view_h/content_h)
 	else
-		scr_draw_grass_sign(bio_x, bio_y, bio_gloop.gloop_name, 1, panel_w, panel_h)
+		scr_draw_grass_sign(bio_x, bio_y, "", 1, panel_w, panel_h)
 
 	//Bio text, clipped to the sign and moved up by the scroll
 	var scroll_px = needs_scroll ? bio_scroll*(content_h-view_h) : 0
@@ -102,19 +100,13 @@ draw_set_alpha(1)
 
 
 //---- Clicks ----
-if mouse_check_button_pressed(mb_left)
+//(The custom game menu handles its own clicks while it's open, in Draw End)
+if mouse_check_button_pressed(mb_left) and !custom_menu_open
 {
 	if over_start
 	{
-		//Nobody picked: pick a random slime for them
-		if !can_start
-		{
-			var pick = slimes[irandom(array_length(slimes)-1)]
-			pick.selected = 1
-			array_push(stump_order, pick)
-		}
-		audio_play_sound(snd_slm_woo, 1, false)
-		start_game()
+		scr_game_rules_reset() //Standard rules
+		start_with_team()
 	}
 	else if over_custom
 		start_custom()
