@@ -17,6 +17,48 @@ hovered = false //True while the mouse is over it
 in_range = false //True while the boat is close enough to catch it
 has_ticket = false //True while there's a fishing ticket to spend on it
 
+//---- Jumping: now and then a fish leaps out of the water ----
+jump_chance = 1/3600     //Chance each step (about once a minute per fish, so every 10-20 seconds in a room)
+jump_frames = 46         //How long it's in the air
+jump_height = 34         //How high it goes, in pixels
+jump_speed = 1.6         //Swims at least this fast while in the air
+jump_tilt = 40           //Nose up on the way up, nose down on the way down, in degrees
+jump_grow = 0.25         //Drawn this much bigger at the top of the jump (closer to the camera)
+jump_cooldown_min = 600  //Won't jump again for at least this long after landing
+jump_sound = snd_slime_move     //Played quietly, low pitched, on take off and landing
+jump_volume = 0.35
+
+jumping = false
+jump_time = 0
+jump_facing = 1
+jump_cooldown = irandom(jump_cooldown_min) //So fish spawned together don't wait the same amount
+home_layer = layer //Instances_Underwater.  It goes back here when it lands
+splashes = [] //{ el, frame } Spr_Ripple splashes on the room's Assets layer (above the underwater effect, so they're not wobbly)
+
+/// How high off the water it is right now, in pixels
+jump_lift = function()
+{
+	if !jumping
+		return 0;
+	return jump_height*sin(pi*jump_time/jump_frames);
+}
+
+/// A splash on the water, centered at (sx, sy), with a quiet plop
+add_splash = function(sx, sy)
+{
+	var assets_layer = layer_get_id("Assets")
+	if assets_layer<>-1
+	{
+		var half = sprite_get_width(Spr_Ripple)/2
+		var el = layer_sprite_create(assets_layer, sx-half, sy-half, Spr_Ripple)
+		layer_sprite_speed(el, 0) //Animated by hand in Step
+		array_push(splashes, { el: el, frame: 0 })
+	}
+	var snd = audio_play_sound(jump_sound, 1, false)
+	audio_sound_gain(snd, jump_volume, 0)
+	audio_sound_pitch(snd, random_range(0.55, 0.75))
+}
+
 /// Sets which fish this is (a row from scr_fish_data)
 set_fish = function(data)
 {

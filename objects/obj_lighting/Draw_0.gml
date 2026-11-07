@@ -49,7 +49,7 @@ var t = current_time
 with(obj_gloopFishing)
 	other.add_light(center_x(), center_y(), other.boat_light_radius, other.boat_light_color, strength)
 with(obj_gloopFish)
-	other.add_light(x+sprite_width/2, y+sprite_height/2, other.fish_light_radius, light_color, strength*other.fish_light_strength, spr_effect_glow)
+	other.add_light(x+sprite_width/2, y+sprite_height/2-jump_lift(), other.fish_light_radius, light_color, strength*other.fish_light_strength, spr_effect_glow)
 //Lightning fish (Volt) in the fishing minigame: each bolt flashes the cave around the pond, and the trail glows
 with(obj_fishing_minigame)
 {

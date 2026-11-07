@@ -36,6 +36,7 @@ enum UG_STATE {
 	GO_HOME,    //Day is over: hopping to the house
 	HOME,       //Made it to the house: fading out
 	GAME_OVER,  //Game lost: sad until fed
+	KITE,       //Fall: flying a kite (obj_effect_kite) until the wind takes it.  Then SAD
 
 	//Idle animations.  Like SLEEP these are base states a slime just hangs out in.  Each one plays all the way
 	//through before the slime goes back to SLEEP.  See get_idle_look() for the sprites
@@ -114,6 +115,10 @@ snowball_speed=5
 aim_wobble=1.5 //Sideways error on each throw.  Bigger = more misses
 hit_timer=0 //Dizzy face after getting hit
 
+//Kite (fall)
+kite_inst=noone //The kite it's flying (obj_effect_kite)
+kite_depth=-2500 //Above the board and the slimes, below the night lighting
+
 
 /*
 	Things a sleeping slime can wake up and do.  Checked in order every step.
@@ -141,6 +146,19 @@ wake_activities = [
 		state: UG_STATE.LEAF_WALK,
 		idle_anim: false,
 		allowed: function() { return global.weather=global.FALL and instance_exists(obj_effectLeafPile) }
+	},
+	{
+		name: "kite",
+		odds: 1/5000,
+		min_sleep: 600,
+		state: UG_STATE.KITE,
+		idle_anim: false,
+		max_progress: 0.5, //Not once it's getting dark
+		allowed: function()
+		{
+			//One kite in the sky at a time
+			return global.weather=global.FALL and !instance_exists(obj_effect_kite)
+		}
 	},
 	{
 		name: "snowed on",
@@ -352,6 +370,13 @@ set_state = function(new_state)
 			fight_throw_every=irandom_range(40, 60)
 			//The bottom slime starts half a throw later so they take turns
 			fight_throw_timer = (fight_dir=1) ? 0 : -fight_throw_every/2
+			break
+
+		case UG_STATE.KITE:
+			kite_inst = instance_create_depth(x+24, y+2, kite_depth, obj_effect_kite)
+			kite_inst.owner = id
+			kite_inst.color_index = gloop_color_index
+			//audio_play_sound(snd_slm_yay, 1, false)
 			break
 
 		case UG_STATE.GO_HOME:
@@ -585,6 +610,12 @@ step_state = function()
 
 		case UG_STATE.GAME_OVER:
 			break
+
+		case UG_STATE.KITE:
+			//The kite looks after itself.  If it's gone somehow, go back to napping
+			if !instance_exists(kite_inst)
+				set_state(UG_STATE.SLEEP)
+			break
 	}
 }
 
@@ -748,6 +779,11 @@ get_look = function()
 				return [Spr_Slm_Move_Roll, (roll_frames-1) - (floor(played) mod roll_frames)]
 			}
 			return [Spr_Slm_Idol, -1]
+		case UG_STATE.KITE:
+			//Excited while it goes up, and whenever a strong gust pulls on it
+			if state_time<120 or (instance_exists(kite_inst) and kite_inst.wind_now>kite_inst.wind_base+0.8)
+				return [Slm_All_Base_Expressions, UG_FACE.HAPPY]
+			return [Spr_Slm_Idol, -1]
 	}
 
 	//Moods
@@ -771,6 +807,7 @@ is_busy = function()
 	return state=UG_STATE.LEAF_WALK or state=UG_STATE.LEAF_DIVE or state=UG_STATE.LAUNCHED
 		or state=UG_STATE.GO_HOME or state=UG_STATE.HOME
 		or state=UG_STATE.FIGHT_WALK or state=UG_STATE.FIGHT
+		or state=UG_STATE.KITE
 }
 
 
@@ -842,6 +879,13 @@ new_day = function(nx, ny)
 	angry_timer=0
 	clicks_while_sleeping=0
 	set_state(UG_STATE.SLEEP)
+}
+
+/// The wind took the kite (obj_effect_kite calls this when the string snaps)
+kite_blew_away = function()
+{
+	kite_inst=noone
+	set_state(UG_STATE.SAD)
 }
 
 /// Game lost
