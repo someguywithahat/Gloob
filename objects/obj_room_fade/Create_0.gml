@@ -4,12 +4,14 @@
 */
 
 //---- Settings ----
-fade_out_frames = 24  //How long the screen takes to go black
+fade_out_frames = 15  //How long the screen takes to go black
 fade_hold_frames = 8  //Stays black this long in the new room (rooms can stutter for a moment while loading)
-fade_in_frames = 30   //How long the new room takes to appear
+fade_in_frames = 10   //How long the new room takes to appear
 fade_color = c_black
 
 //---- State ----
+visible = true
+depth = -60000 //Above everything else (obj_controller -20000, glow effects -40000)
 fade_alpha = 1 //Starts black, so the first room fades in
 fade_state = "hold" //"out" going to black, "hold" staying black, "in" coming back, "" nothing
 fade_timer = fade_hold_frames*2 //Longer at startup, while the window goes fullscreen

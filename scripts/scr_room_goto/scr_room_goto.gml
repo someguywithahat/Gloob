@@ -22,6 +22,6 @@ function scr_room_fading_out()
 function scr_room_fade_get()
 {
 	if !instance_exists(obj_room_fade)
-		return instance_create_depth(0, 0, -16000, obj_room_fade);
+		return instance_create_depth(0, 0, -60000, obj_room_fade);
 	return instance_find(obj_room_fade, 0);
 }
