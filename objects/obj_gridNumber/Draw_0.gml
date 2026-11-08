@@ -13,7 +13,13 @@ if obs=1
 {
 	palette_original=spr_palette_seasons_index
 	palette_all=spr_palette_seasons_all
-	if global.weather = global.FALL
+	if obs_seasonal
+	{
+		//Each season has its own frame, so no fall recolor
+		image_index=scr_obstacle_season_frame()
+		gloop_color_index=0
+	}
+	else if global.weather = global.FALL
 		gloop_color_index=1
 	else
 		gloop_color_index=0

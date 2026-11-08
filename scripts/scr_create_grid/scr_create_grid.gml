@@ -159,15 +159,20 @@ function scr_setup_grid(x_count, y_count, spacing, x_offset, y_offset, number_of
 
 
 
-function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
+/// Places an obstacle obstacle_x wide and obstacle_y tall in a random free spot.  Returns true if it fit.
+/// obs_sprite: a season obstacle from scr_obstacle_types (shows the current season's frame).  Leave it out for the old plain ones
+function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y, obs_sprite=noone)
 {
-	var obs_sprite = noone
-	if obstacle_x = 1 and obstacle_y=1 then obs_sprite=Spr_Obs_1x1
-	else if obstacle_x = 2 and obstacle_y=1 then obs_sprite=Spr_Obs_2x1
-	else if obstacle_x = 1 and obstacle_y=2 then obs_sprite=Spr_Obs_1x2
-	else if obstacle_x = 2 and obstacle_y=2 then obs_sprite=Spr_Obs_2x2
-	else if obstacle_x = 3 and obstacle_y=3 then obs_sprite=Spr_Obs_3x3
-	else return
+	var seasonal = obs_sprite<>noone
+	if !seasonal
+	{
+		if obstacle_x = 1 and obstacle_y=1 then obs_sprite=Spr_Obs_1x1
+		else if obstacle_x = 2 and obstacle_y=1 then obs_sprite=Spr_Obs_2x1
+		else if obstacle_x = 1 and obstacle_y=2 then obs_sprite=Spr_Obs_1x2
+		else if obstacle_x = 2 and obstacle_y=2 then obs_sprite=Spr_Obs_2x2
+		else if obstacle_x = 3 and obstacle_y=3 then obs_sprite=Spr_Obs_3x3
+		else return false;
+	}
 	
 	var max_i = array_length(grid_arrays);
 	var max_j = array_length(grid_arrays[0]);
@@ -201,7 +206,7 @@ function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
 	}	
 	
 	if placement_fail>0
-		return
+		return false;
 	
 	var gridNum = grid_arrays[i][j]
 	
@@ -220,9 +225,13 @@ function scr_setup_add_obstacle(grid_arrays, obstacle_x, obstacle_y)
 	
 	gridNum = grid_arrays[i][j]
 	gridNum.sprite_index=obs_sprite
-	gridNum.image_index = irandom_range(0, image_number-1)
-	//gridNum.image_index = image_number-1
+	gridNum.obs_seasonal=seasonal
+	if seasonal
+		gridNum.image_index = scr_obstacle_season_frame() //Kept up to date in obj_gridNumber Draw
+	else
+		gridNum.image_index = irandom_range(0, sprite_get_number(obs_sprite)-1)
 	gridNum.depth--
+	return true;
 	
 }
 
@@ -265,6 +274,7 @@ function scr_reset_grid_space(gridNum)
 	{
 		obs=0
 		obs_owner=noone
+		obs_seasonal=false
 		activeNumber=1
 		my_number = scr_get_weighted_grid_number()
 		sprite_index=Numbers

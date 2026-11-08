@@ -7,6 +7,7 @@ activeNumber=1
 wall=0
 obs=0
 obs_owner=noone //Top-left grid space of the obstacle covering this space
+obs_seasonal=false //This space draws a season obstacle (scr_obstacle_types): its frame follows the season
 
 grid_x=0
 grid_y=0

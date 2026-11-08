@@ -101,17 +101,7 @@ else if toggle_leaves>0{
 
 if toggle_add_obs>0{
 	toggle_add_obs=0
-	var spawnObs = irandom_range(1,100)
-	if spawnObs>95
-		scr_setup_add_obstacle(controller.grid_refs,3,3)
-	else if spawnObs>=75
-		scr_setup_add_obstacle(controller.grid_refs,2,2)
-	else if spawnObs>=55
-		scr_setup_add_obstacle(controller.grid_refs,1,2)
-	else if spawnObs>=35
-		scr_setup_add_obstacle(controller.grid_refs,2,1)
-	else if spawnObs>=0
-		scr_setup_add_obstacle(controller.grid_refs,1,1)
+	scr_add_random_obstacle()
 }
 
 if toggle_add_pu>0{
@@ -157,8 +147,7 @@ if isNight=1{
 		
 		//New season obstacles and powerups, as many as the game rules say (see scr_game_rules)
 		var rules = scr_game_rules()
-		repeat (rules.obstacles_per_season)
-			scr_add_random_obstacle()
+		scr_add_season_obstacles(rules.obstacle_points)
 
 		//Powerups after the obstacles so they don't land on each other
 		repeat (rules.pu_per_season)
