@@ -445,6 +445,7 @@
     {"id":{"name":"Spr_Acc_Suns_Tele","path":"sprites/Spr_Acc_Suns_Tele/Spr_Acc_Suns_Tele.yy",},},
     {"id":{"name":"Spr_Acc_Suns","path":"sprites/Spr_Acc_Suns/Spr_Acc_Suns.yy",},},
     {"id":{"name":"spr_Blu_body","path":"sprites/spr_Blu_body/spr_Blu_body.yy",},},
+    {"id":{"name":"spr_boat_empty","path":"sprites/spr_boat_empty/spr_boat_empty.yy",},},
     {"id":{"name":"spr_boat_test","path":"sprites/spr_boat_test/spr_boat_test.yy",},},
     {"id":{"name":"Spr_Bowl_Bold","path":"sprites/Spr_Bowl_Bold/Spr_Bowl_Bold.yy",},},
     {"id":{"name":"Spr_Bowl_Bowed","path":"sprites/Spr_Bowl_Bowed/Spr_Bowl_Bowed.yy",},},
