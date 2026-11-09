@@ -199,6 +199,7 @@
     {"id":{"name":"rm_fishingLeft","path":"rooms/rm_fishingLeft/rm_fishingLeft.yy",},},
     {"id":{"name":"rm_fishingRight","path":"rooms/rm_fishingRight/rm_fishingRight.yy",},},
     {"id":{"name":"rm_fishingTest","path":"rooms/rm_fishingTest/rm_fishingTest.yy",},},
+    {"id":{"name":"rm_fishingTrophy","path":"rooms/rm_fishingTrophy/rm_fishingTrophy.yy",},},
     {"id":{"name":"rm_fishingUp","path":"rooms/rm_fishingUp/rm_fishingUp.yy",},},
     {"id":{"name":"rm_gameScreen","path":"rooms/rm_gameScreen/rm_gameScreen.yy",},},
     {"id":{"name":"rm_scoreScreen","path":"rooms/rm_scoreScreen/rm_scoreScreen.yy",},},
@@ -500,6 +501,7 @@
     {"id":{"name":"spr_effect_rain","path":"sprites/spr_effect_rain/spr_effect_rain.yy",},},
     {"id":{"name":"spr_effect_snowflake","path":"sprites/spr_effect_snowflake/spr_effect_snowflake.yy",},},
     {"id":{"name":"spr_effect_weird","path":"sprites/spr_effect_weird/spr_effect_weird.yy",},},
+    {"id":{"name":"Spr_Empty_Bowl_Shelf","path":"sprites/Spr_Empty_Bowl_Shelf/Spr_Empty_Bowl_Shelf.yy",},},
     {"id":{"name":"Spr_Empty_Bowl","path":"sprites/Spr_Empty_Bowl/Spr_Empty_Bowl.yy",},},
     {"id":{"name":"Spr_Fence_Color","path":"sprites/Spr_Fence_Color/Spr_Fence_Color.yy",},},
     {"id":{"name":"Spr_Fence_Corners","path":"sprites/Spr_Fence_Corners/Spr_Fence_Corners.yy",},},
@@ -795,6 +797,7 @@
     {"roomId":{"name":"rm_fishingRight","path":"rooms/rm_fishingRight/rm_fishingRight.yy",},},
     {"roomId":{"name":"rm_fishingUp","path":"rooms/rm_fishingUp/rm_fishingUp.yy",},},
     {"roomId":{"name":"rm_fishingDown","path":"rooms/rm_fishingDown/rm_fishingDown.yy",},},
+    {"roomId":{"name":"rm_fishingTrophy","path":"rooms/rm_fishingTrophy/rm_fishingTrophy.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
