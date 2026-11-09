@@ -593,6 +593,7 @@
     {"id":{"name":"Spr_Leaf_path","path":"sprites/Spr_Leaf_path/Spr_Leaf_path.yy",},},
     {"id":{"name":"spr_leaf_pile","path":"sprites/spr_leaf_pile/spr_leaf_pile.yy",},},
     {"id":{"name":"Spr_leaf","path":"sprites/Spr_leaf/Spr_leaf.yy",},},
+    {"id":{"name":"Spr_Lighthouse","path":"sprites/Spr_Lighthouse/Spr_Lighthouse.yy",},},
     {"id":{"name":"Spr_Lilly_Pads","path":"sprites/Spr_Lilly_Pads/Spr_Lilly_Pads.yy",},},
     {"id":{"name":"Spr_Mushroom_Glow","path":"sprites/Spr_Mushroom_Glow/Spr_Mushroom_Glow.yy",},},
     {"id":{"name":"Spr_Obs_1x1_Bush","path":"sprites/Spr_Obs_1x1_Bush/Spr_Obs_1x1_Bush.yy",},},
