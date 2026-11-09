@@ -44,7 +44,8 @@ enum UG_STATE {
 	IDLE_JUMP_UP,    //Slm_Grn_Move_Up_Jump: a few little hops in place
 	IDLE_JUMP,       //Slm_Grn_Jump: one big jump
 	IDLE_HOP_JIGGLE, //Slm_Grn_hop_jiggle: hops to the side and back
-	IDLE_MUSIC       //Spr_Slm_music: bobs along to music in headphones
+	IDLE_MUSIC,      //Spr_Slm_music: bobs along to music in headphones
+	IDLE_JIGGLE_DANCE //Slm_Grn_jiggle_dance: a little jiggle dance
 }
 
 //Frames in Slm_All_Base_Expressions
@@ -235,6 +236,15 @@ wake_activities = [
 		state: UG_STATE.IDLE_MUSIC,
 		idle_anim: true,
 		allowed: function() { return true }
+	},
+	{
+		name: "jiggle dance",
+		odds: 1/6000,
+		min_sleep: 180,
+		min_rest: 120,
+		state: UG_STATE.IDLE_JIGGLE_DANCE,
+		idle_anim: true,
+		allowed: function() { return true }
 	}
 ]
 
@@ -254,6 +264,7 @@ get_idle_look = function(for_state)
 		case UG_STATE.IDLE_JUMP:       return { sprite: Slm_Grn_Jump,          off_x: 0,  off_y: -64 }
 		case UG_STATE.IDLE_HOP_JIGGLE: return { sprite: Slm_Grn_hop_jiggle,    off_x: 0,  off_y: 0 }
 		case UG_STATE.IDLE_MUSIC:      return { sprite: Spr_Slm_music,         off_x: -6, off_y: 0 }
+		case UG_STATE.IDLE_JIGGLE_DANCE: return { sprite: Slm_Grn_jiggle_dance, off_x: 0, off_y: 0 }
 	}
 	return undefined
 }
@@ -300,6 +311,11 @@ set_state = function(new_state)
 		case UG_STATE.IDLE_MUSIC:
 			anim_frame=0
 			anim_loops=irandom_range(8, 12)
+			break
+
+		case UG_STATE.IDLE_JIGGLE_DANCE:
+			anim_frame=0
+			anim_loops=irandom_range(4, 6)
 			break
 
 		case UG_STATE.LEAF_WALK:
@@ -422,6 +438,7 @@ step_state = function()
 		case UG_STATE.IDLE_JUMP:
 		case UG_STATE.IDLE_HOP_JIGGLE:
 		case UG_STATE.IDLE_MUSIC:
+		case UG_STATE.IDLE_JIGGLE_DANCE:
 			//Still counts as napping time, but nothing new starts until the animation has played all the way through
 			sleep_time++
 			var idle = get_idle_look(state)
