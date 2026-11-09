@@ -183,6 +183,15 @@ if isNight=1{
 		{
 			global.weather=global.SUMMER
 			layer_background_sprite(back_id, spr_gridField_summer);
+
+			//Made it through all four seasons: that's beating the game!  The victory scene plays once,
+			//then the game carries on into summer (the night fades out once the scene is done)
+			if !victory_shown
+			{
+				victory_shown=true
+				if !instance_exists(obj_victory_scene)
+					instance_create_depth(0, 0, -55000, obj_victory_scene)
+			}
 		}
 	}
 }

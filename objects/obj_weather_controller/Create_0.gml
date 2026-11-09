@@ -18,6 +18,8 @@ toggle_add_pu=0
 toggle_night=0
 toggle_addPoints=0
 toggle_preview_night=0
+victory_shown=false //Made it through all four seasons and saw the victory scene (only plays once a game)
+toggle_victory=0 //Debug: plays the victory scene (obj_victory_scene)
 
 isNight=0
 isNightShader=0

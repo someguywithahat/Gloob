@@ -32,6 +32,14 @@ else
 {
 	
 	//730, 700, 670, 640, 610
+	//The end-of-year victory scene (it doesn't play on its own yet)
+	toggle_victory=scr_draw_menu_item(text_xx,610,"Victory Scene",toggle_victory)
+	if toggle_victory>0
+	{
+		toggle_victory=0
+		if !instance_exists(obj_victory_scene)
+			instance_create_depth(0, 0, -55000, obj_victory_scene)
+	}
 	//Preview the night lighting without playing to the end of the day
 	toggle_preview_night=scr_draw_menu_item(text_xx,640,"Preview Night",toggle_preview_night)
 	if toggle_preview_night>0

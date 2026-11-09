@@ -184,6 +184,7 @@
     {"id":{"name":"obj_town_slm","path":"objects/obj_town_slm/obj_town_slm.yy",},},
     {"id":{"name":"obj_town_weather_controller","path":"objects/obj_town_weather_controller/obj_town_weather_controller.yy",},},
     {"id":{"name":"obj_unusedGloop","path":"objects/obj_unusedGloop/obj_unusedGloop.yy",},},
+    {"id":{"name":"obj_victory_scene","path":"objects/obj_victory_scene/obj_victory_scene.yy",},},
     {"id":{"name":"obj_weather_controller","path":"objects/obj_weather_controller/obj_weather_controller.yy",},},
     {"id":{"name":"obj_weather_leaves","path":"objects/obj_weather_leaves/obj_weather_leaves.yy",},},
     {"id":{"name":"obj_weather_rain","path":"objects/obj_weather_rain/obj_weather_rain.yy",},},
