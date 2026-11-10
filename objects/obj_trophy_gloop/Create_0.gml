@@ -48,7 +48,21 @@ bowl_faces = {
 	Stoled: UG_FACE.ANGRY,
 	Golf: UG_FACE.HAPPY,
 	Goal: UG_FACE.HAPPY,
+	Cold: 15,                 //Puppy-dog eyes (and shivering, below)
 }
+//Fish that make him shiver (vibrate side to side) while he makes his face
+bowl_shivers = {
+	Cold: true,
+}
+//Shivering comes in bursts: a shudder, then little trembles, then a short pause.  All in screen pixels
+shiver_amount = 1      //How far the little trembles go
+shudder_amount = 2     //The bigger shudder at the start of each burst
+shudder_time = 6       //Steps the shudder lasts
+shiver_burst = 45      //Steps each burst lasts
+shiver_pause = 25      //Steps between bursts
+shiver_hunch = 0.06    //Huddled up while he's cold: this much shorter (and a bit narrower)
+shiver_x = 0           //The current shake (picked in Step)
+shiver_y = 0
 face_cycle_time = 30 //Faces given as a list switch to the next one this often (steps)
 click_sounds = {
 	Gloop: snd_slm_confused, //"Huh?"
