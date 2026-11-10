@@ -151,6 +151,7 @@
     {"id":{"name":"obj_gridNumber","path":"objects/obj_gridNumber/obj_gridNumber.yy",},},
     {"id":{"name":"obj_gridOutline","path":"objects/obj_gridOutline/obj_gridOutline.yy",},},
     {"id":{"name":"obj_JosRoom","path":"objects/obj_JosRoom/obj_JosRoom.yy",},},
+    {"id":{"name":"obj_lighthouse","path":"objects/obj_lighthouse/obj_lighthouse.yy",},},
     {"id":{"name":"obj_lighting","path":"objects/obj_lighting/obj_lighting.yy",},},
     {"id":{"name":"obj_lilypad","path":"objects/obj_lilypad/obj_lilypad.yy",},},
     {"id":{"name":"obj_menu_Bluep","path":"objects/obj_menu_Bluep/obj_menu_Bluep.yy",},},

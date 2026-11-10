@@ -76,6 +76,10 @@ with(obj_clamTrophy)
 	}
 }
 
+//Lighthouse (fishing cave): the lamp and its two spinning beams
+with(obj_lighthouse)
+	add_lights(other, strength)
+
 //Slime trails: a faint glow on every space a slime has been, in that slime's color
 var half_space = controller.spacing/2
 var trail_strength = strength*trail_light_strength
