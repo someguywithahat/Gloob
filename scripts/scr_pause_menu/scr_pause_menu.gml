@@ -17,6 +17,17 @@ function scr_pause_open(){
 
 	pause_snapshot = sprite_create_from_surface(application_surface, 0, 0,
 		surface_get_width(application_surface), surface_get_height(application_surface), false, false, 0, 0)
+
+	//Zoomed-in rooms (the trophy room): show the whole room while paused, so the menu is on screen.
+	//The trophy room zooms back in on Gloop after
+	if view_enabled
+	{
+		camera_set_view_pos(view_camera[0], 0, 0)
+		camera_set_view_size(view_camera[0], room_width, room_height)
+	}
+	with(obj_trophy_room)
+		zoom = 1
+
 	instance_deactivate_all(true)
 
 	isPaused=1
