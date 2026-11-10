@@ -138,6 +138,7 @@ function scr_fish_data(){
 function scr_fish_titles(){
 	return {
 		Finch: "Gold Finch",
+		LoLed: "Trolled Fish",
 	}
 }
 
