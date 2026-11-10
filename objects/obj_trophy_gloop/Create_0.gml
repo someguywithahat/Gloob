@@ -21,6 +21,61 @@ squash = 0
 rest = 0 //Steps after landing before the next hop (so holding the button doesn't skip the landing)
 land_rest = 8
 
+//---- Bowl reactions ----
+//Standing on a bowl (with its fish caught) for react_time steps, Gloop reacts to some of the fish:
+//	bowl_faces  -- fish name: the face he makes while he stays there
+//	click_sound -- fish name: the sound clicking that bowl plays (instead of hopping)
+react_time = 30 //Half a second
+//(Slm_All_Base_Expressions frames: UG_FACE.ANNOYED (2) looks surprised, UG_FACE.SASSY (5) sticks its tongue out,
+//15 is the big puppy-dog eyes)
+bowl_faces = {
+	Ghoul: UG_FACE.SAD,
+	Rolled: UG_FACE.DIZZY,
+	LoLed: UG_FACE.ANGRY,
+	Bowed: UG_FACE.LOVE,      //Heart eyes
+	Mold: UG_FACE.SASSY,      //Tongue out
+	Guilded: UG_FACE.HAPPY,
+	Sold: UG_FACE.SAD,
+	Soul: 15,                 //Puppy-dog eyes
+	Colt: UG_FACE.SASSY,      //Tongue out
+	Volt: UG_FACE.ANNOYED,    //Surprised
+	Marigold: 15,             //Puppy-dog eyes
+	Grow: [8, 9],             //Small, then fat, back and forth
+	Hold: 0,                  //Just his plain face
+	Bowled: UG_FACE.DIZZY,
+	God: UG_FACE.ANNOYED,     //Surprised
+	Finch: 15,                //Puppy-dog eyes
+	Stoled: UG_FACE.ANGRY,
+	Golf: UG_FACE.HAPPY,
+	Goal: UG_FACE.HAPPY,
+}
+face_cycle_time = 30 //Faces given as a list switch to the next one this often (steps)
+click_sounds = {
+	Gloop: snd_slm_confused, //"Huh?"
+}
+bowl_under = noone //The bowl he's standing on
+bowl_time = 0 //Steps he's been standing on it
+
+/// True once he's been standing on this bowl long enough to react to it
+reacting_to = function(bowl)
+{
+	return bowl<>noone and bowl=bowl_under and bowl_time>=react_time
+}
+
+/// The face he's making for the bowl he's on, or -1
+bowl_face = function()
+{
+	if bowl_under<>noone and bowl_time>=react_time and variable_struct_exists(bowl_faces, bowl_under.fish_name)
+	{
+		var face = bowl_faces[$ bowl_under.fish_name]
+		//A list of faces: takes turns
+		if is_array(face)
+			return face[((bowl_time-react_time) div face_cycle_time) mod array_length(face)];
+		return face;
+	}
+	return -1;
+}
+
 var room_ctrl = instance_find(obj_trophy_room, 0)
 shelf_ys = room_ctrl.shelf_ys
 shelf_left = room_ctrl.shelf_left

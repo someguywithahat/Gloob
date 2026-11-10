@@ -27,6 +27,8 @@ shelf_right = 1298
 shelf_click_above = 70 //A click this far above a shelf's top (or shelf_click_below under it) counts as clicking that shelf
 shelf_click_below = 30
 
+click_used = false //A click was used on a bowl (obj_trophy_gloop's click_sounds), so it doesn't also hop
+
 //---- Camera ----
 zoom = 1
 view_cx = room_width/2  //Middle of the view

@@ -1,6 +1,13 @@
 //Jumping or standing, twice as big, squished a bit when landing
 var spr = (state="air") ? Spr_Slm_Move_Jump : Spr_Slm_Idol
 var img = floor(anim) mod sprite_get_number(spr)
+//Reacting to the fish in the bowl he's standing on (see bowl_faces)
+var face = bowl_face()
+if face>=0
+{
+	spr = Slm_All_Base_Expressions
+	img = face
+}
 var xs = draw_scale*(1+0.2*squash)
 var ys = draw_scale*(1-0.2*squash)
 //Feet on (x, y).  The sprites are 32x32 with a top left origin, so flip around the middle

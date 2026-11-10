@@ -51,6 +51,27 @@ if state="air"
 if rest>0
 	rest--
 
+//Which bowl he's standing on (one with its fish caught), and for how long
+var on_bowl = noone
+if state="stand"
+{
+	var feet_x = x
+	var feet_y = y
+	with(obj_trophy_bowl)
+	{
+		//The bowl's base is the bottom of its sprite's bounding box, sitting on the shelf
+		if caught and feet_x>=bbox_left and feet_x<=bbox_right and abs(feet_y-bbox_bottom)<24
+			on_bowl = id
+	}
+}
+if on_bowl<>bowl_under
+{
+	bowl_under = on_bowl
+	bowl_time = 0
+}
+else if on_bowl<>noone
+	bowl_time++
+
 //Squish when landing
 if squash>0.01
 	squash *= 0.85

@@ -187,6 +187,7 @@
     {"id":{"name":"obj_town_parent","path":"objects/obj_town_parent/obj_town_parent.yy",},},
     {"id":{"name":"obj_town_slm","path":"objects/obj_town_slm/obj_town_slm.yy",},},
     {"id":{"name":"obj_town_weather_controller","path":"objects/obj_town_weather_controller/obj_town_weather_controller.yy",},},
+    {"id":{"name":"obj_trophy_bowl","path":"objects/obj_trophy_bowl/obj_trophy_bowl.yy",},},
     {"id":{"name":"obj_trophy_gloop","path":"objects/obj_trophy_gloop/obj_trophy_gloop.yy",},},
     {"id":{"name":"obj_trophy_room","path":"objects/obj_trophy_room/obj_trophy_room.yy",},},
     {"id":{"name":"obj_unusedGloop","path":"objects/obj_unusedGloop/obj_unusedGloop.yy",},},

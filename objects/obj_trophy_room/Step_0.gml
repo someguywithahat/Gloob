@@ -35,6 +35,20 @@ if gloop=noone
 	exit
 }
 
+//Clicking the bowl he's standing on, for a fish with a click sound (see obj_trophy_gloop's click_sounds):
+//plays it instead of hopping.  Holding the button after doesn't hop either, until it's let go
+if !held
+	click_used = false
+if pressed and gloop.state="stand"
+{
+	var bowl = instance_position(mouse_x, mouse_y, obj_trophy_bowl)
+	if bowl<>noone and gloop.reacting_to(bowl) and variable_struct_exists(gloop.click_sounds, bowl.fish_name)
+	{
+		audio_play_sound(gloop.click_sounds[$ bowl.fish_name], 1, false)
+		click_used = true
+	}
+}
+
 //Click: one hop toward the cursor.  Hold: keeps hopping each time he lands, until he gets there
-if (pressed or held) and !gloop.leaving and gloop.state="stand" and gloop.rest<=0
+if (pressed or held) and !click_used and !gloop.leaving and gloop.state="stand" and gloop.rest<=0
 	hop_toward(gloop, mouse_x, mouse_y, pressed)
