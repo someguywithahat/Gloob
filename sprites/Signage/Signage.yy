@@ -33,6 +33,8 @@
     {"$GMSpriteFrame":"v1","%Name":"b33ca66e-3532-47ae-aa1f-b757940c5437","name":"b33ca66e-3532-47ae-aa1f-b757940c5437","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"65f56b84-e76f-4bc7-801b-4af57fdcc33f","name":"65f56b84-e76f-4bc7-801b-4af57fdcc33f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"39c9eb9a-eb2f-4b89-b8b7-a44cc463040d","name":"39c9eb9a-eb2f-4b89-b8b7-a44cc463040d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"779b5331-38d9-4465-a660-66f38e48bb15","name":"779b5331-38d9-4465-a660-66f38e48bb15","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e89ec804-f791-4f45-b523-f96f1f1f1ae5","name":"e89ec804-f791-4f45-b523-f96f1f1f1ae5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":4,
   "gridY":4,
@@ -71,7 +73,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":21.0,
+    "length":23.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -155,6 +157,12 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"39c9eb9a-eb2f-4b89-b8b7-a44cc463040d","path":"sprites/Signage/Signage.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f774e5f9-59cc-4337-b2ff-87db0abb5da7","IsCreationKey":false,"Key":20.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"779b5331-38d9-4465-a660-66f38e48bb15","path":"sprites/Signage/Signage.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"de2d79cb-0368-48c4-986d-70d336a6e269","IsCreationKey":false,"Key":21.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e89ec804-f791-4f45-b523-f96f1f1f1ae5","path":"sprites/Signage/Signage.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1f7d85e0-c0ce-44ab-b809-8ced761de8dd","IsCreationKey":false,"Key":22.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -164,13 +172,13 @@
   },
   "swatchColours":[
     4278190335,4282607155,4283521894,4283187509,4285845143,4289891452,4278190080,4284885054,4284891424,4285034529,
-    4278212254,4279320242,4282072012,4283182095,4283727679,4284838271,4284897095,4286498191,4293247136,4281868831,
-    4286529366,4288241969,4287535405,4280518347,4281164005,4284177381,4291806454,4284848460,4285825169,4286542694,
-    4288076446,4294370232,4284890682,4288240502,4291592769,4288918834,4281182688,4283203071,4286545919,4278212254,
+    4278212254,4278928269,4280100228,4283182095,4283727679,4284838271,4284897095,4286498191,4293247136,4281868831,
+    4286529366,4288241969,4287535405,4280518347,4279591363,4281742537,4291806454,4284848460,4285825169,4286542694,
+    4288076446,4294370232,4284890682,4288240502,4291592769,4288918834,4281182688,4281764089,4284375533,4288282582,
     4286755435,4287667631,4287727226,4286893206,4294967295,4286533192,4290938787,4292914000,4289973842,4284534769,
-    4284852735,4288256511,4286811550,4287089786,4288984004,4289897877,4287288221,4294377420,4289687657,4294947561,
-    4294957465,4289986431,4291623935,4288267775,4288068095,4281810761,4288734627,4290894053,4291607723,4286500761,
-    4294633210,4290744973,4294954233,4294960076,4288282582,4291624936,4291615231,4288077055,
+    4284654847,4287729663,4286811550,4287089786,4288984004,4289897877,4287288221,4294377420,4289687657,4294947561,
+    4294957465,4289986431,4289917695,4288006399,4288260351,4281810761,4288734627,4290894053,4291607723,4286500761,
+    4294633210,4290744973,4294954233,4294960076,4292607922,4293263359,4291621119,4291613951,
   ],
   "swfPrecision":0.5,
   "textureGroupId":{
