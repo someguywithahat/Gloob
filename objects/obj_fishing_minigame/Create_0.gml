@@ -101,7 +101,7 @@ make_fish = function(data)
 
 	return {
 		name: data.name,
-		title: data.title, //Shown to the player (name is the fish's ID)
+		title: variable_struct_exists(data, "title") ? data.title : data.name, //Shown to the player (name is the fish's ID).  Decoys (the crowd) don't have one
 		sprite: data.sprite,
 		accel: data.accel,
 		decel: data.decel,
