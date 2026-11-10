@@ -141,6 +141,15 @@ function scr_fish_titles(){
 	}
 }
 
+/// The title of the fish with this name (its ID), or the name itself if there's no such fish
+function scr_fish_title(name){
+	for (var g = 0; g < array_length(global.FISH_GROUPS); g++)
+		for (var i = 0; i < array_length(global.FISH_GROUPS[g]); i++)
+			if global.FISH_GROUPS[g][i].name=name
+				return global.FISH_GROUPS[g][i].title;
+	return name;
+}
+
 /// "a" or "an" to go in front of a word ("an Old Fish", "a Gold Fish")
 function scr_a_or_an(word){
 	var first = string_lower(string_char_at(word, 1))

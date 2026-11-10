@@ -2,6 +2,7 @@
 if bowl_sprite=-1
 {
 	bowl_sprite = asset_get_index("Spr_Bowl_" + fish_name)
+	fish_title = scr_fish_title(fish_name)
 	if bowl_sprite=-1
 	{
 		show_debug_message("obj_trophy_bowl: no bowl sprite for fish \"" + fish_name + "\"")
