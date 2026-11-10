@@ -1,3 +1,27 @@
+//---- Docking: the slime hops out onto the dock, waits a moment, then off to the next room ----
+if dock_state>0
+{
+	dock_time++
+	//The empty boat drifts back and stops
+	xx += clamp(-xx, -slow_down*0.5, slow_down*0.5)
+	x += xx
+	if dock_state=1
+	{
+		var k = min(1, dock_time/dock_hop_frames)
+		slime_x = lerp(hop_x0, hop_x1, k)
+		slime_y = lerp(hop_y0, hop_y1, k) - dock_hop_height*4*k*(1-k)
+		if k>=1
+		{
+			dock_state = 2
+			dock_time = 0
+			audio_play_sound(snd_pop, 1, false)
+		}
+	}
+	else if dock_time=dock_wait
+		scr_room_goto(dock_room)
+	exit
+}
+
 //---- Steering: hold the left mouse button to sail toward the cursor.  Let go to glide to a stop ----
 //(No sailing while the fishing minigame is open)
 var steering = mouse_check_button(mb_left) and !instance_exists(obj_fishing_minigame)
@@ -13,6 +37,18 @@ else
 {
 	xx += clamp(-xx, -slow_down, slow_down)
 	yy += clamp(-yy, -slow_down, slow_down)
+}
+
+//Sailed into a dock: hop out
+var room_info = scr_fishing_room_info(room)
+if !is_undefined(room_info) and variable_struct_exists(room_info, "dock") and !instance_exists(obj_fishing_minigame)
+{
+	var d = room_info.dock
+	if bbox_right+max(xx, 0)+4>=d.x1 and bbox_left<d.x2 and bbox_bottom>d.y1 and bbox_top<d.y2
+	{
+		start_docking(d)
+		exit
+	}
 }
 
 //Bump off the shore.  Check each axis on its own so the boat slides along a wall it hits from the side

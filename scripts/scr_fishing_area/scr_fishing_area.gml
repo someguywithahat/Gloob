@@ -19,6 +19,8 @@
 ///   up/down/left/right    -- room on that side, or noone
 ///   enter_*               -- where the boat comes in on each side (the middle of the boat), lined up with the gap in
 ///                            the shoreline.  enter_top/enter_bottom are x positions, enter_left/enter_right are y positions
+///   dock                  -- optional.  Sail into it and the slime hops out onto it, then goes to dock.room:
+///                            x1/y1/x2/y2 is the area the boat has to touch, land_x/land_y is where the slime lands (its feet)
 function scr_fishing_room_info(rm){
 	switch(rm)
 	{
@@ -29,7 +31,8 @@ function scr_fishing_room_info(rm){
 		case rm_fishingLeft:   return { group: 2, up: noone, down: noone, left: noone, right: rm_fishingCenter,
 			enter_top: 683, enter_bottom: 683, enter_left: 384, enter_right: 384 }
 		case rm_fishingRight:  return { group: 3, up: noone, down: noone, left: rm_fishingCenter, right: noone,
-			enter_top: 683, enter_bottom: 683, enter_left: 384, enter_right: 384 }
+			enter_top: 683, enter_bottom: 683, enter_left: 384, enter_right: 384,
+			dock: { x1: 1312, y1: 250, x2: 1366, y2: 392, land_x: 1342, land_y: 340, room: rm_fishingTrophy } }
 		case rm_fishingDown:   return { group: 4, up: rm_fishingCenter, down: noone, left: noone, right: noone,
 			enter_top: 683, enter_bottom: 683, enter_left: 384, enter_right: 384 }
 	}

@@ -2,6 +2,26 @@
 var draw_x = (facing<0) ? x+sprite_width : x
 draw_sprite_ext(sprite_index, image_index, draw_x, y, facing, 1, 0, c_white, image_alpha)
 
+//Docking: the slime hopping out onto the dock, then happy on it
+if dock_state>0
+{
+	shader_set(shd_palette_swap)
+	var u_palette_orig = shader_get_sampler_index(shd_palette_swap, "palette_orig")
+	var u_palette_swap = shader_get_sampler_index(shd_palette_swap, "palette_swap")
+	var u_color_count = shader_get_uniform(shd_palette_swap, "color_count")
+	texture_set_stage(u_palette_orig, sprite_get_texture(spr_palette_index, 0))
+	texture_set_stage(u_palette_swap, sprite_get_texture(spr_palette_all, slime_color))
+	shader_set_uniform_f(u_color_count, 6.0)
+	if dock_state=1
+	{
+		var hop_frame = min(dock_time/dock_hop_frames, 0.999)*sprite_get_number(Spr_Slm_Move_Jump)
+		draw_sprite(Spr_Slm_Move_Jump, hop_frame, round(slime_x), round(slime_y))
+	}
+	else
+		draw_sprite(Slm_All_Base_Expressions, UG_FACE.HAPPY, round(slime_x), round(slime_y))
+	shader_reset()
+}
+
 //Fishing ticket used: the ticket sign and the new total, floating up above the boat and fading out
 if ticket_popup_timer>0
 {

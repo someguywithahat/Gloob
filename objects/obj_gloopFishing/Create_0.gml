@@ -16,6 +16,23 @@ ticket_popup_timer = 0
 ticket_popup_total = 0
 ticket_popup_rise = 12 //Floats up this many pixels while it shows
 
+//Docking: sail into a dock (rm_fishingRight) and the slime hops out onto it, then it's off to the dock's room
+dock_state = 0 //0 sailing, 1 hopping out, 2 standing on the dock
+dock_time = 0
+dock_hop_frames = 40 //Steps the hop takes
+dock_hop_height = 36
+dock_wait = 40 //Steps on the dock before the room changes
+dock_room = noone
+slime_color = global.GREEN //The slime in spr_boat_test
+slime_in_boat_x = 32 //Where the slime sits in spr_boat_test (top left of a 32x32 slime sprite), when facing right
+slime_in_boat_y = 13
+slime_x = 0 //The slime while it's out of the boat (top left of its sprite)
+slime_y = 0
+hop_x0 = 0
+hop_y0 = 0
+hop_x1 = 0
+hop_y1 = 0
+
 /// Middle of the boat (its sprite has a top left origin)
 center_x = function() { return (bbox_left+bbox_right)/2 }
 center_y = function() { return (bbox_top+bbox_bottom)/2 }
@@ -39,6 +56,28 @@ place_at_edge = function(side, info)
 	//Keep a little speed going into the room
 	xx = (side="left") - (side="right")
 	yy = (side="top") - (side="bottom")
+}
+
+/// Hit the dock: the slime hops out of the boat onto it.  d is the dock from scr_fishing_room_info
+start_docking = function(d)
+{
+	dock_state = 1
+	dock_time = 0
+	dock_room = d.room
+	//Where the slime is in the boat (the sprite flips with the boat)
+	hop_x0 = (facing>0) ? x+slime_in_boat_x : x+sprite_width-slime_in_boat_x-32
+	hop_y0 = y+slime_in_boat_y
+	//Feet on the dock
+	hop_x1 = d.land_x-16
+	hop_y1 = d.land_y-32
+	slime_x = hop_x0
+	slime_y = hop_y0
+	sprite_index = spr_boat_empty
+	//The boat gets pushed back a little by the jump
+	xx = -0.8
+	yy = 0
+	var snd = audio_play_sound(snd_boing, 1, false)
+	audio_sound_pitch(snd, 1.1)
 }
 
 /// A fishing ticket was just used: toss it away (like a lost hard hat) and show the new total above the boat
