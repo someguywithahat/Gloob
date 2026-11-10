@@ -70,7 +70,12 @@ if on_bowl<>bowl_under
 	bowl_time = 0
 }
 else if on_bowl<>noone
+{
 	bowl_time++
+	//Some fish get a sound out of him, once he's been there a moment (see bowl_sounds)
+	if bowl_time=react_time and variable_struct_exists(bowl_sounds, bowl_under.fish_name)
+		audio_play_sound(bowl_sounds[$ bowl_under.fish_name], 1, false)
+}
 
 //Shivering by a cold fish (see bowl_shivers): bursts of uneven little trembles.  A new shake every other step
 shiver_x = 0

@@ -44,7 +44,8 @@ bowl_faces = {
 	Hold: 0,                  //Just his plain face
 	Bowled: UG_FACE.DIZZY,
 	God: UG_FACE.ANNOYED,     //Surprised
-	Finch: 15,                //Puppy-dog eyes
+	Finch: UG_FACE.HAPPY,
+	Goat: UG_FACE.HAPPY,
 	Stoled: UG_FACE.ANGRY,
 	Golf: UG_FACE.HAPPY,
 	Goal: UG_FACE.HAPPY,
@@ -65,8 +66,11 @@ shiver_hunch = 0.06    //Huddled up while he's cold: this much shorter (and a bi
 shiver_x = 0           //The current shake (picked in Step)
 shiver_y = 0
 face_cycle_time = 30 //Faces given as a list switch to the next one this often (steps)
-click_sounds = {
+//Fish name: a sound that plays by itself once he's been on that bowl for react_time (once each time he stands there)
+bowl_sounds = {
 	Gloop: snd_slm_confused, //"Huh?"
+}
+click_sounds = {
 }
 bowl_under = noone //The bowl he's standing on
 bowl_time = 0 //Steps he's been standing on it
