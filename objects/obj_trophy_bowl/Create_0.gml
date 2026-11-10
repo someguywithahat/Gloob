@@ -16,5 +16,5 @@ empty_drop = 6   //Spr_Empty_Bowl's base sits this many pixels higher than the f
 fish_name = "" //Set in creation code
 bowl_sprite = -1 //Looked up on the first step, after creation code has run
 caught = false
-frame = 0
+frame = random(100) //Starts somewhere random in the animation, so the fish don't all swim in sync (the frame wraps around)
 depth = 100 //Same as the room's Planning layer, where the bowls used to be.  Gloop hops in front of them

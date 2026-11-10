@@ -12,9 +12,15 @@ if dock_state>0
 	texture_set_stage(u_palette_orig, sprite_get_texture(spr_palette_index, 0))
 	texture_set_stage(u_palette_swap, sprite_get_texture(spr_palette_all, slime_color))
 	shader_set_uniform_f(u_color_count, 6.0)
+	//Hopping out onto the dock (1), or back into the boat (3, after waiting on the dock a moment)
+	var hop_time = -1
 	if dock_state=1
+		hop_time = dock_time
+	else if dock_state=3 and dock_time>board_wait
+		hop_time = dock_time-board_wait
+	if hop_time>=0
 	{
-		var hop_frame = min(dock_time/dock_hop_frames, 0.999)*sprite_get_number(Spr_Slm_Move_Jump)
+		var hop_frame = min(hop_time/dock_hop_frames, 0.999)*sprite_get_number(Spr_Slm_Move_Jump)
 		draw_sprite(Spr_Slm_Move_Jump, hop_frame, round(slime_x), round(slime_y))
 	}
 	else

@@ -49,6 +49,7 @@ bowl_faces = {
 	Golf: UG_FACE.HAPPY,
 	Goal: UG_FACE.HAPPY,
 	Cold: 15,                 //Puppy-dog eyes (and shivering, below)
+	Scalled: 16,              //Sweating
 }
 //Fish that make him shiver (vibrate side to side) while he makes his face
 bowl_shivers = {

@@ -21,13 +21,30 @@ entry_in = 70         //Jumping in, he lands this far in from the end of the she
 room_edge = 56        //Clicks this close to the left or right edge of the room send him off that side
 
 //The shelves Gloop can stand on: the y of each shelf's top (where the bowls stand), and how far they go
-shelf_ys = [152, 296, 440, 584, 728]
+shelf_ys = [162, 306, 450, 594, 738]
 shelf_left = 64
 shelf_right = 1298
 shelf_click_above = 70 //A click this far above a shelf's top (or shelf_click_below under it) counts as clicking that shelf
 shelf_click_below = 30
 
 click_used = false //A click was used on a bowl (obj_trophy_gloop's click_sounds), so it doesn't also hop
+
+//Exit sign, top left of the room.  Back to the dock in rm_fishingRight, where Gloop hops back in his boat
+exit_room = rm_fishingRight
+exit_x = 8
+exit_y = 24  //Low enough for the chains to reach up to the top of the room
+exit_w = 96  //scr_draw_sign size (it draws one tile more than this each way: 4x2 tiles of 32 at 2x)
+exit_h = 32
+exit_tiles_w = 4 //4 wide so the two chains (one tile in from each side) are apart
+exit_tiles_h = 2
+exit_chains = 1  //Chain pieces above the sign
+depth = -100 //The sign draws over Gloop and the bowls
+
+/// True while the mouse is over the exit sign
+exit_hover = function()
+{
+	return point_in_rectangle(mouse_x, mouse_y, exit_x, exit_y, exit_x+exit_tiles_w*32, exit_y+exit_tiles_h*32)
+}
 
 //---- Camera ----
 zoom = 1

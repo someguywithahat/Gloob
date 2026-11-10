@@ -17,8 +17,28 @@ if dock_state>0
 			audio_play_sound(snd_pop, 1, false)
 		}
 	}
-	else if dock_time=dock_wait
+	else if dock_state=2 and dock_time=dock_wait
 		scr_room_goto(dock_room)
+	else if dock_state=3 and dock_time>board_wait
+	{
+		//Back from the trophy room: hop from the dock into the boat
+		var k = min(1, (dock_time-board_wait)/dock_hop_frames)
+		slime_x = lerp(hop_x0, hop_x1, k)
+		slime_y = lerp(hop_y0, hop_y1, k) - dock_hop_height*4*k*(1-k)
+		if k>=1
+		{
+			dock_state = 0
+			sprite_index = spr_boat_test
+			xx = -0.8 //The jump pushes the boat back from the dock
+			dock_armed = false
+			audio_play_sound(snd_pop, 1, false)
+		}
+		else if k>0 and k<=1/dock_hop_frames
+		{
+			var snd = audio_play_sound(snd_boing, 1, false)
+			audio_sound_pitch(snd, 1.1)
+		}
+	}
 	exit
 }
 
@@ -44,7 +64,11 @@ var room_info = scr_fishing_room_info(room)
 if !is_undefined(room_info) and variable_struct_exists(room_info, "dock") and !instance_exists(obj_fishing_minigame)
 {
 	var d = room_info.dock
-	if bbox_right+max(xx, 0)+4>=d.x1 and bbox_left<d.x2 and bbox_bottom>d.y1 and bbox_top<d.y2
+	var at_dock = bbox_right+max(xx, 0)+4>=d.x1 and bbox_left<d.x2 and bbox_bottom>d.y1 and bbox_top<d.y2
+	//Just got back in the boat at the dock: sail away from it before it can dock again
+	if !at_dock
+		dock_armed = true
+	if at_dock and dock_armed
 	{
 		start_docking(d)
 		exit

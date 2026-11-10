@@ -63,6 +63,15 @@ function scr_fishing_room_start(){
 		with(boat)
 			place_at_edge(side, info)
 
+	//Back from the dock's room (the trophy room's exit sign): the slime hops from the dock back into the boat
+	if variable_global_exists("fishing_from_dock") and global.fishing_from_dock
+	{
+		global.fishing_from_dock = false
+		if variable_struct_exists(info, "dock")
+			with(boat)
+				start_boarding(info.dock)
+	}
+
 	//Fish from this room's group
 	repeat(irandom_range(FISHING_FISH_MIN, FISHING_FISH_MAX))
 		scr_fishing_spawn_fish(info.group, boat)

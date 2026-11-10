@@ -19,6 +19,10 @@ if face>=0 and variable_struct_exists(bowl_shivers, bowl_under.fish_name)
 }
 var draw_x = ((facing>0) ? x-16*xs : x+16*xs) + shiver_x
 var draw_y = y-32*ys + shiver_y
+//The expression frames sit higher in their sprite than the idle and jump animations.  Line them up
+//(1 sprite pixel = 2 on screen.  Raise or lower this to taste)
+if face>=0
+	draw_y += 1*ys
 
 shader_set(shd_palette_swap)
 var u_palette_orig = shader_get_sampler_index(shd_palette_swap, "palette_orig")

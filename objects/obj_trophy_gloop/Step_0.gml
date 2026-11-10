@@ -60,7 +60,7 @@ if state="stand"
 	with(obj_trophy_bowl)
 	{
 		//The bowl's base is the bottom of its sprite's bounding box, sitting on the shelf
-		if caught and feet_x>=bbox_left and feet_x<=bbox_right and abs(feet_y-bbox_bottom)<24
+		if caught and feet_x>=bbox_left and feet_x<=bbox_right and abs(feet_y-bbox_bottom)<40
 			on_bowl = id
 	}
 }

@@ -22,6 +22,16 @@ if scr_room_fading_out()
 var pressed = mouse_check_button_pressed(mb_left)
 var held = mouse_check_button(mb_left)
 
+//Exit sign: back to the dock, where Gloop hops back in his boat (scr_fishing_room_start)
+if pressed and exit_hover()
+{
+	var snd = audio_play_sound(snd_slime_move, 1, false)
+	audio_sound_pitch(snd, random_range(0.9, 1.2))
+	global.fishing_from_dock = true
+	scr_room_goto(exit_room)
+	exit
+}
+
 //No Gloop yet: clicking a shelf brings him in, jumping in from the nearer side of the room
 if gloop=noone
 {
