@@ -7,5 +7,5 @@ draw_sprite_ext(data.sprite, floor(fish_frame), x, y, 1, 1, 0, c_white, hovered 
 //Name underneath
 draw_set_font(global.fnt_Gloop_small)
 draw_set_color(hovered ? c_yellow : c_white)
-draw_text(x + (button_size-string_width(data.name))/2, y+button_size+2, data.name)
+draw_text(x + (button_size-string_width(data.title))/2, y+button_size+2, data.title)
 draw_set_color(c_white)

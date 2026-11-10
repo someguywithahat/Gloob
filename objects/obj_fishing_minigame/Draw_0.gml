@@ -552,7 +552,8 @@ if result=0 and fish.move=FISH_MOVE.CROWD
 if result<>0
 {
 	draw_set_font(global.fnt_Gloop)
-	var text = (result=1) ? "Caught a " + fish.name + "!" : "The " + fish.name + " got away..."
+	//The name is only shown once it's caught (the pun names are part of the reward)
+	var text = (result=1) ? "Caught " + scr_a_or_an(fish.title) + " " + fish.title + "!" : "The fish got away..."
 	draw_text(box_x + (box_size-string_width(text))/2, box_y - string_height(text) - 10, text)
 }
 draw_set_color(c_white)

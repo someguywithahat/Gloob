@@ -2,7 +2,10 @@
 	All the fish for the fishing minigame, in one place.
 
 	5 groups of 8 fish.  Each fish:
-		name      -- shown when you catch it
+		name      -- the fish's ID.  Its bowl sprite (Spr_Bowl_<name>), saved catches and the trophy room all use it,
+		             so don't change it.  What players see is the title
+		title     -- the name shown in the game: name + " Fish" (Gold Fish, Go Fish...), except the ones in
+		             scr_fish_titles below
 		sprite    -- 24x24 swimming animation
 		accel     -- how quickly it speeds up (pixels per step, per step)
 		decel     -- how quickly it slows down
@@ -57,7 +60,7 @@ enum FISH_MOVE {
 
 /// One fish row
 function fish_def(name, sprite, accel, decel, max_speed, move, start_bar, bar_grow, bar_shrink, light=make_colour_rgb(220,230,240)){
-	return { name: name, sprite: sprite, accel: accel, decel: decel, max_speed: max_speed, move: move, start_bar: start_bar, bar_grow: bar_grow, bar_shrink: bar_shrink, light: light }
+	return { name: name, title: name + " Fish", sprite: sprite, accel: accel, decel: decel, max_speed: max_speed, move: move, start_bar: start_bar, bar_grow: bar_grow, bar_shrink: bar_shrink, light: light }
 }
 
 function scr_fish_data(){
@@ -119,6 +122,29 @@ function scr_fish_data(){
 			fish_def("Globe",     Spr_Fish_Globe,     0.9,  0.4,  4.5,   FISH_MOVE.ORBIT,                0.3,      0.21, 0.17,  make_colour_rgb(60,190,90))
 		]
 	]
+
+	//Titles that aren't just name + " Fish"
+	var titles = scr_fish_titles()
+	for (var g = 0; g < array_length(global.FISH_GROUPS); g++)
+		for (var i = 0; i < array_length(global.FISH_GROUPS[g]); i++)
+		{
+			var fish = global.FISH_GROUPS[g][i]
+			if variable_struct_exists(titles, fish.name)
+				fish.title = titles[$ fish.name]
+		}
+}
+
+/// Fish whose title isn't name + " Fish".  name: title
+function scr_fish_titles(){
+	return {
+		Finch: "Gold Finch",
+	}
+}
+
+/// "a" or "an" to go in front of a word ("an Old Fish", "a Gold Fish")
+function scr_a_or_an(word){
+	var first = string_lower(string_char_at(word, 1))
+	return (string_pos(first, "aeiou")>0) ? "an" : "a";
 }
 
 /// A random fish from one group

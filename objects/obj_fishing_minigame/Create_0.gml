@@ -101,6 +101,7 @@ make_fish = function(data)
 
 	return {
 		name: data.name,
+		title: data.title, //Shown to the player (name is the fish's ID)
 		sprite: data.sprite,
 		accel: data.accel,
 		decel: data.decel,
