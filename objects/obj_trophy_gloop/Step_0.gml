@@ -72,6 +72,28 @@ if on_bowl<>bowl_under
 else if on_bowl<>noone
 	bowl_time++
 
+//Shivering by a cold fish (see bowl_shivers): bursts of uneven little trembles.  A new shake every other step
+shiver_x = 0
+shiver_y = 0
+if bowl_face()>=0 and variable_struct_exists(bowl_shivers, bowl_under.fish_name)
+{
+	var t = (bowl_time-react_time) mod (shiver_burst+shiver_pause)
+	if t<shiver_burst
+	{
+		var size = (t<shudder_time) ? shudder_amount : shiver_amount
+		if (bowl_time mod 2)=0 or t<shudder_time
+		{
+			shiver_x = choose(-1, 1, -1, 1, 0)*size
+			shiver_y = choose(0, 0, 0, -1)*size*0.5
+		}
+		else
+		{
+			shiver_x = 0
+			shiver_y = 0
+		}
+	}
+}
+
 //Squish when landing
 if squash>0.01
 	squash *= 0.85

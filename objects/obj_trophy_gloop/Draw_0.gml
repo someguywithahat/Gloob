@@ -11,8 +11,14 @@ if face>=0
 var xs = draw_scale*(1+0.2*squash)
 var ys = draw_scale*(1-0.2*squash)
 //Feet on (x, y).  The sprites are 32x32 with a top left origin, so flip around the middle
-var draw_x = (facing>0) ? x-16*xs : x+16*xs
-var draw_y = y-32*ys
+//Cold (see bowl_shivers): huddled up a little, and trembling (shiver_x/shiver_y, picked in Step)
+if face>=0 and variable_struct_exists(bowl_shivers, bowl_under.fish_name)
+{
+	xs *= 1 - shiver_hunch*0.5
+	ys *= 1 - shiver_hunch
+}
+var draw_x = ((facing>0) ? x-16*xs : x+16*xs) + shiver_x
+var draw_y = y-32*ys + shiver_y
 
 shader_set(shd_palette_swap)
 var u_palette_orig = shader_get_sampler_index(shd_palette_swap, "palette_orig")
