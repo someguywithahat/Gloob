@@ -1,11 +1,8 @@
 TOM
 Rewrite fence draw <maybe>
 Crown powerup - spawn in/out slime
-path draws (endcaps)
-Multiplayer Reive
 
 JO
-make fire
 accessories - fairy, bow tie
 Add rule descriptions
 Color specific accessories
@@ -17,12 +14,12 @@ Color specific accessories
 	purple - 
 	black - 
 	white - 
+Spring puddle animation
 
 TOGETHER
 	Design /finalize menu options
 	figure out score store / village design
 	Play as rock
-	fish minigame
 	write rules
 	
 FISH
@@ -33,4 +30,12 @@ FISH
 	sign color: E0A92D Text Color: FFF0CC
 	Move up signs on shelf with object fish
 	Make sure things layer properly (fish and starfish in bottom room
+	
+Main game adjustments
+	Make the score / sign glow at night
+	Option setting - day lenght?
+	If obsticles are turned up add to summer
+	show total percent if you continue at end of day (or number over)
+	add pond to side village
+	tree top clipping
 	
