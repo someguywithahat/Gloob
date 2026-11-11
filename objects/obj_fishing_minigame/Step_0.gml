@@ -114,11 +114,19 @@ if bar_fill>=1
 {
 	result = 1
 	audio_play_sound(snd_slm_yay, 1, false)
-	scr_fish_mark_caught(fish.name) //Opens its trophy clam
+	//Opens its trophy clam.  Secret catches (Mallow) aren't saved: they can be caught again and again
+	if !variable_struct_exists(fish_data, "no_save")
+		scr_fish_mark_caught(fish.name)
 	if instance_exists(source_fish)
 	{
-		ticket_spent = scr_spend_fishing_ticket() //Catching a fish from the water costs a ticket (test buttons are free)
-		instance_destroy(source_fish)
+		//Something that handles being caught itself (Mallow goes into her trophy bowl).  Free, no ticket
+		if variable_instance_exists(source_fish, "caught_in_minigame")
+			source_fish.caught_in_minigame()
+		else
+		{
+			ticket_spent = scr_spend_fishing_ticket() //Catching a fish from the water costs a ticket (test buttons are free)
+			instance_destroy(source_fish)
+		}
 	}
 }
 else if bar_fill<=0

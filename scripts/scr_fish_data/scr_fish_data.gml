@@ -55,7 +55,8 @@ enum FISH_MOVE {
 	SHADOW,     //Dashes and waits.  Every few seconds it puts out every light, its own too, and makes the room darker, for a few seconds
 	ICE_WALLS,  //Dashes and waits.  Every few dashes it drops a short wall of ice across its path.  The circle can't pass through it, but the fish can.  It melts after a while
 	BALLET,     //Dances a little ballet routine: glide, three hops, grand leap, pirouette, leap back, pirouette, arabesque, curtsy.  Then again the other way
-	MOLDY_NET   //Swims around puffing out spore clouds.  Spores grow mold on the circle's net and shrink it.  Shake the mouse to clean it off
+	MOLDY_NET,  //Swims around puffing out spore clouds.  Spores grow mold on the circle's net and shrink it.  Shake the mouse to clean it off
+	STILL       //Just stands in the middle of the pond (Mallow, the secret catch at the top of the waterfall)
 }
 
 /// One fish row

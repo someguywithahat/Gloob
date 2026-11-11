@@ -111,7 +111,7 @@ make_fish = function(data)
 		y: start_y,
 		vx: 0,
 		vy: 0,
-		frame: 0,
+		frame: variable_struct_exists(data, "still_frame") ? data.still_frame : 0, //A slime "fish" (Mallow) holds one face
 		facing: 1,
 		//Where it's swimming to, and for how long before it changes its mind
 		goal_x: start_x,
@@ -138,7 +138,7 @@ make_fish = function(data)
 		pins: [], //Bowling: the rack of pins
 		rolls: 0, //Bowling: rolls since the pins were last set up
 		flip_y: 1, //-1 draws the fish upside down (float up)
-		manual_frame: false, //True when the swim function picks the animation frame itself (grow), so Step doesn't animate it
+		manual_frame: variable_struct_exists(data, "still_frame"), //True when the swim function picks the animation frame itself (grow), so Step doesn't animate it
 		hook_state: 0, //Hooked: 0 waiting, 1 casting, 2 hooked the circle, 3 reeling the line back in
 		hook_timer: 0,
 		hook_anchor_x: 0, //Hooked: where the line comes in from, on an edge of the pond
@@ -150,6 +150,7 @@ make_fish = function(data)
 		bolt_path: [], //Lightning: the corners of the bolt it's zipping along, as [x, y]
 		bolt_index: 0, //Lightning: which corner it's heading for
 		alpha: 1, //How see-through it's drawn (shy ghost fades near the circle)
+		slime_color: variable_struct_exists(data, "slime_color") ? data.slime_color : -1, //A slime "fish": drawn in this slime color (palette shader)
 		tint: c_white, //Color it's drawn with (the anglerfish's body is dark)
 		spin_x: 1, //Squashes it sideways (0-1), so it looks like it's turning around (ballet pirouettes)
 		face_lock: 0 //0 = face the way it's moving.  1 or -1 = always face right or left (wall jump clings to a wall)
@@ -2517,6 +2518,7 @@ swim = function(fish)
 		case FISH_MOVE.ICE_WALLS:         swim_ice_walls(fish);       break
 		case FISH_MOVE.BALLET:            swim_ballet(fish);          break
 		case FISH_MOVE.MOLDY_NET:         swim_moldy_net(fish);       break
+		case FISH_MOVE.STILL:             fish.vx = 0; fish.vy = 0;   break //Just stands there
 	}
 }
 
