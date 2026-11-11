@@ -1,10 +1,10 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_boat_empty",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":56,
-  "bbox_left":4,
-  "bbox_right":93,
+  "bbox_left":12,
+  "bbox_right":85,
   "bbox_top":27,
   "collisionKind":1,
   "collisionTolerance":0,

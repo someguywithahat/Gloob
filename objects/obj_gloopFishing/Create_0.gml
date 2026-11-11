@@ -106,6 +106,31 @@ start_boarding = function(d)
 	dock_armed = false
 }
 
+/// Honey's stuck to the boat and it bumped the log (obj_fishing_log, see obj_fishing_honey): Gloop hops out onto the
+/// log and sits with her (dock_state 4).  Click the empty boat to get him back in
+normal_depth = depth //Back to this once he's in the boat again
+log_face_time = 30 //Happy face this long after he lands on the log (half a second), then the idle animation
+start_log = function(log_inst)
+{
+	dock_state = 4
+	dock_time = 0
+	//From his seat in the boat to his spot on the log
+	hop_x0 = (facing>0) ? x+slime_in_boat_x : x+sprite_width-slime_in_boat_x-32
+	hop_y0 = y+slime_in_boat_y
+	hop_x1 = log_inst.gloop_seat_x()-16
+	hop_y1 = log_inst.seat_y()-32
+	slime_x = hop_x0
+	slime_y = hop_y0
+	sprite_index = spr_boat_empty
+	//The jump pushes the boat back, away from the log
+	xx = sign(center_x()-log_inst.log_mid_x())*0.8
+	yy = 0
+	//Above the log, so he's drawn sitting on it
+	depth = log_inst.depth-2
+	var snd = audio_play_sound(snd_boing, 1, false)
+	audio_sound_pitch(snd, 1.1)
+}
+
 /// A fishing ticket was just used: toss it away (like a lost hard hat) and show the new total above the boat
 show_ticket_spent = function(total)
 {

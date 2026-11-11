@@ -19,6 +19,23 @@ if dock_state>0
 	}
 	else if dock_state=2 and dock_time=dock_wait
 		scr_room_goto(dock_room)
+	else if dock_state=4
+	{
+		//Hopping onto the log, then sitting there with Honey.  Click the empty boat to come back
+		var k = min(1, dock_time/dock_hop_frames)
+		slime_x = lerp(hop_x0, hop_x1, k)
+		slime_y = lerp(hop_y0, hop_y1, k) - dock_hop_height*4*k*(1-k)
+		if k>=1 and mouse_check_button_pressed(mb_left) and position_meeting(mouse_x, mouse_y, id)
+		{
+			//Back from the log to his seat in the boat (the same hop as coming back to the dock, without the wait)
+			hop_x0 = slime_x
+			hop_y0 = slime_y
+			hop_x1 = (facing>0) ? x+slime_in_boat_x : x+sprite_width-slime_in_boat_x-32
+			hop_y1 = y+slime_in_boat_y
+			dock_state = 3
+			dock_time = board_wait
+		}
+	}
 	else if dock_state=3 and dock_time>board_wait
 	{
 		//Back from the trophy room: hop from the dock into the boat
@@ -31,6 +48,7 @@ if dock_state>0
 			sprite_index = spr_boat_test
 			xx = -0.8 //The jump pushes the boat back from the dock
 			dock_armed = false
+			depth = normal_depth //(Off the log)
 			audio_play_sound(snd_pop, 1, false)
 		}
 		else if k>0 and k<=1/dock_hop_frames
