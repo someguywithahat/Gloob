@@ -71,6 +71,7 @@
     {"name":"inst_4C5E6832","path":"rooms/rm_fishingDown/rm_fishingDown.yy",},
     {"name":"inst_2B35477B","path":"rooms/rm_fishingDown/rm_fishingDown.yy",},
     {"name":"inst_3C14F725","path":"rooms/rm_fishingDown/rm_fishingDown.yy",},
+    {"name":"inst_52BDF98B","path":"rooms/rm_fishingDown/rm_fishingDown.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -151,6 +152,7 @@
         {"$GMRInstance":"v4","%Name":"inst_4C5E6832","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4C5E6832","objectId":{"name":"obj_glow_mushroom","path":"objects/obj_glow_mushroom/obj_glow_mushroom.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":3.0,"scaleY":3.0,"x":1200.0,"y":642.0,},
         {"$GMRInstance":"v4","%Name":"inst_2B35477B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2B35477B","objectId":{"name":"obj_glow_mushroom","path":"objects/obj_glow_mushroom/obj_glow_mushroom.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":2.0,"x":1264.0,"y":688.0,},
         {"$GMRInstance":"v4","%Name":"inst_3C14F725","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3C14F725","objectId":{"name":"obj_glow_mushroom","path":"objects/obj_glow_mushroom/obj_glow_mushroom.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":2.0,"x":1288.0,"y":416.0,},
+        {"$GMRInstance":"v4","%Name":"inst_52BDF98B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_52BDF98B","objectId":{"name":"obj_fishing_coal","path":"objects/obj_fishing_coal/obj_fishing_coal.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1267.0,"y":333.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Planning","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_7F9B6F2B","animationSpeed":0.0,"colour":4294967295,"frozen":false,"headPosition":-1.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_7F9B6F2B","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":-0.027976455,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"Spr_Shell","path":"sprites/Spr_Shell/Spr_Shell.yy",},"x":1088.0,"y":128.0,},
