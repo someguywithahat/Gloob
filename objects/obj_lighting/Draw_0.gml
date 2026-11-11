@@ -85,6 +85,9 @@ with(obj_seashell)
 //Glowing mushrooms (fishing cave): purple to light blue, slowly pulsing
 with(obj_glow_mushroom)
 	add_lights(other, strength)
+//Coal, the black slime asleep in the fishing cave: a soft glow, or the whole cave lit up when he's woken
+with(obj_fishing_coal)
+	add_lights(other, strength)
 
 //Slime trails: a faint glow on every space a slime has been, in that slime's color
 var half_space = controller.spacing/2

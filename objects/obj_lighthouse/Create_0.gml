@@ -22,7 +22,10 @@ lamp_y = 26
 lamp_orbit = 8.5
 lamp_orbit_up = 3.5 //The lights also go a little up and down as they go around
 
-depth = 199 //Just above the room's Assets layer (where the lighthouse sprite used to be), so the paths don't cover it
+//Just above the room's Assets layer (where the lighthouse sprite used to be), so the paths don't cover it
+var assets_layer = layer_get_id("Assets")
+if assets_layer<>-1
+	depth = layer_get_depth(assets_layer)-1
 
 cone_length = 127 //spr_effect_glow_Cone: from its origin (the tip) to the far edge
 

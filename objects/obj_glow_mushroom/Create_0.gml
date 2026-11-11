@@ -15,7 +15,10 @@ cap_x = 16 //Middle of the cap on Spr_Mushroom_Glow (sprite pixels)
 cap_y = 14
 
 image_speed = 0
-depth = 199 //Just above the room's Assets layer (where the mushrooms used to be), so the paths don't cover them
+//Just above the room's Assets layer (where the mushrooms used to be), so the paths don't cover them
+var assets_layer = layer_get_id("Assets")
+if assets_layer<>-1
+	depth = layer_get_depth(assets_layer)-1
 
 glow_color = merge_colour(color_dark, color_light, random(1))
 pulse_offset = random(1000)
