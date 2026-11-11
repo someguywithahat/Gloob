@@ -13,11 +13,17 @@ glow_shimmer = 0.15   //How much the glow gently breathes
 
 image_speed = 0
 //On land: just above the room's Assets layer (where the shells used to be), so the paths don't cover them.
-//Underwater: just below the fish (Instances_Underwater, 400), so they swim over them and the water ripples them.
+//Underwater: just below the fish (the Instances_Underwater layer), so they swim over them and the water ripples them.
+//Uses the layers' real depths, so it still works if the room's layers are moved around.
 //The dark shells are the underwater ones
 underwater_shade = 128 //Shells darker than this (0-255) are underwater
 underwater = colour_get_value(image_blend)<underwater_shade
-depth = underwater ? 401 : 199
+var fish_layer = layer_get_id("Instances_Underwater")
+var assets_layer = layer_get_id("Assets")
+if underwater and fish_layer<>-1
+	depth = layer_get_depth(fish_layer)+1
+else if !underwater and assets_layer<>-1
+	depth = layer_get_depth(assets_layer)-1
 
 //Glow color: the tint's hue and saturation, as bright as it goes
 glow_color = make_colour_hsv(colour_get_hue(image_blend), colour_get_saturation(image_blend), 255)
