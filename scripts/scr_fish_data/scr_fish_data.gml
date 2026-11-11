@@ -81,7 +81,7 @@ function scr_fish_data(){
 		//Group 1
 		[
 			fish_def("Bold",      Spr_Fish_Bold,      0.4,  0.4,  3.5,   FISH_MOVE.CHARGE,               0.3,      0.21, 0.17),
-			fish_def("LoLed",     Spr_Fish_LoLed,     0.4,  0.4,  2.5,   FISH_MOVE.STICK_TO_CIRCLE,      0.9,      0.21, 0.17),
+			fish_def("LoLed",     Spr_Fish_LoLed,     0.4,  0.4,  2.5,   FISH_MOVE.STICK_TO_CIRCLE,      0.7,      0.21, 0.17),
 			fish_def("Hold",      Spr_Fish_Hold,      0.4,  0.4,  0.5,   FISH_MOVE.CROWD,                0.9,      0.15, 0.1),
 			fish_def("Holed",     Spr_Fish_Holed,     0.4,  0.4,  3.0,   FISH_MOVE.HOLE_HOP,             0.3,      0.21, 0.17),
 			fish_def("Wholed",    Spr_Fish_Wholed,    0.4,  0.4,  3.0,   FISH_MOVE.WRAP    ,             0.3,      0.21, 0.15),
@@ -140,6 +140,7 @@ function scr_fish_titles(){
 	return {
 		Finch: "Gold Finch",
 		LoLed: "Trolled Fish",
+		Fools: "Fools Gold Fish",
 	}
 }
 
