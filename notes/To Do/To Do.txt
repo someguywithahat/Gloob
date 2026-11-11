@@ -26,5 +26,9 @@ TOGETHER
 	write rules
 	
 FISH
-	If we can randomize what frame they start on so they arent in sync
-	Jo - waterfall and background assets
+	If we can randomize what frame they start on so they arent in sync - Seashells on main map
+	change fools fish to foolsgold fish
+	add an animation for spining out at the bottome of a waterfall
+	add something to the top of the waterfall room (maybe splashing gloops or something like seashells or fish could fall down the waterfall)
+	sign color: E0A92D Text Color: FFF0CC
+	Move up signs on shelf with object fish

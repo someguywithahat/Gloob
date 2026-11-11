@@ -41,7 +41,7 @@
     {"$GMSpriteFrame":"v1","%Name":"02740f55-00bb-48b9-8d5f-baca3545f105","name":"02740f55-00bb-48b9-8d5f-baca3545f105","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":12,
-  "gridY":12,
+  "gridY":7,
   "height":48,
   "HTile":false,
   "layers":[

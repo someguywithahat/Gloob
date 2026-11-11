@@ -569,6 +569,7 @@
     {"id":{"name":"Spr_Garden_Pink","path":"sprites/Spr_Garden_Pink/Spr_Garden_Pink.yy",},},
     {"id":{"name":"spr_gloop_smile","path":"sprites/spr_gloop_smile/spr_gloop_smile.yy",},},
     {"id":{"name":"spr_Gloop","path":"sprites/spr_Gloop/spr_Gloop.yy",},},
+    {"id":{"name":"spr_gloopFont_Tiny_LC","path":"sprites/spr_gloopFont_Tiny_LC/spr_gloopFont_Tiny_LC.yy",},},
     {"id":{"name":"spr_gloopFont_Tiny","path":"sprites/spr_gloopFont_Tiny/spr_gloopFont_Tiny.yy",},},
     {"id":{"name":"spr_gloopFont","path":"sprites/spr_gloopFont/spr_gloopFont.yy",},},
     {"id":{"name":"spr_gloopFontOutline","path":"sprites/spr_gloopFontOutline/spr_gloopFontOutline.yy",},},
