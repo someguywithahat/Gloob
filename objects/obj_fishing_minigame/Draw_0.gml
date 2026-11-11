@@ -293,9 +293,19 @@ if !fish.hidden and fish.scale>0
 		if fish.y>box_y+box_size-half_fish
 			array_push(copies_y, -box_size)
 	}
+	//A slime "fish" (Mallow) is drawn in its own slime color
+	if fish.slime_color>=0
+	{
+		shader_set(shd_palette_swap)
+		texture_set_stage(shader_get_sampler_index(shd_palette_swap, "palette_orig"), sprite_get_texture(spr_palette_index, 0))
+		texture_set_stage(shader_get_sampler_index(shd_palette_swap, "palette_swap"), sprite_get_texture(spr_palette_all, fish.slime_color))
+		shader_set_uniform_f(shader_get_uniform(shd_palette_swap, "color_count"), 6.0)
+	}
 	for (var cx = 0; cx < array_length(copies_x); cx++)
 		for (var cy = 0; cy < array_length(copies_y); cy++)
 			draw_sprite_ext(fish.sprite, floor(fish.frame), draw_x+copies_x[cx], draw_y+copies_y[cy], fish.facing*fish.scale*fish.spin_x, fish.scale*fish.flip_y, fish.angle, fish.tint, fish.alpha)
+	if fish.slime_color>=0
+		shader_reset()
 }
 
 //---- Anglerfish (Glow): the lure's stalk, curving up from its head and out to the lure.  The lure itself is drawn

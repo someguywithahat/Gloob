@@ -37,7 +37,7 @@ splashes = [] //{ el, frame } Spr_Ripple splashes on the room's Assets layer (ab
 
 //---- The waterfall (rm_fishingUp): a fish up in the obj_gloopFishingWaterfallTop area that swims off its bottom edge
 //falls, tumbling, until it lands in the water below ----
-waterfall_drop = 56    //Where it lands: its middle ends up this far below the bottom of the waterfall area
+waterfall_drop = 160   //Where it lands: its middle ends up this far below the bottom of the waterfall area (past the falls, in the lake)
 fall_gravity = 0.3
 fall_spin_max = 28     //Fastest it spins (degrees a step)
 fall_spin_change = 7   //How much the spin can change each step, so it tumbles every which way

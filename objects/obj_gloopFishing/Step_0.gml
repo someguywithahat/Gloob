@@ -44,7 +44,9 @@ if dock_state>0
 
 //---- Steering: hold the left mouse button to sail toward the cursor.  Let go to glide to a stop ----
 //(No sailing while the fishing minigame is open)
-var steering = mouse_check_button(mb_left) and !instance_exists(obj_fishing_minigame)
+//(Or while dragging a marshmallow around: obj_marshmallow)
+var dragging_snack = variable_global_exists("dragging_snack") and instance_exists(global.dragging_snack)
+var steering = mouse_check_button(mb_left) and !instance_exists(obj_fishing_minigame) and !dragging_snack
 var dist = point_distance(center_x(), center_y(), mouse_x, mouse_y)
 if steering and dist>8
 {

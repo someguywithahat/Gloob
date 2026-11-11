@@ -162,6 +162,7 @@
     {"id":{"name":"obj_lighthouse","path":"objects/obj_lighthouse/obj_lighthouse.yy",},},
     {"id":{"name":"obj_lighting","path":"objects/obj_lighting/obj_lighting.yy",},},
     {"id":{"name":"obj_lilypad","path":"objects/obj_lilypad/obj_lilypad.yy",},},
+    {"id":{"name":"obj_marshmallow","path":"objects/obj_marshmallow/obj_marshmallow.yy",},},
     {"id":{"name":"obj_menu_Bluep","path":"objects/obj_menu_Bluep/obj_menu_Bluep.yy",},},
     {"id":{"name":"obj_menu_Pilp","path":"objects/obj_menu_Pilp/obj_menu_Pilp.yy",},},
     {"id":{"name":"obj_menu_Pluep","path":"objects/obj_menu_Pluep/obj_menu_Pluep.yy",},},

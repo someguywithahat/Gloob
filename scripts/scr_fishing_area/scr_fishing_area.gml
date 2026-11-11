@@ -82,7 +82,12 @@ function scr_fishing_room_start(){
 	{
 		var splash_slimes = [global.WHITE, global.PURPLE]
 		for (var i = 0; i < array_length(splash_slimes); i++)
-			scr_fishing_spawn_splasher(top_area, splash_slimes[i])
+		{
+			var slime = scr_fishing_spawn_splasher(top_area, splash_slimes[i])
+			//Secret: Mallow loves marshmallows (obj_marshmallow)
+			if slime<>noone and splash_slimes[i]=global.WHITE
+				slime.loves_marshmallows = true
+		}
 	}
 
 	//The cave is always dark.  Same night lighting as the game board, lit by the boat and the fish
