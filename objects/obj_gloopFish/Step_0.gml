@@ -1,3 +1,29 @@
+//---- Falling down the waterfall (rm_fishingUp): tumbles until it lands in the water below ----
+if falling
+{
+	fall_vy += fall_gravity
+	y += fall_vy
+	x += vx*0.4
+	//Spins every which way: the spin speed keeps changing at random
+	fall_spin = clamp(fall_spin + random_range(-fall_spin_change, fall_spin_change), -fall_spin_max, fall_spin_max)
+	fall_angle += fall_spin
+	if y+sprite_height/2>=fall_land_y
+	{
+		//Splash!  Back in the water, swimming away from the falls
+		y = fall_land_y-sprite_height/2
+		falling = false
+		layer = home_layer
+		vx = random_range(-1, 1)
+		vy = random_range(0.4, 1)
+		turn_timer = irandom_range(60, 120)
+		add_splash(x+sprite_width/2, y+sprite_height/2)
+	}
+	update_splashes()
+	hovered = false
+	in_range = false
+	exit
+}
+
 //---- Wander: pick a new direction every so often ----
 turn_timer--
 if turn_timer<=0
@@ -21,6 +47,14 @@ if boat<>noone
 		vy += sign(my_y-boat_y)*flee_push
 	}
 }
+
+//---- And from the slimes splashing around up top (obj_fishing_splasher) ----
+var splasher = instance_nearest(my_x, my_y, obj_fishing_splasher)
+if splasher<>noone and point_distance(my_x, my_y, splasher.mid_x(), splasher.mid_y())<splasher.scare_range
+{
+	vx += sign(my_x-splasher.mid_x())*splasher.scare_push
+	vy += sign(my_y-splasher.mid_y())*splasher.scare_push
+}
 vx = clamp(vx, -max_speed, max_speed)
 vy = clamp(vy, -max_speed, max_speed)
 
@@ -29,6 +63,45 @@ if place_meeting(x+vx, y, obj_gloopFishingWall) or x+vx<0 or x+vx+sprite_width>r
 	vx *= -1
 if place_meeting(x, y+vy, obj_gloopFishingWall) or y+vy<0 or y+vy+sprite_height>room_height
 	vy *= -1
+
+//---- The waterfall (obj_gloopFishingWaterfallTop): up top, the water only goes one way: over the edge ----
+var top_area = instance_position(my_x, my_y, obj_gloopFishingWaterfallTop)
+if top_area<>noone
+{
+	//Up top: the sides and top of the area are like the shore
+	if my_x+vx<top_area.bbox_left or my_x+vx>top_area.bbox_right
+		vx *= -1
+	if my_y+vy<top_area.bbox_top
+		vy *= -1
+	//Swimming off the bottom edge: over the falls, if there's water below to land in (otherwise it's shore)
+	if my_y+vy>top_area.bbox_bottom and !jumping
+	{
+		var land_y = top_area.bbox_bottom + waterfall_drop
+		if place_meeting(x, land_y-sprite_height/2, obj_gloopFishingWall) or land_y+sprite_height/2>room_height
+			vy *= -1
+		else
+		{
+			falling = true
+			fall_vy = max(vy, 0.5)
+			fall_angle = 0
+			fall_spin = random_range(-fall_spin_max, fall_spin_max)*0.5
+			fall_land_y = land_y
+			//Above the water effect while it falls
+			var fall_top_layer = layer_get_id("Instances")
+			if fall_top_layer<>-1
+				depth = layer_get_depth(fall_top_layer)-1
+			exit
+		}
+	}
+}
+else
+{
+	//Down below: can't swim up the waterfall
+	if position_meeting(my_x+vx, my_y, obj_gloopFishingWaterfallTop)
+		vx *= -1
+	if position_meeting(my_x, my_y+vy, obj_gloopFishingWaterfallTop)
+		vy *= -1
+}
 x += vx
 y += vy
 
@@ -66,17 +139,7 @@ else if !hovered and !instance_exists(obj_fishing_minigame) and !is_undefined(fi
 }
 
 //Splashes play through once, then go away
-for (var i = array_length(splashes)-1; i >= 0; i--)
-{
-	splashes[i].frame += 0.25
-	if splashes[i].frame>=sprite_get_number(Spr_Ripple)
-	{
-		layer_sprite_destroy(splashes[i].el)
-		array_delete(splashes, i, 1)
-	}
-	else
-		layer_sprite_index(splashes[i].el, floor(splashes[i].frame))
-}
+update_splashes()
 
 //---- Mouse over it: shows the net under it.  Click to try to catch it, if the boat is close enough ----
 var fish_x = (bbox_left+bbox_right)/2

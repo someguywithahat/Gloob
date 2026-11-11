@@ -35,6 +35,34 @@ jump_cooldown = irandom(jump_cooldown_min) //So fish spawned together don't wait
 home_layer = layer //Instances_Underwater.  It goes back here when it lands
 splashes = [] //{ el, frame } Spr_Ripple splashes on the room's Assets layer (above the underwater effect, so they're not wobbly)
 
+//---- The waterfall (rm_fishingUp): a fish up in the obj_gloopFishingWaterfallTop area that swims off its bottom edge
+//falls, tumbling, until it lands in the water below ----
+waterfall_drop = 56    //Where it lands: its middle ends up this far below the bottom of the waterfall area
+fall_gravity = 0.3
+fall_spin_max = 28     //Fastest it spins (degrees a step)
+fall_spin_change = 7   //How much the spin can change each step, so it tumbles every which way
+falling = false
+fall_vy = 0
+fall_angle = 0
+fall_spin = 0
+fall_land_y = 0
+
+/// Splashes play through once, then go away
+update_splashes = function()
+{
+	for (var i = array_length(splashes)-1; i >= 0; i--)
+	{
+		splashes[i].frame += 0.25
+		if splashes[i].frame>=sprite_get_number(Spr_Ripple)
+		{
+			layer_sprite_destroy(splashes[i].el)
+			array_delete(splashes, i, 1)
+		}
+		else
+			layer_sprite_index(splashes[i].el, floor(splashes[i].frame))
+	}
+}
+
 /// How high off the water it is right now, in pixels
 jump_lift = function()
 {

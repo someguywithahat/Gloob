@@ -76,6 +76,15 @@ function scr_fishing_room_start(){
 	repeat(irandom_range(FISHING_FISH_MIN, FISHING_FISH_MAX))
 		scr_fishing_spawn_fish(info.group, boat)
 
+	//Up at the top of the waterfall: Mallow (white) and Barry (purple) splash around, scaring the fish
+	var top_area = instance_find(obj_gloopFishingWaterfallTop, 0)
+	if top_area<>noone
+	{
+		var splash_slimes = [global.WHITE, global.PURPLE]
+		for (var i = 0; i < array_length(splash_slimes); i++)
+			scr_fishing_spawn_splasher(top_area, splash_slimes[i])
+	}
+
 	//The cave is always dark.  Same night lighting as the game board, lit by the boat and the fish
 	if room=rm_fishingDown
 	{
@@ -85,6 +94,23 @@ function scr_fishing_room_start(){
 	}
 }
 
+
+/// Puts a slime (obj_fishing_splasher) somewhere in the water inside a waterfall area, in the given slime color
+function scr_fishing_spawn_splasher(top_area, color){
+	var margin = 20
+	repeat (40)
+	{
+		var sx = random_range(top_area.bbox_left+margin, top_area.bbox_right-margin)
+		var sy = random_range(top_area.bbox_top+margin, top_area.bbox_bottom-margin)
+		if position_meeting(sx, sy, obj_gloopFishingWall)
+			continue
+		var slime = instance_create_layer(sx, sy, "Instances", obj_fishing_splasher)
+		slime.color_index = color
+		slime.area = top_area
+		return slime;
+	}
+	return noone;
+}
 
 /// Spawns one fish from a fish group somewhere in the water (not on land, and not right under the boat)
 function scr_fishing_spawn_fish(group, boat){

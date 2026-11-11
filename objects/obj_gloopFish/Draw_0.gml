@@ -8,8 +8,21 @@ if hovered
 	draw_sprite_ext(Spr_Catch_net, 0, net_x, net_y, net_scale, net_scale, 0, can_catch ? c_white : c_gray, can_catch ? 1 : 0.35)
 }
 
-//Face the way it's swimming.  The sprite has a top left origin, so shift it back over when it's flipped
+//Falling down the waterfall: tumbling, turned around its middle
 var facing = (vx<0) ? -1 : 1
+if falling
+{
+	var fall_mid_x = x + sprite_width/2
+	var fall_mid_y = y + sprite_height/2
+	var fall_half_w = sprite_width/2*facing
+	var fall_half_h = sprite_height/2
+	var fall_corner_x = -fall_half_w*dcos(fall_angle) + -fall_half_h*dsin(fall_angle)
+	var fall_corner_y =  fall_half_w*dsin(fall_angle) + -fall_half_h*dcos(fall_angle)
+	draw_sprite_ext(sprite_index, image_index, fall_mid_x+fall_corner_x, fall_mid_y+fall_corner_y, facing, 1, fall_angle, c_white, image_alpha)
+	exit
+}
+
+//Face the way it's swimming.  The sprite has a top left origin, so shift it back over when it's flipped
 if !jumping
 {
 	var draw_x = (facing<0) ? x+sprite_width : x

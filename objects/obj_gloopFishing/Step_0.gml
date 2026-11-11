@@ -75,10 +75,11 @@ if !is_undefined(room_info) and variable_struct_exists(room_info, "dock") and !i
 	}
 }
 
-//Bump off the shore.  Check each axis on its own so the boat slides along a wall it hits from the side
-if place_meeting(x+xx, y, obj_gloopFishingWall)
+//Bump off the shore, and the top of the waterfall (obj_gloopFishingWaterfallTop: fish only, the boat can't go up there).
+//Check each axis on its own so the boat slides along a wall it hits from the side
+if place_meeting(x+xx, y, obj_gloopFishingWall) or place_meeting(x+xx, y, obj_gloopFishingWaterfallTop)
 	xx*=-0.5
-if place_meeting(x, y+yy, obj_gloopFishingWall)
+if place_meeting(x, y+yy, obj_gloopFishingWall) or place_meeting(x, y+yy, obj_gloopFishingWaterfallTop)
 	yy*=-0.5
 
 x+=xx
