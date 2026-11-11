@@ -18,10 +18,18 @@ if dock_state>0
 		hop_time = dock_time
 	else if dock_state=3 and dock_time>board_wait
 		hop_time = dock_time-board_wait
+	else if dock_state=4 and dock_time<dock_hop_frames //Hopping onto the log
+		hop_time = dock_time
 	if hop_time>=0
 	{
 		var hop_frame = min(hop_time/dock_hop_frames, 0.999)*sprite_get_number(Spr_Slm_Move_Jump)
 		draw_sprite(Spr_Slm_Move_Jump, hop_frame, round(slime_x), round(slime_y))
+	}
+	else if dock_state=4 and dock_time>=dock_hop_frames+log_face_time
+	{
+		//Sitting on the log with Honey: idling, after a happy moment when he lands
+		var idle_frame = floor((dock_time-dock_hop_frames)*sprite_get_speed(Spr_Slm_Idol)/game_get_speed(gamespeed_fps))
+		draw_sprite(Spr_Slm_Idol, idle_frame mod sprite_get_number(Spr_Slm_Idol), round(slime_x), round(slime_y))
 	}
 	else
 		draw_sprite(Slm_All_Base_Expressions, UG_FACE.HAPPY, round(slime_x), round(slime_y))
