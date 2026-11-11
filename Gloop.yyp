@@ -524,6 +524,7 @@
     {"id":{"name":"spr_effect_marigold","path":"sprites/spr_effect_marigold/spr_effect_marigold.yy",},},
     {"id":{"name":"spr_effect_particle_test","path":"sprites/spr_effect_particle_test/spr_effect_particle_test.yy",},},
     {"id":{"name":"spr_effect_rain","path":"sprites/spr_effect_rain/spr_effect_rain.yy",},},
+    {"id":{"name":"spr_effect_Snack","path":"sprites/spr_effect_Snack/spr_effect_Snack.yy",},},
     {"id":{"name":"spr_effect_snowflake","path":"sprites/spr_effect_snowflake/spr_effect_snowflake.yy",},},
     {"id":{"name":"spr_effect_weird","path":"sprites/spr_effect_weird/spr_effect_weird.yy",},},
     {"id":{"name":"Spr_Empty_Bowl_Shelf","path":"sprites/Spr_Empty_Bowl_Shelf/Spr_Empty_Bowl_Shelf.yy",},},
