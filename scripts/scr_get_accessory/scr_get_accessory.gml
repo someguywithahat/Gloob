@@ -6,7 +6,7 @@
 */
 function scr_set_global_values_accessory(){
 	//The total amount of accessories in the game.  
-	global.MAX_ACCESSORY=6
+	global.MAX_ACCESSORY=8
 }
 
 //sets accessory
@@ -82,6 +82,30 @@ else if has_accessory=2
 		sa_roll_R = Spr_Acc_Dog_Move_Spin
 		sa_teleport = Spr_Acc_Dog_Tele
 		sa_slurp = Spr_Acc_Dog_Move_Slurp
+	}
+else if has_accessory=7
+	{
+		sa = Spr_Acc_Light
+		sa_idol = Spr_Acc_Light_Idol
+		sa_sleep = Spr_Acc_Light_Sleep
+		sa_death = Spr_Acc_Light_Stun
+		sa_jump = Spr_Acc_Light_Move_Jump
+		sa_roll = Spr_Acc_Light_Move_Roll
+		sa_roll_R = Spr_Acc_Light_Move_Spin
+		sa_teleport = Spr_Acc_Light_Tele
+		sa_slurp = Spr_Acc_Light_Move_Slurp
+	}
+else if has_accessory=8
+	{
+		sa = Spr_Acc_Dark
+		sa_idol = Spr_Acc_Dark_Idol
+		sa_sleep = Spr_Acc_Dark_Sleep
+		sa_death = Spr_Acc_Dark_Stun
+		sa_jump = Spr_Acc_Dark_Move_Jump
+		sa_roll = Spr_Acc_Dark_Move_Roll
+		sa_roll_R = Spr_Acc_Dark_Move_Spin
+		sa_teleport = Spr_Acc_Dark_Tele
+		sa_slurp = Spr_Acc_Dark_Move_Slurp
 	}
 	///////////////////INSERT NEW SPRITES HERE///////////////////
 	//else if has_accessory=3
