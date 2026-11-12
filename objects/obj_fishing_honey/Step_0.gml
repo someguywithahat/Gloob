@@ -30,6 +30,7 @@ switch (state)
 		{
 			set_state("stuck")
 			depth = boat.depth-1
+			audio_play_sound(snd_slime_move, 1, false) //Splat!
 		}
 		break
 

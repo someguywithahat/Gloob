@@ -16,8 +16,7 @@ grow_to = 3             //Times his size when he's done
 close_frames = 50       //A moment after he's full, before he starts idling happily
 gulp_every = 36         //A little squish this often while he drinks
 mouth_drops_every = 3   //Extra raindrops falling right into his mouth, one this often
-happy_every = 240       //Once he's done: shows his happy face this often...
-happy_for = 70          //...for this long
+full_face = 17          //Once he's full: the fat face (Slm_All_Base_Expressions frame)
 
 //---- State ----
 image_speed = 0 //Animated by hand
