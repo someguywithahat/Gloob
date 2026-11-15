@@ -349,6 +349,12 @@ function scr_draw_goal_sign(xx, yy, hover_or_click)
 	var sign_h = (sign_tiles_high+1)*tile
 	scr_draw_sign(xx, yy, sign_tiles_wide*tile, sign_tiles_high*tile, 1, 2, 0, 0)
 
+	//This box, so obj_lighting can glow it at night (it isn't darkened itself, but the board around it is)
+	controller.goal_sign_x = xx
+	controller.goal_sign_y = yy
+	controller.goal_sign_w = sign_w
+	controller.goal_sign_h = sign_h
+
 	//Rows, centered top to bottom in the sign
 	var center_x = xx + sign_w/2
 	var content_top = yy + (sign_h - content_h)/2

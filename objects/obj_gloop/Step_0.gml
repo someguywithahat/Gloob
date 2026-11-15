@@ -34,7 +34,47 @@ if alive=0
 	return
 //Everything below only runs when it's your turn
 
-if (ismoving=0) 
+//Nowhere to go, and no Teleport/Leaf/End Day to save them (see scr_gloop_has_escape_action): lose right away,
+//even with a hardhat (bonk) or Rainbow in hand -- neither one opens up a free space to move to.
+//A floating Bubble, or someone else's Leaf burst still clearing nearby, get a short grace period instead of an
+//instant loss (they're not this slime's own doing and might take a moment to help) -- but not forever
+var idle_now = ismoving=0 and isteleporting=0
+var has_move = scr_gloop_has_valid_move(id)
+var can_escape = scr_gloop_has_escape_action(id)
+var really_stuck = idle_now and !has_move and !can_escape
+var bubble_exists = instance_exists(obj_effect_bubble)
+var burst_exists = instance_exists(obj_effect_grass_burst)
+
+//DEBUG (temporary): logs once each time a slime ends up with no valid move, showing exactly why it isn't
+//being eliminated yet, if it isn't.  Remove once the softlock is confirmed fixed
+if !idle_now or has_move
+	stuck_debug_printed = false
+else if !stuck_debug_printed
+{
+	stuck_debug_printed = true
+	var msg = "[stuck] gloop " + string(real(id)) + " color " + string(gloop_color_index) + " at (" + string(grid_x) + "," + string(grid_y) + "): no valid move.  can_escape=" + string(can_escape) + "  bubble_exists=" + string(bubble_exists) + "  burst_exists=" + string(burst_exists) + "  stuck_time=" + string(stuck_time)
+	show_debug_message(msg)
+}
+
+stuck_time = really_stuck ? stuck_time+1 : 0
+if really_stuck and (!(bubble_exists or burst_exists) or stuck_time>=stuck_grace_seconds*game_get_speed(gamespeed_fps))
+{
+	alive=0
+	audio_play_sound(snd_bonk, 1, false)
+	//A crown slime's powerups go with it (its row on the score sign is removed too), same as a bonk death
+	if gloop_score_obj.gloop<>id
+	{
+		powerUp1=-1
+		powerUp2=-1
+		powerUp3=-1
+		puBonk=0
+	}
+	scr_rainbow_end_move(id)
+	scr_end_turn()
+	return
+}
+
+if (ismoving=0)
 {
 	var targeting = global.obj_targeting
 	

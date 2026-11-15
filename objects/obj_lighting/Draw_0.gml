@@ -89,6 +89,28 @@ with(obj_glow_mushroom)
 with(obj_fishing_coal)
 	add_lights(other, strength)
 
+//Player score signs: a warm glow so they stay readable once the board gets dark (same box scr_draw_sign uses
+//in obj_gloop_score's Draw event -- y_offset is computed there too, since it depends on the other signs)
+with(obj_gloop_score)
+{
+	var sign_w = 200
+	var sign_h = 60 + extra_rows*powerup_row_height
+	var sign_cx = 5 + sign_w/2
+	var sign_cy = 20 + player*95 + y_offset + sign_h/2
+	var sign_radius = point_distance(0, 0, sign_w/2, sign_h/2) * other.sign_light_cover
+	other.add_light(sign_cx, sign_cy, sign_radius, other.sign_light_color, strength*other.sign_light_strength)
+}
+
+//The goal/day sign, top right.  It isn't darkened itself (obj_controller draws it after this), but the board
+//around it still goes dark, so it gets a glow too, same as the player signs (box set in scr_draw_goal_sign)
+if controller.goal_sign_w>0
+{
+	var goal_cx = controller.goal_sign_x + controller.goal_sign_w/2
+	var goal_cy = controller.goal_sign_y + controller.goal_sign_h/2
+	var goal_radius = point_distance(0, 0, controller.goal_sign_w/2, controller.goal_sign_h/2) * sign_light_cover
+	add_light(goal_cx, goal_cy, goal_radius, sign_light_color, strength*sign_light_strength)
+}
+
 //Slime trails: a faint glow on every space a slime has been, in that slime's color
 var half_space = controller.spacing/2
 var trail_strength = strength*trail_light_strength

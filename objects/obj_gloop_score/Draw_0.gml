@@ -8,7 +8,7 @@ with(obj_gloop)
 extra_rows = array_length(slimes)-1
 
 //Signs above this one grow taller when they have crown slimes.  Move down to make room
-var y_offset = 0
+y_offset = 0
 var my_player = player
 with(obj_gloop_score)
 	if player<my_player

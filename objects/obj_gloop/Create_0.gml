@@ -14,6 +14,13 @@ grid_x=1
 grid_y=1
 alive=1
 
+//Nowhere to move, and no Teleport/Leaf/End Day to save it (scr_gloop_stuck): steps spent stuck like that so
+//far.  A floating Bubble puts this on hold, but only for stuck_grace_seconds -- it wanders on its own and
+//might never actually reach them, so that's a reprieve, not a guarantee, and they can't be stuck forever
+stuck_time=0
+stuck_grace_seconds=10
+stuck_debug_printed=false //DEBUG (temporary)
+
 next_target_x = 1;
 next_target_y = 1;
 target_x = 1;

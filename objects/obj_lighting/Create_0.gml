@@ -69,6 +69,12 @@ slime_light_colors[global.YELLOW] = make_colour_rgb(255,240,150)
 firefly_light_color=make_colour_rgb(255,240,140)
 bubble_light_color=make_colour_rgb(200,235,255)
 
+//Player score signs: a warm glow so they're still readable once the board gets dark.  Sized to each
+//sign's own box (bigger when crown slimes have added rows), so this is just how far past its corners it reaches
+sign_light_color=make_colour_rgb(255,235,190)
+sign_light_cover=1.2 //1 = just reaches the corners.  Bigger spreads further past the edges, softer but more even
+sign_light_strength=0.85
+
 
 /// Draws one light onto the light map.  strength 0-1.  sprite is optional: leave it out to use light_sprite
 add_light = function(lx, ly, radius, color, strength, sprite=light_sprite)

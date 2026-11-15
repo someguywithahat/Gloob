@@ -194,14 +194,14 @@ if (mouse_x > x && mouse_x < x+sprite_width &&
 }
 else tooltip_counter=0
 
-if (mouse_x > x && mouse_x < x+sprite_width &&
-    mouse_y > y && mouse_y < y+sprite_width 
-	&& activeNumber=0
-	)
-{
+//if (mouse_x > x && mouse_x < x+sprite_width &&
+//    mouse_y > y && mouse_y < y+sprite_width 
+//	&& activeNumber=0
+//	)
+//{
 
-	draw_sprite_ext(spr_effect_particle_test,0,x+16 + (8*enterX), y+16 + (8*enterY),1,1,0,c_green,1)	
-	draw_sprite_ext(spr_effect_particle_test,0,x+16 + (7*exitX), y+16 + (6*exitY),1,1,0,c_red,1)
+//	draw_sprite_ext(spr_effect_particle_test,0,x+16 + (8*enterX), y+16 + (8*enterY),1,1,0,c_green,1)	
+//	draw_sprite_ext(spr_effect_particle_test,0,x+16 + (7*exitX), y+16 + (6*exitY),1,1,0,c_red,1)
 
-}
+//}
 

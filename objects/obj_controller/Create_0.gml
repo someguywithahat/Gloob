@@ -1,5 +1,12 @@
 global.controller = id;
 global.weather=0
+
+//The goal/day sign's box (scr_draw_goal_sign sets these for real on the first Draw; obj_lighting reads them
+//to glow the sign at night).  0 here just means "hasn't drawn yet", so obj_lighting skips it for one frame
+goal_sign_x=0
+goal_sign_y=0
+goal_sign_w=0
+goal_sign_h=0
 global.fnt_Gloop = font_add_sprite(spr_gloopFontOutline, ord("!"), true, 5);
 global.fnt_Gloop_small = font_add_sprite(spr_gloopFont_Tiny, ord("!"), true, 2);
 scr_set_GLOBAL_values()
