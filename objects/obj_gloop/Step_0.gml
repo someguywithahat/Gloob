@@ -405,7 +405,9 @@ if ismoving=1 and isteleporting=0 {
 			if next_inst.has_powerUP=global.PURPLE
 			{
 				has_crown=1
-				var friend_gloop = instance_create_layer(x, y, "Instances", obj_gloop);
+				//Spawned on its actual cell (next_inst), not wherever this slime's sprite has slid to so far --
+				//otherwise its pixel position and its grid_x/grid_y below (next_inst's) don't match until it moves
+				var friend_gloop = instance_create_layer(next_inst.x, next_inst.y, "Instances", obj_gloop);
 				//Shares this slime's score sign instead of getting its own
 				instance_destroy(friend_gloop.gloop_score_obj)
 				//Real color, not whatever the rainbow is showing right now
