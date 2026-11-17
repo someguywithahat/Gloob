@@ -34,10 +34,10 @@ if alive=0
 	return
 //Everything below only runs when it's your turn
 
-//Nowhere to go, and no Teleport/Leaf/End Day to save them (see scr_gloop_has_escape_action): lose right away,
-//even with a hardhat (bonk) or Rainbow in hand -- neither one opens up a free space to move to.
-//A floating Bubble, or someone else's Leaf burst still clearing nearby, get a short grace period instead of an
-//instant loss (they're not this slime's own doing and might take a moment to help) -- but not forever
+//Nowhere to go, and no Teleport/Leaf/End Day to save them (see scr_gloop_has_escape_action): gets rescued with
+//a teleport below, even with a hardhat (bonk) or Rainbow in hand -- neither one opens up a free space to move to.
+//A floating Bubble, or someone else's Leaf burst still clearing nearby, get a short grace period first instead
+//(they're not this slime's own doing and might take a moment to help) -- but not forever
 var idle_now = ismoving=0 and isteleporting=0
 var has_move = scr_gloop_has_valid_move(id)
 var can_escape = scr_gloop_has_escape_action(id)
@@ -59,18 +59,54 @@ else if !stuck_debug_printed
 stuck_time = really_stuck ? stuck_time+1 : 0
 if really_stuck and (!(bubble_exists or burst_exists) or stuck_time>=stuck_grace_seconds*game_get_speed(gamespeed_fps))
 {
-	alive=0
-	audio_play_sound(snd_bonk, 1, false)
-	//A crown slime's powerups go with it (its row on the score sign is removed too), same as a bonk death
-	if gloop_score_obj.gloop<>id
+	//Nowhere to go on its own: a bit of magic teleports it somewhere random instead (same spot-picker the
+	//Teleport powerup uses).  If that spot's ALSO a dead end, it keeps hopping until it lands somewhere it
+	//can actually move from
+	with (obj_gridNumber)
+		highlighted=0
+	var rescued = false
+	var rescue_tries = 0
+	while rescue_tries<rescue_teleport_max_tries
 	{
-		powerUp1=-1
-		powerUp2=-1
-		powerUp3=-1
-		puBonk=0
+		rescue_tries++
+		if !scr_pu_teleport_random(id)
+			break; //The whole board's full -- nowhere left to send it
+		if scr_gloop_has_valid_move(id)
+		{
+			rescued = true
+			break;
+		}
 	}
-	scr_rainbow_end_move(id)
-	scr_end_turn()
+
+	if rescued
+	{
+		//A quick "poof" back into view (just the back half of the usual teleport animation, since it's
+		//already landed).  It can move normally again right after
+		var _snd = audio_play_sound(snd_flap, 1, false)
+		audio_sound_pitch(_snd, 0.75)
+		sprite_index=s_teleport
+		ismoving=1
+		isteleporting=2
+		image_index=image_number-1
+		image_speed=-1
+	}
+	else
+	{
+		//Could never find anywhere workable (the board would have to be completely full) -- losing here
+		//instead of freezing forever is the last resort for that one practically-impossible case
+		alive=0
+		audio_play_sound(snd_bonk, 1, false)
+		//A crown slime's powerups go with it (its row on the score sign is removed too), same as a bonk death
+		if gloop_score_obj.gloop<>id
+		{
+			powerUp1=-1
+			powerUp2=-1
+			powerUp3=-1
+			puBonk=0
+		}
+		scr_rainbow_end_move(id)
+		scr_end_turn()
+	}
 	return
 }
 

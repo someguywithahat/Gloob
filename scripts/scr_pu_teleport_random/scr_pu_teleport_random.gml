@@ -2,6 +2,7 @@
 		gloopInst.grid_x=gloop_x
 		gloopInst.grid_y=gloop_y
 */
+/// @returns true if it found a free space and moved there, false if the board's full and there's nowhere to go
 function scr_pu_teleport_random(gloopInst){
 	var controller=global.controller
 	var grid_array=controller.grid_refs
@@ -10,7 +11,7 @@ function scr_pu_teleport_random(gloopInst){
 	if gridinst=noone
 	{
 		show_debug_message("no tp location")
-		return;
+		return false;
 	}
 
 	var i = gridinst.grid_x;
@@ -40,4 +41,5 @@ function scr_pu_teleport_random(gloopInst){
 	gloopInst.prev_derY=0
 	gloopInst.derX=0
 	gloopInst.derY=0
+	return true;
 }

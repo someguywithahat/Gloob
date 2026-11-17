@@ -20,6 +20,7 @@ alive=1
 stuck_time=0
 stuck_grace_seconds=10
 stuck_debug_printed=false //DEBUG (temporary)
+rescue_teleport_max_tries=30 //Safety cap on the "keep teleporting until it can move" loop below
 
 next_target_x = 1;
 next_target_y = 1;
