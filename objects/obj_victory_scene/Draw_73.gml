@@ -70,27 +70,13 @@ if phase<>"fade_in" and phase<>"fade_back"
 	draw_slime_layer(1, cx)
 	draw_pit_balls(cx, front_cut)
 
-	//The tub: blue with a yellow rim and corner posts
+	//The empty tub: spr_victory_ballpit, stretched to fit the pit's settings (pit_l/pit_r/pit_wall_y/ground_y).
+	//The sprite has a 1px transparent margin all around (so its edges don't bleed on the texture page),
+	//so the draw position/size is 1px bigger each way than the art itself.  Edit the sprite in GameMaker
+	//to restyle the tub -- just keep that margin if you resize the canvas
 	var l = pit_l - cx
 	var r = pit_r - cx
-	draw_set_colour(make_colour_rgb(45, 90, 180))
-	draw_rectangle(l, pit_wall_y, r, ground_y+4, false)
-	draw_set_colour(make_colour_rgb(70, 130, 230))
-	draw_rectangle(l, pit_wall_y, r, ground_y+1, false)
-	draw_set_colour(make_colour_rgb(130, 180, 255))
-	draw_rectangle(l+2, pit_wall_y+3, r-2, pit_wall_y+3, false)
-	draw_set_colour(make_colour_rgb(250, 210, 80))
-	draw_rectangle(l-1, pit_wall_y, r+1, pit_wall_y+1, false)
-	draw_rectangle(l-2, 62, l, ground_y+4, false)
-	draw_rectangle(r, 62, r+2, ground_y+4, false)
-	for (var sx = l+8; sx < r-4; sx += 12) //Stars along the side
-	{
-		draw_point(sx, 78)
-		draw_point(sx-1, 78)
-		draw_point(sx+1, 78)
-		draw_point(sx, 77)
-		draw_point(sx, 79)
-	}
+	draw_sprite_stretched(spr_victory_ballpit, 0, l-3, 61, (r-l)+6, 32)
 
 	//Out of the pit: on the field, and flying
 	draw_slime_layer(2, cx)
